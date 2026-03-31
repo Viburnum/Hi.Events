@@ -41,6 +41,8 @@ class UpsertProductDTO extends BaseDTO
         public readonly ?bool            $is_highlighted = false,
         public readonly ?string          $highlight_message = null,
         public readonly ?bool            $waitlist_enabled = null,
+        public readonly ?bool            $is_hard_ticket = false,
+        public readonly ?float           $hard_ticket_fee = null,
     )
     {
     }

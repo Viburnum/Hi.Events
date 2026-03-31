@@ -37,6 +37,8 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     final public const IS_HIGHLIGHTED = 'is_highlighted';
     final public const HIGHLIGHT_MESSAGE = 'highlight_message';
     final public const WAITLIST_ENABLED = 'waitlist_enabled';
+    final public const IS_HARD_TICKET = 'is_hard_ticket';
+    final public const HARD_TICKET_FEE = 'hard_ticket_fee';
 
     protected int $id;
     protected int $event_id;
@@ -65,6 +67,8 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     protected bool $is_highlighted = false;
     protected ?string $highlight_message = null;
     protected ?bool $waitlist_enabled = null;
+    protected bool $is_hard_ticket = false;
+    protected ?float $hard_ticket_fee = null;
 
     public function toArray(): array
     {
@@ -96,6 +100,8 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
                     'is_highlighted' => $this->is_highlighted ?? null,
                     'highlight_message' => $this->highlight_message ?? null,
                     'waitlist_enabled' => $this->waitlist_enabled ?? null,
+                    'is_hard_ticket' => $this->is_hard_ticket ?? null,
+                    'hard_ticket_fee' => $this->hard_ticket_fee ?? null,
                 ];
     }
 
@@ -394,5 +400,27 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     public function getWaitlistEnabled(): ?bool
     {
         return $this->waitlist_enabled;
+    }
+
+    public function setIsHardTicket(bool $is_hard_ticket): self
+    {
+        $this->is_hard_ticket = $is_hard_ticket;
+        return $this;
+    }
+
+    public function getIsHardTicket(): bool
+    {
+        return $this->is_hard_ticket;
+    }
+
+    public function setHardTicketFee(?float $hard_ticket_fee): self
+    {
+        $this->hard_ticket_fee = $hard_ticket_fee;
+        return $this;
+    }
+
+    public function getHardTicketFee(): ?float
+    {
+        return $this->hard_ticket_fee;
     }
 }

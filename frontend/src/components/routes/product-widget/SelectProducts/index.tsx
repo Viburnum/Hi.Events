@@ -463,6 +463,9 @@ const SelectProducts = (props: SelectProductsProps) => {
                                                         >
                                                             <h3>
                                                                 {product.title}
+                                                                {product.is_hard_ticket && (
+                                                                    <span className={'hi-hard-ticket-badge'}>{t`Hard Ticket`}</span>
+                                                                )}
                                                             </h3>
                                                             <div className={'hi-product-title-metadata'}>
                                                                 {(product.is_available && !!product.quantity_available) && (

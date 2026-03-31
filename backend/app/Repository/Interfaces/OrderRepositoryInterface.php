@@ -17,6 +17,8 @@ interface OrderRepositoryInterface extends RepositoryInterface
 {
     public function findByEventId(int $eventId, QueryParamsDTO $params): LengthAwarePaginator;
 
+    public function findFulfillmentOrdersByEventId(int $eventId, QueryParamsDTO $params): LengthAwarePaginator;
+
     public function findByOrganizerId(int $organizerId, int $accountId, QueryParamsDTO $params): LengthAwarePaginator;
 
     public function getOrderItems(int $orderId);

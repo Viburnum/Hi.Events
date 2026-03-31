@@ -18,6 +18,7 @@ use HiEvents\DomainObjects\OrderItemDomainObject;
 use HiEvents\DomainObjects\ProductDomainObject;
 use HiEvents\DomainObjects\ProductPriceDomainObject;
 use HiEvents\DomainObjects\Status\AttendeeStatus;
+use HiEvents\DomainObjects\Status\FulfillmentStatus;
 use HiEvents\DomainObjects\Status\OrderPaymentStatus;
 use HiEvents\DomainObjects\Status\OrderStatus;
 use HiEvents\Events\OrderStatusChangedEvent;
@@ -162,7 +163,9 @@ class CompleteOrderHandler
 
             $shortId = IdHelper::shortId(IdHelper::ATTENDEE_PREFIX);
 
-            $inserts[] = [
+            $isHardTicket = $this->isProductHardTicket($attendee->product_price_id, $order->getOrderItems());
+
+            $insert = [
                 AttendeeDomainObjectAbstract::EVENT_ID => $order->getEventId(),
                 AttendeeDomainObjectAbstract::PRODUCT_ID => $productId,
                 AttendeeDomainObjectAbstract::PRODUCT_PRICE_ID => $attendee->product_price_id,
@@ -177,6 +180,12 @@ class CompleteOrderHandler
                 AttendeeDomainObjectAbstract::SHORT_ID => $shortId,
                 AttendeeDomainObjectAbstract::LOCALE => $order->getLocale(),
             ];
+
+            if ($isHardTicket) {
+                $insert[AttendeeDomainObjectAbstract::FULFILLMENT_STATUS] = FulfillmentStatus::PENDING->name;
+            }
+
+            $inserts[] = $insert;
 
             $createdProductData->push(new CreatedProductDataDTO(
                 productRequestData: $attendee,
@@ -383,5 +392,14 @@ class CompleteOrderHandler
     {
         return $orderItems->first(fn(OrderItemDomainObject $orderItem) => $orderItem->getProductPriceId() === $priceId)
             ->getProductType();
+    }
+
+    private function isProductHardTicket(int $priceId, Collection $orderItems): bool
+    {
+        $orderItem = $orderItems->first(
+            fn(OrderItemDomainObject $orderItem) => $orderItem->getProductPriceId() === $priceId
+        );
+
+        return $orderItem?->getProduct()?->getIsHardTicket() ?? false;
     }
 }

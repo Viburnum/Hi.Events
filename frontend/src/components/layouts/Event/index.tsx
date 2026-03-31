@@ -24,6 +24,7 @@ import {
     IconUsersGroup,
     IconWebhook,
     IconListCheck,
+    IconTruckDelivery,
 } from "@tabler/icons-react";
 import {t} from "@lingui/macro";
 import {useGetEvent} from "../../../queries/useGetEvent";
@@ -110,6 +111,7 @@ const EventLayout = () => {
         {label: t`Ticketing & Sales`},
         {link: 'products', label: t`Tickets & Products`, icon: IconTicket},
         {link: 'orders', label: t`Orders`, icon: IconReceipt, badge: eventStats?.total_orders},
+        {link: 'fulfillment', label: t`Fulfillment`, icon: IconTruckDelivery},
         {link: 'promo-codes', label: t`Promo Codes`, icon: IconDiscount2},
         {link: 'affiliates', label: t`Affiliates`, icon: IconTrendingUp},
 

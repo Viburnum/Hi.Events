@@ -6,6 +6,7 @@ use HiEvents\DomainObjects\AttendeeCheckInDomainObject;
 use HiEvents\DomainObjects\AttendeeDomainObject;
 use HiEvents\DomainObjects\Generated\AttendeeDomainObjectAbstract;
 use HiEvents\DomainObjects\Status\AttendeeStatus;
+use HiEvents\DomainObjects\Status\FulfillmentStatus;
 use HiEvents\DomainObjects\Status\OrderStatus;
 use HiEvents\Http\DTO\QueryParamsDTO;
 use HiEvents\Models\Attendee;
@@ -130,7 +131,11 @@ class AttendeeRepository extends BaseRepository implements AttendeeRepositoryInt
             ->join('check_in_lists', 'check_in_lists.id', '=', 'product_check_in_lists.check_in_list_id')
             ->where('check_in_lists.short_id', $shortId)
             ->whereIn('attendees.status',[AttendeeStatus::ACTIVE->name, AttendeeStatus::CANCELLED->name, AttendeeStatus::AWAITING_PAYMENT->name])
-            ->whereIn('orders.status', [OrderStatus::COMPLETED->name, OrderStatus::AWAITING_OFFLINE_PAYMENT->name]);
+            ->whereIn('orders.status', [OrderStatus::COMPLETED->name, OrderStatus::AWAITING_OFFLINE_PAYMENT->name])
+            ->where(function (Builder $builder) {
+                $builder->whereNull('attendees.' . AttendeeDomainObjectAbstract::FULFILLMENT_STATUS)
+                    ->orWhere('attendees.' . AttendeeDomainObjectAbstract::FULFILLMENT_STATUS, '!=', FulfillmentStatus::PENDING->name);
+            });
 
         $this->loadRelation(new Relationship(AttendeeCheckInDomainObject::class, name: 'check_ins'));
 

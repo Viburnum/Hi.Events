@@ -83,6 +83,9 @@ use HiEvents\Http\Actions\Messages\CancelMessageAction;
 use HiEvents\Http\Actions\Messages\GetMessageRecipientsAction;
 use HiEvents\Http\Actions\Messages\GetMessagesAction;
 use HiEvents\Http\Actions\Messages\SendMessageAction;
+use HiEvents\Http\Actions\Fulfillment\GetFulfillmentOrdersAction;
+use HiEvents\Http\Actions\Fulfillment\SetAttendeeBarcodeAction;
+use HiEvents\Http\Actions\Fulfillment\UpdateOrderFulfillmentStatusAction;
 use HiEvents\Http\Actions\Orders\CancelOrderAction;
 use HiEvents\Http\Actions\Orders\DownloadOrderInvoiceAction;
 use HiEvents\Http\Actions\Orders\EditOrderAction;
@@ -366,6 +369,11 @@ $router->middleware(['auth:api'])->group(
         $router->post('/events/{event_id}/orders/{order_id}/mark-as-paid', MarkOrderAsPaidAction::class);
         $router->post('/events/{event_id}/orders/export', ExportOrdersAction::class);
         $router->get('/events/{event_id}/orders/{order_id}/invoice', DownloadOrderInvoiceAction::class);
+
+        // Fulfillment
+        $router->get('/events/{event_id}/fulfillment/orders', GetFulfillmentOrdersAction::class);
+        $router->put('/events/{event_id}/fulfillment/attendees/{attendee_id}/barcode', SetAttendeeBarcodeAction::class);
+        $router->put('/events/{event_id}/fulfillment/orders/{order_id}/status', UpdateOrderFulfillmentStatusAction::class);
 
         // Questions
         $router->post('/events/{event_id}/questions', CreateQuestionAction::class);

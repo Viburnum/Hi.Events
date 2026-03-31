@@ -36,6 +36,8 @@ export const EditProductModal = ({onClose, productId}: GenericModalProps & { pro
             is_highlighted: false,
             highlight_message: undefined,
             waitlist_enabled: null,
+            is_hard_ticket: false,
+            hard_ticket_fee: undefined,
             type: ProductPriceType.Paid,
             tax_and_fee_ids: [],
             prices: [],
@@ -71,6 +73,8 @@ export const EditProductModal = ({onClose, productId}: GenericModalProps & { pro
             is_highlighted: product.is_highlighted,
             highlight_message: product.highlight_message,
             waitlist_enabled: product.waitlist_enabled ?? null,
+            is_hard_ticket: product.is_hard_ticket ?? false,
+            hard_ticket_fee: product.hard_ticket_fee ?? undefined,
             product_type: product.product_type,
             product_category_id: String(product.product_category_id),
             prices: product.prices?.map(p => ({

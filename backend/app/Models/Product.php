@@ -19,6 +19,7 @@ class Product extends BaseModel
         return [
             ProductDomainObjectAbstract::SALES_VOLUME => 'float',
             ProductDomainObjectAbstract::SALES_TAX_VOLUME => 'float',
+            ProductDomainObjectAbstract::HARD_TICKET_FEE => 'float',
         ];
     }
 

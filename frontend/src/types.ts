@@ -546,6 +546,8 @@ export interface Product {
     waitlist_enabled?: boolean | null;
     has_waiting_entries?: boolean;
     waitlist_entry_count?: number;
+    is_hard_ticket?: boolean;
+    hard_ticket_fee?: number;
 }
 
 export interface ProductCategory {
@@ -579,6 +581,7 @@ export interface Attendee {
     locale?: SupportedLocales;
     check_in?: AttendeeCheckIn; // Use in contexts where a single check is expected, like dealing with a check-in list
     check_ins?: AttendeeCheckIn[];
+    fulfillment_status?: 'PENDING' | 'FULFILLED' | null;
 }
 
 export type PublicCheckIn = Pick<AttendeeCheckIn, 'id' | 'order_id' | 'attendee_id' | 'check_in_list_id' | 'product_id' | 'event_id'>;
@@ -651,6 +654,7 @@ export interface Order {
     event?: Event;
     latest_invoice?: Invoice;
     session_identifier?: string;
+    fulfillment_status?: 'PENDING' | 'FULFILLED' | null;
 }
 
 export interface Invoice {

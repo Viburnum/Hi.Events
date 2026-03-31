@@ -394,6 +394,13 @@ export const router: RouteObject[] = [
                 }
             },
             {
+                path: "fulfillment",
+                async lazy() {
+                    const Fulfillment = await import("./components/routes/event/fulfillment");
+                    return { Component: Fulfillment.default };
+                }
+            },
+            {
                 path: "promo-codes",
                 async lazy() {
                     const PromoCodes = await import("./components/routes/event/promo-codes");

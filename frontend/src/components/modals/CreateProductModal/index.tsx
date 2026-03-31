@@ -35,6 +35,8 @@ export const CreateProductModal = ({onClose, selectedCategoryId = undefined}: Cr
             is_highlighted: false,
             highlight_message: undefined,
             waitlist_enabled: null,
+            is_hard_ticket: false,
+            hard_ticket_fee: undefined,
             type: ProductPriceType.Paid,
             product_type: ProductType.Ticket,
             tax_and_fee_ids: undefined,

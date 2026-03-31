@@ -64,6 +64,8 @@ class ProductResource extends JsonResource
             'is_highlighted' => $this->getIsHighlighted(),
             'highlight_message' => $this->getHighlightMessage(),
             'waitlist_enabled' => $this->getWaitlistEnabled(),
+            'is_hard_ticket' => $this->getIsHardTicket(),
+            'hard_ticket_fee' => $this->getHardTicketFee(),
         ];
     }
 }
