@@ -369,6 +369,7 @@ export interface EventStats {
     total_fees: number;
     total_views: number;
     total_refunded: number;
+    total_pending_fulfillment_orders?: number;
 }
 
 export interface OrganizerStats {

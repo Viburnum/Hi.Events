@@ -111,7 +111,7 @@ const EventLayout = () => {
         {label: t`Ticketing & Sales`},
         {link: 'products', label: t`Tickets & Products`, icon: IconTicket},
         {link: 'orders', label: t`Orders`, icon: IconReceipt, badge: eventStats?.total_orders},
-        {link: 'fulfillment', label: t`Fulfillment`, icon: IconTruckDelivery},
+        {link: 'fulfillment', label: t`Fulfillment`, icon: IconTruckDelivery, badge: eventStats?.total_pending_fulfillment_orders || undefined},
         {link: 'promo-codes', label: t`Promo Codes`, icon: IconDiscount2},
         {link: 'affiliates', label: t`Affiliates`, icon: IconTrendingUp},
 

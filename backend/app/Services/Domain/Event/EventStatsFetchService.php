@@ -42,6 +42,11 @@ readonly class EventStatsFetchService
         // Execute the totals and comparison queries
         $totalsResult = $this->db->selectOne($totalsQuery, ['eventId' => $eventId]);
 
+        $pendingFulfillmentCount = (int) $this->db->selectOne(
+            "SELECT COUNT(*) AS count FROM orders WHERE event_id = :eventId AND fulfillment_status = 'PENDING' AND deleted_at IS NULL",
+            ['eventId' => $eventId]
+        )->count;
+
         // Use the results to populate the response DTO
         return new EventStatsResponseDTO(
             daily_stats: $this->getDailyEventStats($requestData),
@@ -55,6 +60,7 @@ readonly class EventStatsFetchService
             total_tax: $totalsResult->total_tax ?? 0,
             total_views: $totalsResult->total_views ?? 0,
             total_refunded: $totalsResult->total_refunded ?? 0,
+            total_pending_fulfillment_orders: $pendingFulfillmentCount,
         );
     }
 
