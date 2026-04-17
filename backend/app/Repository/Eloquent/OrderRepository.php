@@ -226,8 +226,15 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
     {
         $where = [
             [OrderDomainObjectAbstract::EVENT_ID, '=', $eventId],
+            [OrderDomainObjectAbstract::STATUS, '=', OrderStatus::COMPLETED->name],
             static function (Builder $builder) {
                 $builder->whereNotNull(OrderDomainObjectAbstract::FULFILLMENT_STATUS);
+            },
+            static function (Builder $builder) {
+                $builder->whereIn(OrderDomainObjectAbstract::PAYMENT_STATUS, [
+                    OrderPaymentStatus::PAYMENT_RECEIVED->name,
+                    OrderPaymentStatus::NO_PAYMENT_REQUIRED->name,
+                ]);
             },
         ];
 
