@@ -69,7 +69,11 @@ export const CollectInformation = () => {
     const productQuestions = questions?.filter(question => question.belongs_to === "PRODUCT");
     const orderQuestions = questions?.filter(question => question.belongs_to === "ORDER");
     const products = productCategories?.flatMap(category => category.products);
-    const requireBillingAddress = event?.settings?.require_billing_address;
+    const orderHasHardTickets = orderItems?.some(orderItem => {
+        const product = products?.find(p => p!.id === orderItem.product_id);
+        return product?.is_hard_ticket;
+    }) ?? false;
+    const requireBillingAddress = event?.settings?.require_billing_address || orderHasHardTickets;
     const isPerOrderCollection = event?.settings?.attendee_details_collection_method === 'PER_ORDER';
     const [copyOption, setCopyOption] = useState<'none' | 'first' | 'all'>('none');
 
@@ -510,7 +514,7 @@ export const CollectInformation = () => {
                     {requireBillingAddress && (
                         <>
                             <h3 style={{marginBottom: 5}}>
-                                {t`Billing Address`}
+                                {orderHasHardTickets ? t`Shipping Address` : t`Billing Address`}
                             </h3>
 
                             <InputGroup>

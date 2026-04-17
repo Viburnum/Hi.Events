@@ -24,6 +24,7 @@ import {
     IconFlame,
     IconHeartDollar,
     IconInfoCircle,
+    IconMail,
     IconPlus,
     IconReceipt,
     IconShirt,
@@ -373,7 +374,7 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                 <div className={classes.toggleMain}>
                     {opened ? <IconChevronUp size={16}/> : <IconChevronDown size={16}/>}
                     <span className={classes.toggleLabel}>
-                        {opened ? t`Hide Options` : t`Taxes, Fees, Visibility, Sale Period, Product Highlight & Order Limits`}
+                        {opened ? t`Hide Options` : t`Taxes, Fees, Visibility, Sale Period, Product Highlight, Hard Ticket & Order Limits`}
                     </span>
                 </div>
                 {!opened && (
@@ -514,6 +515,32 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                                 description={t`An optional message to display on the highlighted product, e.g. "Selling fast 🔥" or "Best value"`}
                                 placeholder={t`Selling fast 🔥`}
                                 maxLength={255}
+                            />
+                        )}
+                    </Fieldset>
+
+                    <Fieldset legend={
+                        <span className={classes.fieldsetLegend}>
+                            <IconMail size={16}/>
+                            {t`Hard Ticket`}
+                        </span>
+                    }>
+                        <Switch
+                            {...form.getInputProps('is_hard_ticket', {type: 'checkbox'})}
+                            label={t`Hard Ticket`}
+                            description={t`Enable this if a physical ticket will be mailed to the buyer. A shipping address will be required at checkout.`}
+                        />
+                        {form.values.is_hard_ticket && (
+                            <NumberInput
+                                mt={15}
+                                decimalScale={2}
+                                min={0}
+                                fixedDecimalScale
+                                leftSection={event?.currency ? getCurrencySymbol(event.currency) : ''}
+                                {...form.getInputProps('hard_ticket_fee')}
+                                label={t`Hard Ticket Fee`}
+                                description={t`An optional fee to charge for the physical ticket (e.g. shipping costs). Leave at 0 for no additional fee.`}
+                                placeholder="0.00"
                             />
                         )}
                     </Fieldset>

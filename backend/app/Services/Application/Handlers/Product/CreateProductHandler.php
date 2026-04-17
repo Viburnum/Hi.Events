@@ -62,6 +62,8 @@ class CreateProductHandler
                 ->setIsHighlighted($productsData->is_highlighted ?? false)
                 ->setHighlightMessage($productsData->highlight_message)
                 ->setWaitlistEnabled($productsData->waitlist_enabled)
+                ->setIsHardTicket($productsData->is_hard_ticket ?? false)
+                ->setHardTicketFee($productsData->hard_ticket_fee)
                 ->setProductPrices($productPrices)
                 ->setEventId($productsData->event_id)
                 ->setProductType($productsData->product_type->name)

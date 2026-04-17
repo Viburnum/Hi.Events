@@ -11,6 +11,7 @@ use HiEvents\DomainObjects\Enums\AttendeeCheckInActionType;
 use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\DomainObjects\Generated\AttendeeCheckInDomainObjectAbstract;
 use HiEvents\DomainObjects\Status\AttendeeStatus;
+use HiEvents\DomainObjects\Status\FulfillmentStatus;
 use HiEvents\Exceptions\CannotCheckInException;
 use HiEvents\Helper\DateHelper;
 use HiEvents\Helper\IdHelper;
@@ -222,6 +223,12 @@ class CreateAttendeeCheckInService
     ): ?string
     {
         $allowAttendeesAwaitingPaymentToCheckIn = $eventSettings->getAllowOrdersAwaitingOfflinePaymentToCheckIn();
+
+        if ($attendee->getFulfillmentStatus() === FulfillmentStatus::PENDING->name) {
+            return __('Attendee :attendee_name\'s hard ticket has not been fulfilled yet', [
+                'attendee_name' => $attendee->getFullName(),
+            ]);
+        }
 
         if ($attendee->getStatus() === AttendeeStatus::CANCELLED->name) {
             return __('Attendee :attendee_name\'s ticket is cancelled', [

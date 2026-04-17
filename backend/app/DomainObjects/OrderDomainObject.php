@@ -49,6 +49,7 @@ class OrderDomainObject extends Generated\OrderDomainObjectAbstract implements I
             self::PUBLIC_ID,
             self::CURRENCY,
             self::TOTAL_GROSS,
+            self::FULFILLMENT_STATUS,
         ];
     }
 

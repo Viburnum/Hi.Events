@@ -26,6 +26,7 @@ class AttendeeResource extends JsonResource
             'event_id' => $this->getEventId(),
             'email' => $this->getEmail(),
             'status' => $this->getStatus(),
+            'fulfillment_status' => $this->getFulfillmentStatus(),
             'first_name' => $this->getFirstName(),
             'last_name' => $this->getLastName(),
             'public_id' => $this->getPublicId(),

@@ -222,6 +222,48 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         return $this->paginate($perPage);
     }
 
+    public function findFulfillmentOrdersByEventId(int $eventId, QueryParamsDTO $params): LengthAwarePaginator
+    {
+        $where = [
+            [OrderDomainObjectAbstract::EVENT_ID, '=', $eventId],
+            static function (Builder $builder) {
+                $builder->whereNotNull(OrderDomainObjectAbstract::FULFILLMENT_STATUS);
+            },
+        ];
+
+        if ($params->query) {
+            $where[] = static function (Builder $builder) use ($params) {
+                $builder
+                    ->where(
+                        DB::raw(
+                            sprintf(
+                                "(%s||' '||%s)",
+                                OrderDomainObjectAbstract::FIRST_NAME,
+                                OrderDomainObjectAbstract::LAST_NAME
+                            )
+                        ), 'ilike', '%' . $params->query . '%')
+                    ->orWhere(OrderDomainObjectAbstract::LAST_NAME, 'ilike', '%' . $params->query . '%')
+                    ->orWhere(OrderDomainObjectAbstract::PUBLIC_ID, 'ilike', '%' . $params->query . '%')
+                    ->orWhere(OrderDomainObjectAbstract::EMAIL, 'ilike', '%' . $params->query . '%');
+            };
+        }
+
+        if (!empty($params->filter_fields)) {
+            $this->applyFilterFields($params, OrderDomainObject::getAllowedFilterFields());
+        }
+
+        $this->model = $this->model->orderBy(
+            column: $this->validateSortColumn($params->sort_by, OrderDomainObject::class),
+            direction: $this->validateSortDirection($params->sort_direction, OrderDomainObject::class),
+        );
+
+        return $this->paginateWhere(
+            where: $where,
+            limit: $params->per_page,
+            page: $params->page,
+        );
+    }
+
     public function hasCompletedPaidOrderForAccount(int $accountId): bool
     {
         $exists = $this->model

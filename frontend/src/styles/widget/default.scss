@@ -69,6 +69,20 @@
             a {
               font-weight: bold;
             }
+
+            .hi-hard-ticket-badge {
+              display: inline-block;
+              font-size: 0.65rem;
+              font-weight: 600;
+              padding: 2px 8px;
+              margin-left: 8px;
+              border-radius: 4px;
+              background: var(--widget-secondary-color, var(--hi-primary));
+              color: var(--widget-secondary-text-color, var(--hi-color-white));
+              vertical-align: middle;
+              letter-spacing: 0.02em;
+              text-transform: uppercase;
+            }
           }
 
           .hi-product-title-metadata {

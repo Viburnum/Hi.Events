@@ -126,6 +126,8 @@ class EditProductHandler
                 'is_highlighted' => $productsData->is_highlighted ?? false,
                 'highlight_message' => $productsData->highlight_message,
                 'waitlist_enabled' => $productsData->waitlist_enabled,
+                'is_hard_ticket' => $productsData->is_hard_ticket ?? false,
+                'hard_ticket_fee' => $productsData->hard_ticket_fee,
             ],
             where: $where
         );

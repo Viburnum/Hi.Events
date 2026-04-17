@@ -44,6 +44,8 @@ class UpsertProductRequest extends BaseRequest
             'is_highlighted' => 'boolean',
             'highlight_message' => 'string|nullable|max:255',
             'waitlist_enabled' => 'boolean|nullable',
+            'is_hard_ticket' => 'boolean',
+            'hard_ticket_fee' => 'nullable|numeric|min:0',
         ];
     }
 
