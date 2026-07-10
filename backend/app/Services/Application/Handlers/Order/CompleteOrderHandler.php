@@ -179,11 +179,10 @@ class CompleteOrderHandler
                 AttendeeDomainObjectAbstract::PUBLIC_ID => IdHelper::publicId(IdHelper::ATTENDEE_PREFIX),
                 AttendeeDomainObjectAbstract::SHORT_ID => $shortId,
                 AttendeeDomainObjectAbstract::LOCALE => $order->getLocale(),
+                AttendeeDomainObjectAbstract::FULFILLMENT_STATUS => $isHardTicket
+                    ? FulfillmentStatus::PENDING->name
+                    : null,
             ];
-
-            if ($isHardTicket) {
-                $insert[AttendeeDomainObjectAbstract::FULFILLMENT_STATUS] = FulfillmentStatus::PENDING->name;
-            }
 
             $inserts[] = $insert;
 

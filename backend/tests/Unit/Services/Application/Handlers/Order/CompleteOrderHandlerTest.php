@@ -274,6 +274,76 @@ class CompleteOrderHandlerTest extends TestCase
         $this->completeOrderHandler->handle($orderShortId, $orderData);
     }
 
+    public function testAttendeeInsertRowsAllHaveTheSameColumns(): void
+    {
+        $orderShortId = 'ABC123';
+
+        $orderDTO = new CompleteOrderOrderDTO(
+            first_name: 'John',
+            last_name: 'Doe',
+            email: 'john@example.com',
+            questions: null,
+        );
+
+        $orderData = new CompleteOrderDTO(
+            order: $orderDTO,
+            products: new Collection([
+                new CompleteOrderProductDataDTO(product_price_id: 1, first_name: 'John', last_name: 'Doe', email: 'john@example.com'),
+                new CompleteOrderProductDataDTO(product_price_id: 2, first_name: 'Jane', last_name: 'Doe', email: 'jane@example.com'),
+            ]),
+            event_id: 1,
+        );
+
+        $softTicketProduct = (new \HiEvents\DomainObjects\ProductDomainObject())->setIsHardTicket(false);
+        $hardTicketProduct = (new \HiEvents\DomainObjects\ProductDomainObject())->setIsHardTicket(true);
+
+        $order = (new OrderDomainObject())
+            ->setEmail(null)
+            ->setSessionId('test-session-id')
+            ->setReservedUntil(Carbon::now()->addHour()->toDateTimeString())
+            ->setStatus(OrderStatus::RESERVED->name)
+            ->setId(1)
+            ->setEventId(1)
+            ->setLocale('en')
+            ->setTotalGross(10)
+            ->setOrderItems(new Collection([
+                (new OrderItemDomainObject())->setId(1)->setProductId(1)->setQuantity(1)->setProductPriceId(1)->setProduct($softTicketProduct),
+                (new OrderItemDomainObject())->setId(2)->setProductId(2)->setQuantity(1)->setProductPriceId(2)->setProduct($hardTicketProduct),
+            ]));
+
+        $updatedOrder = $this->createMockOrder();
+
+        $softPrice = Mockery::mock(ProductPriceDomainObject::class);
+        $softPrice->shouldReceive('getId')->andReturn(1);
+        $softPrice->shouldReceive('getProductId')->andReturn(1);
+        $hardPrice = Mockery::mock(ProductPriceDomainObject::class);
+        $hardPrice->shouldReceive('getId')->andReturn(2);
+        $hardPrice->shouldReceive('getProductId')->andReturn(2);
+
+        $this->eventSettingsRepository->shouldReceive('findFirstWhere')->andReturn($this->createMockEventSetting());
+        $this->orderRepository->shouldReceive('findByShortId')->with($orderShortId)->andReturn($order);
+        $this->orderRepository->shouldReceive('loadRelation')->andReturnSelf();
+        $this->orderRepository->shouldReceive('updateFromArray')->andReturn($updatedOrder);
+        $this->productPriceRepository->shouldReceive('findWhereIn')->andReturn(new Collection([$softPrice, $hardPrice]));
+        $this->attendeeRepository->shouldReceive('findWhereIn')->andReturn(new Collection([$this->createMockAttendee()]));
+
+        $capturedInserts = null;
+        $this->attendeeRepository->shouldReceive('insert')
+            ->once()
+            ->andReturnUsing(function (array $inserts) use (&$capturedInserts) {
+                $capturedInserts = $inserts;
+                return true;
+            });
+
+        $this->completeOrderHandler->handle($orderShortId, $orderData);
+
+        $this->assertCount(2, $capturedInserts);
+        $expectedColumns = array_keys($capturedInserts[0]);
+        foreach ($capturedInserts as $insert) {
+            $this->assertSame($expectedColumns, array_keys($insert));
+        }
+    }
+
     private function createMockCompleteOrderDTO(): CompleteOrderDTO
     {
         $orderDTO = new CompleteOrderOrderDTO(
