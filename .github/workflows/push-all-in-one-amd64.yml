@@ -5,9 +5,6 @@ on:
     branches: [develop]
   workflow_dispatch:
 
-env:
-  IMAGE_PREFIX: ghcr.io/${{ github.repository_owner }}
-
 jobs:
   push_all_in_one:
     name: Push all-in-one Docker image to GHCR
@@ -29,6 +26,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set lowercase image prefix
+        run: echo "IMAGE_PREFIX=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_ENV"
 
       - name: Build & push — all-in-one
         uses: docker/build-push-action@v5
