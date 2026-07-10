@@ -21,6 +21,8 @@ use Illuminate\Support\ServiceProvider;
 use Stripe\StripeClient;
 use HiEvents\Services\Infrastructure\Stripe\StripeConfigurationService;
 use HiEvents\Services\Infrastructure\Stripe\StripeClientFactory;
+use HiEvents\Services\Infrastructure\PayPal\PayPalConfigurationService;
+use HiEvents\Services\Infrastructure\PayPal\PayPalClient;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->bindDoctrineConnection();
         $this->bindStripeServices();
+        $this->bindPayPalServices();
         $this->bindCurrencyConversionClient();
     }
 
@@ -83,6 +86,16 @@ class AppServiceProvider extends ServiceProvider
             StripeClient::class,
             fn() => new StripeClient(config('services.stripe.secret_key'))
         );
+    }
+
+    private function bindPayPalServices(): void
+    {
+        $this->app->singleton(PayPalConfigurationService::class);
+        $this->app->singleton(PayPalClient::class);
+
+        if (!config('services.paypal.client_id') || !config('services.paypal.client_secret')) {
+            logger()?->debug('PayPal credentials are not set in the configuration file. Payment processing will not work.');
+        }
     }
 
     /**

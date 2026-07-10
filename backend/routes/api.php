@@ -46,6 +46,7 @@ use HiEvents\Http\Actions\CheckInLists\Public\GetCheckInListAttendeesPublicActio
 use HiEvents\Http\Actions\CheckInLists\Public\GetCheckInListPublicAction;
 use HiEvents\Http\Actions\CheckInLists\UpdateCheckInListAction;
 use HiEvents\Http\Actions\Common\GetColorThemesAction;
+use HiEvents\Http\Actions\Common\Webhooks\PayPalIncomingWebhookAction;
 use HiEvents\Http\Actions\Common\Webhooks\StripeIncomingWebhookAction;
 use HiEvents\Http\Actions\Events\CreateEventAction;
 use HiEvents\Http\Actions\Events\DuplicateEventAction;
@@ -95,6 +96,8 @@ use HiEvents\Http\Actions\Orders\GetOrdersAction;
 use HiEvents\Http\Actions\Orders\MarkOrderAsPaidAction;
 use HiEvents\Http\Actions\Orders\MessageOrderAction;
 use HiEvents\Http\Actions\Orders\Payment\RefundOrderAction;
+use HiEvents\Http\Actions\Orders\Payment\PayPal\CapturePayPalOrderActionPublic;
+use HiEvents\Http\Actions\Orders\Payment\PayPal\CreatePayPalOrderActionPublic;
 use HiEvents\Http\Actions\Orders\Payment\Stripe\CreatePaymentIntentActionPublic;
 use HiEvents\Http\Actions\Orders\Payment\Stripe\GetPaymentIntentActionPublic;
 use HiEvents\Http\Actions\Orders\Public\AbandonOrderActionPublic;
@@ -535,11 +538,16 @@ $router->prefix('/public')->group(
         $router->post('/events/{event_id}/order/{order_short_id}/stripe/payment_intent', CreatePaymentIntentActionPublic::class);
         $router->get('/events/{event_id}/order/{order_short_id}/stripe/payment_intent', GetPaymentIntentActionPublic::class);
 
+        // PayPal payment gateway
+        $router->post('/events/{event_id}/order/{order_short_id}/paypal/order', CreatePayPalOrderActionPublic::class);
+        $router->post('/events/{event_id}/order/{order_short_id}/paypal/order/{paypal_order_id}/capture', CapturePayPalOrderActionPublic::class);
+
         // Questions
         $router->get('/events/{event_id}/questions', GetQuestionsPublicAction::class);
 
         // Webhooks
         $router->post('/webhooks/stripe', StripeIncomingWebhookAction::class);
+        $router->post('/webhooks/paypal', PayPalIncomingWebhookAction::class);
 
         // Check-In
         $router->get('/check-in-lists/{check_in_list_short_id}', GetCheckInListPublicAction::class);
