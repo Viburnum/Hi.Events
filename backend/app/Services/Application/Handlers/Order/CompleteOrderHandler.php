@@ -134,6 +134,7 @@ class CompleteOrderHandler
     {
         $inserts = [];
         $createdProductData = collect();
+        $hasHardTicket = false;
 
         $productsPrices = $this->productPriceRepository->findWhereIn(
             field: ProductPriceDomainObjectAbstract::ID,
@@ -164,6 +165,7 @@ class CompleteOrderHandler
             $shortId = IdHelper::shortId(IdHelper::ATTENDEE_PREFIX);
 
             $isHardTicket = $this->isProductHardTicket($attendee->product_price_id, $order->getOrderItems());
+            $hasHardTicket = $hasHardTicket || $isHardTicket;
 
             $insert = [
                 AttendeeDomainObjectAbstract::EVENT_ID => $order->getEventId(),
@@ -194,6 +196,12 @@ class CompleteOrderHandler
 
         if (!$this->attendeeRepository->insert($inserts)) {
             throw new RuntimeException(__('Failed to create attendee'));
+        }
+
+        if ($hasHardTicket && $order->getFulfillmentStatus() === null) {
+            $this->orderRepository->updateFromArray($order->getId(), [
+                OrderDomainObjectAbstract::FULFILLMENT_STATUS => FulfillmentStatus::PENDING->name,
+            ]);
         }
 
         $this->createProductQuestions(

@@ -344,6 +344,70 @@ class CompleteOrderHandlerTest extends TestCase
         }
     }
 
+    public function testOrderFulfillmentStatusIsSetWhenHardTicketAttendeeIsCreated(): void
+    {
+        $orderShortId = 'ABC123';
+
+        $orderDTO = new CompleteOrderOrderDTO(
+            first_name: 'John',
+            last_name: 'Doe',
+            email: 'john@example.com',
+            questions: null,
+        );
+
+        $orderData = new CompleteOrderDTO(
+            order: $orderDTO,
+            products: new Collection([
+                new CompleteOrderProductDataDTO(product_price_id: 1, first_name: 'John', last_name: 'Doe', email: 'john@example.com'),
+            ]),
+            event_id: 1,
+        );
+
+        $hardTicketProduct = (new \HiEvents\DomainObjects\ProductDomainObject())->setIsHardTicket(true);
+
+        $order = (new OrderDomainObject())
+            ->setEmail(null)
+            ->setSessionId('test-session-id')
+            ->setReservedUntil(Carbon::now()->addHour()->toDateTimeString())
+            ->setStatus(OrderStatus::RESERVED->name)
+            ->setId(1)
+            ->setEventId(1)
+            ->setLocale('en')
+            ->setTotalGross(10)
+            ->setFulfillmentStatus(null)
+            ->setOrderItems(new Collection([
+                (new OrderItemDomainObject())->setId(1)->setProductId(1)->setQuantity(1)->setProductPriceId(1)->setProduct($hardTicketProduct),
+            ]));
+
+        $updatedOrder = $this->createMockOrder();
+
+        $hardPrice = Mockery::mock(ProductPriceDomainObject::class);
+        $hardPrice->shouldReceive('getId')->andReturn(1);
+        $hardPrice->shouldReceive('getProductId')->andReturn(1);
+
+        $this->eventSettingsRepository->shouldReceive('findFirstWhere')->andReturn($this->createMockEventSetting());
+        $this->orderRepository->shouldReceive('findByShortId')->with($orderShortId)->andReturn($order);
+        $this->orderRepository->shouldReceive('loadRelation')->andReturnSelf();
+        $this->productPriceRepository->shouldReceive('findWhereIn')->andReturn(new Collection([$hardPrice]));
+        $this->attendeeRepository->shouldReceive('insert')->andReturn(true);
+        $this->attendeeRepository->shouldReceive('findWhereIn')->andReturn(new Collection([$this->createMockAttendee()]));
+
+        $updateCalls = [];
+        $this->orderRepository->shouldReceive('updateFromArray')
+            ->andReturnUsing(function ($id, array $data) use (&$updateCalls, $updatedOrder) {
+                $updateCalls[] = $data;
+                return $updatedOrder;
+            });
+
+        $this->completeOrderHandler->handle($orderShortId, $orderData);
+
+        $fulfilmentUpdates = array_filter(
+            $updateCalls,
+            fn(array $data) => ($data['fulfillment_status'] ?? null) === 'PENDING'
+        );
+        $this->assertCount(1, $fulfilmentUpdates);
+    }
+
     private function createMockCompleteOrderDTO(): CompleteOrderDTO
     {
         $orderDTO = new CompleteOrderOrderDTO(

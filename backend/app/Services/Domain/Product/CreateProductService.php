@@ -94,6 +94,8 @@ class CreateProductService
             'is_highlighted' => $productsData->getIsHighlighted(),
             'highlight_message' => $productsData->getHighlightMessage(),
             'waitlist_enabled' => $productsData->getWaitlistEnabled(),
+            'is_hard_ticket' => $productsData->getIsHardTicket(),
+            'hard_ticket_fee' => $productsData->getHardTicketFee(),
         ]);
     }
 
