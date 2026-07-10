@@ -12,6 +12,7 @@ use HiEvents\DomainObjects\OrganizerSettingDomainObject;
 use HiEvents\Exceptions\OrganizerNotFoundException;
 use HiEvents\Helper\DateHelper;
 use HiEvents\Helper\IdHelper;
+use HiEvents\Helper\StringHelper;
 use HiEvents\Repository\Interfaces\EventRepositoryInterface;
 use HiEvents\Repository\Interfaces\EventSettingsRepositoryInterface;
 use HiEvents\Repository\Interfaces\EventStatisticRepositoryInterface;
@@ -94,7 +95,7 @@ class CreateEventService
     private function handleEventCreate(EventDomainObject $eventData): EventDomainObject
     {
         return $this->eventRepository->create([
-            'title' => $eventData->getTitle(),
+            'title' => StringHelper::stripControlCharacters($eventData->getTitle()),
             'organizer_id' => $eventData->getOrganizerId(),
             'start_date' => DateHelper::convertToUTC($eventData->getStartDate(), $eventData->getTimezone()),
             'end_date' => $eventData->getEndDate()
@@ -226,6 +227,7 @@ class CreateEventService
 
             'attendee_details_collection_method' => $organizerSettings->getDefaultAttendeeDetailsCollectionMethod(),
             'show_marketing_opt_in' => $organizerSettings->getDefaultShowMarketingOptIn(),
+            'allow_copy_details_to_all_attendees' => true,
             'pass_platform_fee_to_buyer' => $organizerSettings->getDefaultPassPlatformFeeToBuyer(),
             'allow_attendee_self_edit' => $organizerSettings->getDefaultAllowAttendeeSelfEdit() ?? false,
             'ticket_design_settings' => [
