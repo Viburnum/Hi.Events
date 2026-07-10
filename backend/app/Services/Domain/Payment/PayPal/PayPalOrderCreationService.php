@@ -65,10 +65,6 @@ class PayPalOrderCreationService
                     ],
                 ],
             ],
-            'application_context' => [
-                'return_url' => $returnUrl,
-                'cancel_url' => $cancelUrl,
-            ],
         ];
 
         $response = $this->payPalClient->createOrder($payload);
