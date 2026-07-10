@@ -2,7 +2,7 @@ import {Attendee, GenericModalProps, IdParam, Order} from "../../../types.ts";
 import {useParams} from "react-router";
 import {t} from "@lingui/macro";
 import {Badge, Box, Button, Divider, Group, Stack, Table, Text, TextInput} from "@mantine/core";
-import {IconBarcode, IconCheck, IconPrinter, IconTruckDelivery} from "@tabler/icons-react";
+import {IconBarcode, IconCheck, IconFileText, IconPrinter, IconTruckDelivery} from "@tabler/icons-react";
 import {SideDrawer} from "../../common/SideDrawer";
 import {useSetAttendeeBarcode} from "../../../mutations/useSetAttendeeBarcode.ts";
 import {useUpdateOrderFulfillmentStatus} from "../../../mutations/useUpdateOrderFulfillmentStatus.ts";
@@ -141,6 +141,172 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
         printWindow.document.close();
     };
 
+    const handlePrintDeliverySlip = () => {
+        const address = order.address;
+        const printWindow = window.open('', '_blank', 'width=800,height=1000');
+        if (!printWindow) return;
+
+        const escapeHtml = (value?: string | null) =>
+            (value ?? '').replace(/[&<>"']/g, (char) => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;',
+            }[char] as string));
+
+        const recipientLines = [
+            `${escapeHtml(order.first_name)} ${escapeHtml(order.last_name)}`,
+            escapeHtml(order.company_name),
+            escapeHtml(address?.address_line_1),
+            escapeHtml(address?.address_line_2),
+            escapeHtml([address?.zip_or_postal_code, address?.city].filter(Boolean).join(' ')),
+            escapeHtml([address?.state_or_region, address?.country].filter(Boolean).join(', ')),
+        ].filter((line) => line.trim().length > 0);
+
+        const itemRows = attendees.map((attendee) => `
+            <tr>
+                <td>${escapeHtml(`${attendee.first_name} ${attendee.last_name}`)}</td>
+                <td>${escapeHtml(attendee.product?.title || '-')}</td>
+                <td>${escapeHtml(attendee.public_id || '-')}</td>
+            </tr>
+        `).join('');
+
+        const slipHtml = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>${t`Delivery Slip`}</title>
+                <style>
+                    @page {
+                        size: A4;
+                        margin: 0;
+                    }
+                    * { box-sizing: border-box; }
+                    body {
+                        margin: 0;
+                        font-family: Arial, sans-serif;
+                        color: #000;
+                    }
+                    .sheet {
+                        position: relative;
+                        width: 210mm;
+                        height: 297mm;
+                        padding: 20mm 20mm 15mm 25mm;
+                    }
+                    .fold-mark {
+                        position: absolute;
+                        background: #000;
+                    }
+                    .fold-mark.horizontal {
+                        left: 0;
+                        top: 148.5mm;
+                        width: 6mm;
+                        height: 0.3mm;
+                    }
+                    .fold-mark.vertical {
+                        top: 0;
+                        left: 105mm;
+                        width: 0.3mm;
+                        height: 6mm;
+                    }
+                    .fold-mark.vertical.bottom {
+                        top: auto;
+                        bottom: 0;
+                    }
+                    .sender {
+                        position: absolute;
+                        left: 25mm;
+                        top: 40mm;
+                        font-size: 8pt;
+                        color: #666;
+                        border-bottom: 0.2mm solid #999;
+                        padding-bottom: 1mm;
+                    }
+                    .recipient {
+                        position: absolute;
+                        left: 25mm;
+                        top: 47mm;
+                        width: 85mm;
+                        min-height: 40mm;
+                        font-size: 12pt;
+                        line-height: 1.4;
+                    }
+                    .body {
+                        position: absolute;
+                        left: 25mm;
+                        right: 20mm;
+                        top: 120mm;
+                    }
+                    .body h1 {
+                        font-size: 18pt;
+                        margin: 0 0 4mm 0;
+                    }
+                    .meta {
+                        font-size: 10pt;
+                        color: #444;
+                        margin-bottom: 8mm;
+                    }
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-size: 10pt;
+                    }
+                    th, td {
+                        text-align: left;
+                        padding: 2mm 3mm;
+                        border-bottom: 0.2mm solid #ccc;
+                    }
+                    th {
+                        text-transform: uppercase;
+                        font-size: 8pt;
+                        color: #666;
+                    }
+                    .footer {
+                        margin-top: 10mm;
+                        font-size: 9pt;
+                        color: #666;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="sheet">
+                    <div class="fold-mark horizontal"></div>
+                    <div class="fold-mark vertical"></div>
+                    <div class="fold-mark vertical bottom"></div>
+
+                    <div class="sender">${t`Delivery Slip`} · ${escapeHtml(order.public_id)}</div>
+                    <div class="recipient">
+                        ${recipientLines.map((line) => `<div>${line}</div>`).join('')}
+                    </div>
+
+                    <div class="body">
+                        <h1>${t`Delivery Slip`}</h1>
+                        <div class="meta">${t`Order`}: ${escapeHtml(order.public_id)}</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>${t`Attendee`}</th>
+                                    <th>${t`Product`}</th>
+                                    <th>${t`Barcode`}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${itemRows || `<tr><td colspan="3">${t`No items`}</td></tr>`}
+                            </tbody>
+                        </table>
+                        <div class="footer">${t`Please fold along the marks to fit a DIN C6 window envelope.`}</div>
+                    </div>
+                </div>
+                <script>window.print();</script>
+            </body>
+            </html>
+        `;
+
+        printWindow.document.write(slipHtml);
+        printWindow.document.close();
+    };
+
     const FulfillmentStatusBadge = ({status}: { status?: string | null }) => {
         if (status === 'FULFILLED') {
             return <Badge color="green" variant="light">{t`Fulfilled`}</Badge>;
@@ -187,14 +353,24 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
                     <Box>
                         <Group justify="space-between" mb="xs">
                             <Text fw={600} size="sm">{t`Shipping Address`}</Text>
-                            <Button
-                                variant="light"
-                                size="xs"
-                                leftSection={<IconPrinter size={14}/>}
-                                onClick={handlePrintShippingLabel}
-                            >
-                                {t`Print Shipping Label`}
-                            </Button>
+                            <Group gap="xs">
+                                <Button
+                                    variant="light"
+                                    size="xs"
+                                    leftSection={<IconPrinter size={14}/>}
+                                    onClick={handlePrintShippingLabel}
+                                >
+                                    {t`Print Shipping Label`}
+                                </Button>
+                                <Button
+                                    variant="light"
+                                    size="xs"
+                                    leftSection={<IconFileText size={14}/>}
+                                    onClick={handlePrintDeliverySlip}
+                                >
+                                    {t`Print Delivery Slip`}
+                                </Button>
+                            </Group>
                         </Group>
                         <Box p="sm" style={{border: '1px solid var(--mantine-color-gray-3)', borderRadius: 8}}>
                             <Text size="sm">{order.first_name} {order.last_name}</Text>
