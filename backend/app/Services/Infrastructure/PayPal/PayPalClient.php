@@ -35,9 +35,11 @@ class PayPalClient
      */
     public function captureOrder(string $paypalOrderId): array
     {
+        // PayPal's capture endpoint takes no body; an empty body with a JSON
+        // content type is rejected as malformed, so send an empty JSON object.
         $response = Http::withToken($this->accessToken())
             ->acceptJson()
-            ->asJson()
+            ->withBody('{}', 'application/json')
             ->post($this->configurationService->getBaseUrl().'/v2/checkout/orders/'.$paypalOrderId.'/capture');
 
         return $this->decodeResponse($response, __('Failed to capture PayPal order.'));
