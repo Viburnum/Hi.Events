@@ -1,0 +1,42 @@
+name: Publish all-in-one image (amd64)
+
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+env:
+  IMAGE_PREFIX: ghcr.io/${{ github.repository_owner }}
+
+jobs:
+  push_all_in_one:
+    name: Push all-in-one Docker image to GHCR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build & push — all-in-one
+        uses: docker/build-push-action@v5
+        with:
+          context: ./
+          file: ./Dockerfile.all-in-one
+          platforms: linux/amd64
+          push: true
+          tags: ${{ env.IMAGE_PREFIX }}/hi.events-all-in-one:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
