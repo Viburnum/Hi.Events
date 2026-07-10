@@ -4,9 +4,10 @@ import {useGetEventPublic} from "../../../../queries/useGetEventPublic.ts";
 import {CheckoutContent} from "../../../layouts/Checkout/CheckoutContent";
 import {StripePaymentMethod} from "./PaymentMethods/Stripe";
 import {OfflinePaymentMethod} from "./PaymentMethods/Offline";
+import {PaypalPaymentMethod} from "./PaymentMethods/Paypal";
 import {Event} from "../../../../types.ts";
 import {Button, Group, Text} from "@mantine/core";
-import {IconBuildingBank, IconLock, IconWallet} from "@tabler/icons-react";
+import {IconBrandPaypal, IconBuildingBank, IconLock, IconWallet} from "@tabler/icons-react";
 import {formatCurrency} from "../../../../utilites/currency.ts";
 import {t, Trans} from "@lingui/macro";
 import {useGetOrderPublic} from "../../../../queries/useGetOrderPublic.ts";
@@ -28,23 +29,28 @@ const Payment = () => {
     const isLoading = !isOrderFetched;
     const checkoutEvent = order?.event || event;
     const [isPaymentLoading, setIsPaymentLoading] = useState(false);
-    const [activePaymentMethod, setActivePaymentMethod] = useState<'STRIPE' | 'OFFLINE' | null>(null);
+    const [activePaymentMethod, setActivePaymentMethod] = useState<'STRIPE' | 'OFFLINE' | 'PAYPAL' | null>(null);
     const [submitHandler, setSubmitHandler] = useState<(() => Promise<void>) | null>(null);
     const transitionOrderToOfflinePaymentMutation = useTransitionOrderToOfflinePaymentPublic();
 
     const isStripeEnabled = event?.settings?.payment_providers?.includes('STRIPE');
     const isOfflineEnabled = event?.settings?.payment_providers?.includes('OFFLINE');
+    const isPaypalEnabled = event?.settings?.payment_providers?.includes('PAYPAL');
+    const enabledProviderCount = [isStripeEnabled, isOfflineEnabled, isPaypalEnabled].filter(Boolean).length;
+    const hasAnyPaymentMethod = isStripeEnabled || isOfflineEnabled || isPaypalEnabled;
 
     React.useEffect(() => {
         // Automatically set the first available payment method
         if (isStripeEnabled) {
             setActivePaymentMethod('STRIPE');
+        } else if (isPaypalEnabled) {
+            setActivePaymentMethod('PAYPAL');
         } else if (isOfflineEnabled) {
             setActivePaymentMethod('OFFLINE');
         } else {
             setActivePaymentMethod(null); // No methods available
         }
-    }, [isStripeEnabled, isOfflineEnabled]);
+    }, [isStripeEnabled, isOfflineEnabled, isPaypalEnabled]);
 
     React.useEffect(() => {
         // Scroll to top when payment page loads
@@ -61,6 +67,8 @@ const Payment = () => {
     const handleSubmit = async () => {
         if (activePaymentMethod === 'STRIPE') {
             handleParentSubmit();
+        } else if (activePaymentMethod === 'PAYPAL') {
+            // PayPal renders its own buttons which drive submission, so this is a no-op.
         } else if (activePaymentMethod === 'OFFLINE') {
             setIsPaymentLoading(true);
 
@@ -81,7 +89,7 @@ const Payment = () => {
         }
     };
 
-    if (!isStripeEnabled && !isOfflineEnabled && isOrderFetched && isEventFetched) {
+    if (!hasAnyPaymentMethod && isOrderFetched && isEventFetched) {
         return (
             <CheckoutContent>
                 <Card>
@@ -103,51 +111,73 @@ const Payment = () => {
                     </div>
                 )}
 
+                {isPaypalEnabled && (
+                    <div style={{display: activePaymentMethod === 'PAYPAL' ? 'block' : 'none'}}>
+                        <PaypalPaymentMethod enabled={activePaymentMethod === 'PAYPAL'}/>
+                    </div>
+                )}
+
                 {isOfflineEnabled && (
                     <div style={{display: activePaymentMethod === 'OFFLINE' ? 'block' : 'none'}}>
                         <OfflinePaymentMethod event={checkoutEvent as Event}/>
                     </div>
                 )}
 
-                {(isStripeEnabled && isOfflineEnabled) && (
+                {enabledProviderCount > 1 && (
                     <div className={classes.paymentMethodSelector}>
                         <Text size="sm" c="dimmed" className={classes.paymentMethodLabel}>
                             {t`Payment method`}
                         </Text>
                         <div className={classes.paymentMethodTabs}>
-                            <button
-                                type="button"
-                                className={`${classes.paymentMethodTab} ${activePaymentMethod === 'STRIPE' ? classes.active : ''}`}
-                                onClick={() => setActivePaymentMethod('STRIPE')}
-                            >
-                                <IconWallet size={18}/>
-                                <span>{t`Online`}</span>
-                            </button>
-                            <button
-                                type="button"
-                                className={`${classes.paymentMethodTab} ${activePaymentMethod === 'OFFLINE' ? classes.active : ''}`}
-                                onClick={() => setActivePaymentMethod('OFFLINE')}
-                            >
-                                <IconBuildingBank size={18}/>
-                                <span>{t`Offline`}</span>
-                            </button>
+                            {isStripeEnabled && (
+                                <button
+                                    type="button"
+                                    className={`${classes.paymentMethodTab} ${activePaymentMethod === 'STRIPE' ? classes.active : ''}`}
+                                    onClick={() => setActivePaymentMethod('STRIPE')}
+                                >
+                                    <IconWallet size={18}/>
+                                    <span>{t`Online`}</span>
+                                </button>
+                            )}
+                            {isPaypalEnabled && (
+                                <button
+                                    type="button"
+                                    className={`${classes.paymentMethodTab} ${activePaymentMethod === 'PAYPAL' ? classes.active : ''}`}
+                                    onClick={() => setActivePaymentMethod('PAYPAL')}
+                                >
+                                    <IconBrandPaypal size={18}/>
+                                    <span>{t`PayPal`}</span>
+                                </button>
+                            )}
+                            {isOfflineEnabled && (
+                                <button
+                                    type="button"
+                                    className={`${classes.paymentMethodTab} ${activePaymentMethod === 'OFFLINE' ? classes.active : ''}`}
+                                    onClick={() => setActivePaymentMethod('OFFLINE')}
+                                >
+                                    <IconBuildingBank size={18}/>
+                                    <span>{t`Offline`}</span>
+                                </button>
+                            )}
                         </div>
                     </div>
                 )}
 
                 <div className={classes.checkoutActions}>
-                    <Button
-                        className={classes.continueButton}
-                        loading={isLoading || isPaymentLoading}
-                        onClick={handleSubmit}
-                    >
-                        {order?.is_payment_required ? (
-                            <Group gap={8} wrap="nowrap">
-                                <IconLock size={16}/>
-                                <Text fw={600}>{t`Pay`} {formatCurrency(order.total_gross, order.currency)}</Text>
-                            </Group>
-                        ) : t`Complete Payment`}
-                    </Button>
+                    {activePaymentMethod !== 'PAYPAL' && (
+                        <Button
+                            className={classes.continueButton}
+                            loading={isLoading || isPaymentLoading}
+                            onClick={handleSubmit}
+                        >
+                            {order?.is_payment_required ? (
+                                <Group gap={8} wrap="nowrap">
+                                    <IconLock size={16}/>
+                                    <Text fw={600}>{t`Pay`} {formatCurrency(order.total_gross, order.currency)}</Text>
+                                </Group>
+                            ) : t`Complete Payment`}
+                        </Button>
+                    )}
                     {getConfig('VITE_TOS_URL') && (
                         <p className={classes.tosNotice}>
                             <Trans>

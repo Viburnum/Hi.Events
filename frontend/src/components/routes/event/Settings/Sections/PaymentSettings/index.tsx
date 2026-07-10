@@ -87,6 +87,11 @@ export const PaymentAndInvoicingSettings = () => {
             description: t`Accept credit card payments with Stripe`
         },
         {
+            value: "PAYPAL",
+            label: t`PayPal`,
+            description: t`Accept payments with PayPal`
+        },
+        {
             value: "OFFLINE",
             label: t`Offline Payments`,
             description: t`Accept bank transfers, checks, or other offline payment methods`

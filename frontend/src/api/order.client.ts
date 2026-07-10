@@ -154,6 +154,22 @@ export const orderClientPublic = {
         return response.data;
     },
 
+    createPaypalOrder: async (eventId: number, orderShortId: string) => {
+        const response = await publicApi.post<{
+            paypal_order_id: string,
+            client_id: string,
+            currency: string,
+        }>(`events/${eventId}/order/${orderShortId}/paypal/order`);
+        return response.data;
+    },
+
+    capturePaypalOrder: async (eventId: number, orderShortId: string, paypalOrderId: string) => {
+        const response = await publicApi.post<{
+            status: string,
+        }>(`events/${eventId}/order/${orderShortId}/paypal/order/${paypalOrderId}/capture`);
+        return response.data;
+    },
+
     finaliseOrder: async (
         eventId: number,
         orderShortId: string,
