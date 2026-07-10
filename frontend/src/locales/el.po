@@ -13,12 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/layouts/Event/index.tsx:192
+#: src/components/layouts/Event/index.tsx:194
 #: src/components/layouts/OrganizerLayout/index.tsx:213
 msgid "- Click to Publish"
 msgstr "- Κάντε κλικ για Δημοσίευση"
 
-#: src/components/layouts/Event/index.tsx:194
+#: src/components/layouts/Event/index.tsx:196
 #: src/components/layouts/OrganizerLayout/index.tsx:215
 msgid "- Click to Unpublish"
 msgstr "- Κάντε κλικ για Κατάργηση Δημοσίευσης"
@@ -56,7 +56,7 @@ msgstr "{0} <0>έκανε check-out</0> επιτυχώς"
 msgid "{0} Active Webhooks"
 msgstr "{0} Ενεργά Webhooks"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:476
+#: src/components/routes/product-widget/SelectProducts/index.tsx:493
 msgid "{0} available"
 msgstr "{0} διαθέσιμα"
 
@@ -77,7 +77,7 @@ msgstr "Λογότυπο {0}"
 msgid "{0} organizers"
 msgstr "{0} διοργανωτές"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:597
+#: src/components/routes/product-widget/CollectInformation/index.tsx:628
 msgid "{0} tickets"
 msgstr "{0} εισιτήρια"
 
@@ -134,7 +134,7 @@ msgstr "<0>Οι λίστες ελέγχου σας βοηθούν να διαχ�
 msgid "<0>https://</0>your-website.com"
 msgstr "<0>https://</0>η-ιστοσελίδα-σας.gr"
 
-#: src/components/forms/ProductForm/index.tsx:309
+#: src/components/forms/ProductForm/index.tsx:310
 msgid "<0>Please enter the price excluding taxes and fees.</0><1>Taxes and fees can be added below.</1>"
 msgstr "<0>Παρακαλώ εισάγετε την τιμή χωρίς φόρους και τέλη.</0><1>Φόροι και τέλη μπορούν να προστεθούν παρακάτω.</1>"
 
@@ -142,7 +142,7 @@ msgstr "<0>Παρακαλώ εισάγετε την τιμή χωρίς φόρο
 msgid "<0>Set a single total attendance limit that applies to multiple ticket types at once.</0><1>For example, if you link a <2>Day Pass</2> and a <3>Full Weekend</3> ticket, they will both draw from the same pool of spots. Once the limit is reached, all linked tickets automatically stop selling.</1>"
 msgstr "<0>Ορίστε ένα ενιαίο συνολικό όριο παρακολούθησης που ισχύει για πολλαπλούς τύπους εισιτηρίων ταυτόχρονα.</0><1>Για παράδειγμα, αν συνδέσετε ένα εισιτήριο <2>Ημερήσιο</2> και ένα <3>Πλήρους Σαββατοκύριακου</3>, και τα δύο θα αντλούν από την ίδια δεξαμενή θέσεων. Όταν το όριο επιτευχθεί, όλα τα συνδεδεμένα εισιτήρια σταματούν αυτόματα να πωλούνται.</1>"
 
-#: src/components/forms/ProductForm/index.tsx:326
+#: src/components/forms/ProductForm/index.tsx:327
 msgid "<0>The number of products available for this product</0><1>This value can be overridden if there are <2>Capacity Limits</2> associated with this product.</1>"
 msgstr "<0>Ο αριθμός των διαθέσιμων προϊόντων για αυτό το προϊόν</0><1>Αυτή η τιμή μπορεί να παρακαμφθεί εάν υπάρχουν <2>Όρια Χωρητικότητας</2> συνδεδεμένα με αυτό το προϊόν.</1>"
 
@@ -200,7 +200,7 @@ msgstr "1 ημέρα πριν την εκδήλωση"
 msgid "1 hour before event"
 msgstr "1 ώρα πριν την εκδήλωση"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:596
+#: src/components/routes/product-widget/CollectInformation/index.tsx:627
 msgid "1 ticket"
 msgstr "1 εισιτήριο"
 
@@ -335,11 +335,11 @@ msgstr "Χρώμα Τόνου"
 msgid "Accept"
 msgstr "Αποδοχή"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:91
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:97
 msgid "Accept bank transfers, checks, or other offline payment methods"
 msgstr "Αποδοχή τραπεζικών μεταφορών, επιταγών ή άλλων εκτός σύνδεσης μεθόδων πληρωμής"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:86
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:87
 msgid "Accept credit card payments with Stripe"
 msgstr "Αποδοχή πληρωμών με πιστωτική κάρτα μέσω Stripe"
 
@@ -350,6 +350,10 @@ msgstr "Αποδοχή πρόσκλησης"
 #: src/components/routes/auth/AcceptInvitation/index.tsx:166
 msgid "Accept Invitation"
 msgstr "Αποδοχή Πρόσκλησης"
+
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:92
+msgid "Accept payments with PayPal"
+msgstr "Αποδοχή πληρωμών με PayPal"
 
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:358
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:609
@@ -418,6 +422,7 @@ msgstr "Απαιτείται Ενέργεια: Χρειάζονται Στοιχ
 #: src/components/common/WaitlistTable/index.tsx:55
 #: src/components/common/WaitlistTable/index.tsx:210
 #: src/components/routes/admin/FailedJobs/index.tsx:167
+#: src/components/routes/event/fulfillment.tsx:185
 msgid "Actions"
 msgstr "Ενέργειες"
 
@@ -478,7 +483,7 @@ msgstr "Προσθήκη περιγραφής"
 msgid "Add event details and manage event settings."
 msgstr "Προσθέστε λεπτομέρειες εκδήλωσης και διαχειριστείτε τις ρυθμίσεις."
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:153
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:159
 msgid "Add instructions for offline payments (e.g., bank transfer details, where to send checks, payment deadlines)"
 msgstr "Προσθήκη οδηγιών για πληρωμές εκτός σύνδεσης (π.χ. στοιχεία τραπεζικής μεταφοράς, πού να στείλετε επιταγές, προθεσμίες πληρωμής)"
 
@@ -519,7 +524,7 @@ msgstr "Προσθήκη αυτής της εκδήλωσης στο ημερο�
 msgid "Add tickets"
 msgstr "Προσθήκη εισιτηρίων"
 
-#: src/components/forms/ProductForm/index.tsx:360
+#: src/components/forms/ProductForm/index.tsx:361
 msgid "Add tier"
 msgstr "Προσθήκη βαθμίδας"
 
@@ -565,8 +570,8 @@ msgstr "Διεύθυνση γραμμή 1"
 
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:122
 #: src/components/routes/organizer/Settings/Sections/AddressSettings/index.tsx:80
-#: src/components/routes/product-widget/CollectInformation/index.tsx:520
-#: src/components/routes/product-widget/CollectInformation/index.tsx:521
+#: src/components/routes/product-widget/CollectInformation/index.tsx:551
+#: src/components/routes/product-widget/CollectInformation/index.tsx:552
 msgid "Address Line 1"
 msgstr "Διεύθυνση Γραμμή 1"
 
@@ -576,8 +581,8 @@ msgstr "Διεύθυνση γραμμή 2"
 
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:127
 #: src/components/routes/organizer/Settings/Sections/AddressSettings/index.tsx:85
-#: src/components/routes/product-widget/CollectInformation/index.tsx:525
-#: src/components/routes/product-widget/CollectInformation/index.tsx:526
+#: src/components/routes/product-widget/CollectInformation/index.tsx:556
+#: src/components/routes/product-widget/CollectInformation/index.tsx:557
 msgid "Address Line 2"
 msgstr "Διεύθυνση Γραμμή 2"
 
@@ -632,7 +637,7 @@ msgstr "Οι πωλήσεις συνεργατών δεν θα παρακολο�
 msgid "Affiliate updated successfully"
 msgstr "Ο συνεργάτης ενημερώθηκε επιτυχώς"
 
-#: src/components/layouts/Event/index.tsx:114
+#: src/components/layouts/Event/index.tsx:116
 #: src/components/modals/DuplicateEventModal/index.tsx:33
 #: src/components/routes/event/Affiliates/index.tsx:63
 msgid "Affiliates"
@@ -651,7 +656,7 @@ msgid "All Archived Events"
 msgstr "Όλες οι Αρχειοθετημένες Εκδηλώσεις"
 
 #: src/components/common/MessageList/index.tsx:29
-#: src/components/routes/product-widget/CollectInformation/index.tsx:502
+#: src/components/routes/product-widget/CollectInformation/index.tsx:533
 msgid "All attendees"
 msgstr "Όλοι οι συμμετέχοντες"
 
@@ -695,7 +700,7 @@ msgstr "Όλες οι Καταστάσεις"
 msgid "All Upcoming Events"
 msgstr "Όλες οι Επερχόμενες Εκδηλώσεις"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:157
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:172
 msgid "Allow attendees associated with unpaid orders to check in"
 msgstr "Να επιτρέπεται το check-in σε συμμετέχοντες με μη πληρωμένες παραγγελίες"
 
@@ -707,7 +712,7 @@ msgstr "Να επιτρέπεται στους συμμετέχοντες να �
 msgid "Allow buyers to copy their details to all attendees"
 msgstr "Επιτρέψτε στους αγοραστές να αντιγράφουν τα στοιχεία τους σε όλους τους συμμετέχοντες"
 
-#: src/components/forms/ProductForm/index.tsx:491
+#: src/components/forms/ProductForm/index.tsx:492
 msgid "Allow customers to join a waitlist when this product is sold out"
 msgstr "Να επιτρέπεται στους πελάτες να εγγράφονται στη λίστα αναμονής όταν αυτό το προϊόν εξαντληθεί"
 
@@ -729,6 +734,10 @@ msgstr "Σχεδόν έτοιμο! Ολοκληρώστε τη σύνδεση τ
 #: src/components/routes/product-widget/PaymentReturn/index.tsx:90
 msgid "Almost there! We're just waiting for your payment to be processed. This should only take a few seconds."
 msgstr "Σχεδόν έτοιμο! Αναμένουμε την επεξεργασία της πληρωμής σας. Αυτό θα διαρκέσει μόνο λίγα δευτερόλεπτα."
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:463
+msgid "Already Fulfilled"
+msgstr ""
 
 #: src/components/routes/auth/Register/index.tsx:75
 msgid "Already have an account? <0>{0}</0>"
@@ -785,7 +794,11 @@ msgstr "Παρουσιάστηκε σφάλμα κατά τη φόρτωση τ�
 msgid "An optional description of this category to display on the event page."
 msgstr "Μια προαιρετική περιγραφή αυτής της κατηγορίας που θα εμφανίζεται στη σελίδα της εκδήλωσης."
 
-#: src/components/forms/ProductForm/index.tsx:514
+#: src/components/forms/ProductForm/index.tsx:542
+msgid "An optional fee to charge for the physical ticket (e.g. shipping costs). Leave at 0 for no additional fee."
+msgstr ""
+
+#: src/components/forms/ProductForm/index.tsx:515
 msgid "An optional message to display on the highlighted product, e.g. \"Selling fast 🔥\" or \"Best value\""
 msgstr "Προαιρετικό μήνυμα για το προτεινόμενο προϊόν, π.χ. \"Πωλείται γρήγορα 🔥\" ή \"Καλύτερη αξία\""
 
@@ -813,7 +826,7 @@ msgstr "Εμφάνιση"
 msgid "Application Fees Configuration"
 msgstr "Ρύθμιση Χρεώσεων Εφαρμογής"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:564
+#: src/components/routes/product-widget/SelectProducts/index.tsx:581
 msgid "applied"
 msgstr "εφαρμόστηκε"
 
@@ -829,7 +842,7 @@ msgstr "Ισχύει για 1 προϊόν"
 msgid "Apply"
 msgstr "Εφαρμογή"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:592
+#: src/components/routes/product-widget/SelectProducts/index.tsx:609
 msgid "Apply Promo Code"
 msgstr "Εφαρμογή Κωδικού Προσφοράς"
 
@@ -934,12 +947,12 @@ msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετ�
 msgid "Are you sure you want to leave?"
 msgstr "Είστε σίγουροι ότι θέλετε να φύγετε;"
 
-#: src/components/layouts/Event/index.tsx:154
+#: src/components/layouts/Event/index.tsx:156
 #: src/components/routes/event/EventDashboard/index.tsx:81
 msgid "Are you sure you want to make this event draft? This will make the event invisible to the public"
 msgstr "Είστε σίγουροι ότι θέλετε να κάνετε αυτή την εκδήλωση πρόχειρο; Αυτό θα την κάνει αόρατη στο κοινό"
 
-#: src/components/layouts/Event/index.tsx:155
+#: src/components/layouts/Event/index.tsx:157
 #: src/components/routes/event/EventDashboard/index.tsx:82
 msgid "Are you sure you want to make this event public? This will make the event visible to the public"
 msgstr "Είστε σίγουροι ότι θέλετε να δημοσιεύσετε αυτή την εκδήλωση; Αυτό θα την κάνει ορατή στο κοινό"
@@ -1033,6 +1046,14 @@ msgstr "Μία φορά ανά παραγγελία"
 msgid "Ask once per product"
 msgstr "Μία φορά ανά προϊόν"
 
+#: src/components/routes/event/fulfillment.tsx:169
+msgid "assigned"
+msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:419
+msgid "Assigned"
+msgstr ""
+
 #: src/components/routes/admin/Accounts/AccountDetail/index.tsx:179
 msgid "Assigned Configuration"
 msgstr "Ανατεθειμένη Ρύθμιση"
@@ -1055,10 +1076,10 @@ msgid "Attendance and check-in rates across all events"
 msgstr "Αριθμός παρουσιών και ρυθμοί check-in σε όλες τις εκδηλώσεις"
 
 #: src/components/common/AttendeeTicket/index.tsx:114
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:54
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:55
 #: src/components/common/QuestionsTable/index.tsx:461
-#: src/components/routes/product-widget/CollectInformation/index.tsx:628
+#: src/components/modals/FulfillmentOrderModal/index.tsx:289
+#: src/components/modals/FulfillmentOrderModal/index.tsx:399
+#: src/components/routes/product-widget/CollectInformation/index.tsx:659
 msgid "Attendee"
 msgstr "Συμμετέχων"
 
@@ -1083,10 +1104,6 @@ msgstr "Συλλογή στοιχείων συμμετέχοντα"
 msgid "Attendee details copied from order"
 msgstr "Τα στοιχεία συμμετέχοντα αντιγράφηκαν από την παραγγελία"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:55
-msgid "Attendee Email"
-msgstr "Email Συμμετέχοντα"
-
 #: src/components/common/QuestionsTable/index.tsx:416
 msgid "Attendee Information"
 msgstr "Πληροφορίες Συμμετέχοντα"
@@ -1094,10 +1111,6 @@ msgstr "Πληροφορίες Συμμετέχοντα"
 #: src/components/routes/event/Settings/Sections/HomepageAndCheckoutSettings/index.tsx:116
 msgid "Attendee information collection"
 msgstr "Συλλογή πληροφοριών συμμετέχοντα"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:54
-msgid "Attendee Name"
-msgstr "Όνομα Συμμετέχοντα"
 
 #: src/components/layouts/CheckIn/index.tsx:228
 msgid "Attendee not found"
@@ -1132,11 +1145,12 @@ msgstr "Το εισιτήριο του συμμετέχοντα δεν περι�
 #: src/components/common/EventCard/index.tsx:227
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:382
 #: src/components/common/StatBoxes/index.tsx:45
-#: src/components/layouts/Event/index.tsx:118
+#: src/components/layouts/Event/index.tsx:120
 #: src/components/modals/ManageOrderModal/index.tsx:126
 #: src/components/routes/admin/Messages/index.tsx:90
 #: src/components/routes/admin/Messages/index.tsx:139
 #: src/components/routes/event/attendees.tsx:173
+#: src/components/routes/event/fulfillment.tsx:161
 #: src/components/routes/organizer/OrganizerDashboard/index.tsx:131
 msgid "Attendees"
 msgstr "Συμμετέχοντες"
@@ -1205,7 +1219,7 @@ msgstr "Διαθέσιμο"
 msgid "Available to Refund"
 msgstr "Διαθέσιμο για Επιστροφή"
 
-#: src/components/common/Editor/Controls/LiquidTokenControl.tsx:49
+#: src/components/common/Editor/Controls/LiquidTokenControl.tsx:52
 msgid "Available Tokens"
 msgstr "Διαθέσιμα Tokens"
 
@@ -1250,9 +1264,9 @@ msgid "Back to Accounts"
 msgstr "Επιστροφή στους Λογαριασμούς"
 
 #: src/components/forms/StripeCheckoutForm/index.tsx:108
-#: src/components/routes/product-widget/CollectInformation/index.tsx:331
-#: src/components/routes/product-widget/CollectInformation/index.tsx:361
-#: src/components/routes/product-widget/CollectInformation/index.tsx:390
+#: src/components/routes/product-widget/CollectInformation/index.tsx:358
+#: src/components/routes/product-widget/CollectInformation/index.tsx:388
+#: src/components/routes/product-widget/CollectInformation/index.tsx:417
 msgid "Back to Event"
 msgstr "Επιστροφή στην Εκδήλωση"
 
@@ -1284,6 +1298,15 @@ msgstr "Χρώμα Φόντου"
 msgid "Background Type"
 msgstr "Τύπος Φόντου"
 
+#: src/components/modals/FulfillmentOrderModal/index.tsx:291
+#: src/components/modals/FulfillmentOrderModal/index.tsx:401
+msgid "Barcode"
+msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:66
+msgid "Barcode saved successfully"
+msgstr ""
+
 #: src/components/routes/organizer/Settings/index.tsx:30
 #: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:63
 msgid "Basic Information"
@@ -1297,12 +1320,12 @@ msgstr "Όμορφη εμπειρία αγοράς σε κάθε συσκευή"
 msgid "Before your event can go live, there are a few things you need to do. Complete all the steps below to get started."
 msgstr "Πριν η εκδήλωσή σας δημοσιευτεί, πρέπει να ολοκληρώσετε μερικά βήματα. Συμπληρώστε όλα τα βήματα παρακάτω για να ξεκινήσετε."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:514
+#: src/components/routes/product-widget/CollectInformation/index.tsx:545
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:288
 msgid "Billing Address"
 msgstr "Διεύθυνση Χρέωσης"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:167
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:182
 msgid "Billing Settings"
 msgstr "Ρυθμίσεις Χρέωσης"
 
@@ -1359,8 +1382,8 @@ msgstr "Οι αγοραστές βλέπουν καθαρή τιμή. Το τέ�
 msgid "By adding tracking pixels, you acknowledge that you and this platform are joint controllers of the data collected. You are responsible for ensuring you have a lawful basis for this processing under applicable privacy laws (GDPR, CCPA, etc.)."
 msgstr "Με την προσθήκη pixels παρακολούθησης, αναγνωρίζετε ότι εσείς και αυτή η πλατφόρμα είστε από κοινού υπεύθυνοι επεξεργασίας των δεδομένων που συλλέγονται. Είστε υπεύθυνοι για τη διασφάλιση ότι έχετε νόμιμη βάση για αυτή την επεξεργασία βάσει των ισχυόντων νόμων περί απορρήτου (ΓΚΠΔ, CCPA κ.λπ.)."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:717
-#: src/components/routes/product-widget/Payment/index.tsx:152
+#: src/components/routes/product-widget/CollectInformation/index.tsx:752
+#: src/components/routes/product-widget/Payment/index.tsx:183
 msgid "By continuing, you agree to the <0>{0} Terms of Service</0>"
 msgstr "Συνεχίζοντας, αποδέχεστε τους <0>Όρους Χρήσης {0}</0>"
 
@@ -1482,7 +1505,7 @@ msgstr "Η Ανάθεση Χωρητικότητας διαγράφηκε επι
 msgid "Capacity Assignments"
 msgstr "Αναθέσεις Χωρητικότητας"
 
-#: src/components/layouts/Event/index.tsx:122
+#: src/components/layouts/Event/index.tsx:124
 msgid "Capacity Management"
 msgstr "Διαχείριση Χωρητικότητας"
 
@@ -1490,7 +1513,7 @@ msgstr "Διαχείριση Χωρητικότητας"
 msgid "Categories allow you to group products together. For example, you might have a category for \"Tickets\" and another for \"Merchandise\"."
 msgstr "Οι κατηγορίες σας επιτρέπουν να ομαδοποιείτε προϊόντα. Για παράδειγμα, μπορεί να έχετε κατηγορία για \"Εισιτήρια\" και άλλη για \"Εμπορεύματα\"."
 
-#: src/components/forms/ProductForm/index.tsx:289
+#: src/components/forms/ProductForm/index.tsx:290
 msgid "Categories help you organize your products. This title will be displayed on the public event page."
 msgstr "Οι κατηγορίες σας βοηθούν να οργανώσετε τα προϊόντα σας. Αυτός ο τίτλος θα εμφανιστεί στη δημόσια σελίδα εκδήλωσης."
 
@@ -1585,7 +1608,7 @@ msgstr "Η λίστα check-in δεν βρέθηκε"
 msgid "Check-in Lists"
 msgstr "Λίστες Check-in"
 
-#: src/components/layouts/Event/index.tsx:119
+#: src/components/layouts/Event/index.tsx:121
 #: src/components/modals/DuplicateEventModal/index.tsx:29
 #: src/components/routes/event/CheckInLists/index.tsx:34
 msgid "Check-In Lists"
@@ -1684,8 +1707,8 @@ msgstr "Επιλέξτε ποιος πληρώνει το τέλος πλατφ�
 #: src/components/common/CheckoutQuestion/index.tsx:162
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:134
 #: src/components/routes/organizer/Settings/Sections/AddressSettings/index.tsx:92
-#: src/components/routes/product-widget/CollectInformation/index.tsx:534
-#: src/components/routes/product-widget/CollectInformation/index.tsx:535
+#: src/components/routes/product-widget/CollectInformation/index.tsx:565
+#: src/components/routes/product-widget/CollectInformation/index.tsx:566
 msgid "City"
 msgstr "Πόλη"
 
@@ -1701,7 +1724,7 @@ msgstr "Κλικ για αντιγραφή"
 msgid "Click to view notes"
 msgstr "Κλικ για προβολή σημειώσεων"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:597
+#: src/components/routes/product-widget/SelectProducts/index.tsx:614
 msgid "close"
 msgstr "κλείσιμο"
 
@@ -1710,7 +1733,7 @@ msgstr "κλείσιμο"
 #: src/components/modals/JoinWaitlistModal/index.tsx:103
 #: src/components/modals/JoinWaitlistModal/index.tsx:130
 #: src/components/modals/RefundOrderModal/index.tsx:169
-#: src/components/routes/product-widget/SelectProducts/index.tsx:598
+#: src/components/routes/product-widget/SelectProducts/index.tsx:615
 msgid "Close"
 msgstr "Κλείσιμο"
 
@@ -1755,7 +1778,7 @@ msgstr "Ο κωδικός δεν μπορεί να υπερβαίνει τους
 msgid "Collaborate with your team to create amazing events together."
 msgstr "Συνεργαστείτε με την ομάδα σας για να δημιουργήσετε εκπληκτικές εκδηλώσεις μαζί."
 
-#: src/components/forms/ProductForm/index.tsx:473
+#: src/components/forms/ProductForm/index.tsx:474
 msgid "Collapse this product when the event page is initially loaded"
 msgstr "Σύμπτυξη αυτού του προϊόντος κατά την αρχική φόρτωση της σελίδας εκδήλωσης"
 
@@ -1810,12 +1833,16 @@ msgstr "Λέξεις-κλειδιά χωρισμένες με κόμμα που 
 msgid "Communication Preferences"
 msgstr "Προτιμήσεις Επικοινωνίας"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:713
+#: src/components/modals/FulfillmentOrderModal/index.tsx:339
+msgid "Company"
+msgstr ""
+
+#: src/components/routes/product-widget/CollectInformation/index.tsx:748
 msgid "Complete Order"
 msgstr "Ολοκλήρωση Παραγγελίας"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:341
-#: src/components/routes/product-widget/Payment/index.tsx:148
+#: src/components/routes/product-widget/CollectInformation/index.tsx:368
+#: src/components/routes/product-widget/Payment/index.tsx:178
 msgid "Complete Payment"
 msgstr "Ολοκλήρωση Πληρωμής"
 
@@ -1832,11 +1859,11 @@ msgstr "Ολοκληρώστε τη ρύθμιση παρακάτω για να 
 msgid "Complete these steps to start selling tickets for your event."
 msgstr "Ολοκληρώστε αυτά τα βήματα για να ξεκινήσετε την πώληση εισιτηρίων για την εκδήλωσή σας."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:414
+#: src/components/routes/product-widget/CollectInformation/index.tsx:441
 msgid "Complete your order to secure your tickets. This offer is time-limited, so don't wait too long."
 msgstr "Ολοκληρώστε την παραγγελία σας για να εξασφαλίσετε τα εισιτήριά σας. Αυτή η προσφορά είναι χρονικά περιορισμένη, μην αναβάλλετε."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:339
+#: src/components/routes/product-widget/CollectInformation/index.tsx:366
 msgid "Complete your payment to secure your tickets."
 msgstr "Ολοκληρώστε την πληρωμή σας για να εξασφαλίσετε τα εισιτήριά σας."
 
@@ -1920,10 +1947,10 @@ msgstr "Ρυθμισμένη Έκπτωση"
 msgid "Confirm"
 msgstr "Επιβεβαίωση"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:459
-#: src/components/routes/product-widget/CollectInformation/index.tsx:460
-#: src/components/routes/product-widget/CollectInformation/index.tsx:672
-#: src/components/routes/product-widget/CollectInformation/index.tsx:673
+#: src/components/routes/product-widget/CollectInformation/index.tsx:489
+#: src/components/routes/product-widget/CollectInformation/index.tsx:490
+#: src/components/routes/product-widget/CollectInformation/index.tsx:706
+#: src/components/routes/product-widget/CollectInformation/index.tsx:707
 msgid "Confirm Email Address"
 msgstr "Επιβεβαίωση Διεύθυνσης Email"
 
@@ -1951,7 +1978,7 @@ msgstr "Επιβεβαίωση κωδικού"
 msgid "Confirm Password"
 msgstr "Επιβεβαίωση Κωδικού"
 
-#: src/components/layouts/Event/index.tsx:257
+#: src/components/layouts/Event/index.tsx:259
 msgid "Confirm your email to access all features."
 msgstr "Επιβεβαιώστε το email σας για πρόσβαση σε όλες τις λειτουργίες."
 
@@ -2055,14 +2082,9 @@ msgstr "Επικοινωνία με {0}"
 msgid "Contact Email"
 msgstr "Email Επικοινωνίας"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:48
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:81
-msgid "Contact email for support"
-msgstr "Email επικοινωνίας για υποστήριξη"
-
 #: src/components/common/WidgetEditor/index.tsx:29
 #: src/components/common/WidgetEditor/index.tsx:222
-#: src/components/routes/product-widget/SelectProducts/index.tsx:550
+#: src/components/routes/product-widget/SelectProducts/index.tsx:567
 msgid "Continue"
 msgstr "Συνέχεια"
 
@@ -2081,7 +2103,7 @@ msgstr "Συνέχεια ρύθμισης"
 msgid "Continue Setup"
 msgstr "Συνέχεια Ρύθμισης"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:386
+#: src/components/routes/product-widget/SelectProducts/index.tsx:400
 msgid "Continue to Checkout"
 msgstr "Συνέχεια στην Ολοκλήρωση Αγοράς"
 
@@ -2093,7 +2115,7 @@ msgstr "Συνέχεια στη δημιουργία εκδήλωσης"
 msgid "Continue to next step"
 msgstr "Συνέχεια στο επόμενο βήμα"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:713
+#: src/components/routes/product-widget/CollectInformation/index.tsx:748
 msgid "Continue to Payment"
 msgstr "Συνέχεια στην Πληρωμή"
 
@@ -2109,7 +2131,7 @@ msgstr "Έλεγχος τρόπου διαχείρισης τελών πλατφ
 msgid "Copied"
 msgstr "Αντιγράφηκε"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:637
+#: src/components/routes/product-widget/CollectInformation/index.tsx:668
 msgid "Copied from above"
 msgstr "Αντιγράφηκε από παραπάνω"
 
@@ -2149,7 +2171,7 @@ msgstr "Αντιγραφή Κωδικού"
 msgid "Copy customer link"
 msgstr "Αντιγραφή συνδέσμου πελάτη"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:478
+#: src/components/routes/product-widget/CollectInformation/index.tsx:509
 msgid "Copy details to first attendee"
 msgstr "Αντιγραφή στοιχείων στον πρώτο συμμετέχοντα"
 
@@ -2167,7 +2189,7 @@ msgstr "Αντιγραφή συνδέσμου"
 msgid "Copy Link"
 msgstr "Αντιγραφή Συνδέσμου"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:488
+#: src/components/routes/product-widget/CollectInformation/index.tsx:519
 msgid "Copy my details to:"
 msgstr "Αντιγραφή στοιχείων μου σε:"
 
@@ -2187,7 +2209,7 @@ msgstr "Αντιγραφή URL"
 #: src/components/common/CheckoutQuestion/index.tsx:174
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:152
 #: src/components/routes/organizer/Settings/Sections/AddressSettings/index.tsx:110
-#: src/components/routes/product-widget/CollectInformation/index.tsx:555
+#: src/components/routes/product-widget/CollectInformation/index.tsx:586
 msgid "Country"
 msgstr "Χώρα"
 
@@ -2328,7 +2350,7 @@ msgstr "Δημιουργία νέου κωδικού"
 msgid "Create Organizer"
 msgstr "Δημιουργία Διοργανωτή"
 
-#: src/components/modals/CreateProductModal/index.tsx:89
+#: src/components/modals/CreateProductModal/index.tsx:91
 msgid "Create Product"
 msgstr "Δημιουργία Προϊόντος"
 
@@ -2342,12 +2364,12 @@ msgstr "Δημιουργία Κωδικού Προσφοράς"
 msgid "Create Question"
 msgstr "Δημιουργία Ερώτησης"
 
-#: src/components/forms/ProductForm/index.tsx:420
+#: src/components/forms/ProductForm/index.tsx:421
 #: src/components/modals/CreateTaxOrFeeModal/index.tsx:53
 msgid "Create Tax or Fee"
 msgstr "Δημιουργία Φόρου ή Τέλους"
 
-#: src/components/modals/CreateProductModal/index.tsx:81
+#: src/components/modals/CreateProductModal/index.tsx:83
 msgid "Create Ticket or Product"
 msgstr "Δημιουργία Εισιτηρίου ή Προϊόντος"
 
@@ -2453,11 +2475,6 @@ msgstr "Προσαρμοσμένη ημερομηνία και ώρα"
 msgid "Custom Maps URL"
 msgstr "Προσαρμοσμένο URL Χάρτη"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:50
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:83
-msgid "Custom message after checkout"
-msgstr "Προσαρμοσμένο μήνυμα μετά το checkout"
-
 #: src/components/common/QuestionsTable/index.tsx:432
 msgid "Custom Questions"
 msgstr "Προσαρμοσμένες Ερωτήσεις"
@@ -2473,8 +2490,13 @@ msgstr "Προσαρμοσμένο πρότυπο"
 
 #: src/components/common/AdminOrdersTable/index.tsx:71
 #: src/components/common/OrdersTable/index.tsx:207
+#: src/components/routes/event/fulfillment.tsx:100
 msgid "Customer"
 msgstr "Πελάτης"
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:326
+msgid "Customer Information"
+msgstr ""
 
 #: src/components/common/OrdersTable/index.tsx:159
 msgid "Customer link copied to clipboard"
@@ -2483,18 +2505,6 @@ msgstr "Ο σύνδεσμος πελάτη αντιγράφηκε στο πρό�
 #: src/components/modals/RefundOrderModal/index.tsx:125
 msgid "Customer will receive an email confirming the refund"
 msgstr "Ο πελάτης θα λάβει email επιβεβαίωσης επιστροφής"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:26
-msgid "Customer's email address"
-msgstr "Διεύθυνση email πελάτη"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:24
-msgid "Customer's first name"
-msgstr "Όνομα πελάτη"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:25
-msgid "Customer's last name"
-msgstr "Επώνυμο πελάτη"
 
 #: src/components/routes/organizer/Reports/EventsPerformanceReport/index.tsx:108
 msgid "Customers"
@@ -2583,7 +2593,7 @@ msgid "Dark"
 msgstr "Σκοτεινό"
 
 #: src/components/layouts/Admin/index.tsx:13
-#: src/components/layouts/Event/index.tsx:94
+#: src/components/layouts/Event/index.tsx:95
 #: src/components/routes/organizer/OrganizerDashboard/index.tsx:160
 msgid "Dashboard"
 msgstr "Πίνακας Ελέγχου"
@@ -2595,6 +2605,7 @@ msgstr "Ιδιοκτησία Δεδομένων"
 #: src/components/common/AdminOrdersTable/index.tsx:94
 #: src/components/common/OrderDetails/index.tsx:39
 #: src/components/forms/QuestionForm/index.tsx:136
+#: src/components/routes/event/fulfillment.tsx:139
 #: src/components/routes/organizer/Reports/EventsPerformanceReport/index.tsx:56
 #: src/components/routes/organizer/Reports/RevenueSummaryReport/index.tsx:24
 msgid "Date"
@@ -2603,15 +2614,6 @@ msgstr "Ημερομηνία"
 #: src/components/common/AttendeeTicket/index.tsx:78
 msgid "Date & Time"
 msgstr "Ημερομηνία & Ώρα"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:35
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:69
-msgid "Date of the event"
-msgstr "Ημερομηνία εκδήλωσης"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:23
-msgid "Date order was placed"
-msgstr "Ημερομηνία υποβολής παραγγελίας"
 
 #: src/components/forms/CapaciyAssigmentForm/index.tsx:38
 msgid "Day one capacity"
@@ -2706,8 +2708,14 @@ msgstr "Διαγραφή αυτής της ερώτησης; Δεν μπορεί
 msgid "Delete webhook"
 msgstr "Διαγραφή webhook"
 
+#: src/components/modals/FulfillmentOrderModal/index.tsx:179
+#: src/components/modals/FulfillmentOrderModal/index.tsx:278
+#: src/components/modals/FulfillmentOrderModal/index.tsx:284
+msgid "Delivery Slip"
+msgstr "Δελτίο αποστολής"
+
 #: src/components/forms/ProductCategoryForm/index.tsx:29
-#: src/components/forms/ProductForm/index.tsx:280
+#: src/components/forms/ProductForm/index.tsx:281
 #: src/components/forms/TaxAndFeeForm/index.tsx:81
 #: src/components/modals/DuplicateEventModal/index.tsx:115
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:93
@@ -2760,7 +2768,7 @@ msgstr "Έκπτωση σε {0}"
 msgid "Discount Type"
 msgstr "Τύπος Έκπτωσης"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:403
+#: src/components/routes/product-widget/SelectProducts/index.tsx:417
 msgid "Dismiss this message"
 msgstr "Απόρριψη αυτού του μηνύματος"
 
@@ -2768,7 +2776,7 @@ msgstr "Απόρριψη αυτού του μηνύματος"
 msgid "Display a checkbox allowing customers to opt-in to receive marketing communications from this event organizer."
 msgstr "Εμφάνιση πλαισίου ελέγχου που επιτρέπει στους πελάτες να επιλέξουν λήψη μηνυμάτων μάρκετινγκ από αυτόν τον διοργανωτή."
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:190
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:205
 msgid "Document Label"
 msgstr "Ετικέτα Εγγράφου"
 
@@ -2788,7 +2796,7 @@ msgstr "Δεν έχετε λογαριασμό; <0>Εγγραφείτε</0>"
 msgid "Donation"
 msgstr "Δωρεά"
 
-#: src/components/forms/ProductForm/index.tsx:166
+#: src/components/forms/ProductForm/index.tsx:167
 msgid "Donation / Pay what you'd like product"
 msgstr "Δωρεά / Πληρώστε όσο θέλετε"
 
@@ -2829,7 +2837,7 @@ msgid "Downloading Invoice"
 msgstr "Λήψη Τιμολογίου"
 
 #: src/components/common/EventCard/index.tsx:84
-#: src/components/layouts/Event/index.tsx:191
+#: src/components/layouts/Event/index.tsx:193
 #: src/components/layouts/OrganizerLayout/index.tsx:212
 msgid "Draft"
 msgstr "Πρόχειρο"
@@ -2867,8 +2875,8 @@ msgstr "Αντιγραφή Εκδήλωσης"
 msgid "Duplicate Options"
 msgstr "Επιλογές Αντιγραφής"
 
-#: src/components/modals/DuplicateProductModal/index.tsx:113
 #: src/components/modals/DuplicateProductModal/index.tsx:117
+#: src/components/modals/DuplicateProductModal/index.tsx:121
 msgid "Duplicate Product"
 msgstr "Αντιγραφή Προϊόντος"
 
@@ -2896,7 +2904,7 @@ msgstr "π.χ., Βασικό, Premium, Enterprise"
 msgid "Each person will receive an email with a reserved spot to complete their purchase."
 msgstr "Κάθε άτομο θα λάβει email με μια δεσμευμένη θέση για να ολοκληρώσει την αγορά του."
 
-#: src/components/forms/ProductForm/index.tsx:86
+#: src/components/forms/ProductForm/index.tsx:87
 msgid "Early bird"
 msgstr "Πρώιμη αγορά"
 
@@ -2976,8 +2984,8 @@ msgstr "Επεξεργασία Λεπτομερειών Παραγγελίας"
 msgid "Edit Organizer"
 msgstr "Επεξεργασία Διοργανωτή"
 
-#: src/components/modals/EditProductModal/index.tsx:106
-#: src/components/modals/EditProductModal/index.tsx:114
+#: src/components/modals/EditProductModal/index.tsx:110
+#: src/components/modals/EditProductModal/index.tsx:118
 msgid "Edit Product"
 msgstr "Επεξεργασία Προϊόντος"
 
@@ -3050,6 +3058,7 @@ msgstr "Επιλέξιμες Λίστες Check-In"
 #: src/components/common/QuestionsTable/index.tsx:253
 #: src/components/forms/AffiliateForm/index.tsx:89
 #: src/components/modals/EditUserModal/index.tsx:80
+#: src/components/modals/FulfillmentOrderModal/index.tsx:334
 #: src/components/modals/InviteUserModal/index.tsx:61
 #: src/components/modals/JoinWaitlistModal/index.tsx:171
 #: src/components/routes/admin/Accounts/AccountDetail/index.tsx:128
@@ -3080,10 +3089,10 @@ msgstr "Email & Πρότυπα"
 msgid "Email address"
 msgstr "Διεύθυνση email"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:451
-#: src/components/routes/product-widget/CollectInformation/index.tsx:452
-#: src/components/routes/product-widget/CollectInformation/index.tsx:663
-#: src/components/routes/product-widget/CollectInformation/index.tsx:664
+#: src/components/routes/product-widget/CollectInformation/index.tsx:480
+#: src/components/routes/product-widget/CollectInformation/index.tsx:481
+#: src/components/routes/product-widget/CollectInformation/index.tsx:696
+#: src/components/routes/product-widget/CollectInformation/index.tsx:697
 msgid "Email Address"
 msgstr "Διεύθυνση Email"
 
@@ -3092,8 +3101,8 @@ msgstr "Διεύθυνση Email"
 msgid "Email address copied to clipboard"
 msgstr "Η διεύθυνση email αντιγράφηκε στο πρόχειρο"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:112
 #: src/components/routes/product-widget/CollectInformation/index.tsx:119
+#: src/components/routes/product-widget/CollectInformation/index.tsx:126
 msgid "Email addresses do not match"
 msgstr "Οι διευθύνσεις email δεν ταιριάζουν"
 
@@ -3113,7 +3122,7 @@ msgstr "Αλλαγή email σε εκκρεμότητα"
 msgid "Email confirmation resent"
 msgstr "Επαναποστολή επιβεβαίωσης email"
 
-#: src/components/layouts/Event/index.tsx:74
+#: src/components/layouts/Event/index.tsx:75
 #: src/components/layouts/OrganizerLayout/index.tsx:102
 #: src/components/routes/profile/ManageProfile/index.tsx:100
 msgid "Email confirmation resent successfully"
@@ -3171,7 +3180,7 @@ msgstr "Ενεργοποίηση αυτοεξυπηρέτησης συμμετέ
 msgid "Enable attendee self-service by default"
 msgstr "Ενεργοποίηση αυτοεξυπηρέτησης συμμετέχοντα ως προεπιλογή"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:181
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:196
 msgid "Enable Invoicing"
 msgstr "Ενεργοποίηση Τιμολόγησης"
 
@@ -3179,11 +3188,15 @@ msgstr "Ενεργοποίηση Τιμολόγησης"
 msgid "Enable this capacity to stop product sales when the limit is reached"
 msgstr "Ενεργοποίηση αυτής της χωρητικότητας για διακοπή πωλήσεων όταν φτάσει το όριο"
 
+#: src/components/forms/ProductForm/index.tsx:531
+msgid "Enable this if a physical ticket will be mailed to the buyer. A shipping address will be required at checkout."
+msgstr ""
+
 #: src/components/common/EmailTemplateEditor/EmailTemplateEditor.tsx:191
 msgid "Enable this template for sending emails"
 msgstr "Ενεργοποίηση αυτού του προτύπου για αποστολή email"
 
-#: src/components/forms/ProductForm/index.tsx:493
+#: src/components/forms/ProductForm/index.tsx:494
 msgid "Enable Waitlist"
 msgstr "Ενεργοποίηση Λίστας Αναμονής"
 
@@ -3239,6 +3252,10 @@ msgstr "Εισάγετε όνομα συνεργάτη"
 #: src/components/modals/CreateAttendeeModal/index.tsx:181
 msgid "Enter an amount excluding taxes and fees."
 msgstr "Εισάγετε ποσό χωρίς φόρους και τέλη."
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:425
+msgid "Enter barcode"
+msgstr ""
 
 #: src/components/modals/EditAccountVatSettingsModal/index.tsx:149
 msgid "Enter business address"
@@ -3332,20 +3349,6 @@ msgid "EUR"
 msgstr "EUR"
 
 #: src/components/common/AdminOrdersTable/index.tsx:72
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:34
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:35
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:36
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:37
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:38
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:39
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:40
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:68
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:69
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:70
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:71
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:72
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:73
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:74
 #: src/components/routes/admin/Dashboard/index.tsx:256
 #: src/components/routes/admin/Dashboard/index.tsx:305
 #: src/components/routes/admin/Messages/index.tsx:163
@@ -3383,8 +3386,6 @@ msgstr "Εκδήλωση Δημιουργήθηκε"
 msgid "Event custom template"
 msgstr "Προσαρμοσμένο πρότυπο εκδήλωσης"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:35
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:69
 #: src/components/routes/my-tickets/index.tsx:62
 #: src/components/routes/organizer/Reports/CheckInSummaryReport/index.tsx:29
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:307
@@ -3405,16 +3406,9 @@ msgstr "Προεπιλογές Εκδήλωσης"
 msgid "Event deleted successfully"
 msgstr "Η εκδήλωση διαγράφηκε επιτυχώς"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:38
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:72
 #: src/components/modals/CreateEventModal/index.tsx:198
 msgid "Event Description"
 msgstr "Περιγραφή Εκδήλωσης"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:38
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:72
-msgid "Event details"
-msgstr "Λεπτομέρειες εκδήλωσης"
 
 #: src/components/routes/event/Settings/index.tsx:40
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:68
@@ -3426,17 +3420,9 @@ msgstr "Λεπτομέρειες Εκδήλωσης"
 msgid "Event duplicated successfully"
 msgstr "Η εκδήλωση αντιγράφηκε επιτυχώς"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:37
-msgid "Event Full Address"
-msgstr "Πλήρης Διεύθυνση Εκδήλωσης"
-
 #: src/components/layouts/Checkout/index.tsx:205
 msgid "Event Homepage"
 msgstr "Αρχική Σελίδα Εκδήλωσης"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:71
-msgid "Event Location"
-msgstr "Τοποθεσία Εκδήλωσης"
 
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:85
 msgid "Event location & venue details"
@@ -3467,12 +3453,7 @@ msgstr "Το όνομα εκδήλωσης πρέπει να έχει λιγότ
 msgid "Event Not Available"
 msgstr "Η Εκδήλωση Δεν Είναι Διαθέσιμη"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:44
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:77
-msgid "Event organizer name"
-msgstr "Όνομα διοργανωτή εκδήλωσης"
-
-#: src/components/layouts/Event/index.tsx:246
+#: src/components/layouts/Event/index.tsx:248
 msgid "Event Page"
 msgstr "Σελίδα Εκδήλωσης"
 
@@ -3480,14 +3461,14 @@ msgstr "Σελίδα Εκδήλωσης"
 msgid "Event restored successfully"
 msgstr "Η εκδήλωση αποκαταστάθηκε επιτυχώς"
 
-#: src/components/layouts/Event/index.tsx:104
+#: src/components/layouts/Event/index.tsx:105
 #: src/components/routes/event/Settings/index.tsx:159
 msgid "Event Settings"
 msgstr "Ρυθμίσεις Εκδήλωσης"
 
 #: src/components/common/EventCard/index.tsx:70
 #: src/components/common/StatusToggle/index.tsx:63
-#: src/components/layouts/Event/index.tsx:170
+#: src/components/layouts/Event/index.tsx:172
 #: src/components/routes/event/EventDashboard/index.tsx:96
 #: src/components/routes/event/GettingStarted/index.tsx:68
 msgid "Event status update failed. Please try again later"
@@ -3495,30 +3476,13 @@ msgstr "Η ενημέρωση κατάστασης εκδήλωσης απέτυ
 
 #: src/components/common/EventCard/index.tsx:67
 #: src/components/common/StatusToggle/index.tsx:55
-#: src/components/layouts/Event/index.tsx:166
+#: src/components/layouts/Event/index.tsx:168
 #: src/components/routes/event/EventDashboard/index.tsx:93
 #: src/components/routes/event/GettingStarted/index.tsx:65
 msgid "Event status updated"
 msgstr "Η κατάσταση εκδήλωσης ενημερώθηκε"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:36
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:70
-msgid "Event Time"
-msgstr "Ώρα Εκδήλωσης"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:39
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:73
-msgid "Event timezone"
-msgstr "Ζώνη ώρας εκδήλωσης"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:39
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:73
-msgid "Event Timezone"
-msgstr "Ζώνη Ώρας Εκδήλωσης"
-
 #: src/components/common/AdminEventsTable/index.tsx:84
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:34
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:68
 msgid "Event Title"
 msgstr "Τίτλος Εκδήλωσης"
 
@@ -3535,11 +3499,6 @@ msgstr "Τύποι Εκδηλώσεων"
 #: src/components/forms/WebhookForm/index.tsx:49
 msgid "Event Updated"
 msgstr "Εκδήλωση Ενημερώθηκε"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:40
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:74
-msgid "Event Venue"
-msgstr "Χώρος Εκδήλωσης"
 
 #: src/components/common/AdminAccountsTable/index.tsx:82
 #: src/components/layouts/Admin/index.tsx:16
@@ -3751,6 +3710,10 @@ msgstr "Αποτυχία φόρτωσης παραληπτών"
 msgid "Failed to load Webhook"
 msgstr "Αποτυχία φόρτωσης Webhook"
 
+#: src/components/modals/FulfillmentOrderModal/index.tsx:85
+msgid "Failed to mark order as fulfilled. Please try again."
+msgstr ""
+
 #: src/components/common/WaitlistTable/index.tsx:127
 msgid "Failed to offer spot"
 msgstr "Αποτυχία προσφοράς θέσης"
@@ -3790,6 +3753,10 @@ msgstr "Αποτυχία επανάληψης εργασίας"
 #: src/components/routes/admin/FailedJobs/index.tsx:79
 msgid "Failed to retry jobs"
 msgstr "Αποτυχία επανάληψης εργασιών"
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:70
+msgid "Failed to save barcode. Please try again."
+msgstr ""
 
 #: src/components/common/EmailTemplateSettings/EmailTemplateSettingsBase.tsx:148
 #: src/components/common/EmailTemplateSettings/EmailTemplateSettingsBase.tsx:151
@@ -3900,7 +3867,7 @@ msgstr "Διαχείριση Τελών"
 
 #: src/components/common/InlineOrderSummary/index.tsx:140
 #: src/components/common/OrdersTable/index.tsx:359
-#: src/components/forms/ProductForm/index.tsx:409
+#: src/components/forms/ProductForm/index.tsx:410
 #: src/components/routes/organizer/Reports/RevenueSummaryReport/index.tsx:54
 msgid "Fees"
 msgstr "Χρεώσεις"
@@ -3921,8 +3888,8 @@ msgstr "Φεστιβάλ"
 msgid "File is too large. Maximum size is 5MB."
 msgstr "Το αρχείο είναι πολύ μεγάλο. Μέγιστο μέγεθος 5MB."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:470
-#: src/components/routes/product-widget/CollectInformation/index.tsx:490
+#: src/components/routes/product-widget/CollectInformation/index.tsx:501
+#: src/components/routes/product-widget/CollectInformation/index.tsx:521
 msgid "Fill in your details above first"
 msgstr "Συμπληρώστε πρώτα τα στοιχεία σας παραπάνω"
 
@@ -3934,6 +3901,7 @@ msgstr "Φιλτράρισμα Συμμετεχόντων"
 msgid "Filter by Event"
 msgstr "Φιλτράρισμα ανά Εκδήλωση"
 
+#: src/components/routes/event/fulfillment.tsx:216
 #: src/components/routes/event/orders.tsx:123
 msgid "Filter Orders"
 msgstr "Φιλτράρισμα Παραγγελιών"
@@ -3968,19 +3936,19 @@ msgstr "Πρώτες 7 ημέρες από την έναρξη εκδήλωση�
 msgid "First 90 days from event start"
 msgstr "Πρώτες 90 ημέρες από την έναρξη εκδήλωσης"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:501
+#: src/components/routes/product-widget/CollectInformation/index.tsx:532
 msgid "First attendee"
 msgstr "Πρώτος συμμετέχων"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:206
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:221
 msgid "First Invoice Number"
 msgstr "Πρώτος Αριθμός Τιμολογίου"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:129
 #: src/components/modals/ManageAttendeeModal/index.tsx:110
 #: src/components/modals/ManageOrderModal/index.tsx:144
-#: src/components/routes/product-widget/CollectInformation/index.tsx:436
-#: src/components/routes/product-widget/CollectInformation/index.tsx:648
+#: src/components/routes/product-widget/CollectInformation/index.tsx:463
+#: src/components/routes/product-widget/CollectInformation/index.tsx:679
 msgid "First name"
 msgstr "Όνομα"
 
@@ -3990,8 +3958,8 @@ msgstr "Όνομα"
 #: src/components/modals/JoinWaitlistModal/index.tsx:161
 #: src/components/routes/auth/AcceptInvitation/index.tsx:97
 #: src/components/routes/auth/Register/index.tsx:90
-#: src/components/routes/product-widget/CollectInformation/index.tsx:435
-#: src/components/routes/product-widget/CollectInformation/index.tsx:647
+#: src/components/routes/product-widget/CollectInformation/index.tsx:462
+#: src/components/routes/product-widget/CollectInformation/index.tsx:678
 #: src/components/routes/product-widget/OrderSummaryAndProducts/EditAttendeeModal/index.tsx:53
 #: src/components/routes/product-widget/OrderSummaryAndProducts/EditOrderModal/index.tsx:53
 #: src/components/routes/profile/ManageProfile/index.tsx:152
@@ -4079,17 +4047,37 @@ msgstr "Ξεχάσατε τον κωδικό;"
 msgid "Free"
 msgstr "Δωρεάν"
 
-#: src/components/forms/ProductForm/index.tsx:160
+#: src/components/forms/ProductForm/index.tsx:161
 msgid "Free Product"
 msgstr "Δωρεάν Προϊόν"
 
-#: src/components/forms/ProductForm/index.tsx:162
+#: src/components/forms/ProductForm/index.tsx:163
 msgid "Free product, no payment information required"
 msgstr "Δωρεάν προϊόν, δεν απαιτούνται στοιχεία πληρωμής"
 
 #: src/components/common/LanguageSwitcher/index.tsx:22
 msgid "French"
 msgstr "Γαλλικά"
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:312
+#: src/components/routes/event/fulfillment.tsx:27
+#: src/components/routes/event/fulfillment.tsx:85
+msgid "Fulfilled"
+msgstr ""
+
+#: src/components/layouts/Event/index.tsx:114
+#: src/components/routes/event/fulfillment.tsx:208
+msgid "Fulfillment"
+msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:321
+msgid "Fulfillment - Order #{0}"
+msgstr ""
+
+#: src/components/routes/event/fulfillment.tsx:43
+#: src/components/routes/event/fulfillment.tsx:176
+msgid "Fulfillment Status"
+msgstr ""
 
 #: src/components/routes/event/EventDashboard/index.tsx:298
 msgid "Full event duration"
@@ -4099,7 +4087,7 @@ msgstr "Πλήρης διάρκεια εκδήλωσης"
 msgid "Full refund"
 msgstr "Πλήρης επιστροφή"
 
-#: src/components/forms/ProductForm/index.tsx:145
+#: src/components/forms/ProductForm/index.tsx:146
 msgid "General"
 msgstr "Γενικά"
 
@@ -4148,7 +4136,7 @@ msgstr "Αγορά Εισιτηρίων"
 msgid "Get your event ready"
 msgstr "Ετοιμάστε την εκδήλωσή σας"
 
-#: src/components/layouts/Event/index.tsx:90
+#: src/components/layouts/Event/index.tsx:91
 msgid "Getting Started"
 msgstr "Ξεκινώντας"
 
@@ -4161,7 +4149,7 @@ msgstr "GitHub"
 msgid "Go back to profile"
 msgstr "Επιστροφή στο προφίλ"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:378
+#: src/components/routes/product-widget/CollectInformation/index.tsx:405
 msgid "Go to Event Page"
 msgstr "Μετάβαση στη Σελίδα Εκδήλωσης"
 
@@ -4200,7 +4188,7 @@ msgstr "Μεικτές πωλήσεις"
 msgid "Gross Sales"
 msgstr "Μεικτές Πωλήσεις"
 
-#: src/components/layouts/Event/index.tsx:117
+#: src/components/layouts/Event/index.tsx:119
 msgid "Guest Management"
 msgstr "Διαχείριση Επισκεπτών"
 
@@ -4208,7 +4196,21 @@ msgstr "Διαχείριση Επισκεπτών"
 msgid "Guests"
 msgstr "Επισκέπτες"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:559
+#: src/components/forms/ProductForm/index.tsx:525
+#: src/components/forms/ProductForm/index.tsx:530
+#: src/components/routes/product-widget/SelectProducts/index.tsx:481
+msgid "Hard Ticket"
+msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:392
+msgid "Hard Ticket Attendees"
+msgstr ""
+
+#: src/components/forms/ProductForm/index.tsx:541
+msgid "Hard Ticket Fee"
+msgstr ""
+
+#: src/components/routes/product-widget/SelectProducts/index.tsx:576
 msgid "Have a promo code?"
 msgstr "Έχετε κωδικό προσφοράς;"
 
@@ -4271,8 +4273,8 @@ msgstr "Κρυφό από δημόσια προβολή"
 msgid "Hidden questions are only visible to the event organizer and not to the customer."
 msgstr "Οι κρυφές ερωτήσεις είναι ορατές μόνο στον διοργανωτή εκδήλωσης και όχι στον πελάτη."
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:424
-#: src/components/routes/product-widget/SelectProducts/index.tsx:524
+#: src/components/routes/product-widget/SelectProducts/index.tsx:438
+#: src/components/routes/product-widget/SelectProducts/index.tsx:541
 msgid "Hide"
 msgstr "Απόκρυψη"
 
@@ -4284,23 +4286,23 @@ msgstr "Απόκρυψη Απαντήσεων"
 msgid "Hide getting started page"
 msgstr "Απόκρυψη σελίδας εκκίνησης"
 
-#: src/components/forms/ProductForm/index.tsx:376
+#: src/components/forms/ProductForm/index.tsx:377
 msgid "Hide Options"
 msgstr "Απόκρυψη Επιλογών"
 
-#: src/components/forms/ProductForm/index.tsx:471
+#: src/components/forms/ProductForm/index.tsx:472
 msgid "Hide product after sale end date"
 msgstr "Απόκρυψη προϊόντος μετά την ημερομηνία λήξης πώλησης"
 
-#: src/components/forms/ProductForm/index.tsx:469
+#: src/components/forms/ProductForm/index.tsx:470
 msgid "Hide product before sale start date"
 msgstr "Απόκρυψη προϊόντος πριν την ημερομηνία έναρξης πώλησης"
 
-#: src/components/forms/ProductForm/index.tsx:483
+#: src/components/forms/ProductForm/index.tsx:484
 msgid "Hide product unless user has applicable promo code"
 msgstr "Απόκρυψη προϊόντος εκτός αν ο χρήστης έχει ισχύοντα κωδικό προσφοράς"
 
-#: src/components/forms/ProductForm/index.tsx:477
+#: src/components/forms/ProductForm/index.tsx:478
 msgid "Hide product when sold out"
 msgstr "Απόκρυψη προϊόντος όταν εξαντληθεί"
 
@@ -4316,7 +4318,7 @@ msgstr "Απόκρυψη σελίδας εκκίνησης από την πλα�
 msgid "Hide this category?"
 msgstr "Απόκρυψη αυτής της κατηγορίας;"
 
-#: src/components/forms/ProductForm/index.tsx:488
+#: src/components/forms/ProductForm/index.tsx:489
 msgid "Hide this product from customers"
 msgstr "Απόκρυψη αυτού του προϊόντος από τους πελάτες"
 
@@ -4324,32 +4326,32 @@ msgstr "Απόκρυψη αυτού του προϊόντος από τους π
 msgid "Hide this question"
 msgstr "Απόκρυψη αυτής της ερώτησης"
 
-#: src/components/forms/ProductForm/index.tsx:112
+#: src/components/forms/ProductForm/index.tsx:113
 msgid "Hide this tier from users"
 msgstr "Απόκρυψη αυτής της βαθμίδας από τους χρήστες"
 
-#: src/components/forms/ProductForm/index.tsx:110
+#: src/components/forms/ProductForm/index.tsx:111
 msgid "Hiding a product will prevent users from seeing it on the event page."
 msgstr "Η απόκρυψη προϊόντος θα εμποδίσει τους χρήστες να το δουν στη σελίδα εκδήλωσης."
 
-#: src/components/forms/ProductForm/index.tsx:501
+#: src/components/forms/ProductForm/index.tsx:502
 msgid "Highlight"
 msgstr "Ανάδειξη"
 
-#: src/components/forms/ProductForm/index.tsx:513
+#: src/components/forms/ProductForm/index.tsx:514
 msgid "Highlight Message"
 msgstr "Μήνυμα Ανάδειξης"
 
-#: src/components/forms/ProductForm/index.tsx:506
+#: src/components/forms/ProductForm/index.tsx:507
 msgid "Highlight this product"
 msgstr "Ανάδειξη αυτού του προϊόντος"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:336
-#: src/components/forms/ProductForm/index.tsx:386
+#: src/components/forms/ProductForm/index.tsx:387
 msgid "Highlighted"
 msgstr "Αναδειγμένο"
 
-#: src/components/forms/ProductForm/index.tsx:507
+#: src/components/forms/ProductForm/index.tsx:508
 msgid "Highlighted products will have a different background color to make them stand out on the event page."
 msgstr "Τα αναδειγμένα προϊόντα θα έχουν διαφορετικό χρώμα φόντου για να ξεχωρίζουν στη σελίδα εκδήλωσης."
 
@@ -4358,7 +4360,7 @@ msgstr "Τα αναδειγμένα προϊόντα θα έχουν διαφο�
 msgid "Homepage Design"
 msgstr "Σχεδιασμός Αρχικής Σελίδας"
 
-#: src/components/layouts/Event/index.tsx:105
+#: src/components/layouts/Event/index.tsx:106
 #: src/components/layouts/OrganizerLayout/index.tsx:91
 msgid "Homepage Designer"
 msgstr "Σχεδιαστής Αρχικής Σελίδας"
@@ -4384,11 +4386,6 @@ msgstr "Πόσα λεπτά έχει ο πελάτης να ολοκληρώσε
 #: src/components/forms/PromoCodeForm/index.tsx:114
 msgid "How many times can this code be used?"
 msgstr "Πόσες φορές μπορεί να χρησιμοποιηθεί αυτός ο κωδικός;"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:49
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:82
-msgid "How to pay offline"
-msgstr "Πώς να πληρώσετε εκτός σύνδεσης"
 
 #: src/components/common/Editor/index.tsx:92
 msgid "HTML character limit exceeded: {htmlLength}/{maxLength}"
@@ -4426,7 +4423,7 @@ msgstr "Συμφωνώ με τους <0>όρους και προϋποθέσει
 msgid "I confirm this is a transactional message related to this event"
 msgstr "Επιβεβαιώνω ότι πρόκειται για συναλλακτικό μήνυμα σχετικό με αυτή την εκδήλωση"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:363
+#: src/components/routes/product-widget/SelectProducts/index.tsx:377
 msgid "If a new tab did not open automatically, please click the button below to continue to checkout."
 msgstr "Εάν δεν άνοιξε αυτόματα νέα καρτέλα, κάντε κλικ στο κουμπί παρακάτω για να συνεχίσετε στην ολοκλήρωση αγοράς."
 
@@ -4438,7 +4435,7 @@ msgstr "Εάν είναι κενό, η διεύθυνση θα χρησιμοπ�
 msgid "If checked, this category will be hidden from the public."
 msgstr "Εάν επιλεγεί, αυτή η κατηγορία θα είναι κρυφή από το κοινό."
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:158
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:173
 msgid "If enabled, check-in staff can either mark attendees as checked in or mark the order as paid and check in the attendees. If disabled, attendees associated with unpaid orders cannot be checked in."
 msgstr "Εάν είναι ενεργό, το προσωπικό check-in μπορεί να επισημάνει τους συμμετέχοντες ως παρόντες ή να επισημάνει την παραγγελία ως πληρωμένη. Εάν είναι απενεργοποιημένο, οι συμμετέχοντες με μη πληρωμένες παραγγελίες δεν μπορούν να κάνουν check-in."
 
@@ -4559,15 +4556,10 @@ msgstr "Μεμονωμένοι συμμετέχοντες"
 msgid "Insert Image"
 msgstr "Εισαγωγή Εικόνας"
 
-#: src/components/common/Editor/Controls/LiquidTokenControl.tsx:40
-#: src/components/common/Editor/Controls/LiquidTokenControl.tsx:41
+#: src/components/common/Editor/Controls/LiquidTokenControl.tsx:43
+#: src/components/common/Editor/Controls/LiquidTokenControl.tsx:44
 msgid "Insert Liquid Token"
 msgstr "Εισαγωγή Token Liquid"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:110
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:111
-msgid "Insert Variable"
-msgstr "Εισαγωγή Μεταβλητής"
 
 #: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:53
 msgid "Instagram"
@@ -4577,7 +4569,7 @@ msgstr "Instagram"
 msgid "Instant Payouts"
 msgstr "Άμεσες Πληρωμές"
 
-#: src/components/layouts/Event/index.tsx:125
+#: src/components/layouts/Event/index.tsx:127
 #: src/components/layouts/OrganizerLayout/index.tsx:93
 msgid "Integrations"
 msgstr "Ενσωματώσεις"
@@ -4655,15 +4647,15 @@ msgstr "Τιμολόγιο"
 msgid "Invoice downloaded successfully"
 msgstr "Το τιμολόγιο λήφθηκε επιτυχώς"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:252
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:267
 msgid "Invoice Notes"
 msgstr "Σημειώσεις Τιμολογίου"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:197
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:212
 msgid "Invoice Numbering"
 msgstr "Αρίθμηση Τιμολογίων"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:177
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:192
 msgid "Invoice Settings"
 msgstr "Ρυθμίσεις Τιμολογίων"
 
@@ -4679,7 +4671,7 @@ msgstr "Είναι αυτός ο λογαριασμός εγγεγραμμένο
 msgid "Italian"
 msgstr "Ιταλικά"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:628
+#: src/components/routes/product-widget/CollectInformation/index.tsx:659
 msgid "Item"
 msgstr "Στοιχείο"
 
@@ -4746,11 +4738,11 @@ msgstr "Απλώς κάντε κλικ στο κουμπί παρακάτω γι
 msgid "Just looking for your tickets?"
 msgstr "Αναζητάτε μόνο τα εισιτήριά σας;"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:568
+#: src/components/routes/product-widget/CollectInformation/index.tsx:599
 msgid "Keep me updated on news and events from {0}"
 msgstr "Ενημερώστε με για νέα και εκδηλώσεις από {0}"
 
-#: src/components/forms/ProductForm/index.tsx:85
+#: src/components/forms/ProductForm/index.tsx:86
 msgid "Label"
 msgstr "Ετικέτα"
 
@@ -4821,10 +4813,10 @@ msgstr "Επώνυμο"
 #: src/components/modals/JoinWaitlistModal/index.tsx:166
 #: src/components/routes/auth/AcceptInvitation/index.tsx:102
 #: src/components/routes/auth/Register/index.tsx:96
-#: src/components/routes/product-widget/CollectInformation/index.tsx:441
-#: src/components/routes/product-widget/CollectInformation/index.tsx:442
-#: src/components/routes/product-widget/CollectInformation/index.tsx:653
-#: src/components/routes/product-widget/CollectInformation/index.tsx:654
+#: src/components/routes/product-widget/CollectInformation/index.tsx:469
+#: src/components/routes/product-widget/CollectInformation/index.tsx:470
+#: src/components/routes/product-widget/CollectInformation/index.tsx:685
+#: src/components/routes/product-widget/CollectInformation/index.tsx:686
 #: src/components/routes/product-widget/OrderSummaryAndProducts/EditAttendeeModal/index.tsx:60
 #: src/components/routes/product-widget/OrderSummaryAndProducts/EditOrderModal/index.tsx:60
 #: src/components/routes/profile/ManageProfile/index.tsx:154
@@ -4850,7 +4842,7 @@ msgstr "Τελευταία Ενεργοποίηση"
 msgid "Last Used"
 msgstr "Τελευταία Χρήση"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:191
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:206
 msgid "Leave blank to use the default word \"Invoice\""
 msgstr "Αφήστε κενό για χρήση της προεπιλεγμένης λέξης \"Τιμολόγιο\""
 
@@ -4866,14 +4858,6 @@ msgstr "Φωτεινό"
 msgid "Link Expired or Invalid"
 msgstr "Ο Σύνδεσμος Έληξε ή Δεν Είναι Έγκυρος"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:27
-msgid "Link to order details"
-msgstr "Σύνδεσμος σε λεπτομέρειες παραγγελίας"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:60
-msgid "Link to ticket"
-msgstr "Σύνδεσμος σε εισιτήριο"
-
 #: src/components/routes/event/EventDashboard/index.tsx:238
 msgid "Link your Stripe account to receive funds from ticket sales."
 msgstr "Συνδέστε τον λογαριασμό Stripe για να λαμβάνετε χρήματα από πωλήσεις εισιτηρίων."
@@ -4887,7 +4871,7 @@ msgid "Links Allowed"
 msgstr "Επιτρέπονται Σύνδεσμοι"
 
 #: src/components/common/EventCard/index.tsx:87
-#: src/components/layouts/Event/index.tsx:193
+#: src/components/layouts/Event/index.tsx:195
 #: src/components/layouts/OrganizerLayout/index.tsx:214
 msgid "Live"
 msgstr "Δημοσιευμένο"
@@ -4905,8 +4889,8 @@ msgstr "Δημοσιευμένες Εκδηλώσεις"
 msgid "Loading preview..."
 msgstr "Φόρτωση προεπισκόπησης..."
 
-#: src/components/common/Editor/Controls/LiquidTokenControl.tsx:25
 #: src/components/common/Editor/Controls/LiquidTokenControl.tsx:26
+#: src/components/common/Editor/Controls/LiquidTokenControl.tsx:27
 msgid "Loading tokens..."
 msgstr "Φόρτωση tokens..."
 
@@ -4978,7 +4962,7 @@ msgstr "Αναζήτηση Εισιτηρίων μου"
 msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam placerat elementum..."
 msgstr "Παράδειγμα κειμένου..."
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:170
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:185
 msgid "Make billing address mandatory during checkout"
 msgstr "Υποχρεωτική διεύθυνση χρέωσης κατά το checkout"
 
@@ -4997,6 +4981,7 @@ msgstr "Δημοσιεύστε την εκδήλωσή σας"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:461
 #: src/components/common/PromoCodeTable/index.tsx:167
 #: src/components/layouts/OrganizerLayout/index.tsx:86
+#: src/components/routes/event/fulfillment.tsx:195
 msgid "Manage"
 msgstr "Διαχείριση"
 
@@ -5008,11 +4993,15 @@ msgstr "Διαχείριση συμμετέχοντα"
 msgid "Manage event"
 msgstr "Διαχείριση εκδήλωσης"
 
+#: src/components/routes/event/fulfillment.tsx:207
+msgid "Manage hard ticket fulfillment, assign barcodes, and print shipping labels."
+msgstr ""
+
 #: src/components/common/OrdersTable/index.tsx:153
 msgid "Manage order"
 msgstr "Διαχείριση παραγγελίας"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:99
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:105
 msgid "Manage payment and invoicing settings for this event."
 msgstr "Διαχείριση ρυθμίσεων πληρωμής και τιμολόγησης για αυτή την εκδήλωση."
 
@@ -5061,6 +5050,10 @@ msgstr "Χειροκίνητη προσθήκη Συμμετέχοντα"
 msgid "Manually Add Attendee"
 msgstr "Χειροκίνητη Προσθήκη Συμμετέχοντα"
 
+#: src/components/modals/FulfillmentOrderModal/index.tsx:463
+msgid "Mark as Fulfilled"
+msgstr ""
+
 #: src/components/common/OrdersTable/index.tsx:170
 msgid "Mark as paid"
 msgstr "Σήμανση ως πληρωμένο"
@@ -5073,7 +5066,7 @@ msgstr "Μέγ. Μηνύματα / 24ω"
 msgid "Max Recipients / Message"
 msgstr "Μέγ. Παραλήπτες / Μήνυμα"
 
-#: src/components/forms/ProductForm/index.tsx:442
+#: src/components/forms/ProductForm/index.tsx:443
 msgid "Maximum Per Order"
 msgstr "Μέγιστο ανά Παραγγελία"
 
@@ -5145,7 +5138,7 @@ msgid "Message Sent"
 msgstr "Μήνυμα Εστάλη"
 
 #: src/components/layouts/Admin/index.tsx:18
-#: src/components/layouts/Event/index.tsx:120
+#: src/components/layouts/Event/index.tsx:122
 #: src/components/routes/event/messages.tsx:225
 msgid "Messages"
 msgstr "Μηνύματα"
@@ -5159,11 +5152,11 @@ msgstr "Βαθμίδα Μηνυμάτων"
 msgid "Messaging tier updated successfully"
 msgstr "Η βαθμίδα μηνυμάτων ενημερώθηκε επιτυχώς"
 
-#: src/components/forms/ProductForm/index.tsx:440
+#: src/components/forms/ProductForm/index.tsx:441
 msgid "Minimum Per Order"
 msgstr "Ελάχιστο ανά Παραγγελία"
 
-#: src/components/forms/ProductForm/index.tsx:307
+#: src/components/forms/ProductForm/index.tsx:308
 msgid "Minimum Price"
 msgstr "Ελάχιστη Τιμή"
 
@@ -5207,7 +5200,7 @@ msgstr "Εκδηλώσεις με Περισσότερες Προβολές (Τ�
 msgid "Multi line text box"
 msgstr "Πεδίο κειμένου πολλαπλών γραμμών"
 
-#: src/components/forms/ProductForm/index.tsx:174
+#: src/components/forms/ProductForm/index.tsx:175
 msgid "Multiple price options. Perfect for early bird products etc."
 msgstr "Πολλαπλές επιλογές τιμής. Ιδανικό για προϊόντα πρώιμης αγοράς κ.λπ."
 
@@ -5248,9 +5241,10 @@ msgstr "Παράδειγμα κειμένου..."
 #: src/components/forms/CheckInListForm/index.tsx:37
 #: src/components/forms/ProductCategoryForm/index.tsx:15
 #: src/components/forms/ProductCategoryForm/index.tsx:16
-#: src/components/forms/ProductForm/index.tsx:274
+#: src/components/forms/ProductForm/index.tsx:275
 #: src/components/forms/TaxAndFeeForm/index.tsx:61
 #: src/components/modals/DuplicateEventModal/index.tsx:109
+#: src/components/modals/FulfillmentOrderModal/index.tsx:330
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:63
 #: src/components/routes/admin/Configurations/index.tsx:219
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:75
@@ -5268,11 +5262,6 @@ msgstr "Το όνομα είναι υποχρεωτικό"
 #: src/components/routes/admin/Configurations/index.tsx:169
 msgid "Name must be less than 255 characters"
 msgstr "Το όνομα πρέπει να έχει λιγότερους από 255 χαρακτήρες"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:34
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:68
-msgid "Name of the event"
-msgstr "Όνομα εκδήλωσης"
 
 #: src/components/common/QuestionAndAnswerList/index.tsx:181
 #: src/components/common/QuestionAndAnswerList/index.tsx:289
@@ -5339,6 +5328,7 @@ msgid "No attendee questions yet"
 msgstr "Δεν υπάρχουν ακόμα ερωτήσεις συμμετέχοντα"
 
 #: src/components/common/AttendeeList/index.tsx:23
+#: src/components/modals/FulfillmentOrderModal/index.tsx:394
 msgid "No attendees found for this order."
 msgstr "Δεν βρέθηκαν συμμετέχοντες για αυτή την παραγγελία."
 
@@ -5422,6 +5412,10 @@ msgstr "Δεν υπάρχουν αποτυχημένες εργασίες"
 msgid "No filters available"
 msgstr "Δεν υπάρχουν διαθέσιμα φίλτρα"
 
+#: src/components/routes/event/fulfillment.tsx:234
+msgid "No fulfillment orders to show"
+msgstr ""
+
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:86
 msgid "No impact on your current or past transactions"
 msgstr "Χωρίς επίπτωση στις τρέχουσες ή παρελθοντικές συναλλαγές σας"
@@ -5429,6 +5423,10 @@ msgstr "Χωρίς επίπτωση στις τρέχουσες ή παρελθ�
 #: src/components/common/OrdersTable/index.tsx:306
 msgid "No invoice"
 msgstr "Χωρίς τιμολόγιο"
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:295
+msgid "No items"
+msgstr "Χωρίς αντικείμενα"
 
 #: src/components/modals/OrganizerWebhookLogsModal/index.tsx:163
 #: src/components/modals/WebhookLogsModal/index.tsx:177
@@ -5479,7 +5477,7 @@ msgstr "Δεν υπάρχουν Πληρωμένες Παραγγελίες"
 msgid "No past events"
 msgstr "Δεν υπάρχουν παλαιότερες εκδηλώσεις"
 
-#: src/components/routes/product-widget/Payment/index.tsx:87
+#: src/components/routes/product-widget/Payment/index.tsx:96
 msgid "No payment methods are currently available. Please contact the event organizer for assistance."
 msgstr "Δεν υπάρχουν διαθέσιμες μέθοδοι πληρωμής αυτή τη στιγμή. Επικοινωνήστε με τον διοργανωτή για βοήθεια."
 
@@ -5610,7 +5608,7 @@ msgid "Non-VAT registered businesses or individuals: Irish VAT at 23% applies"
 msgstr "Επιχειρήσεις ή άτομα μη εγγεγραμμένα για ΦΠΑ: Εφαρμόζεται ιρλανδικός ΦΠΑ 23%"
 
 #: src/components/common/PromoCodeTable/index.tsx:82
-#: src/components/routes/product-widget/CollectInformation/index.tsx:500
+#: src/components/routes/product-widget/CollectInformation/index.tsx:531
 msgid "None"
 msgstr "Κανένα"
 
@@ -5645,11 +5643,11 @@ msgstr "Ρυθμίσεις Ειδοποιήσεων"
 msgid "Notify organizer of new orders"
 msgstr "Ειδοποίηση διοργανωτή για νέες παραγγελίες"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:217
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:232
 msgid "Number of days allowed for payment (leave blank to omit payment terms from invoices)"
 msgstr "Αριθμός ημερών για πληρωμή (αφήστε κενό για παράλειψη όρων πληρωμής από τιμολόγια)"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:199
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:214
 msgid "Number Prefix"
 msgstr "Πρόθεμα Αριθμού"
 
@@ -5693,38 +5691,31 @@ msgid "Office or venue name"
 msgstr "Όνομα γραφείου ή χώρου"
 
 #: src/components/common/OrdersTable/index.tsx:389
-#: src/components/routes/product-widget/Payment/index.tsx:131
+#: src/components/routes/product-widget/Payment/index.tsx:159
 msgid "Offline"
 msgstr "Εκτός Σύνδεσης"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:145
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:151
 msgid "Offline orders are not reflected in event statistics until the order is marked as paid."
 msgstr "Οι παραγγελίες εκτός σύνδεσης δεν αντικατοπτρίζονται στα στατιστικά εκδήλωσης μέχρι να επισημανθούν ως πληρωμένες."
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:31
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:65
-msgid "Offline Payment"
-msgstr "Πληρωμή Εκτός Σύνδεσης"
-
-#: src/components/routes/product-widget/Payment/index.tsx:77
+#: src/components/routes/product-widget/Payment/index.tsx:86
 msgid "Offline payment failed. Please try again or contact the event organizer."
 msgstr "Η πληρωμή εκτός σύνδεσης απέτυχε. Παρακαλώ δοκιμάστε ξανά ή επικοινωνήστε με τον διοργανωτή."
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:49
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:82
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:151
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:157
 msgid "Offline Payment Instructions"
 msgstr "Οδηγίες Πληρωμής Εκτός Σύνδεσης"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:90
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:96
 msgid "Offline Payments"
 msgstr "Πληρωμές Εκτός Σύνδεσης"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:139
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:145
 msgid "Offline Payments Information"
 msgstr "Πληροφορίες Πληρωμών Εκτός Σύνδεσης"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:134
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:140
 msgid "Offline Payments Settings"
 msgstr "Ρυθμίσεις Πληρωμών Εκτός Σύνδεσης"
 
@@ -5760,7 +5751,7 @@ msgid "Ongoing"
 msgstr "Σε Εξέλιξη"
 
 #: src/components/common/EventCard/index.tsx:93
-#: src/components/routes/product-widget/Payment/index.tsx:123
+#: src/components/routes/product-widget/Payment/index.tsx:139
 msgid "Online"
 msgstr "Διαδικτυακό"
 
@@ -5812,11 +5803,11 @@ msgstr "Άνοιγμα Πίνακα Stripe"
 msgid "Option {i}"
 msgstr "Επιλογή {i}"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:253
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:268
 msgid "Optional additional information to appear on all invoices (e.g., payment terms, late payment fees, return policy)"
 msgstr "Προαιρετικές πρόσθετες πληροφορίες για εμφάνιση σε όλα τα τιμολόγια (π.χ., όροι πληρωμής, τέλη καθυστέρησης, πολιτική επιστροφής)"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:200
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:215
 msgid "Optional prefix for invoice numbers (e.g., INV-)"
 msgstr "Προαιρετικό πρόθεμα αριθμών τιμολογίου (π.χ., ΤΙΜ-)"
 
@@ -5836,22 +5827,10 @@ msgstr "Επιλογές"
 msgid "or"
 msgstr "ή"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:21
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:22
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:23
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:24
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:25
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:26
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:27
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:28
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:29
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:30
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:31
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:63
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:64
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:65
 #: src/components/common/QuestionsTable/index.tsx:294
 #: src/components/common/QuestionsTable/index.tsx:447
+#: src/components/modals/FulfillmentOrderModal/index.tsx:132
+#: src/components/modals/FulfillmentOrderModal/index.tsx:285
 #: src/components/routes/my-tickets/index.tsx:53
 msgid "Order"
 msgstr "Παραγγελία"
@@ -5860,7 +5839,7 @@ msgstr "Παραγγελία"
 msgid "Order & Ticket"
 msgstr "Παραγγελία & Εισιτήριο"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:358
+#: src/components/routes/product-widget/CollectInformation/index.tsx:385
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:354
 msgid "Order cancelled"
 msgstr "Παραγγελία ακυρώθηκε"
@@ -5869,7 +5848,7 @@ msgstr "Παραγγελία ακυρώθηκε"
 msgid "Order Cancelled"
 msgstr "Παραγγελία Ακυρώθηκε"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:348
+#: src/components/routes/product-widget/CollectInformation/index.tsx:375
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:364
 msgid "Order complete"
 msgstr "Παραγγελία ολοκληρώθηκε"
@@ -5887,11 +5866,6 @@ msgstr "Η επιβεβαίωση παραγγελίας εστάλη ξανά �
 msgid "Order Created"
 msgstr "Παραγγελία Δημιουργήθηκε"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:30
-msgid "Order Currency"
-msgstr "Νόμισμα Παραγγελίας"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:23
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:268
 msgid "Order Date"
 msgstr "Ημερομηνία Παραγγελίας"
@@ -5902,14 +5876,6 @@ msgstr "Ημερομηνία Παραγγελίας"
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:592
 msgid "Order Details"
 msgstr "Λεπτομέρειες Παραγγελίας"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:26
-msgid "Order Email"
-msgstr "Email Παραγγελίας"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:24
-msgid "Order First Name"
-msgstr "Όνομα Παραγγελίας"
 
 #: src/components/modals/CancelOrderModal/index.tsx:40
 msgid "Order has been canceled and refunded. The order owner has been notified."
@@ -5925,28 +5891,21 @@ msgid "Order Holders"
 msgstr "Κάτοχοι Παραγγελίας"
 
 #: src/components/common/AdminOrdersTable/index.tsx:67
+#: src/components/routes/event/fulfillment.tsx:122
 msgid "Order ID"
 msgstr "ID Παραγγελίας"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:28
-msgid "Order Is Awaiting Offline Payment"
-msgstr "Η Παραγγελία Αναμένει Πληρωμή Εκτός Σύνδεσης"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:25
-msgid "Order Last Name"
-msgstr "Επώνυμο Παραγγελίας"
-
-#: src/components/forms/ProductForm/index.tsx:436
+#: src/components/forms/ProductForm/index.tsx:437
 msgid "Order Limits"
 msgstr "Όρια Παραγγελίας"
 
-#: src/components/forms/ProductForm/index.tsx:384
+#: src/components/forms/ProductForm/index.tsx:385
 msgid "Order limits set"
 msgstr "Τα όρια παραγγελίας ορίστηκαν"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:29
-msgid "Order Locale"
-msgstr "Γλώσσα Παραγγελίας"
+#: src/components/modals/FulfillmentOrderModal/index.tsx:81
+msgid "Order marked as fulfilled"
+msgstr ""
 
 #: src/components/common/OrdersTable/index.tsx:78
 msgid "Order marked as paid"
@@ -5956,7 +5915,7 @@ msgstr "Η παραγγελία επισημάνθηκε ως πληρωμένη
 msgid "Order Marked as Paid"
 msgstr "Παραγγελία Επισημάνθηκε ως Πληρωμένη"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:373
+#: src/components/routes/product-widget/CollectInformation/index.tsx:400
 msgid "Order not found"
 msgstr "Η παραγγελία δεν βρέθηκε"
 
@@ -5967,10 +5926,6 @@ msgstr "Παραγγελία Δεν Βρέθηκε"
 #: src/components/modals/ManageOrderModal/index.tsx:92
 msgid "Order Notes"
 msgstr "Σημειώσεις Παραγγελίας"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:21
-msgid "Order Number"
-msgstr "Αριθμός Παραγγελίας"
 
 #: src/components/common/MessageList/index.tsx:31
 msgid "Order owner"
@@ -5984,10 +5939,6 @@ msgstr "Κάτοχοι παραγγελίας με συγκεκριμένο πρ
 msgid "Order owners with products"
 msgstr "Κάτοχοι παραγγελίας με προϊόντα"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:63
-msgid "Order Payment Pending"
-msgstr "Πληρωμή Παραγγελίας σε Εκκρεμότητα"
-
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:59
 msgid "Order Ref"
 msgstr "Αναφ. Παραγγελίας"
@@ -6000,8 +5951,6 @@ msgstr "Αναφορά Παραγγελίας"
 msgid "Order Refunded"
 msgstr "Παραγγελία Επιστράφηκε"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:64
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:64
 #: src/components/routes/event/orders.tsx:45
 msgid "Order Status"
 msgstr "Κατάσταση Παραγγελίας"
@@ -6019,7 +5968,6 @@ msgstr "Σύνοψη Παραγγελίας"
 msgid "Order timeout"
 msgstr "Λήξη χρόνου παραγγελίας"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:22
 #: src/components/modals/RefundOrderModal/index.tsx:78
 msgid "Order Total"
 msgstr "Σύνολο Παραγγελίας"
@@ -6032,16 +5980,12 @@ msgstr "Παραγγελία Ενημερώθηκε"
 msgid "Order updated successfully"
 msgstr "Η παραγγελία ενημερώθηκε επιτυχώς"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:27
-msgid "Order URL"
-msgstr "URL Παραγγελίας"
-
-#: src/components/routes/product-widget/CollectInformation/index.tsx:328
+#: src/components/routes/product-widget/CollectInformation/index.tsx:355
 msgid "Order was cancelled"
 msgstr "Η παραγγελία ακυρώθηκε"
 
 #: src/components/layouts/Admin/index.tsx:17
-#: src/components/layouts/Event/index.tsx:112
+#: src/components/layouts/Event/index.tsx:113
 #: src/components/routes/admin/Attribution/index.tsx:138
 #: src/components/routes/admin/Orders/index.tsx:44
 #: src/components/routes/event/orders.tsx:115
@@ -6059,6 +6003,10 @@ msgstr "Παραγγελίες Ολοκληρώθηκαν"
 msgid "Orders Exported"
 msgstr "Παραγγελίες Εξήχθησαν"
 
+#: src/components/routes/event/fulfillment.tsx:237
+msgid "Orders requiring hard ticket fulfillment will appear here."
+msgstr ""
+
 #: src/components/routes/admin/Dashboard/index.tsx:207
 msgid "Orders Total"
 msgstr "Σύνολο Παραγγελιών"
@@ -6071,23 +6019,16 @@ msgstr "Παραγγελίες:"
 msgid "Organic Accounts"
 msgstr "Οργανικοί Λογαριασμοί"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:44
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:45
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:77
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:78
-msgid "Organization"
-msgstr "Οργανισμός"
-
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:235
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:250
 msgid "Organization Address"
 msgstr "Διεύθυνση Οργανισμού"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:226
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:241
 msgid "Organization Details"
 msgstr "Στοιχεία Οργανισμού"
 
 #: src/components/forms/OrganizerForm/index.tsx:28
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:228
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:243
 msgid "Organization Name"
 msgstr "Όνομα Οργανισμού"
 
@@ -6109,7 +6050,7 @@ msgstr "Διοργανωτής"
 msgid "Organizer archived successfully"
 msgstr "Ο διοργανωτής αρχειοθετήθηκε επιτυχώς"
 
-#: src/components/layouts/Event/index.tsx:84
+#: src/components/layouts/Event/index.tsx:85
 #: src/components/layouts/OrganizerLayout/index.tsx:78
 #: src/components/routes/organizer/OrganizerDashboard/index.tsx:160
 msgid "Organizer Dashboard"
@@ -6119,22 +6060,10 @@ msgstr "Πίνακας Διοργανωτή"
 msgid "Organizer deleted successfully"
 msgstr "Ο διοργανωτής διαγράφηκε επιτυχώς"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:45
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:78
-msgid "Organizer Email"
-msgstr "Email Διοργανωτή"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:45
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:78
-msgid "Organizer email address"
-msgstr "Διεύθυνση email διοργανωτή"
-
 #: src/components/modals/CreateEventModal/index.tsx:49
 msgid "Organizer is required"
 msgstr "Ο διοργανωτής είναι υποχρεωτικός"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:44
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:77
 #: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:72
 msgid "Organizer Name"
 msgstr "Όνομα Διοργανωτή"
@@ -6175,7 +6104,6 @@ msgstr "Θα χρησιμοποιηθεί το πρότυπο διοργανωτ
 msgid "Organizers can only manage events and products. They cannot manage users, account settings or billing information."
 msgstr "Οι διοργανωτές μπορούν να διαχειρίζονται μόνο εκδηλώσεις και προϊόντα. Δεν μπορούν να διαχειρίζονται χρήστες, ρυθμίσεις λογαριασμού ή στοιχεία χρέωσης."
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:98
 #: src/components/common/OrdersTable/index.tsx:394
 #: src/constants/eventCategories.ts:22
 msgid "Other"
@@ -6189,7 +6117,7 @@ msgstr "Άλλες Λίστες (Εισιτήριο Μη Συμπεριλαμβ�
 msgid "Outgoing Messages"
 msgstr "Εξερχόμενα Μηνύματα"
 
-#: src/components/layouts/Event/index.tsx:87
+#: src/components/layouts/Event/index.tsx:88
 msgid "Overview"
 msgstr "Επισκόπηση"
 
@@ -6229,7 +6157,7 @@ msgstr "πληρωμένο"
 msgid "Paid Accounts"
 msgstr "Πληρωμένοι Λογαριασμοί"
 
-#: src/components/forms/ProductForm/index.tsx:154
+#: src/components/forms/ProductForm/index.tsx:155
 msgid "Paid Product"
 msgstr "Πληρωμένο Προϊόν"
 
@@ -6313,7 +6241,7 @@ msgstr "panagiotis@papademos.gr"
 msgid "Paused"
 msgstr "Σε Παύση"
 
-#: src/components/routes/product-widget/Payment/index.tsx:146
+#: src/components/routes/product-widget/Payment/index.tsx:176
 msgid "Pay"
 msgstr "Πληρωμή"
 
@@ -6329,6 +6257,7 @@ msgstr "Ωφέλιμο Φορτίο"
 #: src/components/common/OrdersTable/index.tsx:375
 #: src/components/common/ProgressStepper/index.tsx:19
 #: src/components/forms/StripeCheckoutForm/index.tsx:127
+#: src/components/routes/product-widget/Payment/PaymentMethods/Paypal/index.tsx:71
 msgid "Payment"
 msgstr "Πληρωμή"
 
@@ -6336,7 +6265,7 @@ msgstr "Πληρωμή"
 msgid "Payment & Invoicing"
 msgstr "Πληρωμή & Τιμολόγηση"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:98
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:104
 msgid "Payment & Invoicing Settings"
 msgstr "Ρυθμίσεις Πληρωμής & Τιμολόγησης"
 
@@ -6348,7 +6277,7 @@ msgstr "Πληρωμή & Πλάνο"
 msgid "Payment Date"
 msgstr "Ημερομηνία Πληρωμής"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:216
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:231
 msgid "Payment Due Period"
 msgstr "Περίοδος Πληρωμής"
 
@@ -6362,11 +6291,11 @@ msgstr "Η Πληρωμή Απέτυχε"
 msgid "Payment Instructions"
 msgstr "Οδηγίες Πληρωμής"
 
-#: src/components/routes/product-widget/Payment/index.tsx:114
+#: src/components/routes/product-widget/Payment/index.tsx:129
 msgid "Payment method"
 msgstr "Μέθοδος πληρωμής"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:105
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:111
 msgid "Payment Methods"
 msgstr "Μέθοδοι Πληρωμής"
 
@@ -6401,10 +6330,11 @@ msgstr "Κατάσταση Πληρωμής"
 msgid "Payment succeeded!"
 msgstr "Η πληρωμή επιτεύχθηκε!"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:214
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:229
 msgid "Payment Terms"
 msgstr "Όροι Πληρωμής"
 
+#: src/components/routes/product-widget/Payment/PaymentMethods/Paypal/index.tsx:41
 #: src/components/routes/product-widget/Payment/PaymentMethods/Stripe/index.tsx:49
 msgid "Payments not available"
 msgstr "Οι πληρωμές δεν είναι διαθέσιμες"
@@ -6412,6 +6342,26 @@ msgstr "Οι πληρωμές δεν είναι διαθέσιμες"
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:87
 msgid "Payments will continue to flow without interruption"
 msgstr "Οι πληρωμές θα συνεχίσουν χωρίς διακοπή"
+
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:91
+#: src/components/routes/product-widget/Payment/index.tsx:149
+msgid "PayPal"
+msgstr "PayPal"
+
+#: src/components/routes/product-widget/Payment/PaymentMethods/Paypal/index.tsx:91
+#: src/components/routes/product-widget/Payment/PaymentMethods/Paypal/index.tsx:95
+msgid "PayPal payment failed. Please try again or contact the event organizer."
+msgstr "Η πληρωμή PayPal απέτυχε. Δοκιμάστε ξανά ή επικοινωνήστε με τον διοργανωτή της εκδήλωσης."
+
+#: src/components/routes/product-widget/Payment/PaymentMethods/Paypal/index.tsx:42
+msgid "PayPal payments are not enabled for this event."
+msgstr "Οι πληρωμές PayPal δεν είναι ενεργοποιημένες για αυτήν την εκδήλωση."
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:314
+#: src/components/routes/event/fulfillment.tsx:26
+#: src/components/routes/event/fulfillment.tsx:91
+msgid "Pending"
+msgstr ""
 
 #: src/components/routes/admin/Messages/index.tsx:124
 msgid "Pending Review"
@@ -6542,7 +6492,7 @@ msgstr "Παρακαλώ ελέγξτε ότι το email είναι έγκυρ�
 msgid "Please check your email to confirm your email address"
 msgstr "Παρακαλώ ελέγξτε το email σας για επιβεβαίωση της διεύθυνσης"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:354
+#: src/components/routes/product-widget/SelectProducts/index.tsx:368
 msgid "Please continue in the new tab"
 msgstr "Παρακαλώ συνεχίστε στη νέα καρτέλα"
 
@@ -6553,6 +6503,10 @@ msgstr "Παρακαλώ δημιουργήστε ένα προϊόν"
 #: src/components/modals/CreateCheckInListModal/index.tsx:52
 msgid "Please create a ticket"
 msgstr "Παρακαλώ δημιουργήστε ένα εισιτήριο"
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:58
+msgid "Please enter a barcode value"
+msgstr ""
 
 #: src/components/modals/JoinWaitlistModal/index.tsx:47
 msgid "Please enter a valid email address"
@@ -6575,6 +6529,10 @@ msgstr "Παρακαλώ εισάγετε τον 5ψήφιο κωδικό"
 msgid "Please enter your VAT number"
 msgstr "Παρακαλώ εισάγετε τον αριθμό ΦΠΑ σας"
 
+#: src/components/modals/FulfillmentOrderModal/index.tsx:298
+msgid "Please fold along the marks to fit a DIN C6 window envelope."
+msgstr "Διπλώστε κατά μήκος των σημαδιών για να χωρέσει σε φάκελο με παράθυρο DIN C6."
+
 #: src/components/modals/CancelOrderModal/index.tsx:65
 msgid "Please Note"
 msgstr "Σημειώστε"
@@ -6583,6 +6541,7 @@ msgstr "Σημειώστε"
 msgid "Please provide an image."
 msgstr "Παρακαλώ παρέχετε εικόνα."
 
+#: src/components/routes/product-widget/Payment/PaymentMethods/Paypal/index.tsx:57
 #: src/components/routes/product-widget/Payment/PaymentMethods/Stripe/index.tsx:65
 msgid "Please restart the checkout process."
 msgstr "Παρακαλώ επανεκκινήστε τη διαδικασία αγοράς."
@@ -6599,7 +6558,7 @@ msgstr "Παρακαλώ επιλέξτε εύρος ημερομηνιών"
 msgid "Please select an image."
 msgstr "Παρακαλώ επιλέξτε εικόνα."
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:285
+#: src/components/routes/product-widget/SelectProducts/index.tsx:299
 msgid "Please select at least one product"
 msgstr "Παρακαλώ επιλέξτε τουλάχιστον ένα προϊόν"
 
@@ -6650,11 +6609,6 @@ msgstr "Πορτογαλικά"
 msgid "Post Checkout message"
 msgstr "Μήνυμα Μετά το Checkout"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:50
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:83
-msgid "Post Checkout Message"
-msgstr "Μήνυμα Μετά το Checkout"
-
 #: src/components/common/PoweredByFooter/index.tsx:60
 msgid "Powered by"
 msgstr "Με την υποστήριξη του"
@@ -6676,14 +6630,14 @@ msgstr "Προεπισκόπηση"
 msgid "Preview checkout form"
 msgstr "Προεπισκόπηση φόρμας checkout"
 
-#: src/components/layouts/Event/index.tsx:239
-#: src/components/layouts/Event/index.tsx:243
+#: src/components/layouts/Event/index.tsx:241
+#: src/components/layouts/Event/index.tsx:245
 msgid "Preview Event page"
 msgstr "Προεπισκόπηση σελίδας εκδήλωσης"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:360
-#: src/components/forms/ProductForm/index.tsx:81
-#: src/components/forms/ProductForm/index.tsx:307
+#: src/components/forms/ProductForm/index.tsx:82
+#: src/components/forms/ProductForm/index.tsx:308
 msgid "Price"
 msgstr "Τιμή"
 
@@ -6695,15 +6649,11 @@ msgstr "Λειτουργία εμφάνισης τιμής"
 msgid "Price not set"
 msgstr "Τιμή μη ορισμένη"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:59
-msgid "Price of the ticket"
-msgstr "Τιμή εισιτηρίου"
-
-#: src/components/forms/ProductForm/index.tsx:343
+#: src/components/forms/ProductForm/index.tsx:344
 msgid "Price Tiers"
 msgstr "Βαθμίδες Τιμής"
 
-#: src/components/forms/ProductForm/index.tsx:249
+#: src/components/forms/ProductForm/index.tsx:250
 msgid "Price Type"
 msgstr "Τύπος Τιμής"
 
@@ -6719,9 +6669,17 @@ msgstr "Κύριο Χρώμα Κειμένου"
 msgid "Print All Tickets"
 msgstr "Εκτύπωση Όλων των Εισιτηρίων"
 
+#: src/components/modals/FulfillmentOrderModal/index.tsx:371
+msgid "Print Delivery Slip"
+msgstr "Εκτύπωση δελτίου αποστολής"
+
 #: src/components/routes/event/TicketDesigner/index.tsx:223
 msgid "Print Preview"
 msgstr "Προεπισκόπηση Εκτύπωσης"
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:363
+msgid "Print Shipping Label"
+msgstr ""
 
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:114
 msgid "Print Ticket"
@@ -6754,12 +6712,14 @@ msgstr "Επεξεργασία παραγγελίας"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:285
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:482
 #: src/components/common/WaitlistTable/index.tsx:170
+#: src/components/modals/FulfillmentOrderModal/index.tsx:290
+#: src/components/modals/FulfillmentOrderModal/index.tsx:400
 #: src/components/modals/ManageAttendeeModal/index.tsx:119
 #: src/components/modals/OfferWaitlistModal/index.tsx:161
 msgid "Product"
 msgstr "Προϊόν"
 
-#: src/components/forms/ProductForm/index.tsx:288
+#: src/components/forms/ProductForm/index.tsx:289
 msgid "Product Category"
 msgstr "Κατηγορία Προϊόντος"
 
@@ -6779,7 +6739,7 @@ msgstr "Προϊόν Διαγράφηκε"
 msgid "Product deleted successfully"
 msgstr "Το προϊόν διαγράφηκε επιτυχώς"
 
-#: src/components/forms/ProductForm/index.tsx:257
+#: src/components/forms/ProductForm/index.tsx:258
 msgid "Product Price Type"
 msgstr "Τύπος Τιμής Προϊόντος"
 
@@ -6796,8 +6756,8 @@ msgstr "Πωλήσεις προϊόντων, έσοδα και ανάλυση φ
 msgid "Product Tier"
 msgstr "Βαθμίδα Προϊόντος"
 
-#: src/components/forms/ProductForm/index.tsx:234
-#: src/components/forms/ProductForm/index.tsx:242
+#: src/components/forms/ProductForm/index.tsx:235
+#: src/components/forms/ProductForm/index.tsx:243
 msgid "Product Type"
 msgstr "Τύπος Προϊόντος"
 
@@ -6838,7 +6798,7 @@ msgstr "Προφίλ"
 msgid "Profile updated successfully"
 msgstr "Το προφίλ ενημερώθηκε επιτυχώς"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:226
+#: src/components/routes/product-widget/SelectProducts/index.tsx:240
 msgid "Promo {promo_code} code applied"
 msgstr "Εφαρμόστηκε κωδικός προσφοράς {promo_code}"
 
@@ -6850,7 +6810,7 @@ msgstr "Κωδικός προσφοράς"
 msgid "Promo Code"
 msgstr "Κωδικός Προσφοράς"
 
-#: src/components/forms/ProductForm/index.tsx:481
+#: src/components/forms/ProductForm/index.tsx:482
 msgid "Promo Code page"
 msgstr "Σελίδα Κωδικού Προσφοράς"
 
@@ -6858,7 +6818,7 @@ msgstr "Σελίδα Κωδικού Προσφοράς"
 msgid "Promo code usage and discount breakdown"
 msgstr "Χρήση κωδικού προσφοράς και ανάλυση εκπτώσεων"
 
-#: src/components/layouts/Event/index.tsx:113
+#: src/components/layouts/Event/index.tsx:115
 #: src/components/modals/DuplicateEventModal/index.tsx:27
 #: src/components/routes/event/promo-codes.tsx:33
 msgid "Promo Codes"
@@ -6916,8 +6876,8 @@ msgstr "Check-in με QR Code"
 msgid "Qty"
 msgstr "Ποσ."
 
-#: src/components/forms/ProductForm/index.tsx:93
-#: src/components/forms/ProductForm/index.tsx:324
+#: src/components/forms/ProductForm/index.tsx:94
+#: src/components/forms/ProductForm/index.tsx:325
 msgid "Quantity Available"
 msgstr "Διαθέσιμη Ποσότητα"
 
@@ -7108,7 +7068,7 @@ msgid "Register"
 msgstr "Εγγραφή"
 
 #: src/components/common/QuestionsTable/index.tsx:412
-#: src/components/layouts/Event/index.tsx:107
+#: src/components/layouts/Event/index.tsx:108
 msgid "Registration Questions"
 msgstr "Ερωτήσεις Εγγραφής"
 
@@ -7116,14 +7076,14 @@ msgstr "Ερωτήσεις Εγγραφής"
 msgid "Remaining Uses"
 msgstr "Υπόλοιπες Χρήσεις"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:568
+#: src/components/routes/product-widget/SelectProducts/index.tsx:585
 msgid "remove"
 msgstr "αφαίρεση"
 
 #: src/components/common/Editor/Controls/InsertImageControl/index.tsx:146
 #: src/components/common/WaitlistTable/index.tsx:78
 #: src/components/common/WaitlistTable/index.tsx:111
-#: src/components/routes/product-widget/SelectProducts/index.tsx:569
+#: src/components/routes/product-widget/SelectProducts/index.tsx:586
 msgid "Remove"
 msgstr "Αφαίρεση"
 
@@ -7131,7 +7091,7 @@ msgstr "Αφαίρεση"
 msgid "Report not found"
 msgstr "Η αναφορά δεν βρέθηκε"
 
-#: src/components/layouts/Event/index.tsx:97
+#: src/components/layouts/Event/index.tsx:98
 #: src/components/layouts/OrganizerLayout/index.tsx:81
 #: src/components/routes/event/Reports/index.tsx:39
 #: src/components/routes/organizer/Reports/index.tsx:51
@@ -7142,7 +7102,7 @@ msgstr "Αναφορές"
 msgid "Request a new link"
 msgstr "Αίτημα νέου συνδέσμου"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:169
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:184
 msgid "Require Billing Address"
 msgstr "Υποχρεωτική Διεύθυνση Χρέωσης"
 
@@ -7162,7 +7122,7 @@ msgstr "Επαναποστολή Επιβεβαίωσης"
 msgid "Resend Confirmation Email"
 msgstr "Επαναποστολή Email Επιβεβαίωσης"
 
-#: src/components/layouts/Event/index.tsx:259
+#: src/components/layouts/Event/index.tsx:261
 msgid "Resend email"
 msgstr "Επαναποστολή email"
 
@@ -7262,6 +7222,8 @@ msgstr "Επανάληψη Όλων"
 msgid "Retry Job"
 msgstr "Επανάληψη Εργασίας"
 
+#: src/components/routes/product-widget/Payment/PaymentMethods/Paypal/index.tsx:44
+#: src/components/routes/product-widget/Payment/PaymentMethods/Paypal/index.tsx:59
 #: src/components/routes/product-widget/Payment/PaymentMethods/Stripe/index.tsx:52
 #: src/components/routes/product-widget/Payment/PaymentMethods/Stripe/index.tsx:67
 msgid "Return to Event"
@@ -7297,8 +7259,8 @@ msgstr "Ανάκληση Προσφοράς"
 msgid "Role"
 msgstr "Ρόλος"
 
-#: src/components/forms/ProductForm/index.tsx:104
-#: src/components/forms/ProductForm/index.tsx:457
+#: src/components/forms/ProductForm/index.tsx:105
+#: src/components/forms/ProductForm/index.tsx:458
 msgid "Sale End Date"
 msgstr "Ημερομηνία Λήξης Πώλησης"
 
@@ -7311,20 +7273,20 @@ msgid "Sale ends {0}"
 msgstr "Η πώληση λήγει {0}"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:414
-#: src/components/forms/ProductForm/index.tsx:450
+#: src/components/forms/ProductForm/index.tsx:451
 msgid "Sale Period"
 msgstr "Περίοδος Πώλησης"
 
-#: src/components/forms/ProductForm/index.tsx:385
+#: src/components/forms/ProductForm/index.tsx:386
 msgid "Sale period set"
 msgstr "Η περίοδος πώλησης ορίστηκε"
 
-#: src/components/forms/ProductForm/index.tsx:387
+#: src/components/forms/ProductForm/index.tsx:388
 msgid "Sale period, order limits, visibility"
 msgstr "Περίοδος πώλησης, όρια παραγγελίας, ορατότητα"
 
-#: src/components/forms/ProductForm/index.tsx:99
-#: src/components/forms/ProductForm/index.tsx:455
+#: src/components/forms/ProductForm/index.tsx:100
+#: src/components/forms/ProductForm/index.tsx:456
 msgid "Sale Start Date"
 msgstr "Ημερομηνία Έναρξης Πώλησης"
 
@@ -7374,12 +7336,13 @@ msgstr "Σαν Φρανσίσκο"
 
 #: src/components/common/PlatformFeesSettings/index.tsx:249
 #: src/components/common/QuestionAndAnswerList/index.tsx:142
+#: src/components/modals/FulfillmentOrderModal/index.tsx:437
 #: src/components/routes/event/Settings/Sections/EmailSettings/GeneralEmailSettings.tsx:81
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:129
 #: src/components/routes/event/Settings/Sections/HomepageAndCheckoutSettings/index.tsx:141
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:166
 #: src/components/routes/event/Settings/Sections/MiscSettings/index.tsx:102
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:265
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:280
 #: src/components/routes/event/Settings/Sections/SeoSettings/index.tsx:85
 #: src/components/routes/event/Settings/Sections/WaitlistSettings/index.tsx:76
 #: src/components/routes/organizer/Settings/Sections/AddressSettings/index.tsx:116
@@ -7485,6 +7448,7 @@ msgstr "Αναζήτηση ανά όνομα ή email..."
 msgid "Search by name, email, or account..."
 msgstr "Αναζήτηση ανά όνομα, email ή λογαριασμό..."
 
+#: src/components/routes/event/fulfillment.tsx:221
 #: src/components/routes/event/orders.tsx:128
 msgid "Search by name, email, or order #..."
 msgstr "Αναζήτηση ανά όνομα, email ή αριθμό παραγγελίας..."
@@ -7579,7 +7543,7 @@ msgstr "Επιλογή ομάδας συμμετεχόντων"
 msgid "Select Camera"
 msgstr "Επιλογή Κάμερας"
 
-#: src/components/forms/ProductForm/index.tsx:291
+#: src/components/forms/ProductForm/index.tsx:292
 msgid "Select category..."
 msgstr "Επιλογή κατηγορίας..."
 
@@ -7679,7 +7643,7 @@ msgstr "Επιλέξτε ποια γεγονότα θα ενεργοποιήσο
 msgid "Select which fee configuration applies to this account. Fixed fees are converted to the order currency at checkout."
 msgstr "Επιλέξτε ποια ρύθμιση τελών ισχύει για αυτό τον λογαριασμό. Τα σταθερά τέλη μετατρέπονται στο νόμισμα παραγγελίας κατά το checkout."
 
-#: src/components/forms/ProductForm/index.tsx:404
+#: src/components/forms/ProductForm/index.tsx:405
 msgid "Select..."
 msgstr "Επιλογή..."
 
@@ -7688,7 +7652,7 @@ msgstr "Επιλογή..."
 msgid "Selected"
 msgstr "Επιλεγμένο"
 
-#: src/components/forms/ProductForm/index.tsx:515
+#: src/components/forms/ProductForm/index.tsx:516
 msgid "Selling fast 🔥"
 msgstr "Πωλείται γρήγορα 🔥"
 
@@ -7796,7 +7760,7 @@ msgstr "Τίτλος SEO"
 msgid "Service Fee"
 msgstr "Χρέωση Υπηρεσίας"
 
-#: src/components/forms/ProductForm/index.tsx:168
+#: src/components/forms/ProductForm/index.tsx:169
 msgid "Set a minimum price and let users pay more if they choose"
 msgstr "Ορίστε ελάχιστη τιμή και αφήστε τους χρήστες να πληρώσουν περισσότερο εάν επιθυμούν"
 
@@ -7808,7 +7772,7 @@ msgstr "Ορίστε προεπιλεγμένες ρυθμίσεις τελών 
 msgid "Set default settings for new events created under this organizer."
 msgstr "Ορίστε προεπιλεγμένες ρυθμίσεις για νέες εκδηλώσεις αυτού του διοργανωτή."
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:207
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:222
 msgid "Set the starting number for invoice numbering. This cannot be changed once invoices have been generated."
 msgstr "Ορίστε τον αρχικό αριθμό για την αρίθμηση τιμολογίων. Δεν μπορεί να αλλαχθεί μόλις δημιουργηθούν τιμολόγια."
 
@@ -7832,18 +7796,12 @@ msgstr "Δημοσιεύστε την εκδήλωσή σας"
 msgid "Setting updated"
 msgstr "Η ρύθμιση ενημερώθηκε"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:48
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:49
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:50
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:81
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:82
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:83
 #: src/components/layouts/OrganizerLayout/index.tsx:88
 #: src/components/modals/DuplicateEventModal/index.tsx:26
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: src/components/layouts/Event/index.tsx:103
+#: src/components/layouts/Event/index.tsx:104
 msgid "Setup & Design"
 msgstr "Ρύθμιση & Σχεδιασμός"
 
@@ -7861,8 +7819,8 @@ msgstr "Κοινοποίηση"
 msgid "Share Affiliate Link"
 msgstr "Κοινοποίηση Συνδέσμου Συνεργάτη"
 
-#: src/components/layouts/Event/index.tsx:209
-#: src/components/layouts/Event/index.tsx:215
+#: src/components/layouts/Event/index.tsx:211
+#: src/components/layouts/Event/index.tsx:217
 #: src/components/modals/EventLiveCelebrationModal/index.tsx:102
 #: src/components/modals/EventLiveCelebrationModal/index.tsx:131
 msgid "Share Event"
@@ -7877,11 +7835,24 @@ msgstr "Κοινοποίηση Σελίδας Διοργανωτή"
 msgid "Shared Capacity Management"
 msgstr "Διαχείριση Κοινής Χωρητικότητας"
 
+#: src/components/modals/FulfillmentOrderModal/index.tsx:123
+msgid "Ship To"
+msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:355
+#: src/components/routes/product-widget/CollectInformation/index.tsx:545
+msgid "Shipping Address"
+msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:100
+msgid "Shipping Label"
+msgstr ""
+
 #: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:232
 msgid "Show all platforms ({0} more with values)"
 msgstr "Εμφάνιση όλων των πλατφορμών ({0} περισσότερες με τιμές)"
 
-#: src/components/forms/ProductForm/index.tsx:475
+#: src/components/forms/ProductForm/index.tsx:476
 msgid "Show available product quantity"
 msgstr "Εμφάνιση διαθέσιμης ποσότητας προϊόντος"
 
@@ -7901,8 +7872,8 @@ msgstr "Εμφάνιση πλαισίου εξουσιοδότησης μάρκ�
 msgid "Show marketing opt-in checkbox by default"
 msgstr "Εμφάνιση πλαισίου εξουσιοδότησης μάρκετινγκ ως προεπιλογή"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:424
-#: src/components/routes/product-widget/SelectProducts/index.tsx:523
+#: src/components/routes/product-widget/SelectProducts/index.tsx:438
+#: src/components/routes/product-widget/SelectProducts/index.tsx:540
 msgid "Show more"
 msgstr "Εμφάνιση περισσότερων"
 
@@ -7989,7 +7960,8 @@ msgstr "Εξαντλημένο"
 
 #: src/components/common/ErrorDisplay/index.tsx:15
 #: src/components/routes/auth/AcceptInvitation/index.tsx:48
-#: src/components/routes/product-widget/CollectInformation/index.tsx:387
+#: src/components/routes/product-widget/CollectInformation/index.tsx:414
+#: src/components/routes/product-widget/Payment/PaymentMethods/Paypal/index.tsx:56
 #: src/components/routes/product-widget/Payment/PaymentMethods/Stripe/index.tsx:64
 msgid "Something went wrong"
 msgstr "Κάτι πήγε στραβά"
@@ -8015,7 +7987,7 @@ msgstr "Κάτι πήγε στραβά."
 msgid "Something went wrong. Please try again later."
 msgstr "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά αργότερα."
 
-#: src/components/layouts/Event/index.tsx:78
+#: src/components/layouts/Event/index.tsx:79
 #: src/components/layouts/OrganizerLayout/index.tsx:106
 #: src/components/routes/auth/Login/index.tsx:72
 #: src/components/routes/my-tickets/index.tsx:145
@@ -8028,7 +8000,7 @@ msgstr "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξα
 msgid "Sorry for the inconvenience."
 msgstr "Ζητούμε συγγνώμη για την ταλαιπωρία."
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:294
+#: src/components/routes/product-widget/SelectProducts/index.tsx:308
 msgid "Sorry, this promo code is not recognized"
 msgstr "Λυπούμαστε, αυτός ο κωδικός προσφοράς δεν αναγνωρίζεται"
 
@@ -8044,7 +8016,7 @@ msgstr "Ισπανικά"
 msgid "Sports"
 msgstr "Αθλητισμός"
 
-#: src/components/forms/ProductForm/index.tsx:156
+#: src/components/forms/ProductForm/index.tsx:157
 msgid "Standard product with a fixed price"
 msgstr "Τυπικό προϊόν με σταθερή τιμή"
 
@@ -8066,16 +8038,11 @@ msgstr "Ημερομηνία & Ώρα Έναρξης"
 msgid "Start date is required"
 msgstr "Η ημερομηνία έναρξης είναι υποχρεωτική"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:36
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:70
-msgid "Start time of the event"
-msgstr "Ώρα έναρξης εκδήλωσης"
-
 #: src/components/common/CheckoutQuestion/index.tsx:165
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:139
 #: src/components/routes/organizer/Settings/Sections/AddressSettings/index.tsx:97
-#: src/components/routes/product-widget/CollectInformation/index.tsx:540
-#: src/components/routes/product-widget/CollectInformation/index.tsx:541
+#: src/components/routes/product-widget/CollectInformation/index.tsx:571
+#: src/components/routes/product-widget/CollectInformation/index.tsx:572
 msgid "State or Region"
 msgstr "Νομός ή Περιοχή"
 
@@ -8100,6 +8067,8 @@ msgstr "Τα στατιστικά βασίζονται στην ημερομην
 #: src/components/forms/CapaciyAssigmentForm/index.tsx:56
 #: src/components/forms/WebhookForm/index.tsx:157
 #: src/components/modals/EditUserModal/index.tsx:103
+#: src/components/modals/FulfillmentOrderModal/index.tsx:344
+#: src/components/modals/FulfillmentOrderModal/index.tsx:402
 #: src/components/routes/account/ManageAccount/sections/Users/index.tsx:157
 #: src/components/routes/admin/Dashboard/index.tsx:405
 #: src/components/routes/admin/Messages/index.tsx:120
@@ -8120,7 +8089,7 @@ msgstr "Διακοπή Υποκατάστασης"
 
 #: src/components/common/OrdersTable/index.tsx:384
 #: src/components/routes/admin/Dashboard/index.tsx:424
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:85
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:86
 msgid "Stripe"
 msgstr "Stripe"
 
@@ -8199,7 +8168,7 @@ msgstr "Επιτυχής επιβεβαίωση αλλαγής email"
 msgid "Successfully created attendee"
 msgstr "Επιτυχής δημιουργία συμμετέχοντα"
 
-#: src/components/modals/CreateProductModal/index.tsx:55
+#: src/components/modals/CreateProductModal/index.tsx:57
 msgid "Successfully Created Product"
 msgstr "Επιτυχής Δημιουργία Προϊόντος"
 
@@ -8212,7 +8181,7 @@ msgstr "Επιτυχής Δημιουργία Κωδικού Προσφοράς"
 msgid "Successfully Created Question"
 msgstr "Επιτυχής Δημιουργία Ερώτησης"
 
-#: src/components/modals/DuplicateProductModal/index.tsx:99
+#: src/components/modals/DuplicateProductModal/index.tsx:103
 msgid "Successfully Duplicated Product"
 msgstr "Επιτυχής Αντιγραφή Προϊόντος"
 
@@ -8285,7 +8254,7 @@ msgstr "Επιτυχής ενημέρωση παραγγελίας"
 msgid "Successfully Updated Organizer"
 msgstr "Επιτυχής Ενημέρωση Διοργανωτή"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:74
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:75
 msgid "Successfully Updated Payment & Invoicing Settings"
 msgstr "Επιτυχής Ενημέρωση Ρυθμίσεων Πληρωμής & Τιμολόγησης"
 
@@ -8297,7 +8266,7 @@ msgstr "Επιτυχής Ενημέρωση Προεπιλογών Τελών Π
 msgid "Successfully Updated Platform Fee Settings"
 msgstr "Επιτυχής Ενημέρωση Ρυθμίσεων Τελών Πλατφόρμας"
 
-#: src/components/modals/EditProductModal/index.tsx:95
+#: src/components/modals/EditProductModal/index.tsx:99
 msgid "Successfully updated product"
 msgstr "Επιτυχής ενημέρωση προϊόντος"
 
@@ -8350,8 +8319,6 @@ msgstr "Καλοκαιρινό Μουσικό Φεστιβάλ {0}"
 msgid "Summer Music Festival 2025"
 msgstr "Καλοκαιρινό Μουσικό Φεστιβάλ 2025"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:48
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:81
 #: src/components/routes/event/Settings/Sections/EmailSettings/GeneralEmailSettings.tsx:63
 msgid "Support Email"
 msgstr "Email Υποστήριξης"
@@ -8369,7 +8336,7 @@ msgstr "Εναλλαγή Διοργανωτή"
 msgid "System Default"
 msgstr "Προεπιλογή Συστήματος"
 
-#: src/components/forms/ProductForm/index.tsx:275
+#: src/components/forms/ProductForm/index.tsx:276
 msgid "T-shirt"
 msgstr "Μπλούζα"
 
@@ -8398,11 +8365,11 @@ msgstr "Φόρος & Τέλη"
 msgid "Tax collected grouped by tax type and event"
 msgstr "Φόρος που συλλέχθηκε ανά τύπο φόρου και εκδήλωση"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:243
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:258
 msgid "Tax Details"
 msgstr "Λεπτομέρειες Φόρου"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:244
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:259
 msgid "Tax information to appear at the bottom of all invoices (e.g., VAT number, tax registration)"
 msgstr "Πληροφορίες φόρου για εμφάνιση στο κάτω μέρος όλων των τιμολογίων (π.χ., αριθμός ΦΠΑ, φορολογική εγγραφή)"
 
@@ -8420,7 +8387,7 @@ msgid "Tax Summary"
 msgstr "Σύνοψη Φόρου"
 
 #: src/components/common/InlineOrderSummary/index.tsx:173
-#: src/components/forms/ProductForm/index.tsx:406
+#: src/components/forms/ProductForm/index.tsx:407
 #: src/components/routes/organizer/Reports/RevenueSummaryReport/index.tsx:48
 msgid "Taxes"
 msgstr "Φόροι"
@@ -8429,18 +8396,18 @@ msgstr "Φόροι"
 msgid "Taxes & fees applied"
 msgstr "Εφαρμόστηκαν φόροι & τέλη"
 
-#: src/components/forms/ProductForm/index.tsx:398
-#: src/components/forms/ProductForm/index.tsx:403
+#: src/components/forms/ProductForm/index.tsx:399
+#: src/components/forms/ProductForm/index.tsx:404
 msgid "Taxes and Fees"
 msgstr "Φόροι και Τέλη"
 
-#: src/components/forms/ProductForm/index.tsx:383
+#: src/components/forms/ProductForm/index.tsx:384
 msgid "Taxes configured"
 msgstr "Οι φόροι ρυθμίστηκαν"
 
-#: src/components/forms/ProductForm/index.tsx:376
-msgid "Taxes, Fees, Visibility, Sale Period, Product Highlight & Order Limits"
-msgstr "Φόροι, Τέλη, Ορατότητα, Περίοδος Πώλησης, Ανάδειξη Προϊόντος & Όρια Παραγγελίας"
+#: src/components/forms/ProductForm/index.tsx:377
+msgid "Taxes, Fees, Visibility, Sale Period, Product Highlight, Hard Ticket & Order Limits"
+msgstr ""
 
 #: src/components/layouts/AuthLayout/index.tsx:56
 msgid "Team Management"
@@ -8499,8 +8466,8 @@ msgstr "Σας ευχαριστούμε για τη συμμετοχή σας!"
 msgid "Thanks for your support as we continue to grow and improve Hi.Events!"
 msgstr "Σας ευχαριστούμε για την υποστήριξη καθώς συνεχίζουμε να αναπτυσσόμαστε και να βελτιώνουμε το Hi.Events!"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:186
-#: src/components/routes/product-widget/SelectProducts/index.tsx:234
+#: src/components/routes/product-widget/SelectProducts/index.tsx:200
+#: src/components/routes/product-widget/SelectProducts/index.tsx:248
 msgid "That promo code is invalid"
 msgstr "Αυτός ο κωδικός προσφοράς δεν είναι έγκυρος"
 
@@ -8520,10 +8487,6 @@ msgstr "Ο κωδικός θα λήξει σε 10 λεπτά. Ελέγξτε τ�
 msgid "The currency in which the fixed fee is defined. It will be converted to the order currency at checkout."
 msgstr "Το νόμισμα στο οποίο ορίζεται το σταθερό τέλος. Θα μετατραπεί στο νόμισμα παραγγελίας κατά το checkout."
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:30
-msgid "The currency of the order"
-msgstr "Το νόμισμα της παραγγελίας"
-
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:75
 #: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:118
 msgid "The default currency for your events."
@@ -8538,20 +8501,10 @@ msgstr "Η προεπιλεγμένη ζώνη ώρας για τις εκδηλ
 msgid "The email address has been changed. The attendee will receive a new ticket at the updated email address."
 msgstr "Η διεύθυνση email άλλαξε. Ο συμμετέχων θα λάβει νέο εισιτήριο στην ενημερωμένη διεύθυνση."
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:40
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:74
-msgid "The event venue"
-msgstr "Ο χώρος εκδήλωσης"
-
 #: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:10
 #: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:12
 msgid "The event you're looking for is not available at the moment. It may have been removed, expired, or the URL might be incorrect."
 msgstr "Η εκδήλωση που αναζητάτε δεν είναι διαθέσιμη αυτή τη στιγμή. Μπορεί να αφαιρέθηκε, να έληξε ή το URL μπορεί να είναι λανθασμένο."
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:37
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:71
-msgid "The full event address"
-msgstr "Η πλήρης διεύθυνση εκδήλωσης"
 
 #: src/components/modals/CancelOrderModal/index.tsx:77
 msgid "The full order amount will be refunded to the customer's original payment method."
@@ -8569,11 +8522,7 @@ msgstr "Ο σύνδεσμος που προσπαθείτε να αποκτήσ�
 msgid "The link you clicked is invalid."
 msgstr "Ο σύνδεσμος που κάνατε κλικ δεν είναι έγκυρος."
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:29
-msgid "The locale of the customer"
-msgstr "Η τοπική ρύθμιση του πελάτη"
-
-#: src/components/routes/product-widget/SelectProducts/index.tsx:508
+#: src/components/routes/product-widget/SelectProducts/index.tsx:525
 msgid "The maximum number of products for {0}is {1}"
 msgstr "Ο μέγιστος αριθμός προϊόντων για {0}είναι {1}"
 
@@ -8637,11 +8586,11 @@ msgstr "Θέατρο"
 msgid "Theme & Colors"
 msgstr "Θέμα & Χρώματα"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:320
+#: src/components/routes/product-widget/SelectProducts/index.tsx:334
 msgid "There are no products available for this event"
 msgstr "Δεν υπάρχουν διαθέσιμα προϊόντα για αυτή την εκδήλωση"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:433
+#: src/components/routes/product-widget/SelectProducts/index.tsx:447
 msgid "There are no products available in this category"
 msgstr "Δεν υπάρχουν διαθέσιμα προϊόντα σε αυτή την κατηγορία"
 
@@ -8725,11 +8674,11 @@ msgstr "Αυτή η εκδήλωση έχει τελειώσει"
 msgid "This event is not published yet"
 msgstr "Αυτή η εκδήλωση δεν έχει δημοσιευτεί ακόμα"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:152
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:158
 msgid "This information will be shown on the payment page, order summary page, and order confirmation email."
 msgstr "Αυτές οι πληροφορίες θα εμφανίζονται στη σελίδα πληρωμής, στη σύνοψη παραγγελίας και στο email επιβεβαίωσης."
 
-#: src/components/forms/ProductForm/index.tsx:147
+#: src/components/forms/ProductForm/index.tsx:148
 msgid "This is a general product, like a t-shirt or a mug. No ticket will be issued"
 msgstr "Πρόκειται για γενικό προϊόν, όπως μπλούζα ή κούπα. Δεν θα εκδοθεί εισιτήριο"
 
@@ -8782,7 +8731,7 @@ msgstr "Αυτή η παραγγελία έχει ήδη επιστραφεί."
 msgid "This order has been cancelled."
 msgstr "Αυτή η παραγγελία έχει ακυρωθεί."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:316
+#: src/components/routes/product-widget/CollectInformation/index.tsx:343
 msgid "This order has expired. Please start again."
 msgstr "Αυτή η παραγγελία έχει λήξει. Παρακαλώ ξεκινήστε από την αρχή."
 
@@ -8798,11 +8747,11 @@ msgstr "Αυτή η παραγγελία έχει ολοκληρωθεί."
 msgid "This order page is no longer available."
 msgstr "Αυτή η σελίδα παραγγελίας δεν είναι πλέον διαθέσιμη."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:329
+#: src/components/routes/product-widget/CollectInformation/index.tsx:356
 msgid "This order was abandoned. You can start a new order anytime."
 msgstr "Αυτή η παραγγελία εγκαταλείφθηκε. Μπορείτε να ξεκινήσετε νέα παραγγελία ανά πάσα στιγμή."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:359
+#: src/components/routes/product-widget/CollectInformation/index.tsx:386
 msgid "This order was cancelled. You can start a new order anytime."
 msgstr "Αυτή η παραγγελία ακυρώθηκε. Μπορείτε να ξεκινήσετε νέα παραγγελία ανά πάσα στιγμή."
 
@@ -8810,7 +8759,7 @@ msgstr "Αυτή η παραγγελία ακυρώθηκε. Μπορείτε ν
 msgid "This organizer profile is not published yet"
 msgstr "Αυτό το προφίλ διοργανωτή δεν έχει δημοσιευτεί ακόμα"
 
-#: src/components/forms/ProductForm/index.tsx:486
+#: src/components/forms/ProductForm/index.tsx:487
 msgid "This overrides all visibility settings and will hide the product from all customers."
 msgstr "Αυτό παρακάμπτει όλες τις ρυθμίσεις ορατότητας και θα αποκρύψει το προϊόν από όλους τους πελάτες."
 
@@ -8822,7 +8771,7 @@ msgstr "Αυτή η προεπισκόπηση δείχνει πώς θα φαί
 msgid "This product cannot be deleted because it is associated with an order. You can hide it instead."
 msgstr "Αυτό το προϊόν δεν μπορεί να διαγραφεί γιατί σχετίζεται με παραγγελία. Μπορείτε να το αποκρύψετε."
 
-#: src/components/forms/ProductForm/index.tsx:141
+#: src/components/forms/ProductForm/index.tsx:142
 msgid "This product is a ticket. Buyers will be issued a ticket upon purchase"
 msgstr "Αυτό το προϊόν είναι εισιτήριο. Οι αγοραστές θα λάβουν εισιτήριο κατά την αγορά"
 
@@ -8863,12 +8812,9 @@ msgstr "Αυτό δεν θα είναι ορατό στους πελάτες, α
 msgid "ticket"
 msgstr "εισιτήριο"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:58
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:59
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:60
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:276
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:482
-#: src/components/forms/ProductForm/index.tsx:139
+#: src/components/forms/ProductForm/index.tsx:140
 #: src/components/modals/CreateAttendeeModal/index.tsx:162
 msgid "Ticket"
 msgstr "Εισιτήριο"
@@ -8885,7 +8831,7 @@ msgstr "Σχεδιασμός Εισιτηρίου"
 msgid "Ticket design saved successfully"
 msgstr "Ο σχεδιασμός εισιτηρίου αποθηκεύτηκε επιτυχώς"
 
-#: src/components/layouts/Event/index.tsx:106
+#: src/components/layouts/Event/index.tsx:107
 msgid "Ticket Designer"
 msgstr "Σχεδιαστής Εισιτηρίου"
 
@@ -8896,14 +8842,6 @@ msgstr "Το email εισιτηρίου εστάλη ξανά στον συμμ�
 #: src/components/routes/product-widget/PrintProduct/index.tsx:42
 msgid "Ticket for"
 msgstr "Εισιτήριο για"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:55
-msgid "Ticket holder's email"
-msgstr "Email κατόχου εισιτηρίου"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:54
-msgid "Ticket holder's name"
-msgstr "Όνομα κατόχου εισιτηρίου"
 
 #: src/components/common/MessageList/index.tsx:30
 msgid "Ticket holders"
@@ -8922,10 +8860,6 @@ msgstr "ID Εισιτηρίου"
 msgid "Ticket Logo"
 msgstr "Λογότυπο Εισιτηρίου"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:58
-msgid "Ticket Name"
-msgstr "Όνομα Εισιτηρίου"
-
 #: src/components/routes/product-widget/AttendeeProductAndInformation/index.tsx:22
 msgid "Ticket Not Found"
 msgstr "Εισιτήριο Δεν Βρέθηκε"
@@ -8942,10 +8876,6 @@ msgstr "Προεπισκόπηση Εισιτηρίου για"
 msgid "Ticket price"
 msgstr "Τιμή εισιτηρίου"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:59
-msgid "Ticket Price"
-msgstr "Τιμή Εισιτηρίου"
-
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:501
 msgid "Ticket resent successfully"
 msgstr "Το εισιτήριο εστάλη ξανά επιτυχώς"
@@ -8955,11 +8885,7 @@ msgstr "Το εισιτήριο εστάλη ξανά επιτυχώς"
 msgid "Ticket Type"
 msgstr "Τύπος Εισιτηρίου"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:60
-msgid "Ticket URL"
-msgstr "URL Εισιτηρίου"
-
-#: src/components/layouts/Event/index.tsx:110
+#: src/components/layouts/Event/index.tsx:111
 msgid "Ticketing & Sales"
 msgstr "Εισιτήρια & Πωλήσεις"
 
@@ -8971,7 +8897,7 @@ msgstr "εισιτήρια"
 msgid "Tickets"
 msgstr "Εισιτήρια"
 
-#: src/components/layouts/Event/index.tsx:111
+#: src/components/layouts/Event/index.tsx:112
 #: src/components/routes/event/products.tsx:48
 msgid "Tickets & Products"
 msgstr "Εισιτήρια & Προϊόντα"
@@ -8992,15 +8918,15 @@ msgstr "Εισιτήρια για"
 msgid "Tickets Sold"
 msgstr "Εισιτήρια που Πωλήθηκαν"
 
-#: src/components/forms/ProductForm/index.tsx:74
+#: src/components/forms/ProductForm/index.tsx:75
 msgid "Tier {0}"
 msgstr "Βαθμίδα {0}"
 
-#: src/components/forms/ProductForm/index.tsx:172
+#: src/components/forms/ProductForm/index.tsx:173
 msgid "Tiered Product"
 msgstr "Προϊόν με Βαθμίδες"
 
-#: src/components/forms/ProductForm/index.tsx:264
+#: src/components/forms/ProductForm/index.tsx:265
 msgid "Tiered products allow you to offer multiple price options for the same product. This is perfect for early bird products, or offering different price options for different groups of people."
 msgstr "Τα προϊόντα με βαθμίδες σας επιτρέπουν να προσφέρετε πολλαπλές επιλογές τιμής για το ίδιο προϊόν. Ιδανικό για πρώιμες αγορές ή διαφορετικές τιμές για διαφορετικές ομάδες."
 
@@ -9066,16 +8992,13 @@ msgstr "Κορυφαίοι Διοργανωτές (Τελευταίες 14 Ημ�
 #: src/components/common/AdminOrdersTable/index.tsx:81
 #: src/components/common/InlineOrderSummary/index.tsx:203
 #: src/components/common/OrderSummary/index.tsx:92
+#: src/components/routes/event/fulfillment.tsx:148
 msgid "Total"
 msgstr "Σύνολο"
 
 #: src/components/routes/admin/Dashboard/index.tsx:104
 msgid "Total Accounts"
 msgstr "Σύνολο Λογαριασμών"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:22
-msgid "Total amount paid"
-msgstr "Συνολικό ποσό που καταβλήθηκε"
 
 #: src/components/routes/organizer/Reports/CheckInSummaryReport/index.tsx:35
 msgid "Total Attendees"
@@ -9158,16 +9081,6 @@ msgstr "Παρακολούθηση & Αναλυτικά"
 msgid "Transaction Fee:"
 msgstr "Χρέωση Συναλλαγής:"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:31
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:65
-msgid "True if offline payment"
-msgstr "Αληθές αν είναι πληρωμή εκτός σύνδεσης"
-
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:28
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:63
-msgid "True if payment pending"
-msgstr "Αληθές αν η πληρωμή εκκρεμεί"
-
 #: src/components/routes/auth/Login/index.tsx:141
 #: src/components/routes/my-tickets/index.tsx:183
 msgid "Try another email"
@@ -9206,10 +9119,6 @@ msgstr "Τύπος"
 msgid "Type \"delete\" to confirm"
 msgstr "Πληκτρολογήστε \"delete\" για επιβεβαίωση"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:58
-msgid "Type of ticket"
-msgstr "Τύπος εισιτηρίου"
-
 #: src/components/routes/event/HomepageDesigner/index.tsx:248
 #: src/components/routes/organizer/OrganizerHomepageDesigner/index.tsx:280
 msgid "Typography"
@@ -9224,11 +9133,11 @@ msgstr "Αδύνατο check-in συμμετέχοντα"
 msgid "Unable to check out attendee"
 msgstr "Αδύνατο check-out συμμετέχοντα"
 
-#: src/components/modals/CreateProductModal/index.tsx:64
+#: src/components/modals/CreateProductModal/index.tsx:66
 msgid "Unable to create product. Please check the your details"
 msgstr "Αδύνατη δημιουργία προϊόντος. Ελέγξτε τα στοιχεία σας"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:171
+#: src/components/routes/product-widget/SelectProducts/index.tsx:185
 msgid "Unable to create product. Please check your details"
 msgstr "Αδύνατη δημιουργία προϊόντος. Ελέγξτε τα στοιχεία σας"
 
@@ -9236,7 +9145,7 @@ msgstr "Αδύνατη δημιουργία προϊόντος. Ελέγξτε �
 msgid "Unable to create question. Please check the your details"
 msgstr "Αδύνατη δημιουργία ερώτησης. Ελέγξτε τα στοιχεία σας"
 
-#: src/components/modals/DuplicateProductModal/index.tsx:107
+#: src/components/modals/DuplicateProductModal/index.tsx:111
 msgid "Unable to duplicate product. Please check the your details"
 msgstr "Αδύνατη αντιγραφή προϊόντος. Ελέγξτε τα στοιχεία σας"
 
@@ -9260,10 +9169,6 @@ msgstr "Μη Αποδιδόμενοι Λογαριασμοί"
 msgid "Unique Customers"
 msgstr "Μοναδικοί Πελάτες"
 
-#: src/components/common/Editor/Controls/InsertLiquidVariableControl.tsx:21
-msgid "Unique order reference"
-msgstr "Μοναδική αναφορά παραγγελίας"
-
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:153
 #: src/components/routes/organizer/Settings/Sections/AddressSettings/index.tsx:111
 msgid "United States"
@@ -9283,8 +9188,8 @@ msgstr "Άγνωστος Συμμετέχων"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:406
 #: src/components/forms/CapaciyAssigmentForm/index.tsx:43
-#: src/components/forms/ProductForm/index.tsx:91
-#: src/components/forms/ProductForm/index.tsx:321
+#: src/components/forms/ProductForm/index.tsx:92
+#: src/components/forms/ProductForm/index.tsx:322
 #: src/components/forms/PromoCodeForm/index.tsx:112
 #: src/components/modals/OfferWaitlistModal/index.tsx:189
 #: src/components/routes/event/Reports/PromoCodesReport/index.tsx:78
@@ -9292,7 +9197,7 @@ msgstr "Άγνωστος Συμμετέχων"
 msgid "Unlimited"
 msgstr "Απεριόριστο"
 
-#: src/components/routes/product-widget/SelectProducts/index.tsx:471
+#: src/components/routes/product-widget/SelectProducts/index.tsx:488
 msgid "Unlimited available"
 msgstr "Απεριόριστα διαθέσιμα"
 
@@ -9585,7 +9490,7 @@ msgstr "Επαληθευμένο"
 msgid "Verify Email"
 msgstr "Επαλήθευση Email"
 
-#: src/components/layouts/Event/index.tsx:256
+#: src/components/layouts/Event/index.tsx:258
 msgid "Verify your email"
 msgstr "Επαληθεύστε το email σας"
 
@@ -9662,7 +9567,7 @@ msgid "View Order"
 msgstr "Προβολή Παραγγελίας"
 
 #: src/components/forms/StripeCheckoutForm/index.tsx:96
-#: src/components/routes/product-widget/CollectInformation/index.tsx:351
+#: src/components/routes/product-widget/CollectInformation/index.tsx:378
 msgid "View Order Details"
 msgstr "Προβολή Λεπτομερειών Παραγγελίας"
 
@@ -9693,11 +9598,11 @@ msgstr "Vimeo"
 msgid "VIP check-in list"
 msgstr "Λίστα check-in VIP"
 
-#: src/components/forms/ProductForm/index.tsx:275
+#: src/components/forms/ProductForm/index.tsx:276
 msgid "VIP Ticket"
 msgstr "Εισιτήριο VIP"
 
-#: src/components/forms/ProductForm/index.tsx:464
+#: src/components/forms/ProductForm/index.tsx:465
 msgid "Visibility"
 msgstr "Ορατότητα"
 
@@ -9716,11 +9621,11 @@ msgstr "VK"
 msgid "Waiting"
 msgstr "Αναμονή"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:338
+#: src/components/routes/product-widget/CollectInformation/index.tsx:365
 msgid "Waiting for payment"
 msgstr "Αναμονή πληρωμής"
 
-#: src/components/layouts/Event/index.tsx:121
+#: src/components/layouts/Event/index.tsx:123
 #: src/components/routes/event/Settings/index.tsx:76
 #: src/components/routes/event/Settings/Sections/WaitlistSettings/index.tsx:51
 #: src/components/routes/event/SoldOutWaitlist/index.tsx:49
@@ -9731,7 +9636,7 @@ msgstr "Λίστα Αναμονής"
 msgid "Waitlist Enabled"
 msgstr "Λίστα Αναμονής Ενεργή"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:373
+#: src/components/routes/product-widget/CollectInformation/index.tsx:400
 msgid "Waitlist offer expired"
 msgstr "Η προσφορά λίστας αναμονής έληξε"
 
@@ -9763,7 +9668,7 @@ msgstr "Δεν βρέθηκε η παραγγελία. Ο σύνδεσμος μ�
 msgid "We couldn't find the ticket you're looking for. The link may have expired or the ticket details may have changed."
 msgstr "Δεν βρέθηκε το εισιτήριο. Ο σύνδεσμος μπορεί να έχει λήξει ή τα στοιχεία να άλλαξαν."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:376
+#: src/components/routes/product-widget/CollectInformation/index.tsx:403
 msgid "We couldn't find this order. It may have been removed."
 msgstr "Δεν βρέθηκε αυτή η παραγγελία. Μπορεί να έχει αφαιρεθεί."
 
@@ -9775,7 +9680,7 @@ msgstr "Δεν μπορέσαμε να φορτώσουμε τα δεδομέν�
 msgid "We couldn't reorder the categories. Please try again."
 msgstr "Δεν μπορέσαμε να αναδιατάξουμε τις κατηγορίες. Παρακαλώ δοκιμάστε ξανά."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:388
+#: src/components/routes/product-widget/CollectInformation/index.tsx:415
 msgid "We hit a snag loading this page. Please try again."
 msgstr "Παρουσιάστηκε πρόβλημα κατά τη φόρτωση αυτής της σελίδας. Παρακαλώ δοκιμάστε ξανά."
 
@@ -9808,7 +9713,7 @@ msgstr "Δεν μπορέσαμε να επαληθεύσουμε τον αρι�
 msgid "We'll notify you by email if a spot becomes available for {productDisplayName}."
 msgstr "Θα σας ειδοποιήσουμε μέσω email εάν διατεθεί θέση για {productDisplayName}."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:428
+#: src/components/routes/product-widget/CollectInformation/index.tsx:455
 msgid "We'll send your tickets to this email"
 msgstr "Θα σας στείλουμε τα εισιτήρια σε αυτό το email"
 
@@ -9864,7 +9769,7 @@ msgstr "Το webhook δεν θα στέλνει ειδοποιήσεις"
 msgid "Webhook will send notifications"
 msgstr "Το webhook θα στέλνει ειδοποιήσεις"
 
-#: src/components/layouts/Event/index.tsx:127
+#: src/components/layouts/Event/index.tsx:129
 #: src/components/layouts/OrganizerLayout/index.tsx:94
 #: src/components/modals/DuplicateEventModal/index.tsx:32
 #: src/components/routes/event/Webhooks/index.tsx:32
@@ -9904,7 +9809,7 @@ msgstr "Καλώς ήρθατε στο {0}, {1} 👋"
 msgid "Welcome to {0}, here's a listing of all your events"
 msgstr "Καλώς ήρθατε στο {0}, εδώ είναι η λίστα όλων των εκδηλώσεών σας"
 
-#: src/components/forms/ProductForm/index.tsx:263
+#: src/components/forms/ProductForm/index.tsx:264
 msgid "What are Tiered Products?"
 msgstr "Τι είναι τα Προϊόντα με Βαθμίδες;"
 
@@ -10028,7 +9933,7 @@ msgstr "Όταν οι πελάτες αγοράζουν εισιτήρια, οι
 msgid "When enabled, buyers can copy their own name and email onto all attendees at once. Turn this off to remove the \"All attendees\" option; buyers can still copy to the first attendee, and the rest must be entered individually."
 msgstr "Όταν είναι ενεργοποιημένο, οι αγοραστές μπορούν να αντιγράψουν το όνομα και το email τους σε όλους τους συμμετέχοντες ταυτόχρονα. Απενεργοποιήστε το για να αφαιρέσετε την επιλογή \"Όλοι οι συμμετέχοντες\"· οι αγοραστές μπορούν ακόμα να αντιγράψουν τα στοιχεία στον πρώτο συμμετέχοντα, ενώ οι υπόλοιποι πρέπει να εισαχθούν μεμονωμένα."
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:182
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:197
 msgid "When enabled, invoices will be generated for ticket orders. Invoices will sent along with the order confirmation email. Attendees can also download their invoices from the order confirmation page."
 msgstr "Όταν είναι ενεργό, θα δημιουργούνται τιμολόγια για παραγγελίες εισιτηρίων. Τα τιμολόγια αποστέλλονται με το email επιβεβαίωσης."
 
@@ -10044,7 +9949,7 @@ msgstr "Όταν είναι ενεργό, νέες εκδηλώσεις θα ε�
 msgid "When enabled, no application fees will be charged on Stripe Connect transactions. Use this for countries where application fees are not supported."
 msgstr "Όταν είναι ενεργό, δεν θα χρεώνονται χρεώσεις εφαρμογής σε συναλλαγές Stripe Connect."
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:141
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:147
 msgid "When offline payments are enabled, users will be able to complete their orders and receive their tickets. Their tickets will clearly indicate the order is not paid, and the check-in tool will notify the check-in staff if an order requires payment."
 msgstr "Όταν οι πληρωμές εκτός σύνδεσης είναι ενεργές, οι χρήστες μπορούν να ολοκληρώσουν παραγγελίες και να λάβουν εισιτήρια με ένδειξη μη πληρωμένης παραγγελίας."
 
@@ -10060,7 +9965,7 @@ msgstr "Ποιος διοργανώνει αυτή την εκδήλωση;"
 msgid "Who should be asked this question?"
 msgstr "Σε ποιον πρέπει να τεθεί αυτή η ερώτηση;"
 
-#: src/components/layouts/Event/index.tsx:126
+#: src/components/layouts/Event/index.tsx:128
 msgid "Widget Embed"
 msgstr "Ενσωμάτωση Widget"
 
@@ -10077,13 +9982,13 @@ msgid "Working"
 msgstr "Εργασία"
 
 #: src/components/modals/CreateProductCategoryModal/index.tsx:60
-#: src/components/modals/CreateProductModal/index.tsx:89
+#: src/components/modals/CreateProductModal/index.tsx:91
 #: src/components/modals/CreatePromoCodeModal/index.tsx:56
 #: src/components/modals/CreateQuestionModal/index.tsx:75
 #: src/components/modals/DuplicateEventModal/index.tsx:177
-#: src/components/modals/DuplicateProductModal/index.tsx:117
+#: src/components/modals/DuplicateProductModal/index.tsx:121
 #: src/components/modals/EditProductCategoryModal/index.tsx:70
-#: src/components/modals/EditProductModal/index.tsx:114
+#: src/components/modals/EditProductModal/index.tsx:118
 #: src/components/modals/EditPromoCodeModal/index.tsx:84
 #: src/components/modals/EditQuestionModal/index.tsx:101
 #: src/components/modals/JoinWaitlistModal/index.tsx:188
@@ -10123,7 +10028,7 @@ msgstr "Ναι - Έχω έγκυρο αριθμό εγγραφής ΦΠΑ ΕΕ"
 msgid "Yes, cancel my order"
 msgstr "Ναι, ακύρωση παραγγελίας"
 
-#: src/components/forms/ProductForm/index.tsx:428
+#: src/components/forms/ProductForm/index.tsx:429
 msgid "Yes, remove them"
 msgstr "Ναι, αφαίρεσέ τα"
 
@@ -10152,7 +10057,7 @@ msgstr "Είστε εκτός σύνδεσης"
 msgid "You can configure additional service fees and taxes in your account settings."
 msgstr "Μπορείτε να ρυθμίσετε πρόσθετα τέλη υπηρεσιών και φόρους στις ρυθμίσεις λογαριασμού."
 
-#: src/components/forms/ProductForm/index.tsx:479
+#: src/components/forms/ProductForm/index.tsx:480
 msgid "You can create a promo code which targets this product on the"
 msgstr "Μπορείτε να δημιουργήσετε κωδικό προσφοράς για αυτό το προϊόν στη"
 
@@ -10164,7 +10069,7 @@ msgstr "Μπορείτε ακόμα να προσφέρετε εισιτήρια
 msgid "You cannot archive the last active organizer on your account."
 msgstr "Δεν μπορείτε να αρχειοθετήσετε τον τελευταίο ενεργό διοργανωτή στον λογαριασμό σας."
 
-#: src/components/forms/ProductForm/index.tsx:228
+#: src/components/forms/ProductForm/index.tsx:229
 msgid "You cannot change the product type as there are attendees associated with this product."
 msgstr "Δεν μπορείτε να αλλάξετε τον τύπο προϊόντος καθώς υπάρχουν συμμετέχοντες συνδεδεμένοι."
 
@@ -10177,7 +10082,7 @@ msgstr "Δεν μπορείτε να κάνετε check-in σε συμμετέχ
 msgid "You cannot delete the last category."
 msgstr "Δεν μπορείτε να διαγράψετε την τελευταία κατηγορία."
 
-#: src/components/forms/ProductForm/index.tsx:64
+#: src/components/forms/ProductForm/index.tsx:65
 msgid "You cannot delete this price tier because there are already products sold for this tier. You can hide it instead."
 msgstr "Δεν μπορείτε να διαγράψετε αυτή τη βαθμίδα τιμής γιατί υπάρχουν ήδη πωλήσεις. Μπορείτε να την αποκρύψετε."
 
@@ -10209,7 +10114,7 @@ msgstr "Έχετε φτάσει το όριο μηνυμάτων σας."
 msgid "You have run out of time to complete your order."
 msgstr "Έχετε εξαντλήσει τον χρόνο για ολοκλήρωση της παραγγελίας."
 
-#: src/components/forms/ProductForm/index.tsx:426
+#: src/components/forms/ProductForm/index.tsx:427
 msgid "You have taxes and fees added to a Free Product. Would you like to remove them?"
 msgstr "Έχετε φόρους και τέλη σε Δωρεάν Προϊόν. Θέλετε να τα αφαιρέσετε;"
 
@@ -10233,7 +10138,7 @@ msgstr "Πρέπει να συμφωνήσετε με τους όρους και
 msgid "You must create a ticket before you can manually add an attendee."
 msgstr "Πρέπει να δημιουργήσετε εισιτήριο πριν προσθέσετε χειροκίνητα συμμετέχοντα."
 
-#: src/components/forms/ProductForm/index.tsx:67
+#: src/components/forms/ProductForm/index.tsx:68
 msgid "You must have at least one price tier"
 msgstr "Πρέπει να έχετε τουλάχιστον μία βαθμίδα τιμής"
 
@@ -10257,7 +10162,7 @@ msgstr "Διατηρείτε 100% ιδιοκτησία των δεδομένων
 msgid "You receive"
 msgstr "Λαμβάνετε"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:143
+#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:149
 msgid "You will have to mark an order as paid manually. This can be done on the manage order page."
 msgstr "Θα πρέπει να σημάνετε χειροκίνητα παραγγελία ως πληρωμένη. Αυτό μπορεί να γίνει στη σελίδα διαχείρισης παραγγελίας."
 
@@ -10285,7 +10190,7 @@ msgstr "Θα πάτε στο {0}!"
 msgid "You're on the waitlist!"
 msgstr "Είστε στη λίστα αναμονής!"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:411
+#: src/components/routes/product-widget/CollectInformation/index.tsx:438
 msgid "You've been offered a spot!"
 msgstr "Σας προσφέρθηκε μια θέση!"
 
@@ -10321,7 +10226,7 @@ msgstr "Η λίστα check-in δημιουργήθηκε επιτυχώς. Μο
 msgid "Your current order will be lost."
 msgstr "Η τρέχουσα παραγγελία σας θα χαθεί."
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:425
+#: src/components/routes/product-widget/CollectInformation/index.tsx:452
 msgid "Your Details"
 msgstr "Τα Στοιχεία σας"
 
@@ -10439,7 +10344,7 @@ msgstr "Ο λογαριασμός Stripe είναι συνδεδεμένος κ�
 msgid "Your ticket for"
 msgstr "Το εισιτήριό σας για"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:349
+#: src/components/routes/product-widget/CollectInformation/index.tsx:376
 msgid "Your tickets have been confirmed."
 msgstr "Τα εισιτήριά σας επιβεβαιώθηκαν."
 
@@ -10451,7 +10356,7 @@ msgstr "Ο αριθμός ΦΠΑ σας είναι σε ουρά για επαλ
 msgid "Your VAT number will be validated when you save"
 msgstr "Ο αριθμός ΦΠΑ σας θα επαληθευτεί όταν αποθηκεύσετε"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:375
+#: src/components/routes/product-widget/CollectInformation/index.tsx:402
 msgid "Your waitlist offer has expired and we were unable to complete your order. Please rejoin the waitlist to be notified when more spots become available."
 msgstr "Η προσφορά λίστας αναμονής έληξε. Παρακαλώ εγγραφείτε ξανά για να ειδοποιηθείτε."
 
@@ -10459,7 +10364,7 @@ msgstr "Η προσφορά λίστας αναμονής έληξε. Παρακ
 msgid "YouTube"
 msgstr "YouTube"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:549
+#: src/components/routes/product-widget/CollectInformation/index.tsx:580
 msgid "ZIP / Postal Code"
 msgstr "ΤΚ / Ταχυδρομικός Κωδικός"
 
@@ -10469,6 +10374,6 @@ msgstr "ΤΚ / Ταχυδρομικός Κωδικός"
 msgid "Zip or Postal Code"
 msgstr "ΤΚ ή Ταχυδρομικός Κωδικός"
 
-#: src/components/routes/product-widget/CollectInformation/index.tsx:550
+#: src/components/routes/product-widget/CollectInformation/index.tsx:581
 msgid "ZIP or Postal Code"
 msgstr "ΤΚ ή Ταχυδρομικός Κωδικός"
