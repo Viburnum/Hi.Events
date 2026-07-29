@@ -27,8 +27,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set lowercase image prefix
-        run: echo "IMAGE_PREFIX=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_ENV"
+      - name: Set lowercase image prefix and short SHA
+        run: |
+          echo "IMAGE_PREFIX=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_ENV"
+          echo "SHORT_SHA=${GITHUB_SHA::7}" >> "$GITHUB_ENV"
 
       - name: Build & push — all-in-one
         uses: docker/build-push-action@v5
@@ -37,6 +39,8 @@ jobs:
           file: ./Dockerfile.all-in-one
           platforms: linux/amd64
           push: true
-          tags: ${{ env.IMAGE_PREFIX }}/hi.events-all-in-one:latest
+          tags: |
+            ${{ env.IMAGE_PREFIX }}/hi.events-all-in-one:latest
+            ${{ env.IMAGE_PREFIX }}/hi.events-all-in-one:${{ env.SHORT_SHA }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
