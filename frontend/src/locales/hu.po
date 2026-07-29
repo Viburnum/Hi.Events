@@ -528,11 +528,19 @@ msgstr "Jegyek hozzáadása"
 msgid "Add tier"
 msgstr "Szint hozzáadása"
 
+#: src/components/common/AttendeeTicket/index.tsx:261
+msgid "Add to Apple Wallet"
+msgstr ""
+
 #: src/components/common/AddEventToCalendarButton/index.tsx:14
 #: src/components/common/AddToCalendarCTA/index.tsx:24
 #: src/components/layouts/EventHomepage/index.tsx:346
 msgid "Add to Calendar"
 msgstr "Hozzáadás a naptárhoz"
+
+#: src/components/common/AttendeeTicket/index.tsx:272
+msgid "Add to Google Wallet"
+msgstr ""
 
 #: src/components/routes/organizer/Settings/Sections/TrackingPixelSettings/index.tsx:172
 msgid "Add tracking pixels to your public event pages and organizer homepage. A cookie consent banner will be shown to visitors when tracking is active."
@@ -548,6 +556,14 @@ msgstr "Webhook hozzáadása"
 #: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:185
 msgid "Add your social media handles and website URL. These will be displayed on your public organizer page."
 msgstr "Adja hozzá közösségi média hivatkozásait és weboldalának URL-jét. Ezek megjelennek a nyilvános szervezői oldalán."
+
+#: src/components/common/AttendeeTicket/index.tsx:73
+msgid "Adding to Apple Wallet"
+msgstr ""
+
+#: src/components/common/AttendeeTicket/index.tsx:87
+msgid "Adding to Google Wallet"
+msgstr ""
 
 #: src/components/common/PlatformFeesSettings/index.tsx:257
 msgid "Additional Fees"
@@ -1075,7 +1091,7 @@ msgstr "Próbálkozások"
 msgid "Attendance and check-in rates across all events"
 msgstr "Részvétel és bejelentkezési arányok minden eseményen"
 
-#: src/components/common/AttendeeTicket/index.tsx:114
+#: src/components/common/AttendeeTicket/index.tsx:149
 #: src/components/common/QuestionsTable/index.tsx:461
 #: src/components/modals/FulfillmentOrderModal/index.tsx:289
 #: src/components/modals/FulfillmentOrderModal/index.tsx:399
@@ -1464,7 +1480,7 @@ msgstr "A törlés törli az összes ehhez a rendeléshez tartozó résztvevőt,
 
 #: src/components/common/AttendeeStatusBadge/index.tsx:28
 #: src/components/common/AttendeeTable/index.tsx:295
-#: src/components/common/AttendeeTicket/index.tsx:155
+#: src/components/common/AttendeeTicket/index.tsx:190
 #: src/components/common/OrdersTable/index.tsx:430
 #: src/components/common/OrderStatusBadge/index.tsx:9
 #: src/components/common/WaitlistTable/index.tsx:27
@@ -2123,7 +2139,7 @@ msgstr "Tovább a fizetéshez"
 msgid "Control how platform fees are handled for this event"
 msgstr "Szabályozza, hogyan kezelje a platformdíjakat ezen eseménynél"
 
-#: src/components/common/AttendeeTicket/index.tsx:214
+#: src/components/common/AttendeeTicket/index.tsx:249
 #: src/components/common/CopyButton/index.tsx:13
 #: src/components/modals/CheckInListSuccessModal/index.tsx:42
 #: src/components/modals/EventLiveCelebrationModal/index.tsx:75
@@ -2184,7 +2200,7 @@ msgstr "E-mail másolása"
 msgid "Copy link"
 msgstr "Link másolása"
 
-#: src/components/common/AttendeeTicket/index.tsx:214
+#: src/components/common/AttendeeTicket/index.tsx:249
 #: src/components/modals/ShareModal/index.tsx:171
 msgid "Copy Link"
 msgstr "Link másolása"
@@ -2611,7 +2627,7 @@ msgstr "Adattulajdonlás"
 msgid "Date"
 msgstr "Dátum"
 
-#: src/components/common/AttendeeTicket/index.tsx:78
+#: src/components/common/AttendeeTicket/index.tsx:113
 msgid "Date & Time"
 msgstr "Dátum és idő"
 
@@ -3318,6 +3334,8 @@ msgstr "Írja be az ÁFA számát az országkóddal együtt, szóközök nélkü
 msgid "Entries will appear here when customers join the waitlist for sold out products."
 msgstr "A bejegyzések itt jelennek meg, amikor az ügyfelek csatlakoznak az elfogyott termékek várólistájához."
 
+#: src/components/common/AttendeeTicket/index.tsx:75
+#: src/components/common/AttendeeTicket/index.tsx:89
 #: src/components/common/OrdersTable/index.tsx:106
 #: src/components/common/OrganizerWebhookTable/index.tsx:149
 #: src/components/layouts/Checkout/index.tsx:95
@@ -3646,6 +3664,14 @@ msgstr "A konfiguráció létrehozása sikertelen"
 #: src/components/common/EmailTemplateSettings/EmailTemplateSettingsBase.tsx:185
 msgid "Failed to create template"
 msgstr "A sablon létrehozása sikertelen"
+
+#: src/components/common/AttendeeTicket/index.tsx:75
+msgid "Failed to create the Apple Wallet pass. Please try again."
+msgstr ""
+
+#: src/components/common/AttendeeTicket/index.tsx:89
+msgid "Failed to create the Google Wallet pass. Please try again."
+msgstr ""
 
 #: src/components/routes/admin/Configurations/index.tsx:42
 msgid "Failed to delete configuration"
@@ -4036,7 +4062,7 @@ msgstr "Lábléc szövege"
 msgid "Forgot password?"
 msgstr "Elfelejtette jelszavát?"
 
-#: src/components/common/AttendeeTicket/index.tsx:66
+#: src/components/common/AttendeeTicket/index.tsx:101
 #: src/components/common/Currency/index.tsx:90
 #: src/components/common/OrderSummary/index.tsx:46
 #: src/components/common/OrderSummary/index.tsx:99
@@ -4910,7 +4936,7 @@ msgstr "Webhookok betöltése"
 msgid "Loading..."
 msgstr "Betöltés..."
 
-#: src/components/common/AttendeeTicket/index.tsx:97
+#: src/components/common/AttendeeTicket/index.tsx:132
 #: src/components/layouts/EventHomepage/index.tsx:426
 #: src/components/routes/event/Settings/index.tsx:46
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:84
@@ -5799,6 +5825,10 @@ msgstr "Oldalsáv megnyitása"
 msgid "Open Stripe Dashboard"
 msgstr "Stripe irányítópult megnyitása"
 
+#: src/components/common/AttendeeTicket/index.tsx:88
+msgid "Opening Google Wallet..."
+msgstr ""
+
 #: src/components/forms/QuestionForm/index.tsx:45
 msgid "Option {i}"
 msgstr "Opció {i}"
@@ -6033,7 +6063,7 @@ msgid "Organization Name"
 msgstr "Szervezet neve"
 
 #: src/components/common/AdminEventsTable/index.tsx:87
-#: src/components/common/AttendeeTicket/index.tsx:88
+#: src/components/common/AttendeeTicket/index.tsx:123
 #: src/components/layouts/EventHomepage/index.tsx:519
 #: src/components/modals/EditUserModal/index.tsx:55
 #: src/components/modals/InviteUserModal/index.tsx:47
@@ -6245,7 +6275,7 @@ msgstr "Szüneteltetve"
 msgid "Pay"
 msgstr "Fizetés"
 
-#: src/components/common/AttendeeTicket/index.tsx:155
+#: src/components/common/AttendeeTicket/index.tsx:190
 msgid "Pay to unlock"
 msgstr "Fizessen a feloldáshoz"
 
@@ -6593,6 +6623,11 @@ msgstr "Kérjük, várjon, amíg előkészítjük számláját..."
 msgid "Please wait while we prepare your orders for export..."
 msgstr "Kérjük, várjon, amíg előkészítjük megrendeléseit az exportálásra..."
 
+#: src/components/common/AttendeeTicket/index.tsx:73
+#: src/components/common/AttendeeTicket/index.tsx:87
+msgid "Please wait while we prepare your pass..."
+msgstr ""
+
 #: src/components/common/LanguageSwitcher/index.tsx:40
 msgid "Polish"
 msgstr "Lengyel"
@@ -6690,7 +6725,7 @@ msgstr "Jegy nyomtatása"
 msgid "Print Tickets"
 msgstr "Jegyek nyomtatása"
 
-#: src/components/common/AttendeeTicket/index.tsx:202
+#: src/components/common/AttendeeTicket/index.tsx:237
 msgid "Print to PDF"
 msgstr "Nyomtatás PDF-be"
 
@@ -8141,6 +8176,8 @@ msgstr "Tárgy:"
 msgid "Subtotal"
 msgstr "Részösszeg"
 
+#: src/components/common/AttendeeTicket/index.tsx:74
+#: src/components/common/AttendeeTicket/index.tsx:88
 #: src/components/common/OrdersTable/index.tsx:102
 #: src/components/common/OrganizerWebhookTable/index.tsx:149
 #: src/components/layouts/Checkout/index.tsx:91
@@ -8852,7 +8889,7 @@ msgstr "Jegytulajdonosok"
 msgid "Ticket Holders"
 msgstr "Jegytulajdonosok"
 
-#: src/components/common/AttendeeTicket/index.tsx:174
+#: src/components/common/AttendeeTicket/index.tsx:209
 msgid "Ticket ID"
 msgstr "Jegy azonosító"
 
@@ -8880,7 +8917,7 @@ msgstr "Jegyár"
 msgid "Ticket resent successfully"
 msgstr "Jegy sikeresen újraküldve"
 
-#: src/components/common/AttendeeTicket/index.tsx:105
+#: src/components/common/AttendeeTicket/index.tsx:140
 #: src/components/routes/event/attendees.tsx:66
 msgid "Ticket Type"
 msgstr "Jegy típusa"
@@ -10343,6 +10380,10 @@ msgstr "Stripe fiókja csatlakoztatva van, és készen áll a fizetések feldolg
 #: src/components/routes/product-widget/AttendeeProductAndInformation/index.tsx:47
 msgid "Your ticket for"
 msgstr "Jegyéhez:"
+
+#: src/components/common/AttendeeTicket/index.tsx:74
+msgid "Your ticket is ready to add to Apple Wallet"
+msgstr ""
 
 #: src/components/routes/product-widget/CollectInformation/index.tsx:376
 msgid "Your tickets have been confirmed."

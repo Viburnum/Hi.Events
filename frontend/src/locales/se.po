@@ -528,11 +528,19 @@ msgstr "Lägg till biljetter"
 msgid "Add tier"
 msgstr "Lägg till prisnivå"
 
+#: src/components/common/AttendeeTicket/index.tsx:261
+msgid "Add to Apple Wallet"
+msgstr ""
+
 #: src/components/common/AddEventToCalendarButton/index.tsx:14
 #: src/components/common/AddToCalendarCTA/index.tsx:24
 #: src/components/layouts/EventHomepage/index.tsx:346
 msgid "Add to Calendar"
 msgstr "Lägg till i kalendern"
+
+#: src/components/common/AttendeeTicket/index.tsx:272
+msgid "Add to Google Wallet"
+msgstr ""
 
 #: src/components/routes/organizer/Settings/Sections/TrackingPixelSettings/index.tsx:172
 msgid "Add tracking pixels to your public event pages and organizer homepage. A cookie consent banner will be shown to visitors when tracking is active."
@@ -548,6 +556,14 @@ msgstr "Lägg till webhook"
 #: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:185
 msgid "Add your social media handles and website URL. These will be displayed on your public organizer page."
 msgstr "Lägg till dina sociala mediekonton och din webbplats URL. Dessa kommer att visas på din offentliga arrangörssida."
+
+#: src/components/common/AttendeeTicket/index.tsx:73
+msgid "Adding to Apple Wallet"
+msgstr ""
+
+#: src/components/common/AttendeeTicket/index.tsx:87
+msgid "Adding to Google Wallet"
+msgstr ""
 
 #: src/components/common/PlatformFeesSettings/index.tsx:257
 msgid "Additional Fees"
@@ -1075,7 +1091,7 @@ msgstr "Försök"
 msgid "Attendance and check-in rates across all events"
 msgstr "Närvaro och incheckningsfrekvens för alla evenemang"
 
-#: src/components/common/AttendeeTicket/index.tsx:114
+#: src/components/common/AttendeeTicket/index.tsx:149
 #: src/components/common/QuestionsTable/index.tsx:461
 #: src/components/modals/FulfillmentOrderModal/index.tsx:289
 #: src/components/modals/FulfillmentOrderModal/index.tsx:399
@@ -1464,7 +1480,7 @@ msgstr "Avbrytande kommer att avbryta alla deltagare som är kopplade till denna
 
 #: src/components/common/AttendeeStatusBadge/index.tsx:28
 #: src/components/common/AttendeeTable/index.tsx:295
-#: src/components/common/AttendeeTicket/index.tsx:155
+#: src/components/common/AttendeeTicket/index.tsx:190
 #: src/components/common/OrdersTable/index.tsx:430
 #: src/components/common/OrderStatusBadge/index.tsx:9
 #: src/components/common/WaitlistTable/index.tsx:27
@@ -2123,7 +2139,7 @@ msgstr "Fortsätt till betalning"
 msgid "Control how platform fees are handled for this event"
 msgstr "Kontrollera hur plattformsavgifter hanteras för detta evenemang"
 
-#: src/components/common/AttendeeTicket/index.tsx:214
+#: src/components/common/AttendeeTicket/index.tsx:249
 #: src/components/common/CopyButton/index.tsx:13
 #: src/components/modals/CheckInListSuccessModal/index.tsx:42
 #: src/components/modals/EventLiveCelebrationModal/index.tsx:75
@@ -2184,7 +2200,7 @@ msgstr "Kopiera e-post"
 msgid "Copy link"
 msgstr "Kopiera länk"
 
-#: src/components/common/AttendeeTicket/index.tsx:214
+#: src/components/common/AttendeeTicket/index.tsx:249
 #: src/components/modals/ShareModal/index.tsx:171
 msgid "Copy Link"
 msgstr "Kopiera länk"
@@ -2611,7 +2627,7 @@ msgstr "Dataägandeskap"
 msgid "Date"
 msgstr "Datum"
 
-#: src/components/common/AttendeeTicket/index.tsx:78
+#: src/components/common/AttendeeTicket/index.tsx:113
 msgid "Date & Time"
 msgstr "Datum och tid"
 
@@ -3318,6 +3334,8 @@ msgstr "Ange ditt momsnummer inklusive landskod, utan mellanslag (t.ex. IE123456
 msgid "Entries will appear here when customers join the waitlist for sold out products."
 msgstr "Poster visas här när kunder ansluter sig till väntelistan för slutsålda produkter."
 
+#: src/components/common/AttendeeTicket/index.tsx:75
+#: src/components/common/AttendeeTicket/index.tsx:89
 #: src/components/common/OrdersTable/index.tsx:106
 #: src/components/common/OrganizerWebhookTable/index.tsx:149
 #: src/components/layouts/Checkout/index.tsx:95
@@ -3646,6 +3664,14 @@ msgstr "Misslyckades med att skapa konfiguration"
 #: src/components/common/EmailTemplateSettings/EmailTemplateSettingsBase.tsx:185
 msgid "Failed to create template"
 msgstr "Misslyckades med att skapa mall"
+
+#: src/components/common/AttendeeTicket/index.tsx:75
+msgid "Failed to create the Apple Wallet pass. Please try again."
+msgstr ""
+
+#: src/components/common/AttendeeTicket/index.tsx:89
+msgid "Failed to create the Google Wallet pass. Please try again."
+msgstr ""
 
 #: src/components/routes/admin/Configurations/index.tsx:42
 msgid "Failed to delete configuration"
@@ -4036,7 +4062,7 @@ msgstr "Sidfotstext"
 msgid "Forgot password?"
 msgstr "Glömt lösenord?"
 
-#: src/components/common/AttendeeTicket/index.tsx:66
+#: src/components/common/AttendeeTicket/index.tsx:101
 #: src/components/common/Currency/index.tsx:90
 #: src/components/common/OrderSummary/index.tsx:46
 #: src/components/common/OrderSummary/index.tsx:99
@@ -4910,7 +4936,7 @@ msgstr "Laddar webhooks"
 msgid "Loading..."
 msgstr "Laddar..."
 
-#: src/components/common/AttendeeTicket/index.tsx:97
+#: src/components/common/AttendeeTicket/index.tsx:132
 #: src/components/layouts/EventHomepage/index.tsx:426
 #: src/components/routes/event/Settings/index.tsx:46
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:84
@@ -5799,6 +5825,10 @@ msgstr "Öppna sidomeny"
 msgid "Open Stripe Dashboard"
 msgstr "Öppna Stripe-instrumentpanelen"
 
+#: src/components/common/AttendeeTicket/index.tsx:88
+msgid "Opening Google Wallet..."
+msgstr ""
+
 #: src/components/forms/QuestionForm/index.tsx:45
 msgid "Option {i}"
 msgstr "Alternativ {i}"
@@ -6033,7 +6063,7 @@ msgid "Organization Name"
 msgstr "Organisationsnamn"
 
 #: src/components/common/AdminEventsTable/index.tsx:87
-#: src/components/common/AttendeeTicket/index.tsx:88
+#: src/components/common/AttendeeTicket/index.tsx:123
 #: src/components/layouts/EventHomepage/index.tsx:519
 #: src/components/modals/EditUserModal/index.tsx:55
 #: src/components/modals/InviteUserModal/index.tsx:47
@@ -6245,7 +6275,7 @@ msgstr "Pausad"
 msgid "Pay"
 msgstr "Betala"
 
-#: src/components/common/AttendeeTicket/index.tsx:155
+#: src/components/common/AttendeeTicket/index.tsx:190
 msgid "Pay to unlock"
 msgstr "Betala för att låsa upp"
 
@@ -6593,6 +6623,11 @@ msgstr "Vänta medan vi förbereder din faktura..."
 msgid "Please wait while we prepare your orders for export..."
 msgstr "Vänta medan vi förbereder dina ordrar för export..."
 
+#: src/components/common/AttendeeTicket/index.tsx:73
+#: src/components/common/AttendeeTicket/index.tsx:87
+msgid "Please wait while we prepare your pass..."
+msgstr ""
+
 #: src/components/common/LanguageSwitcher/index.tsx:40
 msgid "Polish"
 msgstr "Polska"
@@ -6690,7 +6725,7 @@ msgstr "Skriv ut biljett"
 msgid "Print Tickets"
 msgstr "Skriv ut biljetter"
 
-#: src/components/common/AttendeeTicket/index.tsx:202
+#: src/components/common/AttendeeTicket/index.tsx:237
 msgid "Print to PDF"
 msgstr "Skriv ut till PDF"
 
@@ -8141,6 +8176,8 @@ msgstr "Ämne:"
 msgid "Subtotal"
 msgstr "Delsumma"
 
+#: src/components/common/AttendeeTicket/index.tsx:74
+#: src/components/common/AttendeeTicket/index.tsx:88
 #: src/components/common/OrdersTable/index.tsx:102
 #: src/components/common/OrganizerWebhookTable/index.tsx:149
 #: src/components/layouts/Checkout/index.tsx:91
@@ -8852,7 +8889,7 @@ msgstr "Biljettinnehavare"
 msgid "Ticket Holders"
 msgstr "Biljettinnehavare"
 
-#: src/components/common/AttendeeTicket/index.tsx:174
+#: src/components/common/AttendeeTicket/index.tsx:209
 msgid "Ticket ID"
 msgstr "Biljett-ID"
 
@@ -8880,7 +8917,7 @@ msgstr "Biljettpris"
 msgid "Ticket resent successfully"
 msgstr "Biljetten skickades igen"
 
-#: src/components/common/AttendeeTicket/index.tsx:105
+#: src/components/common/AttendeeTicket/index.tsx:140
 #: src/components/routes/event/attendees.tsx:66
 msgid "Ticket Type"
 msgstr "Biljettyp"
@@ -10343,6 +10380,10 @@ msgstr "Ditt Stripe-konto är anslutet och redo att behandla betalningar."
 #: src/components/routes/product-widget/AttendeeProductAndInformation/index.tsx:47
 msgid "Your ticket for"
 msgstr "Din biljett till"
+
+#: src/components/common/AttendeeTicket/index.tsx:74
+msgid "Your ticket is ready to add to Apple Wallet"
+msgstr ""
 
 #: src/components/routes/product-widget/CollectInformation/index.tsx:376
 msgid "Your tickets have been confirmed."

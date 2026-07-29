@@ -528,11 +528,19 @@ msgstr "Thêm vé"
 msgid "Add tier"
 msgstr "Thêm tầng"
 
+#: src/components/common/AttendeeTicket/index.tsx:261
+msgid "Add to Apple Wallet"
+msgstr "Thêm vào Apple Wallet"
+
 #: src/components/common/AddEventToCalendarButton/index.tsx:14
 #: src/components/common/AddToCalendarCTA/index.tsx:24
 #: src/components/layouts/EventHomepage/index.tsx:346
 msgid "Add to Calendar"
 msgstr "Thêm vào lịch"
+
+#: src/components/common/AttendeeTicket/index.tsx:272
+msgid "Add to Google Wallet"
+msgstr "Thêm vào Google Wallet"
 
 #: src/components/routes/organizer/Settings/Sections/TrackingPixelSettings/index.tsx:172
 msgid "Add tracking pixels to your public event pages and organizer homepage. A cookie consent banner will be shown to visitors when tracking is active."
@@ -548,6 +556,14 @@ msgstr "Thêm Webhook"
 #: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:185
 msgid "Add your social media handles and website URL. These will be displayed on your public organizer page."
 msgstr "Thêm tài khoản mạng xã hội và URL trang web của bạn. Chúng sẽ được hiển thị trên trang công khai của nhà tổ chức."
+
+#: src/components/common/AttendeeTicket/index.tsx:73
+msgid "Adding to Apple Wallet"
+msgstr "Đang thêm vào Apple Wallet"
+
+#: src/components/common/AttendeeTicket/index.tsx:87
+msgid "Adding to Google Wallet"
+msgstr "Đang thêm vào Google Wallet"
 
 #: src/components/common/PlatformFeesSettings/index.tsx:257
 msgid "Additional Fees"
@@ -1075,7 +1091,7 @@ msgstr "Lần thử"
 msgid "Attendance and check-in rates across all events"
 msgstr "Tỷ lệ tham dự và check-in cho tất cả sự kiện"
 
-#: src/components/common/AttendeeTicket/index.tsx:114
+#: src/components/common/AttendeeTicket/index.tsx:149
 #: src/components/common/QuestionsTable/index.tsx:461
 #: src/components/modals/FulfillmentOrderModal/index.tsx:289
 #: src/components/modals/FulfillmentOrderModal/index.tsx:399
@@ -1464,7 +1480,7 @@ msgstr "Hủy sẽ hủy tất cả người tham dự liên quan đến đơn h
 
 #: src/components/common/AttendeeStatusBadge/index.tsx:28
 #: src/components/common/AttendeeTable/index.tsx:295
-#: src/components/common/AttendeeTicket/index.tsx:155
+#: src/components/common/AttendeeTicket/index.tsx:190
 #: src/components/common/OrdersTable/index.tsx:430
 #: src/components/common/OrderStatusBadge/index.tsx:9
 #: src/components/common/WaitlistTable/index.tsx:27
@@ -2123,7 +2139,7 @@ msgstr "Tiếp tục thanh toán"
 msgid "Control how platform fees are handled for this event"
 msgstr "Kiểm soát cách xử lý phí nền tảng cho sự kiện này"
 
-#: src/components/common/AttendeeTicket/index.tsx:214
+#: src/components/common/AttendeeTicket/index.tsx:249
 #: src/components/common/CopyButton/index.tsx:13
 #: src/components/modals/CheckInListSuccessModal/index.tsx:42
 #: src/components/modals/EventLiveCelebrationModal/index.tsx:75
@@ -2184,7 +2200,7 @@ msgstr "Sao chép Email"
 msgid "Copy link"
 msgstr "Sao chép liên kết"
 
-#: src/components/common/AttendeeTicket/index.tsx:214
+#: src/components/common/AttendeeTicket/index.tsx:249
 #: src/components/modals/ShareModal/index.tsx:171
 msgid "Copy Link"
 msgstr "Sao chép Link"
@@ -2611,7 +2627,7 @@ msgstr "Quyền sở hữu dữ liệu"
 msgid "Date"
 msgstr "Ngày"
 
-#: src/components/common/AttendeeTicket/index.tsx:78
+#: src/components/common/AttendeeTicket/index.tsx:113
 msgid "Date & Time"
 msgstr "Ngày và giờ"
 
@@ -3318,6 +3334,8 @@ msgstr "Nhập số VAT của bạn bao gồm mã quốc gia, không có khoản
 msgid "Entries will appear here when customers join the waitlist for sold out products."
 msgstr "Các mục sẽ xuất hiện ở đây khi khách hàng tham gia danh sách chờ cho các sản phẩm đã bán hết."
 
+#: src/components/common/AttendeeTicket/index.tsx:75
+#: src/components/common/AttendeeTicket/index.tsx:89
 #: src/components/common/OrdersTable/index.tsx:106
 #: src/components/common/OrganizerWebhookTable/index.tsx:149
 #: src/components/layouts/Checkout/index.tsx:95
@@ -3646,6 +3664,14 @@ msgstr "Không thể tạo cấu hình"
 #: src/components/common/EmailTemplateSettings/EmailTemplateSettingsBase.tsx:185
 msgid "Failed to create template"
 msgstr "Không thể tạo mẫu"
+
+#: src/components/common/AttendeeTicket/index.tsx:75
+msgid "Failed to create the Apple Wallet pass. Please try again."
+msgstr "Không thể tạo thẻ Apple Wallet. Vui lòng thử lại."
+
+#: src/components/common/AttendeeTicket/index.tsx:89
+msgid "Failed to create the Google Wallet pass. Please try again."
+msgstr "Không thể tạo thẻ Google Wallet. Vui lòng thử lại."
 
 #: src/components/routes/admin/Configurations/index.tsx:42
 msgid "Failed to delete configuration"
@@ -4036,7 +4062,7 @@ msgstr "Văn bản chân trang"
 msgid "Forgot password?"
 msgstr "Quên mật khẩu?"
 
-#: src/components/common/AttendeeTicket/index.tsx:66
+#: src/components/common/AttendeeTicket/index.tsx:101
 #: src/components/common/Currency/index.tsx:90
 #: src/components/common/OrderSummary/index.tsx:46
 #: src/components/common/OrderSummary/index.tsx:99
@@ -4910,7 +4936,7 @@ msgstr "Đang tải Webhooks"
 msgid "Loading..."
 msgstr "Đang tải ..."
 
-#: src/components/common/AttendeeTicket/index.tsx:97
+#: src/components/common/AttendeeTicket/index.tsx:132
 #: src/components/layouts/EventHomepage/index.tsx:426
 #: src/components/routes/event/Settings/index.tsx:46
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:84
@@ -5799,6 +5825,10 @@ msgstr "Mở thanh bên"
 msgid "Open Stripe Dashboard"
 msgstr "Mở bảng điều khiển Stripe"
 
+#: src/components/common/AttendeeTicket/index.tsx:88
+msgid "Opening Google Wallet..."
+msgstr "Đang mở Google Wallet..."
+
 #: src/components/forms/QuestionForm/index.tsx:45
 msgid "Option {i}"
 msgstr "Tùy chọn {i}"
@@ -6033,7 +6063,7 @@ msgid "Organization Name"
 msgstr "Tên tổ chức"
 
 #: src/components/common/AdminEventsTable/index.tsx:87
-#: src/components/common/AttendeeTicket/index.tsx:88
+#: src/components/common/AttendeeTicket/index.tsx:123
 #: src/components/layouts/EventHomepage/index.tsx:519
 #: src/components/modals/EditUserModal/index.tsx:55
 #: src/components/modals/InviteUserModal/index.tsx:47
@@ -6245,7 +6275,7 @@ msgstr "Tạm dừng"
 msgid "Pay"
 msgstr "Thanh toán"
 
-#: src/components/common/AttendeeTicket/index.tsx:155
+#: src/components/common/AttendeeTicket/index.tsx:190
 msgid "Pay to unlock"
 msgstr "Thanh toán để mở khóa"
 
@@ -6593,6 +6623,11 @@ msgstr "Vui lòng đợi trong khi chúng tôi chuẩn bị hóa đơn của b�
 msgid "Please wait while we prepare your orders for export..."
 msgstr "Vui lòng đợi trong khi chúng tôi chuẩn bị đơn hàng của bạn để xuất ra..."
 
+#: src/components/common/AttendeeTicket/index.tsx:73
+#: src/components/common/AttendeeTicket/index.tsx:87
+msgid "Please wait while we prepare your pass..."
+msgstr "Vui lòng đợi trong khi chúng tôi chuẩn bị thẻ của bạn..."
+
 #: src/components/common/LanguageSwitcher/index.tsx:40
 msgid "Polish"
 msgstr "Tiếng Ba Lan"
@@ -6690,7 +6725,7 @@ msgstr "In vé"
 msgid "Print Tickets"
 msgstr "In vé"
 
-#: src/components/common/AttendeeTicket/index.tsx:202
+#: src/components/common/AttendeeTicket/index.tsx:237
 msgid "Print to PDF"
 msgstr "In ra PDF"
 
@@ -8141,6 +8176,8 @@ msgstr "Tiêu đề:"
 msgid "Subtotal"
 msgstr "Tổng phụ"
 
+#: src/components/common/AttendeeTicket/index.tsx:74
+#: src/components/common/AttendeeTicket/index.tsx:88
 #: src/components/common/OrdersTable/index.tsx:102
 #: src/components/common/OrganizerWebhookTable/index.tsx:149
 #: src/components/layouts/Checkout/index.tsx:91
@@ -8852,7 +8889,7 @@ msgstr "Người sở hữu vé"
 msgid "Ticket Holders"
 msgstr "Người giữ vé"
 
-#: src/components/common/AttendeeTicket/index.tsx:174
+#: src/components/common/AttendeeTicket/index.tsx:209
 msgid "Ticket ID"
 msgstr "ID vé"
 
@@ -8880,7 +8917,7 @@ msgstr "Giá vé"
 msgid "Ticket resent successfully"
 msgstr "Vé đã được gửi lại thành công"
 
-#: src/components/common/AttendeeTicket/index.tsx:105
+#: src/components/common/AttendeeTicket/index.tsx:140
 #: src/components/routes/event/attendees.tsx:66
 msgid "Ticket Type"
 msgstr "Loại vé"
@@ -10343,6 +10380,10 @@ msgstr "Tài khoản Stripe của bạn được kết nối và sẵn sàng x�
 #: src/components/routes/product-widget/AttendeeProductAndInformation/index.tsx:47
 msgid "Your ticket for"
 msgstr "Vé của bạn cho"
+
+#: src/components/common/AttendeeTicket/index.tsx:74
+msgid "Your ticket is ready to add to Apple Wallet"
+msgstr "Vé của bạn đã sẵn sàng để thêm vào Apple Wallet"
 
 #: src/components/routes/product-widget/CollectInformation/index.tsx:376
 msgid "Your tickets have been confirmed."

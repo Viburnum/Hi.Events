@@ -528,11 +528,19 @@ msgstr "添加机票"
 msgid "Add tier"
 msgstr "增加层级"
 
+#: src/components/common/AttendeeTicket/index.tsx:261
+msgid "Add to Apple Wallet"
+msgstr "添加到 Apple 钱包"
+
 #: src/components/common/AddEventToCalendarButton/index.tsx:14
 #: src/components/common/AddToCalendarCTA/index.tsx:24
 #: src/components/layouts/EventHomepage/index.tsx:346
 msgid "Add to Calendar"
 msgstr "添加到日历"
+
+#: src/components/common/AttendeeTicket/index.tsx:272
+msgid "Add to Google Wallet"
+msgstr "添加到 Google 钱包"
 
 #: src/components/routes/organizer/Settings/Sections/TrackingPixelSettings/index.tsx:172
 msgid "Add tracking pixels to your public event pages and organizer homepage. A cookie consent banner will be shown to visitors when tracking is active."
@@ -548,6 +556,14 @@ msgstr "添加 Webhook"
 #: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:185
 msgid "Add your social media handles and website URL. These will be displayed on your public organizer page."
 msgstr "添加您的社交媒体账号和网站链接。这些信息将显示在您的公开组织者页面上。"
+
+#: src/components/common/AttendeeTicket/index.tsx:73
+msgid "Adding to Apple Wallet"
+msgstr "正在添加到 Apple 钱包"
+
+#: src/components/common/AttendeeTicket/index.tsx:87
+msgid "Adding to Google Wallet"
+msgstr "正在添加到 Google 钱包"
 
 #: src/components/common/PlatformFeesSettings/index.tsx:257
 msgid "Additional Fees"
@@ -1075,7 +1091,7 @@ msgstr "尝试次数"
 msgid "Attendance and check-in rates across all events"
 msgstr "所有活动的出席率和签到率"
 
-#: src/components/common/AttendeeTicket/index.tsx:114
+#: src/components/common/AttendeeTicket/index.tsx:149
 #: src/components/common/QuestionsTable/index.tsx:461
 #: src/components/modals/FulfillmentOrderModal/index.tsx:289
 #: src/components/modals/FulfillmentOrderModal/index.tsx:399
@@ -1464,7 +1480,7 @@ msgstr "取消将取消与此订单关联的所有参与者，并将门票释放
 
 #: src/components/common/AttendeeStatusBadge/index.tsx:28
 #: src/components/common/AttendeeTable/index.tsx:295
-#: src/components/common/AttendeeTicket/index.tsx:155
+#: src/components/common/AttendeeTicket/index.tsx:190
 #: src/components/common/OrdersTable/index.tsx:430
 #: src/components/common/OrderStatusBadge/index.tsx:9
 #: src/components/common/WaitlistTable/index.tsx:27
@@ -2123,7 +2139,7 @@ msgstr "继续付款"
 msgid "Control how platform fees are handled for this event"
 msgstr "控制此活动的平台费用如何处理"
 
-#: src/components/common/AttendeeTicket/index.tsx:214
+#: src/components/common/AttendeeTicket/index.tsx:249
 #: src/components/common/CopyButton/index.tsx:13
 #: src/components/modals/CheckInListSuccessModal/index.tsx:42
 #: src/components/modals/EventLiveCelebrationModal/index.tsx:75
@@ -2184,7 +2200,7 @@ msgstr "复制邮箱"
 msgid "Copy link"
 msgstr "复制链接"
 
-#: src/components/common/AttendeeTicket/index.tsx:214
+#: src/components/common/AttendeeTicket/index.tsx:249
 #: src/components/modals/ShareModal/index.tsx:171
 msgid "Copy Link"
 msgstr "复制链接"
@@ -2611,7 +2627,7 @@ msgstr "数据所有权"
 msgid "Date"
 msgstr "日期"
 
-#: src/components/common/AttendeeTicket/index.tsx:78
+#: src/components/common/AttendeeTicket/index.tsx:113
 msgid "Date & Time"
 msgstr "日期和时间"
 
@@ -3318,6 +3334,8 @@ msgstr "输入您的增值税号，包括国家代码，不带空格（例如，
 msgid "Entries will appear here when customers join the waitlist for sold out products."
 msgstr "当客户加入已售罄产品的候补名单时，条目将显示在此处。"
 
+#: src/components/common/AttendeeTicket/index.tsx:75
+#: src/components/common/AttendeeTicket/index.tsx:89
 #: src/components/common/OrdersTable/index.tsx:106
 #: src/components/common/OrganizerWebhookTable/index.tsx:149
 #: src/components/layouts/Checkout/index.tsx:95
@@ -3646,6 +3664,14 @@ msgstr "配置创建失败"
 #: src/components/common/EmailTemplateSettings/EmailTemplateSettingsBase.tsx:185
 msgid "Failed to create template"
 msgstr "创建模板失败"
+
+#: src/components/common/AttendeeTicket/index.tsx:75
+msgid "Failed to create the Apple Wallet pass. Please try again."
+msgstr "无法创建 Apple 钱包票券，请重试。"
+
+#: src/components/common/AttendeeTicket/index.tsx:89
+msgid "Failed to create the Google Wallet pass. Please try again."
+msgstr "无法创建 Google 钱包票券，请重试。"
 
 #: src/components/routes/admin/Configurations/index.tsx:42
 msgid "Failed to delete configuration"
@@ -4036,7 +4062,7 @@ msgstr "页脚文字"
 msgid "Forgot password?"
 msgstr "忘记密码？"
 
-#: src/components/common/AttendeeTicket/index.tsx:66
+#: src/components/common/AttendeeTicket/index.tsx:101
 #: src/components/common/Currency/index.tsx:90
 #: src/components/common/OrderSummary/index.tsx:46
 #: src/components/common/OrderSummary/index.tsx:99
@@ -4910,7 +4936,7 @@ msgstr "正在加载 Webhook"
 msgid "Loading..."
 msgstr "加载中..."
 
-#: src/components/common/AttendeeTicket/index.tsx:97
+#: src/components/common/AttendeeTicket/index.tsx:132
 #: src/components/layouts/EventHomepage/index.tsx:426
 #: src/components/routes/event/Settings/index.tsx:46
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:84
@@ -5799,6 +5825,10 @@ msgstr "打开侧边栏"
 msgid "Open Stripe Dashboard"
 msgstr "打开 Stripe 仪表板"
 
+#: src/components/common/AttendeeTicket/index.tsx:88
+msgid "Opening Google Wallet..."
+msgstr "正在打开 Google 钱包……"
+
 #: src/components/forms/QuestionForm/index.tsx:45
 msgid "Option {i}"
 msgstr "方案 {i}"
@@ -6033,7 +6063,7 @@ msgid "Organization Name"
 msgstr "组织名称"
 
 #: src/components/common/AdminEventsTable/index.tsx:87
-#: src/components/common/AttendeeTicket/index.tsx:88
+#: src/components/common/AttendeeTicket/index.tsx:123
 #: src/components/layouts/EventHomepage/index.tsx:519
 #: src/components/modals/EditUserModal/index.tsx:55
 #: src/components/modals/InviteUserModal/index.tsx:47
@@ -6245,7 +6275,7 @@ msgstr "已暂停"
 msgid "Pay"
 msgstr "付款"
 
-#: src/components/common/AttendeeTicket/index.tsx:155
+#: src/components/common/AttendeeTicket/index.tsx:190
 msgid "Pay to unlock"
 msgstr "付款解锁"
 
@@ -6593,6 +6623,11 @@ msgstr "请稍候，我们正在准备您的发票..."
 msgid "Please wait while we prepare your orders for export..."
 msgstr "请稍候，我们正在准备导出您的订单..."
 
+#: src/components/common/AttendeeTicket/index.tsx:73
+#: src/components/common/AttendeeTicket/index.tsx:87
+msgid "Please wait while we prepare your pass..."
+msgstr "正在准备您的通行证，请稍候……"
+
 #: src/components/common/LanguageSwitcher/index.tsx:40
 msgid "Polish"
 msgstr "波兰语"
@@ -6690,7 +6725,7 @@ msgstr "打印门票"
 msgid "Print Tickets"
 msgstr "打印票"
 
-#: src/components/common/AttendeeTicket/index.tsx:202
+#: src/components/common/AttendeeTicket/index.tsx:237
 msgid "Print to PDF"
 msgstr "打印为PDF"
 
@@ -8141,6 +8176,8 @@ msgstr "主题："
 msgid "Subtotal"
 msgstr "小计"
 
+#: src/components/common/AttendeeTicket/index.tsx:74
+#: src/components/common/AttendeeTicket/index.tsx:88
 #: src/components/common/OrdersTable/index.tsx:102
 #: src/components/common/OrganizerWebhookTable/index.tsx:149
 #: src/components/layouts/Checkout/index.tsx:91
@@ -8852,7 +8889,7 @@ msgstr "票务持有人"
 msgid "Ticket Holders"
 msgstr "票务持有人"
 
-#: src/components/common/AttendeeTicket/index.tsx:174
+#: src/components/common/AttendeeTicket/index.tsx:209
 msgid "Ticket ID"
 msgstr "门票 ID"
 
@@ -8880,7 +8917,7 @@ msgstr "票价"
 msgid "Ticket resent successfully"
 msgstr "门票重新发送成功"
 
-#: src/components/common/AttendeeTicket/index.tsx:105
+#: src/components/common/AttendeeTicket/index.tsx:140
 #: src/components/routes/event/attendees.tsx:66
 msgid "Ticket Type"
 msgstr "票券类型"
@@ -10343,6 +10380,10 @@ msgstr "您的 Stripe 账户已连接并准备好处理支付。"
 #: src/components/routes/product-widget/AttendeeProductAndInformation/index.tsx:47
 msgid "Your ticket for"
 msgstr "您的入场券"
+
+#: src/components/common/AttendeeTicket/index.tsx:74
+msgid "Your ticket is ready to add to Apple Wallet"
+msgstr "您的票券已可添加到 Apple 钱包"
 
 #: src/components/routes/product-widget/CollectInformation/index.tsx:376
 msgid "Your tickets have been confirmed."

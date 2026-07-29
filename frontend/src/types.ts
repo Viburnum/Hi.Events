@@ -330,6 +330,8 @@ export interface Event extends EventBase {
     organizer_id?: IdParam;
     location_details?: VenueAddress;
     statistics?: EventStatistics;
+    apple_wallet_enabled?: boolean;
+    google_wallet_enabled?: boolean;
 }
 
 export interface EventStatistics {

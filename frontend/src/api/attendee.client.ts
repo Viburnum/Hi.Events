@@ -73,4 +73,15 @@ export const attendeeClientPublic = {
         const response = await publicApi.get<GenericDataResponse<Partial<Attendee>>>(`events/${eventId}/attendees/${attendeeShortId}`);
         return response.data;
     },
+    getAppleWalletPass: async (eventId: IdParam, attendeeShortId: string): Promise<Blob> => {
+        const response = await publicApi.get(`events/${eventId}/attendees/${attendeeShortId}/apple-wallet-pass`, {
+            responseType: 'blob',
+        });
+
+        return new Blob([response.data], {type: 'application/vnd.apple.pkpass'});
+    },
+    getGoogleWalletPass: async (eventId: IdParam, attendeeShortId: string): Promise<{ save_url: string }> => {
+        const response = await publicApi.get<{ save_url: string }>(`events/${eventId}/attendees/${attendeeShortId}/google-wallet-pass`);
+        return response.data;
+    },
 }

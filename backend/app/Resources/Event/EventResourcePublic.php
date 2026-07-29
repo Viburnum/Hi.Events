@@ -8,6 +8,8 @@ use HiEvents\Resources\Image\ImageResource;
 use HiEvents\Resources\Organizer\OrganizerResourcePublic;
 use HiEvents\Resources\ProductCategory\ProductCategoryResourcePublic;
 use HiEvents\Resources\Question\QuestionResource;
+use HiEvents\Services\Infrastructure\AppleWallet\AppleWalletConfigurationService;
+use HiEvents\Services\Infrastructure\GoogleWallet\GoogleWalletConfigurationService;
 use Illuminate\Http\Request;
 
 /**
@@ -20,8 +22,7 @@ class EventResourcePublic extends BaseResource
     public function __construct(
         mixed $resource,
         mixed $includePostCheckoutData = false,
-    )
-    {
+    ) {
         // This is a hacky workaround to handle when this resource is instantiated
         // internally within Laravel the second param is the collection key (numeric)
         // When called normally, second param is includePostCheckoutData (boolean)
@@ -47,34 +48,36 @@ class EventResourcePublic extends BaseResource
             'status' => $this->getStatus(),
             'lifecycle_status' => $this->getLifecycleStatus(),
             'timezone' => $this->getTimezone(),
-            'location_details' => $this->when((bool)$this->getLocationDetails(), fn() => $this->getLocationDetails()),
+            'location_details' => $this->when((bool) $this->getLocationDetails(), fn () => $this->getLocationDetails()),
             'product_categories' => $this->when(
-                condition: !is_null($this->getProductCategories()) && $this->getProductCategories()->isNotEmpty(),
-                value: fn() => ProductCategoryResourcePublic::collection($this->getProductCategories()),
+                condition: ! is_null($this->getProductCategories()) && $this->getProductCategories()->isNotEmpty(),
+                value: fn () => ProductCategoryResourcePublic::collection($this->getProductCategories()),
             ),
             'settings' => $this->when(
-                condition: !is_null($this->getEventSettings()),
-                value: fn() => new EventSettingsResourcePublic(
+                condition: ! is_null($this->getEventSettings()),
+                value: fn () => new EventSettingsResourcePublic(
                     $this->getEventSettings(),
                     $this->includePostCheckoutData
                 ),
             ),
             // @TODO - public question resource
             'questions' => $this->when(
-                condition: !is_null($this->getQuestions()),
-                value: fn() => QuestionResource::collection($this->getQuestions())
+                condition: ! is_null($this->getQuestions()),
+                value: fn () => QuestionResource::collection($this->getQuestions())
             ),
             'attributes' => $this->when(
-                condition: !is_null($this->getAttributes()),
-                value: fn() => collect($this->getAttributes())->reject(fn($attribute) => !$attribute['is_public'])),
+                condition: ! is_null($this->getAttributes()),
+                value: fn () => collect($this->getAttributes())->reject(fn ($attribute) => ! $attribute['is_public'])),
             'images' => $this->when(
-                condition: !is_null($this->getImages()),
-                value: fn() => ImageResource::collection($this->getImages())
+                condition: ! is_null($this->getImages()),
+                value: fn () => ImageResource::collection($this->getImages())
             ),
             'organizer' => $this->when(
-                condition: !is_null($this->getOrganizer()),
-                value: fn() => new OrganizerResourcePublic($this->getOrganizer()),
+                condition: ! is_null($this->getOrganizer()),
+                value: fn () => new OrganizerResourcePublic($this->getOrganizer()),
             ),
+            'apple_wallet_enabled' => app(AppleWalletConfigurationService::class)->isConfigured(),
+            'google_wallet_enabled' => app(GoogleWalletConfigurationService::class)->isConfigured(),
         ];
     }
 }

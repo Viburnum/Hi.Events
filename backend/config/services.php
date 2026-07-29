@@ -58,4 +58,18 @@ return [
     'open_exchange_rates' => [
         'app_id' => env('OPEN_EXCHANGE_RATES_APP_ID'),
     ],
+    'apple_wallet' => [
+        'pass_type_identifier' => env('APPLE_WALLET_PASS_TYPE_IDENTIFIER'),
+        'team_identifier' => env('APPLE_WALLET_TEAM_IDENTIFIER'),
+        'organization_name' => env('APPLE_WALLET_ORGANIZATION_NAME'),
+        'certificate_path' => env('APPLE_WALLET_CERTIFICATE_PATH'),
+        'certificate_password' => env('APPLE_WALLET_CERTIFICATE_PASSWORD'),
+        'wwdr_certificate_path' => env('APPLE_WALLET_WWDR_CERTIFICATE_PATH'),
+    ],
+    'google_wallet' => [
+        'issuer_id' => env('GOOGLE_WALLET_ISSUER_ID'),
+        'service_account_json' => env('GOOGLE_WALLET_SERVICE_ACCOUNT_JSON'),
+        'class_suffix' => env('GOOGLE_WALLET_CLASS_SUFFIX', 'hievents_event_ticket'),
+        'origin' => env('GOOGLE_WALLET_ORIGIN', env('APP_FRONTEND_URL')),
+    ],
 ];

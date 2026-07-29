@@ -5,12 +5,15 @@ import {t} from "@lingui/macro";
 import {prettyDate} from "../../../utilites/dates.ts";
 import {EventDateRange} from "../EventDateRange";
 import QRCode from "react-qr-code";
-import {IconCopy, IconPrinter, IconLock, IconX} from "@tabler/icons-react";
+import {IconBrandApple, IconBrandGoogle, IconCopy, IconPrinter, IconLock, IconX} from "@tabler/icons-react";
 import {Address, Attendee, Event, Product} from "../../../types.ts";
 import classes from './AttendeeTicket.module.scss';
 import {imageUrl} from "../../../utilites/urlHelper.ts";
 import {formatAddress} from "../../../utilites/addressUtilities.ts";
 import {PoweredByFooter} from "../PoweredByFooter";
+import {attendeeClientPublic} from "../../../api/attendee.client.ts";
+import {downloadBinary} from "../../../utilites/download.ts";
+import {withLoadingNotification} from "../../../utilites/withLoadingNotification.tsx";
 
 interface AttendeeTicketProps {
     event: Event;
@@ -55,6 +58,38 @@ export const AttendeeTicket = ({
     };
 
     const qrPattern = generateQrPattern();
+
+    const isTicketValid = !isCancelled && !isAwaitingPayment;
+    const showAppleWallet = isTicketValid && event.apple_wallet_enabled;
+    const showGoogleWallet = isTicketValid && event.google_wallet_enabled;
+
+    const handleAppleWallet = async () => {
+        await withLoadingNotification(
+            async () => {
+                const blob = await attendeeClientPublic.getAppleWalletPass(event.id, String(attendee.short_id));
+                downloadBinary(blob, `${attendee.public_id}.pkpass`);
+            },
+            {
+                loading: {title: t`Adding to Apple Wallet`, message: t`Please wait while we prepare your pass...`},
+                success: {title: t`Success`, message: t`Your ticket is ready to add to Apple Wallet`},
+                error: {title: t`Error`, message: t`Failed to create the Apple Wallet pass. Please try again.`}
+            }
+        );
+    };
+
+    const handleGoogleWallet = async () => {
+        await withLoadingNotification(
+            async () => {
+                const {save_url} = await attendeeClientPublic.getGoogleWalletPass(event.id, String(attendee.short_id));
+                window?.open(save_url, '_blank');
+            },
+            {
+                loading: {title: t`Adding to Google Wallet`, message: t`Please wait while we prepare your pass...`},
+                success: {title: t`Success`, message: t`Opening Google Wallet...`},
+                error: {title: t`Error`, message: t`Failed to create the Google Wallet pass. Please try again.`}
+            }
+        );
+    };
 
     return (
         <div className={classes.ticket} style={ticketStyle}>
@@ -215,6 +250,28 @@ export const AttendeeTicket = ({
                                         </Button>
                                     )}
                                 </CopyButton>
+
+                                {showAppleWallet && (
+                                    <Button
+                                        variant="default"
+                                        size="sm"
+                                        onClick={handleAppleWallet}
+                                        leftSection={<IconBrandApple size={16}/>}
+                                    >
+                                        {t`Add to Apple Wallet`}
+                                    </Button>
+                                )}
+
+                                {showGoogleWallet && (
+                                    <Button
+                                        variant="default"
+                                        size="sm"
+                                        onClick={handleGoogleWallet}
+                                        leftSection={<IconBrandGoogle size={16}/>}
+                                    >
+                                        {t`Add to Google Wallet`}
+                                    </Button>
+                                )}
                             </div>
                         )}
                     </div>
