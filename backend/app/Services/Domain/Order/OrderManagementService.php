@@ -24,12 +24,10 @@ use Illuminate\Support\Collection;
 class OrderManagementService
 {
     public function __construct(
-        readonly private OrderRepositoryInterface    $orderRepository,
-        readonly private ProductRepositoryInterface  $productRepository,
-        readonly private TaxAndFeeOrderRollupService $taxAndFeeOrderRollupService,
-    )
-    {
-    }
+        private readonly OrderRepositoryInterface $orderRepository,
+        private readonly ProductRepositoryInterface $productRepository,
+        private readonly TaxAndFeeOrderRollupService $taxAndFeeOrderRollupService,
+    ) {}
 
     public function deleteExistingOrders(int $eventId, string $sessionId): void
     {
@@ -41,15 +39,14 @@ class OrderManagementService
     }
 
     public function createNewOrder(
-        int                    $eventId,
-        EventDomainObject      $event,
-        int                    $timeOutMinutes,
-        string                 $locale,
+        int $eventId,
+        EventDomainObject $event,
+        int $timeOutMinutes,
+        string $locale,
         ?PromoCodeDomainObject $promoCode,
         ?AffiliateDomainObject $affiliate = null,
-        ?string                $sessionId = null,
-    ): OrderDomainObject
-    {
+        ?string $sessionId = null,
+    ): OrderDomainObject {
         $reservedUntil = Carbon::now()->addMinutes($timeOutMinutes);
 
         return $this->orderRepository->create([
@@ -73,9 +70,7 @@ class OrderManagementService
      * If any product in the order is a hard ticket, the highest hard_ticket_fee
      * among them is added once to the order total as an order-level fee.
      *
-     * @param OrderDomainObject $order
-     * @param Collection<OrderItemDomainObject> $orderItems
-     * @return OrderDomainObject
+     * @param  Collection<OrderItemDomainObject>  $orderItems
      */
     public function updateOrderTotals(OrderDomainObject $order, Collection $orderItems): OrderDomainObject
     {
@@ -129,7 +124,7 @@ class OrderManagementService
 
     private function getHardTicketProducts(Collection $orderItems): Collection
     {
-        $productIds = $orderItems->map(fn(OrderItemDomainObject $item) => $item->getProductId())
+        $productIds = $orderItems->map(fn (OrderItemDomainObject $item) => $item->getProductId())
             ->unique()
             ->values()
             ->toArray();
@@ -141,7 +136,7 @@ class OrderManagementService
         return $this->productRepository->findWhereIn(
             field: ProductDomainObjectAbstract::ID,
             values: $productIds,
-        )->filter(fn(ProductDomainObject $product) => $product->getIsHardTicket());
+        )->filter(fn (ProductDomainObject $product) => $product->getIsHardTicket());
     }
 
     private function orderHasHardTicketProduct(Collection $orderItems): bool
@@ -156,7 +151,7 @@ class OrderManagementService
     private function calculateHardTicketFee(Collection $orderItems): float
     {
         $maxFee = $this->getHardTicketProducts($orderItems)
-            ->max(fn(ProductDomainObject $product) => $product->getHardTicketFee() ?? 0.0);
+            ->max(fn (ProductDomainObject $product) => $product->getHardTicketFee() ?? 0.0);
 
         return $maxFee ?? 0.0;
     }

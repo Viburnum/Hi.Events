@@ -39,6 +39,7 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     final public const WAITLIST_ENABLED = 'waitlist_enabled';
     final public const IS_HARD_TICKET = 'is_hard_ticket';
     final public const HARD_TICKET_FEE = 'hard_ticket_fee';
+    final public const IS_ADDON_ONLY = 'is_addon_only';
 
     protected int $id;
     protected int $event_id;
@@ -69,6 +70,7 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     protected ?bool $waitlist_enabled = null;
     protected bool $is_hard_ticket = false;
     protected ?float $hard_ticket_fee = null;
+    protected bool $is_addon_only = false;
 
     public function toArray(): array
     {
@@ -102,6 +104,7 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
                     'waitlist_enabled' => $this->waitlist_enabled ?? null,
                     'is_hard_ticket' => $this->is_hard_ticket ?? null,
                     'hard_ticket_fee' => $this->hard_ticket_fee ?? null,
+                    'is_addon_only' => $this->is_addon_only ?? null,
                 ];
     }
 
@@ -422,5 +425,16 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     public function getHardTicketFee(): ?float
     {
         return $this->hard_ticket_fee;
+    }
+
+    public function setIsAddonOnly(bool $is_addon_only): self
+    {
+        $this->is_addon_only = $is_addon_only;
+        return $this;
+    }
+
+    public function getIsAddonOnly(): bool
+    {
+        return $this->is_addon_only;
     }
 }

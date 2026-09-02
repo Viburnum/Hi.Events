@@ -72,4 +72,10 @@ return [
         'class_suffix' => env('GOOGLE_WALLET_CLASS_SUFFIX', 'hievents_event_ticket'),
         'origin' => env('GOOGLE_WALLET_ORIGIN', env('APP_FRONTEND_URL')),
     ],
+    'geo' => [
+        'provider' => env('GEO_PROVIDER', 'google'),
+        'google' => [
+            'api_key' => env('GOOGLE_MAPS_API_KEY'),
+        ],
+    ],
 ];

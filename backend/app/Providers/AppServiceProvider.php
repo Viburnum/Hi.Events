@@ -15,14 +15,19 @@ use HiEvents\Services\Infrastructure\AppleWallet\AppleWalletConfigurationService
 use HiEvents\Services\Infrastructure\CurrencyConversion\CurrencyConversionClientInterface;
 use HiEvents\Services\Infrastructure\CurrencyConversion\NoOpCurrencyConversionClient;
 use HiEvents\Services\Infrastructure\CurrencyConversion\OpenExchangeRatesCurrencyConversionClient;
+use HiEvents\Services\Infrastructure\Geo\GeoProviderInterface;
+use HiEvents\Services\Infrastructure\Geo\GooglePlacesGeoProvider;
+use HiEvents\Services\Infrastructure\Geo\NoOpGeoProvider;
 use HiEvents\Services\Infrastructure\GoogleWallet\GoogleWalletConfigurationService;
 use HiEvents\Services\Infrastructure\GoogleWallet\GoogleWalletJwtSigner;
 use HiEvents\Services\Infrastructure\PayPal\PayPalClient;
 use HiEvents\Services\Infrastructure\PayPal\PayPalConfigurationService;
 use HiEvents\Services\Infrastructure\Stripe\StripeClientFactory;
 use HiEvents\Services\Infrastructure\Stripe\StripeConfigurationService;
+use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Http\Client\Factory as HttpClient;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\URL;
@@ -38,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
         $this->bindPayPalServices();
         $this->bindWalletServices();
         $this->bindCurrencyConversionClient();
+        $this->bindGeoProvider();
     }
 
     /**
@@ -165,6 +171,30 @@ class AppServiceProvider extends ServiceProvider
                 // Fallback to no-op client if no other client is available
                 return new NoOpCurrencyConversionClient(
                     logger: $this->app->make('log')
+                );
+            }
+        );
+    }
+
+    private function bindGeoProvider(): void
+    {
+        $this->app->bind(
+            GeoProviderInterface::class,
+            function () {
+                $provider = config('services.geo.provider');
+                $googleKey = config('services.geo.google.api_key');
+
+                if ($provider === 'google' && $googleKey) {
+                    return new GooglePlacesGeoProvider(
+                        apiKey: $googleKey,
+                        http: $this->app->make(HttpClient::class),
+                        logger: $this->app->make('log'),
+                        cache: $this->app->make(Repository::class),
+                    );
+                }
+
+                return new NoOpGeoProvider(
+                    logger: $this->app->make('log'),
                 );
             }
         );

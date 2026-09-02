@@ -221,7 +221,6 @@ export const Fulfillment: React.FC = () => {
                         placeholder={t`Search by name, email, or order #...`}
                         setSearchParams={setSearchParams}
                         searchParams={searchParams}
-                        pagination={pagination}
                     />
                 )}
             />

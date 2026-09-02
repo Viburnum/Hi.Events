@@ -3,7 +3,7 @@ import {useParams} from "react-router";
 import {t} from "@lingui/macro";
 import {Badge, Box, Button, Divider, Group, Stack, Table, Text, TextInput} from "@mantine/core";
 import {IconBarcode, IconCheck, IconFileText, IconPrinter, IconTruckDelivery} from "@tabler/icons-react";
-import {SideDrawer} from "../../common/SideDrawer";
+import {SideDrawer, SideDrawerHeading} from "../../common/SideDrawer";
 import {useSetAttendeeBarcode} from "../../../mutations/useSetAttendeeBarcode.ts";
 import {useUpdateOrderFulfillmentStatus} from "../../../mutations/useUpdateOrderFulfillmentStatus.ts";
 import {showError, showSuccess} from "../../../utilites/notifications.tsx";
@@ -318,7 +318,7 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
         <SideDrawer
             opened={true}
             onClose={onClose}
-            heading={t`Fulfillment - Order #${order.public_id}`}
+            header={<SideDrawerHeading title={t`Fulfillment - Order #${order.public_id}`}/>}
         >
             <Stack gap="lg">
                 {/* Order Info */}

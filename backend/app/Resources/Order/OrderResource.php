@@ -24,8 +24,11 @@ class OrderResource extends BaseResource
             'total_tax' => $this->getTotalTax(),
             'total_fee' => $this->getTotalFee(),
             'total_refunded' => $this->getTotalRefunded(),
+            /** @var 'RESERVED'|'CANCELLED'|'COMPLETED'|'AWAITING_OFFLINE_PAYMENT'|'ABANDONED' */
             'status' => $this->getStatus(),
+            /** @var 'REFUND_PENDING'|'REFUND_FAILED'|'REFUNDED'|'PARTIALLY_REFUNDED'|null */
             'refund_status' => $this->getRefundStatus(),
+            /** @var 'NO_PAYMENT_REQUIRED'|'AWAITING_PAYMENT'|'AWAITING_OFFLINE_PAYMENT'|'PAYMENT_FAILED'|'PAYMENT_RECEIVED'|null */
             'payment_status' => $this->getPaymentStatus(),
             'currency' => $this->getCurrency(),
             'first_name' => $this->getFirstName(),
@@ -45,20 +48,20 @@ class OrderResource extends BaseResource
             'event_id' => $this->getEventId(),
             'fulfillment_status' => $this->getFulfillmentStatus(),
             'order_items' => $this->when(
-                !is_null($this->getOrderItems()),
-                fn() => OrderItemResource::collection($this->getOrderItems())
+                ! is_null($this->getOrderItems()),
+                fn () => OrderItemResource::collection($this->getOrderItems())
             ),
             'attendees' => $this->when(
-                !is_null($this->getAttendees()),
-                fn() => AttendeeResource::collection($this->getAttendees())
+                ! is_null($this->getAttendees()),
+                fn () => AttendeeResource::collection($this->getAttendees())
             ),
             'question_answers' => $this->when(
-                !is_null($this->getQuestionAndAnswerViews()),
-                fn() => QuestionAnswerViewResource::collection($this->getQuestionAndAnswerViews()),
+                ! is_null($this->getQuestionAndAnswerViews()),
+                fn () => QuestionAnswerViewResource::collection($this->getQuestionAndAnswerViews()),
             ),
             'latest_invoice' => $this->when(
-                !is_null($this->getLatestInvoice()),
-                fn() => (new InvoiceResource($this->getLatestInvoice()))->toArray($request),
+                ! is_null($this->getLatestInvoice()),
+                fn () => (new InvoiceResource($this->getLatestInvoice()))->toArray($request),
             ),
         ];
     }

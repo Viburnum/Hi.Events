@@ -6,17 +6,17 @@ namespace HiEvents\Http\Actions\Admin\Configurations;
 
 use HiEvents\DomainObjects\Enums\Role;
 use HiEvents\Http\Actions\BaseAction;
-use HiEvents\Repository\Interfaces\AccountConfigurationRepositoryInterface;
-use HiEvents\Resources\Account\AccountConfigurationResource;
+use HiEvents\Repository\Interfaces\OrganizerConfigurationRepositoryInterface;
+use HiEvents\Resources\Organizer\OrganizerConfigurationResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class UpdateConfigurationAction extends BaseAction
 {
     public function __construct(
-        private readonly AccountConfigurationRepositoryInterface $repository,
-    ) {
-    }
+        private readonly OrganizerConfigurationRepositoryInterface $repository,
+    ) {}
 
     public function __invoke(Request $request, int $configurationId): JsonResponse
     {
@@ -31,6 +31,18 @@ class UpdateConfigurationAction extends BaseAction
             'bypass_application_fees' => 'sometimes|boolean',
         ]);
 
+        $existingConfiguration = $this->repository->findById($configurationId);
+        $defaultForCurrency = $existingConfiguration->getDefaultForCurrency();
+        $feeCurrency = $validated['application_fees']['currency'] ?? null;
+
+        if ($defaultForCurrency !== null && $feeCurrency !== null && $feeCurrency !== $defaultForCurrency) {
+            throw ValidationException::withMessages([
+                'application_fees.currency' => __('The fee currency of the :currency default configuration must remain :currency.', [
+                    'currency' => $defaultForCurrency,
+                ]),
+            ]);
+        }
+
         $configuration = $this->repository->updateFromArray(
             id: $configurationId,
             attributes: [
@@ -41,7 +53,7 @@ class UpdateConfigurationAction extends BaseAction
         );
 
         return $this->jsonResponse(
-            new AccountConfigurationResource($configuration),
+            new OrganizerConfigurationResource($configuration),
             wrapInData: true
         );
     }
