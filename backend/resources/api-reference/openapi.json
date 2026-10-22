@@ -1655,6 +1655,153 @@
         "security": []
       }
     },
+    "/public/events/{eventId}/attendees/{attendeeShortId}/apple-wallet-pass": {
+      "get": {
+        "operationId": "public.downloadAppleWalletPassPublicAction",
+        "summary": "Download Apple Wallet Pass (public)",
+        "tags": [
+          "Attendees / Public"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "attendeeShortId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/vnd.apple.pkpass": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "headers": {
+              "Content-Disposition": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "errors"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
+    "/public/events/{eventId}/attendees/{attendeeShortId}/google-wallet-pass": {
+      "get": {
+        "operationId": "public.getGoogleWalletPassPublicAction",
+        "summary": "Get Google Wallet Pass (public)",
+        "tags": [
+          "Attendees / Public"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "attendeeShortId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "save_url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "save_url"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "errors"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        },
+        "security": []
+      }
+    },
     "/events/{eventId}/box-offices": {
       "post": {
         "operationId": "actions.createBoxOfficeAction",
@@ -9974,6 +10121,364 @@
         }
       }
     },
+    "/events/{eventId}/fulfillment/orders": {
+      "get": {
+        "operationId": "fulfillment.getFulfillmentOrdersAction",
+        "summary": "Get Fulfillment Orders",
+        "tags": [
+          "Fulfillment"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 25
+            }
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "description": "Sortable fields are listed in the response `meta.allowed_sorts`.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort_direction",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search term used to filter the results.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter_fields",
+            "in": "query",
+            "description": "Filters in the form `filter_fields[field][operator]=value`. Filterable fields are listed in the response `meta.allowed_filter_fields`.",
+            "style": "deepObject",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of `OrderResource`",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/OrderResource"
+                      }
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/AuthenticationException"
+          },
+          "403": {
+            "description": "The authenticated user is not allowed to perform this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The requested resource was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/fulfillment/attendees/{attendeeId}/barcode": {
+      "put": {
+        "operationId": "fulfillment.setAttendeeBarcodeAction",
+        "summary": "Set Attendee Barcode",
+        "tags": [
+          "Fulfillment"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "attendeeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAttendeeBarcodeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "`AttendeeResource`",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/AttendeeResource"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "errors"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/AuthenticationException"
+          },
+          "403": {
+            "description": "The authenticated user is not allowed to perform this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventId}/fulfillment/orders/{orderId}/status": {
+      "put": {
+        "operationId": "fulfillment.updateOrderFulfillmentStatusAction",
+        "summary": "Update Order Fulfillment Status",
+        "tags": [
+          "Fulfillment"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`OrderResource`",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/OrderResource"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "errors"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "errors"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/AuthenticationException"
+          },
+          "403": {
+            "description": "The authenticated user is not allowed to perform this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/images": {
       "post": {
         "operationId": "images.createImageAction",
@@ -14146,6 +14651,196 @@
             }
           }
         }
+      }
+    },
+    "/public/events/{eventId}/order/{orderShortId}/paypal/order": {
+      "post": {
+        "operationId": "payPal.createPayPalOrderActionPublic",
+        "summary": "Create Pay Pal Order (public)",
+        "tags": [
+          "Orders / Payment / Pay Pal"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "orderShortId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "paypal_order_id": {},
+                    "client_id": {
+                      "type": "string"
+                    },
+                    "currency": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "paypal_order_id",
+                    "client_id",
+                    "currency"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "errors"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The requested resource was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/public/events/{eventId}/order/{orderShortId}/paypal/order/{paypalOrderId}/capture": {
+      "post": {
+        "operationId": "payPal.capturePayPalOrderActionPublic",
+        "summary": "Capture Pay Pal Order (public)",
+        "tags": [
+          "Orders / Payment / Pay Pal"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "orderShortId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "paypalOrderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {}
+                  },
+                  "required": [
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "errors"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The requested resource was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": []
       }
     },
     "/public/events/{eventId}/order/{orderShortId}/stripe/payment_intent": {
@@ -25812,6 +26507,12 @@
                   "CANCELLED"
                 ]
               },
+              "fulfillment_status": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
               "first_name": {
                 "type": "string"
               },
@@ -25914,6 +26615,7 @@
               "event_id",
               "email",
               "status",
+              "fulfillment_status",
               "first_name",
               "last_name",
               "public_id",
@@ -26225,6 +26927,12 @@
               "CANCELLED"
             ]
           },
+          "fulfillment_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "first_name": {
             "type": "string"
           },
@@ -26327,6 +27035,7 @@
           "event_id",
           "email",
           "status",
+          "fulfillment_status",
           "first_name",
           "last_name",
           "public_id",
@@ -29365,6 +30074,12 @@
             "items": {
               "$ref": "#/components/schemas/EventOccurrenceResourcePublic"
             }
+          },
+          "apple_wallet_enabled": {
+            "type": "string"
+          },
+          "google_wallet_enabled": {
+            "type": "string"
           }
         },
         "required": [
@@ -29383,7 +30098,9 @@
           "slug",
           "status",
           "lifecycle_status",
-          "timezone"
+          "timezone",
+          "apple_wallet_enabled",
+          "google_wallet_enabled"
         ],
         "title": "EventResourcePublic"
       },
@@ -31906,6 +32623,12 @@
           "event_id": {
             "type": "integer"
           },
+          "fulfillment_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "order_items": {
             "type": [
               "array",
@@ -31977,7 +32700,8 @@
           "notes",
           "payment_provider",
           "promo_code",
-          "event_id"
+          "event_id",
+          "fulfillment_status"
         ],
         "title": "OrderResource"
       },
@@ -34347,6 +35071,15 @@
               "null"
             ]
           },
+          "is_hard_ticket": {
+            "type": "boolean"
+          },
+          "hard_ticket_fee": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
           "is_addon_only": {
             "type": "boolean"
           },
@@ -34405,6 +35138,8 @@
           "is_highlighted",
           "highlight_message",
           "waitlist_enabled",
+          "is_hard_ticket",
+          "hard_ticket_fee",
           "is_addon_only"
         ],
         "title": "ProductResource"
@@ -34532,6 +35267,15 @@
               "null"
             ]
           },
+          "is_hard_ticket": {
+            "type": "boolean"
+          },
+          "hard_ticket_fee": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
           "is_addon_only": {
             "type": "boolean"
           },
@@ -34561,6 +35305,8 @@
           "is_highlighted",
           "highlight_message",
           "waitlist_enabled",
+          "is_hard_ticket",
+          "hard_ticket_fee",
           "is_addon_only"
         ],
         "title": "ProductResourcePublic"
@@ -35407,6 +36153,19 @@
         ],
         "title": "SendTicketLookupEmailRequest"
       },
+      "SetAttendeeBarcodeRequest": {
+        "type": "object",
+        "properties": {
+          "barcode": {
+            "type": "string",
+            "maxLength": 255
+          }
+        },
+        "required": [
+          "barcode"
+        ],
+        "title": "SetAttendeeBarcodeRequest"
+      },
       "SortLineupEntriesRequest": {
         "type": "object",
         "properties": {
@@ -36139,6 +36898,7 @@
               "type": "string",
               "enum": [
                 "STRIPE",
+                "PAYPAL",
                 "OFFLINE"
               ]
             }
@@ -38104,6 +38864,16 @@
               "boolean",
               "null"
             ]
+          },
+          "is_hard_ticket": {
+            "type": "boolean"
+          },
+          "hard_ticket_fee": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
           }
         },
         "required": [
