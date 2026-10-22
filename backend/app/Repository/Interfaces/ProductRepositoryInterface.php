@@ -16,8 +16,6 @@ interface ProductRepositoryInterface extends RepositoryInterface
 {
     public function findByEventId(int $eventId, QueryParamsDTO $params): LengthAwarePaginator;
 
-    public function getQuantityRemainingForProductPrice(int $productId, int $productPriceId): int;
-
     public function getTaxesByProductId(int $productId): Collection;
 
     public function getProductsByTaxId(int $taxId): Collection;
@@ -40,6 +38,10 @@ interface ProductRepositoryInterface extends RepositoryInterface
     public function addCheckInListToProducts(int $checkInListId, array $productIds): void;
 
     public function removeCheckInListFromProducts(int $checkInListId): void;
+
+    public function addBoxOfficeToProducts(int $boxOfficeId, array $productIds): void;
+
+    public function removeBoxOfficeFromProducts(int $boxOfficeId): void;
 
     public function removeCapacityAssignmentFromProducts(int $capacityAssignmentId): void;
 

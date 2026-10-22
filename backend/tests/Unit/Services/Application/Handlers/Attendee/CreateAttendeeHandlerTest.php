@@ -18,6 +18,10 @@ use HiEvents\DomainObjects\ProductPriceDomainObject;
 use HiEvents\DomainObjects\Status\AttendeeStatus;
 use HiEvents\DomainObjects\Status\OrderPaymentStatus;
 use HiEvents\DomainObjects\Status\OrderStatus;
+use HiEvents\Enterprise\Seating\Services\Domain\EventSeatMapLookupService;
+use HiEvents\Enterprise\Seating\Services\Domain\SeatClaimService;
+use HiEvents\Enterprise\Seating\Services\Domain\SeatingEventLockService;
+use HiEvents\Enterprise\Seating\Services\Domain\SeatSelectionValidationService;
 use HiEvents\Events\OrderStatusChangedEvent;
 use HiEvents\Exceptions\InvalidProductPriceId;
 use HiEvents\Exceptions\NoTicketsAvailableException;
@@ -31,6 +35,9 @@ use HiEvents\Services\Application\Handlers\Attendee\CreateAttendeeHandler;
 use HiEvents\Services\Application\Handlers\Attendee\DTO\CreateAttendeeDTO;
 use HiEvents\Services\Domain\EventOccurrence\OccurrencePurchaseEligibilityService;
 use HiEvents\Services\Domain\Order\OrderManagementService;
+use HiEvents\Services\Domain\Product\AvailableProductQuantitiesFetchService;
+use HiEvents\Services\Domain\Product\DTO\AvailableProductQuantitiesDTO;
+use HiEvents\Services\Domain\Product\DTO\AvailableProductQuantitiesResponseDTO;
 use HiEvents\Services\Domain\Product\ProductQuantityUpdateService;
 use HiEvents\Services\Domain\SelfService\OrderAuditLogService;
 use HiEvents\Services\Domain\Tax\TaxAndFeeRollupService;
@@ -63,6 +70,8 @@ class CreateAttendeeHandlerTest extends TestCase
     private OrderRepositoryInterface|MockInterface $orderRepository;
 
     private ProductRepositoryInterface|MockInterface $productRepository;
+
+    private AvailableProductQuantitiesFetchService|MockInterface $availableProductQuantitiesFetchService;
 
     private EventRepositoryInterface|MockInterface $eventRepository;
 
@@ -101,6 +110,8 @@ class CreateAttendeeHandlerTest extends TestCase
 
         $this->productRepository->shouldReceive('loadRelation')->andReturnSelf();
 
+        $this->availableProductQuantitiesFetchService = Mockery::mock(AvailableProductQuantitiesFetchService::class);
+
         $this->handler = new CreateAttendeeHandler(
             $this->attendeeRepository,
             $this->orderRepository,
@@ -115,6 +126,11 @@ class CreateAttendeeHandlerTest extends TestCase
             $this->domainEventDispatcherService,
             $this->occurrenceEligibilityService,
             $this->orderAuditLogService,
+            $this->availableProductQuantitiesFetchService,
+            Mockery::mock(SeatSelectionValidationService::class)->shouldIgnoreMissing(),
+            Mockery::mock(SeatClaimService::class)->shouldIgnoreMissing(),
+            Mockery::mock(EventSeatMapLookupService::class)->shouldIgnoreMissing(),
+            Mockery::mock(SeatingEventLockService::class)->shouldIgnoreMissing(),
         );
     }
 
@@ -123,8 +139,7 @@ class CreateAttendeeHandlerTest extends TestCase
         $this->givenSingleEvent();
         $this->givenOccurrenceIsPurchasable();
         $this->givenTicketProduct();
-        $this->productRepository->shouldReceive('getQuantityRemainingForProductPrice')
-            ->once()->with(self::PRODUCT_ID, self::PRODUCT_PRICE_ID)->andReturn(5);
+        $this->givenPriceAvailability(5);
 
         $this->orderRepository->shouldReceive('create')
             ->once()
@@ -230,7 +245,7 @@ class CreateAttendeeHandlerTest extends TestCase
         $this->givenOccurrenceIsPurchasable();
         $this->givenTicketProduct();
         $this->orderRepository->shouldReceive('create')->once()->andReturn($this->order());
-        $this->productRepository->shouldReceive('getQuantityRemainingForProductPrice')->once()->andReturn(0);
+        $this->givenPriceAvailability(0);
 
         $this->attendeeRepository->shouldNotReceive('create');
         $this->productQuantityService->shouldNotReceive('increaseQuantitySold');
@@ -309,6 +324,32 @@ class CreateAttendeeHandlerTest extends TestCase
             ->setCurrency('USD');
     }
 
+    private function givenPriceAvailability(int $quantityAvailable): void
+    {
+        $this->availableProductQuantitiesFetchService
+            ->shouldReceive('getAvailableProductQuantities')
+            ->once()
+            ->withArgs(fn (int $eventId, bool $ignoreCache, ?int $occurrenceId, bool $applyOccurrenceLimits): bool => $eventId === self::EVENT_ID
+                && $ignoreCache
+                && $occurrenceId === self::OCCURRENCE_ID
+                && ! $applyOccurrenceLimits)
+            ->andReturn(new AvailableProductQuantitiesResponseDTO(
+                productQuantities: collect([
+                    AvailableProductQuantitiesDTO::fromArray([
+                        'product_id' => self::PRODUCT_ID,
+                        'price_id' => self::PRODUCT_PRICE_ID,
+                        'product_title' => 'Ticket',
+                        'price_label' => null,
+                        'quantity_available' => $quantityAvailable,
+                        'quantity_reserved' => 0,
+                        'initial_quantity_available' => 10,
+                        'product_type' => ProductType::TICKET->name,
+                        'quantity_applies_to' => 'OCCURRENCE',
+                    ]),
+                ]),
+            ));
+    }
+
     private function givenSingleEvent(): void
     {
         $this->eventRepository->shouldReceive('findById')
@@ -350,7 +391,7 @@ class CreateAttendeeHandlerTest extends TestCase
     private function givenHappyPathPersistence(
         OrderPaymentStatus $expectedPaymentStatus = OrderPaymentStatus::NO_PAYMENT_REQUIRED,
     ): void {
-        $this->productRepository->shouldReceive('getQuantityRemainingForProductPrice')->once()->andReturn(5);
+        $this->givenPriceAvailability(5);
         $this->orderRepository->shouldReceive('create')
             ->once()
             ->withArgs(fn (array $attributes): bool => $attributes[OrderDomainObjectAbstract::PAYMENT_STATUS] === $expectedPaymentStatus->name)

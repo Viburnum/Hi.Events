@@ -1,10 +1,11 @@
-import React, {FC, PropsWithChildren, useCallback, useEffect} from "react";
+import React, {FC, PropsWithChildren, useEffect} from "react";
 import {MantineProvider, v8CssVariablesResolver} from "@mantine/core";
 import {Notifications} from "@mantine/notifications";
 import {i18n} from "@lingui/core";
 import {I18nProvider} from "@lingui/react";
 import {ModalsProvider} from "@mantine/modals";
 import {DatesProvider} from "@mantine/dates";
+import {toDayjsLocale} from "./locales.ts";
 import {DehydratedState, HydrationBoundary, QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {Helmet, HelmetProvider} from "react-helmet-async";
 import type {ThemeColors} from "./utilites/themeColors.ts";
@@ -22,7 +23,7 @@ import {StartupChecks} from "./StartupChecks.tsx";
 import {ThirdPartyScripts} from "./components/common/ThirdPartyScripts";
 import {getConfig} from "./utilites/config.ts";
 import {CookieConsentBanner} from "./components/common/CookieConsentBanner";
-import {isConsentPending, setConsentState, updateGoogleConsentMode} from "./utilites/trackingPixels/consent";
+import {isConsentBannerEnabled} from "./utilites/cookieConsent";
 
 declare global {
     interface Window {
@@ -37,25 +38,17 @@ export const App: FC<
         themeColors: ThemeColors;
         helmetContext?: any;
         dehydratedState?: DehydratedState;
+        ssrStyled?: boolean;
     }>
 > = (props) => {
     const [isLoadedOnBrowser, setIsLoadedOnBrowser] = React.useState(false);
-    const showGlobalConsentBanner = getConfig('VITE_COOKIE_CONSENT_ENABLED') === 'true'
-        && !isSsr() && isConsentPending();
-
-    const handleGlobalConsent = useCallback((granted: boolean) => {
-        setConsentState(granted ? 'granted' : 'denied');
-        updateGoogleConsentMode(granted);
-        window.dispatchEvent(new CustomEvent('hi_consent_change', {detail: {granted}}));
-    }, []);
-
     useEffect(() => {
         setIsLoadedOnBrowser(!isSsr());
     }, []);
 
     return (
         <React.StrictMode>
-            <div
+            {!props.ssrStyled && <div
                 className="ssr-loader"
                 style={{
                     top: 0,
@@ -71,7 +64,7 @@ export const App: FC<
                     zIndex: 1000,
                     display: isLoadedOnBrowser ? "none" : "block",
                 }}
-            />
+            />}
             <MantineProvider
                 cssVariablesResolver={v8CssVariablesResolver}
                 theme={{
@@ -84,7 +77,7 @@ export const App: FC<
             >
                 <HelmetProvider context={props.helmetContext}>
                     <I18nProvider i18n={i18n}>
-                        <DatesProvider settings={{locale: props.locale}}>
+                        <DatesProvider settings={{locale: toDayjsLocale(props.locale)}}>
                         <QueryClientProvider client={props.queryClient}>
                             <HydrationBoundary state={props.dehydratedState}>
                                 <StartupChecks/>
@@ -99,10 +92,8 @@ export const App: FC<
                                     </Helmet>
                                     {props.children}
                                 </ModalsProvider>
-                                <Notifications pauseResetOnHover="notification"/>
-                                {showGlobalConsentBanner && (
-                                    <CookieConsentBanner onConsent={handleGlobalConsent}/>
-                                )}
+                                <Notifications pauseResetOnHover="notification" zIndex={20000}/>
+                                {isConsentBannerEnabled() && <CookieConsentBanner/>}
                             </HydrationBoundary>
                         </QueryClientProvider>
                         </DatesProvider>

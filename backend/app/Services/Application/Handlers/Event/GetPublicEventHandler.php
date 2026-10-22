@@ -17,8 +17,10 @@ use HiEvents\DomainObjects\OrganizerSettingDomainObject;
 use HiEvents\DomainObjects\ProductCategoryDomainObject;
 use HiEvents\DomainObjects\ProductDomainObject;
 use HiEvents\DomainObjects\ProductPriceDomainObject;
+use HiEvents\DomainObjects\Status\EventLifecycleStatus;
 use HiEvents\DomainObjects\Status\EventOccurrenceStatus;
 use HiEvents\DomainObjects\TaxAndFeesDomainObject;
+use HiEvents\Enterprise\Seating\Services\Domain\EventSeatMapLookupService;
 use HiEvents\Repository\Eloquent\Value\OrderAndDirection;
 use HiEvents\Repository\Eloquent\Value\Relationship;
 use HiEvents\Repository\Interfaces\EventOccurrenceRepositoryInterface;
@@ -29,6 +31,7 @@ use HiEvents\Services\Application\Handlers\Event\DTO\PublicOccurrenceFetchResult
 use HiEvents\Services\Domain\Event\EventPageViewIncrementService;
 use HiEvents\Services\Domain\EventOccurrence\PublicOccurrenceVisibilityService;
 use HiEvents\Services\Domain\Product\ProductFilterService;
+use HiEvents\Services\Domain\Product\PublicProductSelectionFilter;
 
 class GetPublicEventHandler
 {
@@ -41,6 +44,8 @@ class GetPublicEventHandler
         private readonly ProductFilterService $productFilterService,
         private readonly EventPageViewIncrementService $eventPageViewIncrementService,
         private readonly PublicOccurrenceVisibilityService $occurrenceVisibilityService,
+        private readonly EventSeatMapLookupService $eventSeatMapLookupService,
+        private readonly PublicProductSelectionFilter $productSelectionFilter,
     ) {}
 
     public function handle(GetPublicEventDTO $data): EventDomainObject
@@ -103,8 +108,14 @@ class GetPublicEventHandler
             $this->eventPageViewIncrementService->increment($data->eventId, $data->ipAddress);
         }
 
+        $event->setHasSeatMap($this->eventSeatMapLookupService->existsForEvent($data->eventId));
+
         return $event->setProductCategories($this->productFilterService->filter(
-            productsCategories: $event->getProductCategories(),
+            productsCategories: $this->productSelectionFilter->filter(
+                categories: $event->getProductCategories(),
+                productIds: $data->productIds,
+                categoryIds: $data->productCategoryIds,
+            ),
             promoCode: $promoCodeDomainObject,
             eventOccurrenceId: $verifiedOccurrence?->getId(),
         ));
@@ -122,8 +133,13 @@ class GetPublicEventHandler
             : [...$occurrenceWhere, PublicOccurrenceVisibilityService::hasRemainingCapacity()];
 
         $nextBookable = $this->findEdgeOccurrence($nextBookableWhere, 'asc');
+        $lastUpcoming = $this->findEdgeOccurrence($occurrenceWhere, 'desc');
         $event->setNextOccurrenceStartDate($nextBookable?->getStartDate());
-        $event->setLastOccurrenceStartDate($this->findEdgeOccurrence($occurrenceWhere, 'desc')?->getStartDate());
+        $event->setLastOccurrenceStartDate($lastUpcoming?->getStartDate());
+
+        if ($lastUpcoming === null) {
+            $this->setLifecycleStatusForEndedEvent($event, $eventId);
+        }
 
         $anchorOccurrence = $verifiedOccurrence ?? $nextBookable;
         if ($anchorOccurrence === null && ! $hideSoldOutOccurrences) {
@@ -161,6 +177,18 @@ class GetPublicEventHandler
                     },
                 ]) !== null
             );
+        }
+    }
+
+    private function setLifecycleStatusForEndedEvent(EventDomainObject $event, int $eventId): void
+    {
+        $latestOccurrence = $this->findEdgeOccurrence([
+            EventOccurrenceDomainObjectAbstract::EVENT_ID => $eventId,
+            [EventOccurrenceDomainObjectAbstract::STATUS, '!=', EventOccurrenceStatus::CANCELLED->name],
+        ], 'desc');
+
+        if ($latestOccurrence?->isPast()) {
+            $event->setLifecycleStatus(EventLifecycleStatus::ENDED->name);
         }
     }
 

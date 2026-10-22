@@ -127,11 +127,13 @@ export const RefundOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
                         }}
                     />
                     <Stack gap="xs">
-                        <Checkbox
-                            {...form.getInputProps('notify_buyer', {type: 'checkbox'})}
-                            label={t`Send refund notification email`}
-                            description={t`Customer will receive an email confirming the refund`}
-                        />
+                        {order.email && (
+                            <Checkbox
+                                {...form.getInputProps('notify_buyer', {type: 'checkbox'})}
+                                label={t`Send refund notification email`}
+                                description={t`Customer will receive an email confirming the refund`}
+                            />
+                        )}
 
                         {order.status !== 'CANCELLED' && (
                             <Checkbox
@@ -173,10 +175,6 @@ export const RefundOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
     }
 
     const getModalBody = () => {
-        if (order.is_manually_created) {
-            return <CannotRefund message={t`You cannot refund a manually created order.`}/>
-        }
-
         if (isRefundPending) {
             return <CannotRefund
                 message={t`There is a refund pending. Please wait for it to complete before requesting another refund.`}/>

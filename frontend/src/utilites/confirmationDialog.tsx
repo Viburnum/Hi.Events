@@ -5,6 +5,7 @@ interface ConfirmationDialogOptions {
     confirm?: string;
     cancel?: string;
     useCheckoutColors?: boolean;
+    destructive?: boolean;
 }
 
 export const confirmationDialog = (
@@ -36,6 +37,25 @@ export const confirmationDialog = (
         title: message,
         labels,
         styles: checkoutStyles,
+        confirmProps: options?.destructive ? {color: 'red'} : undefined,
+        closeButtonProps: {'aria-label': t`Close`},
         onConfirm: () => onConfirm(),
     });
 }
+
+export const confirmationDialogAsync = (
+    message: string,
+    options?: ConfirmationDialogOptions,
+): Promise<boolean> => new Promise(resolve => {
+    modals.openConfirmModal({
+        title: message,
+        labels: {
+            confirm: options?.confirm || t`Confirm`,
+            cancel: options?.cancel || t`Cancel`,
+        },
+        closeButtonProps: {'aria-label': t`Close`},
+        onConfirm: () => resolve(true),
+        onCancel: () => resolve(false),
+        onClose: () => resolve(false),
+    });
+});

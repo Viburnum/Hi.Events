@@ -9,8 +9,9 @@ import {eventHomepagePath, eventHomepageUrl} from "../../../utilites/urlHelper.t
 import {ShareComponent} from "../../common/ShareIcon";
 import {AddToEventCalendarButton} from "../../common/AddEventToCalendarButton";
 import classNames from "classnames";
-import React, {useCallback, useEffect, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {getEmbedMode, getParentOrigin} from "../../../utilites/iframeResize.ts";
+import {resolveClientEmbedLocale} from "../../../utilites/embedLocale.ts";
 import {Invoice} from "../../../types.ts";
 import {orderClientPublic} from "../../../api/order.client.ts";
 import {downloadBinary} from "../../../utilites/download.ts";
@@ -24,10 +25,10 @@ import {detectMode} from "../../../utilites/themeUtils.ts";
 import {CheckoutThemeProvider} from "./CheckoutThemeProvider.tsx";
 import {useOrganizerTrackingPixels} from "../../../hooks/useOrganizerTrackingPixels";
 import {trackPixelEvent, hasActivePixels} from "../../../utilites/trackingPixels";
-import {CookieConsentBanner} from "../../common/CookieConsentBanner";
+import {CookieSettingsLink} from "../../common/CookieSettingsLink";
 import {useGetEventPublic} from "../../../queries/useGetEventPublic.ts";
 
-const DEFAULT_ACCENT = '#8b5cf6';
+const DEFAULT_ACCENT = '#7c3aed';
 
 const Checkout = () => {
     const {eventId, orderShortId} = useParams();
@@ -67,6 +68,7 @@ const Checkout = () => {
     }, []);
 
     const closeModal = useCallback(() => postToParent('hievents:close-checkout'), [postToParent]);
+    const reportedOrderRef = useRef<string | null>(null);
 
     const getCurrentStep = (): 'details' | 'payment' | 'summary' => {
         const pathname = location.pathname;
@@ -152,11 +154,26 @@ const Checkout = () => {
                 ...(parentOrigin ? {sessionId: getCheckoutSessionIdentifier(String(orderShortId))} : {}),
                 step: currentStep,
                 reservedUntil: order?.reserved_until ? utcDateToEpochMs(order.reserved_until) : null,
+                locale: resolveClientEmbedLocale(),
             });
         } else if (orderIsCompleted || orderIsAwaitingOfflinePayment) {
             postToParent('hievents:checkout-cleared');
         }
     }, [isModal, isOrderReservedAndNotExpired, orderIsCompleted, orderIsAwaitingOfflinePayment, order?.reserved_until, currentStep, eventId, orderShortId, postToParent]);
+
+    useEffect(() => {
+        if (!isModal || !order || !(orderIsCompleted || orderIsAwaitingOfflinePayment) || reportedOrderRef.current === order.short_id) {
+            return;
+        }
+        reportedOrderRef.current = order.short_id;
+        postToParent('hievents:order-completed', {
+            eventId,
+            currency: order.currency,
+            total: order.total_gross,
+            quantity: (order.order_items ?? []).reduce((sum, item) => sum + item.quantity, 0),
+            status: order.status,
+        });
+    }, [isModal, order, orderIsCompleted, orderIsAwaitingOfflinePayment, eventId, postToParent]);
 
     useEffect(() => {
         if (!isModal) return;
@@ -250,22 +267,22 @@ const Checkout = () => {
         }
     }, [blocker.state]);
 
-    const {consentPending, consentGranted, onConsent} = useOrganizerTrackingPixels(
+    const {pixelsReady} = useOrganizerTrackingPixels(
         publicEvent?.organizer?.settings?.tracking_pixels
     );
 
     useEffect(() => {
-        if (event && orderIsReserved && consentGranted && hasActivePixels()) {
+        if (event && orderIsReserved && pixelsReady && hasActivePixels()) {
             trackPixelEvent({
                 eventName: 'InitiateCheckout',
                 contentName: event.title,
                 contentId: event.id,
             });
         }
-    }, [event?.id, orderIsReserved, consentGranted]);
+    }, [event?.id, orderIsReserved, pixelsReady]);
 
     useEffect(() => {
-        if (!event || !order || !consentGranted || !hasActivePixels()) return;
+        if (!event || !order || !pixelsReady || !hasActivePixels()) return;
         if (!orderIsCompleted && !orderIsAwaitingOfflinePayment) return;
 
         const key = `purchase_tracked_${order.short_id}`;
@@ -283,7 +300,7 @@ const Checkout = () => {
         if (typeof sessionStorage !== 'undefined') {
             sessionStorage.setItem(key, '1');
         }
-    }, [order?.status, order?.short_id, consentGranted]);
+    }, [order?.status, order?.short_id, pixelsReady]);
 
     const homepageSettings = event?.settings?.homepage_theme_settings;
     const accentColor = homepageSettings?.accent || DEFAULT_ACCENT;
@@ -397,7 +414,10 @@ const Checkout = () => {
                     </header>
                     <Outlet/>
                     {isModal && currentStep !== 'summary' && (
-                        <PoweredByFooter style={{marginTop: '12px', paddingBottom: '16px'}}/>
+                        <>
+                            <PoweredByFooter style={{marginTop: '12px', paddingBottom: '16px'}}/>
+                            <CookieSettingsLink/>
+                        </>
                     )}
                 </div>
             </div>
@@ -458,9 +478,6 @@ const Checkout = () => {
                     </Group>
                 </div>
             </Modal>
-            {consentPending && (
-                <CookieConsentBanner onConsent={onConsent}/>
-            )}
         </CheckoutThemeProvider>
     );
 }

@@ -22,8 +22,7 @@ use HiEvents\Repository\Interfaces\OrderRepositoryInterface;
 use HiEvents\Services\Domain\Mail\SendOrderDetailsService;
 use HiEvents\Services\Domain\Order\MarkOrderAsPaidService;
 use HiEvents\Services\Domain\Order\OccurrenceStatusValidator;
-use HiEvents\Services\Domain\Order\OrderApplicationFeeCalculationService;
-use HiEvents\Services\Domain\Order\OrderApplicationFeeService;
+use HiEvents\Services\Domain\Order\OfflineApplicationFeeRecordService;
 use HiEvents\Services\Infrastructure\DomainEvents\DomainEventDispatcherService;
 use HiEvents\Services\Infrastructure\DomainEvents\Enums\DomainEventType;
 use HiEvents\Services\Infrastructure\DomainEvents\Events\OrderEvent;
@@ -53,7 +52,7 @@ class MarkOrderAsPaidServiceTest extends TestCase
 
     private EventRepositoryInterface|MockInterface $eventRepository;
 
-    private OrderApplicationFeeService|MockInterface $orderApplicationFeeService;
+    private OfflineApplicationFeeRecordService|MockInterface $offlineApplicationFeeRecordService;
 
     private SendOrderDetailsService|MockInterface $sendOrderDetailsService;
 
@@ -72,7 +71,7 @@ class MarkOrderAsPaidServiceTest extends TestCase
         $this->attendeeRepository = Mockery::mock(AttendeeRepositoryInterface::class);
         $this->domainEventDispatcherService = Mockery::mock(DomainEventDispatcherService::class);
         $this->eventRepository = Mockery::mock(EventRepositoryInterface::class);
-        $this->orderApplicationFeeService = Mockery::mock(OrderApplicationFeeService::class);
+        $this->offlineApplicationFeeRecordService = Mockery::mock(OfflineApplicationFeeRecordService::class);
         $this->sendOrderDetailsService = Mockery::mock(SendOrderDetailsService::class);
         $this->occurrenceStatusValidator = Mockery::mock(OccurrenceStatusValidator::class);
 
@@ -89,9 +88,8 @@ class MarkOrderAsPaidServiceTest extends TestCase
             $this->invoiceRepository,
             $this->attendeeRepository,
             $this->domainEventDispatcherService,
-            Mockery::mock(OrderApplicationFeeCalculationService::class),
             $this->eventRepository,
-            $this->orderApplicationFeeService,
+            $this->offlineApplicationFeeRecordService,
             $this->sendOrderDetailsService,
             $this->occurrenceStatusValidator,
         );
@@ -177,10 +175,36 @@ class MarkOrderAsPaidServiceTest extends TestCase
         $this->service->markOrderAsPaid(self::ORDER_ID, self::EVENT_ID);
     }
 
+    public function test_the_order_summary_email_attaches_the_paid_invoice(): void
+    {
+        $this->givenOrderAwaitingOfflinePayment(
+            pendingInvoice: (new InvoiceDomainObject)->setId(77)->setStatus(InvoiceStatus::UNPAID->name),
+            completedInvoice: (new InvoiceDomainObject)->setId(77)->setStatus(InvoiceStatus::PAID->name),
+        );
+        $this->givenEventWithoutOrganizerConfiguration();
+        $this->orderRepository->shouldReceive('updateFromArray')->once();
+        $this->attendeeRepository->shouldReceive('updateWhere')->once();
+        $this->domainEventDispatcherService->shouldReceive('dispatch')->once();
+        $this->invoiceRepository->shouldReceive('findLatestInvoiceForOrder')
+            ->once()
+            ->with(self::ORDER_ID)
+            ->andReturn((new InvoiceDomainObject)->setId(77));
+        $this->invoiceRepository->shouldReceive('updateFromArray')
+            ->once()
+            ->with(77, ['status' => InvoiceStatus::PAID->name]);
+
+        $this->sendOrderDetailsService->shouldReceive('sendCustomerOrderSummary')
+            ->once()
+            ->withArgs(fn (OrderDomainObject $order, $event, $organizer, $eventSettings, ?InvoiceDomainObject $invoice) => $invoice?->getId() === 77
+                && $invoice->getStatus() === InvoiceStatus::PAID->name);
+
+        $this->service->markOrderAsPaid(self::ORDER_ID, self::EVENT_ID);
+    }
+
     public function test_an_order_that_is_not_awaiting_offline_payment_cannot_be_marked_as_paid(): void
     {
         $this->givenOrderAwaitingOfflinePayment(status: OrderStatus::COMPLETED);
-        $this->givenEventWithoutOrganizerConfiguration(expectSecondLoad: false);
+        $this->givenEventWithoutOrganizerConfiguration(expectsFeeRecord: false);
 
         $this->orderRepository->shouldNotReceive('updateFromArray');
         $this->attendeeRepository->shouldNotReceive('updateWhere');
@@ -198,7 +222,7 @@ class MarkOrderAsPaidServiceTest extends TestCase
     public function test_an_order_for_a_cancelled_occurrence_cannot_be_marked_as_paid(): void
     {
         $this->givenOrderAwaitingOfflinePayment(occurrencePurchasable: false);
-        $this->givenEventWithoutOrganizerConfiguration(expectSecondLoad: false);
+        $this->givenEventWithoutOrganizerConfiguration(expectsFeeRecord: false);
 
         $this->orderRepository->shouldNotReceive('updateFromArray');
         $this->attendeeRepository->shouldNotReceive('updateWhere');
@@ -217,13 +241,16 @@ class MarkOrderAsPaidServiceTest extends TestCase
         ?int $affiliateId = null,
         float $totalGross = 50.0,
         bool $occurrencePurchasable = true,
+        ?InvoiceDomainObject $pendingInvoice = null,
+        ?InvoiceDomainObject $completedInvoice = null,
     ): void {
         $pending = (new OrderDomainObject)
             ->setId(self::ORDER_ID)
             ->setEventId(self::EVENT_ID)
             ->setStatus($status->name)
             ->setTotalGross($totalGross)
-            ->setCurrency('USD');
+            ->setCurrency('USD')
+            ->setInvoices($pendingInvoice ? collect([$pendingInvoice]) : null);
 
         $this->orderRepository->shouldReceive('findFirstWhere')
             ->once()
@@ -253,7 +280,8 @@ class MarkOrderAsPaidServiceTest extends TestCase
             ->setStatus(OrderStatus::COMPLETED->name)
             ->setTotalGross($totalGross)
             ->setCurrency('USD')
-            ->setAffiliateId($affiliateId);
+            ->setAffiliateId($affiliateId)
+            ->setInvoices($completedInvoice ? collect([$completedInvoice]) : null);
 
         $this->orderRepository->shouldReceive('findById')
             ->once()
@@ -261,7 +289,7 @@ class MarkOrderAsPaidServiceTest extends TestCase
             ->andReturn($completed);
     }
 
-    private function givenEventWithoutOrganizerConfiguration(bool $expectSecondLoad = true): void
+    private function givenEventWithoutOrganizerConfiguration(bool $expectsFeeRecord = true): void
     {
         $event = (new EventDomainObject)
             ->setId(self::EVENT_ID)
@@ -269,8 +297,12 @@ class MarkOrderAsPaidServiceTest extends TestCase
             ->setEventSettings(new EventSettingDomainObject);
 
         $this->eventRepository->shouldReceive('findById')
-            ->times($expectSecondLoad ? 2 : 1)
+            ->once()
             ->with(self::EVENT_ID)
             ->andReturn($event);
+
+        if ($expectsFeeRecord) {
+            $this->offlineApplicationFeeRecordService->shouldReceive('record')->once();
+        }
     }
 }

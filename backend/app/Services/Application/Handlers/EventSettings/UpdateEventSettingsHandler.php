@@ -7,6 +7,8 @@ use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\Events\CapacityChangedEvent;
 use HiEvents\Repository\Interfaces\EventSettingsRepositoryInterface;
 use HiEvents\Services\Application\Handlers\EventSettings\DTO\UpdateEventSettingsDTO;
+use HiEvents\Services\Domain\Event\EventSpamCheckDispatchService;
+use HiEvents\Services\Domain\Event\HomepageSectionsSanitizer;
 use HiEvents\Services\Infrastructure\HtmlPurifier\HtmlPurifierService;
 use Illuminate\Database\DatabaseManager;
 use Throwable;
@@ -17,6 +19,8 @@ class UpdateEventSettingsHandler
         private readonly EventSettingsRepositoryInterface $eventSettingsRepository,
         private readonly HtmlPurifierService $purifier,
         private readonly DatabaseManager $databaseManager,
+        private readonly EventSpamCheckDispatchService $eventSpamCheckDispatchService,
+        private readonly HomepageSectionsSanitizer $homepageSectionsSanitizer,
     ) {}
 
     /**
@@ -94,6 +98,9 @@ class UpdateEventSettingsHandler
 
                     // Homepage theme settings
                     'homepage_theme_settings' => $settings->homepage_theme_settings,
+                    'homepage_sections' => $settings->homepage_sections === null
+                        ? null
+                        : $this->homepageSectionsSanitizer->sanitizeForEvent($settings->homepage_sections, $settings->event_id),
 
                     // Self-service settings
                     'allow_attendee_self_edit' => $settings->allow_attendee_self_edit,
@@ -116,6 +123,8 @@ class UpdateEventSettingsHandler
                     'event_id' => $settings->event_id,
                 ]);
         });
+
+        $this->eventSpamCheckDispatchService->dispatchForEvent($settings->event_id);
 
         if ($settings->waitlist_auto_process && ! $wasAutoProcessEnabled) {
             event(new CapacityChangedEvent(

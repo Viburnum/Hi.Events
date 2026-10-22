@@ -2,16 +2,18 @@
 
 namespace HiEvents\Mail\Order;
 
-use Barryvdh\DomPDF\Facade\Pdf;
 use HiEvents\DomainObjects\EventDomainObject;
-use HiEvents\DomainObjects\EventOccurrenceDomainObject;
 use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\DomainObjects\InvoiceDomainObject;
 use HiEvents\DomainObjects\OrderDomainObject;
 use HiEvents\DomainObjects\OrganizerDomainObject;
 use HiEvents\Helper\Url;
 use HiEvents\Mail\BaseMail;
+use HiEvents\Mail\Concerns\ContainsEventContent;
+use HiEvents\Mail\Concerns\ProvidesEventContent;
 use HiEvents\Services\Domain\Email\DTO\RenderedEmailTemplateDTO;
+use HiEvents\Services\Domain\Lineup\DTO\EmailLineupHighlightsDTO;
+use HiEvents\Services\Domain\Order\InvoicePdfRenderer;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -19,9 +21,13 @@ use Illuminate\Mail\Mailables\Envelope;
 /**
  * @uses /backend/resources/views/emails/orders/summary.blade.php
  */
-class OrderSummary extends BaseMail
+class OrderSummary extends BaseMail implements ContainsEventContent
 {
+    use ProvidesEventContent;
+
     private readonly ?RenderedEmailTemplateDTO $renderedTemplate;
+
+    private ?EmailLineupHighlightsDTO $lineup = null;
 
     public function __construct(
         private readonly OrderDomainObject $order,
@@ -29,10 +35,11 @@ class OrderSummary extends BaseMail
         private readonly OrganizerDomainObject $organizer,
         private readonly EventSettingDomainObject $eventSettings,
         private readonly ?InvoiceDomainObject $invoice,
-        private readonly ?EventOccurrenceDomainObject $occurrence = null,
         ?RenderedEmailTemplateDTO $renderedTemplate = null,
+        ?EmailLineupHighlightsDTO $lineup = null,
     ) {
         $this->renderedTemplate = $renderedTemplate;
+        $this->lineup = $lineup;
 
         parent::__construct();
     }
@@ -60,7 +67,6 @@ class OrderSummary extends BaseMail
             );
         }
 
-        // Fallback to original template
         return new Content(
             markdown: 'emails.orders.summary',
             with: [
@@ -68,7 +74,8 @@ class OrderSummary extends BaseMail
                 'event' => $this->event,
                 'order' => $this->order,
                 'organizer' => $this->organizer,
-                'occurrence' => $this->occurrence ?? null,
+                'occurrence' => $this->order->getSingleEventOccurrence(),
+                'lineup' => $this->lineup,
                 'orderUrl' => sprintf(
                     Url::getFrontEndUrlFromConfig(Url::ORDER_SUMMARY),
                     $this->event->getId(),
@@ -84,13 +91,13 @@ class OrderSummary extends BaseMail
             return [];
         }
 
-        $invoice = Pdf::loadView('invoice', [
-            'order' => $this->order,
-            'event' => $this->event,
-            'organizer' => $this->organizer,
-            'eventSettings' => $this->eventSettings,
-            'invoice' => $this->invoice,
-        ]);
+        $invoice = app(InvoicePdfRenderer::class)->render(
+            order: $this->order,
+            event: $this->event,
+            organizer: $this->organizer,
+            eventSettings: $this->eventSettings,
+            invoice: $this->invoice,
+        );
 
         return [
             Attachment::fromData(

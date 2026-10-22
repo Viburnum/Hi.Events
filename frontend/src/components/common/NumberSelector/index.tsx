@@ -4,6 +4,7 @@ import {UseFormReturnType} from "@mantine/form";
 import {IconMinus, IconPlus} from "@tabler/icons-react";
 import {t} from "@lingui/macro";
 import classes from './NumberSelector.module.scss';
+import {useIsHydrated} from "../../../hooks/useIsHydrated.ts";
 import classNames from "classnames";
 
 interface NumberSelectorProps extends TextInputProps {
@@ -20,6 +21,7 @@ const getFormValue = (values: Record<string, any>, fieldName: string) =>
     Number(fieldName.split('.').reduce<any>((acc, key) => acc?.[key], values) ?? 0);
 
 export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues, selectorSize = 'default', onLimitReached}: NumberSelectorProps) => {
+    const isHydrated = useIsHydrated();
     const handlers = useRef<NumberInputHandlers>(null);
     const [value, setValue] = useState<number>(() => getFormValue(formInstance.values, fieldName));
 
@@ -90,51 +92,44 @@ export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues,
         increment();
     };
 
-    const isEmpty = value === 0;
-    const buttonSize = selectorSize === 'compact'
-        ? (isEmpty ? 30 : 26)
-        : (isEmpty ? 38 : 30);
-    const iconSize = selectorSize === 'compact'
-        ? (isEmpty ? 14 : 13)
-        : (isEmpty ? 16 : 15);
+    const buttonSize = selectorSize === 'compact' ? 26 : 30;
+    const iconSize = selectorSize === 'compact' ? 13 : 15;
 
     return (
-        <div className={classNames(classes.wrapper, 'button-input', selectorSize === 'compact' && classes.compact)}
-             data-empty={value === 0 || undefined}>
-            {value > 0 && (
-                <>
-                    <ActionIcon
-                        size={buttonSize}
-                        radius={999}
-                        variant={'transparent'}
-                        onClick={decrement}
-                        aria-label={t`Decrease quantity`}
-                        onMouseDown={(event) => event.preventDefault()}
-                        className={classNames(classes.control, classes.decrement)}
-                    >
-                        <IconMinus size={iconSize} stroke={2}/>
-                    </ActionIcon>
+        <div className={classNames(classes.wrapper, 'button-input', selectorSize === 'compact' && classes.compact)}>
+            <ActionIcon
+                size={buttonSize}
+                radius={999}
+                variant={'transparent'}
+                onClick={decrement}
+                disabled={value === 0 || !isHydrated}
+                aria-label={t`Decrease quantity`}
+                onMouseDown={(event) => event.preventDefault()}
+                className={classNames(classes.control, classes.decrement)}
+            >
+                <IconMinus size={iconSize} stroke={2}/>
+            </ActionIcon>
 
-                    <NumberInput
-                        mb={0}
-                        variant="unstyled"
-                        min={minValue}
-                        max={maxValue}
-                        handlersRef={handlers}
-                        value={value}
-                        hideControls
-                        onChange={(newValue) => changeValue(Number(newValue) || 0)}
-                        aria-label={t`Quantity`}
-                        classNames={{input: classes.input}}
-                    />
-                </>
-            )}
+            <NumberInput
+                mb={0}
+                variant="unstyled"
+                min={minValue}
+                max={maxValue}
+                handlersRef={handlers}
+                value={value}
+                hideControls
+                disabled={!isHydrated}
+                onChange={(newValue) => changeValue(Number(newValue) || 0)}
+                aria-label={t`Quantity`}
+                classNames={{input: classes.input}}
+            />
 
             <ActionIcon
                 size={buttonSize}
                 radius={999}
                 variant={'transparent'}
                 onClick={handleIncrement}
+                disabled={!isHydrated}
                 aria-label={t`Increase quantity`}
                 aria-disabled={atMax}
                 data-limit={atMax || undefined}

@@ -44,6 +44,7 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
                 ->whereIn(EventDomainObjectAbstract::STATUS, [
                     EventStatus::LIVE->name,
                     EventStatus::DRAFT->name,
+                    EventStatus::PENDING_MANUAL_REVIEW->name,
                 ])
                 ->where(EventDomainObjectAbstract::ORGANIZER_ID, $organizerId)
                 ->where(EventDomainObjectAbstract::ACCOUNT_ID, $accountId);
@@ -52,8 +53,20 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
         return $this->findEvents($where, $params);
     }
 
-    public function findEvents(array $where, QueryParamsDTO $params): LengthAwarePaginator
-    {
+    public function findEvents(
+        array $where,
+        QueryParamsDTO $params,
+        ?array $restrictToOrganizerIds = null,
+        ?array $restrictToEventIds = null,
+    ): LengthAwarePaginator {
+        if ($restrictToOrganizerIds !== null || $restrictToEventIds !== null) {
+            $where[] = static function (Builder $builder) use ($restrictToOrganizerIds, $restrictToEventIds) {
+                $builder
+                    ->whereIn(EventDomainObjectAbstract::ORGANIZER_ID, $restrictToOrganizerIds ?? [])
+                    ->orWhereIn(EventDomainObjectAbstract::ID, $restrictToEventIds ?? []);
+            };
+        }
+
         if (! empty($params->query)) {
             $where[] = static function (Builder $builder) use ($params) {
                 $builder
@@ -144,34 +157,6 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
         $this->model = $this->model
             ->orderByRaw("({$sortDateSql}) {$direction} NULLS LAST", $bindings)
             ->orderBy(EventDomainObjectAbstract::ID);
-    }
-
-    public function getUpcomingEventsForAdmin(int $perPage): LengthAwarePaginator
-    {
-        $now = now();
-        $next24Hours = now()->addDay();
-
-        $this->model = $this->model
-            ->select('events.*')
-            ->whereExists(function ($query) use ($now, $next24Hours) {
-                $query->select(DB::raw(1))
-                    ->from('event_occurrences')
-                    ->whereColumn('event_occurrences.event_id', 'events.id')
-                    ->whereNull('event_occurrences.deleted_at')
-                    ->where('event_occurrences.start_date', '>=', $now)
-                    ->where('event_occurrences.start_date', '<=', $next24Hours)
-                    ->where('event_occurrences.status', 'ACTIVE');
-            })
-            ->whereIn(EventDomainObjectAbstract::STATUS, [
-                EventStatus::LIVE->name,
-            ])
-            ->orderBy(EventDomainObjectAbstract::CREATED_AT, 'desc');
-
-        $this->loadRelation(new Relationship(OrganizerDomainObject::class, name: 'organizer'));
-        $this->loadRelation(new Relationship(AccountDomainObject::class, name: 'account'));
-        $this->loadRelation(new Relationship(EventOccurrenceDomainObject::class));
-
-        return $this->paginate($perPage);
     }
 
     public function getAllEventsForAdmin(
@@ -273,6 +258,7 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
                         ->whereNull('orders.deleted_at')
                         ->where('orders.status', OrderStatus::COMPLETED->name);
                 })
+                ->orderBy('events.id')
                 ->get();
 
             return $this->handleResults($events);

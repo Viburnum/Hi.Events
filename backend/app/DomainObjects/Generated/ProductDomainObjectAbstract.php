@@ -40,6 +40,7 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     final public const IS_HARD_TICKET = 'is_hard_ticket';
     final public const HARD_TICKET_FEE = 'hard_ticket_fee';
     final public const IS_ADDON_ONLY = 'is_addon_only';
+    final public const SEQUENTIAL_TIER_RELEASE_ENABLED = 'sequential_tier_release_enabled';
 
     protected int $id;
     protected int $event_id;
@@ -71,6 +72,7 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     protected bool $is_hard_ticket = false;
     protected ?float $hard_ticket_fee = null;
     protected bool $is_addon_only = false;
+    protected bool $sequential_tier_release_enabled = false;
 
     public function toArray(): array
     {
@@ -105,6 +107,7 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
                     'is_hard_ticket' => $this->is_hard_ticket ?? null,
                     'hard_ticket_fee' => $this->hard_ticket_fee ?? null,
                     'is_addon_only' => $this->is_addon_only ?? null,
+                    'sequential_tier_release_enabled' => $this->sequential_tier_release_enabled ?? null,
                 ];
     }
 
@@ -436,5 +439,16 @@ abstract class ProductDomainObjectAbstract extends \HiEvents\DomainObjects\Abstr
     public function getIsAddonOnly(): bool
     {
         return $this->is_addon_only;
+    }
+
+    public function setSequentialTierReleaseEnabled(bool $sequential_tier_release_enabled): self
+    {
+        $this->sequential_tier_release_enabled = $sequential_tier_release_enabled;
+        return $this;
+    }
+
+    public function getSequentialTierReleaseEnabled(): bool
+    {
+        return $this->sequential_tier_release_enabled;
     }
 }

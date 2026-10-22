@@ -12,6 +12,7 @@ use HiEvents\DomainObjects\EventDomainObject;
 use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\DomainObjects\OrganizerDomainObject;
 use HiEvents\DomainObjects\OrganizerSettingDomainObject;
+use HiEvents\Enterprise\BoxOffice\Repository\Interfaces\BoxOfficeRepositoryInterface;
 use HiEvents\Exceptions\OrganizerNotFoundException;
 use HiEvents\Helper\DateHelper;
 use HiEvents\Helper\IdHelper;
@@ -43,6 +44,7 @@ class CreateEventService
         private readonly FilesystemManager $filesystemManager,
         private readonly EventOccurrenceRepositoryInterface $occurrenceRepository,
         private readonly CheckInListRepositoryInterface $checkInListRepository,
+        private readonly BoxOfficeRepositoryInterface $boxOfficeRepository,
     ) {}
 
     /**
@@ -74,9 +76,20 @@ class CreateEventService
             $this->createEventStatistics($event);
 
             $this->createSystemDefaultCheckInList($event);
+            $this->createSystemDefaultBoxOffice($event);
 
             return $event;
         });
+    }
+
+    private function createSystemDefaultBoxOffice(EventDomainObject $event): void
+    {
+        $this->boxOfficeRepository->create([
+            'event_id' => $event->getId(),
+            'short_id' => IdHelper::shortId(IdHelper::BOX_OFFICE_PREFIX),
+            'name' => __('Box office'),
+            'is_system_default' => true,
+        ]);
     }
 
     private function createSystemDefaultCheckInList(EventDomainObject $event): void
@@ -210,9 +223,8 @@ class CreateEventService
         $organizerThemeSettings = $organizerSettings->getHomepageThemeSettings() ?? [];
         $terminology = ProductTerminology::forCategory($event->getCategory());
 
-        // Build the new homepage_theme_settings from organizer settings
         $homepageThemeSettings = [
-            'accent' => $organizerThemeSettings['accent'] ?? '#8b5cf6',
+            'accent' => $organizerThemeSettings['accent'] ?? '#7c3aed',
             'background' => $organizerThemeSettings['background'] ?? '#f5f3ff',
             'mode' => $organizerThemeSettings['mode'] ?? 'light',
             'background_type' => $eventCoverCreated
@@ -227,10 +239,8 @@ class CreateEventService
         $this->eventSettingsRepository->create([
             'event_id' => $event->getId(),
 
-            // New theme settings JSON field
             'homepage_theme_settings' => $homepageThemeSettings,
 
-            // Legacy fields for backward compatibility
             'homepage_primary_color' => $homepageThemeSettings['accent'],
             'homepage_body_background_color' => $homepageThemeSettings['background'],
             'homepage_background_type' => $homepageThemeSettings['background_type'],
@@ -261,7 +271,7 @@ class CreateEventService
             'show_marketing_opt_in' => $organizerSettings->getDefaultShowMarketingOptIn(),
             'allow_copy_details_to_all_attendees' => true,
             'pass_platform_fee_to_buyer' => $organizerSettings->getDefaultPassPlatformFeeToBuyer(),
-            'allow_attendee_self_edit' => $organizerSettings->getDefaultAllowAttendeeSelfEdit() ?? false,
+            'allow_attendee_self_edit' => $organizerSettings->getDefaultAllowAttendeeSelfEdit(),
             'ticket_design_settings' => [
                 'accent_color' => $homepageThemeSettings['accent'] ?? '#333',
             ],

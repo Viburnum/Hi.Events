@@ -9,6 +9,7 @@ import {useEffect, useRef, useState} from "react";
 import {ProductPriceAvailability} from "../../../../../common/ProductPriceAvailability";
 import {formatCurrency, getCurrencySymbol} from "../../../../../../utilites/currency.ts";
 import {FeeBreakdown, FeeBreakdownRow} from "../FeeBreakdown";
+import {getBeforeDiscountDisplayPrice} from "../../priceTotals.ts";
 
 const LIMIT_MESSAGE_TIMEOUT_MS = 4000;
 
@@ -24,15 +25,18 @@ interface TieredPricingProps {
 
 const getFeesAndTaxTotal = (price: ProductPrice): number => (price.tax_total || 0) + (price.fee_total || 0);
 
-const getAvailabilityReason = (price: ProductPrice): string => {
-    if (price.is_sold_out) {
+const getAvailabilityReason = (product: Product, price: ProductPrice): string => {
+    if (price.is_sold_out || product.is_sold_out) {
         return 'sold-out';
     }
-    if (price.is_after_sale_end_date) {
+    if (price.is_after_sale_end_date || product.is_after_sale_end_date) {
         return 'ended';
     }
-    if (price.is_before_sale_start_date) {
+    if (price.is_before_sale_start_date || product.is_before_sale_start_date) {
         return 'upcoming';
+    }
+    if (price.is_locked_behind_earlier_tier) {
+        return 'locked';
     }
     return 'unavailable';
 };
@@ -106,8 +110,8 @@ export const TieredPricing = ({
                 />
             )}
             {(!product.is_available || !price.is_available) && (
-                <div className={'hi-product-availability'} data-reason={getAvailabilityReason(price)}>
-                    {(price.is_before_sale_start_date || price.is_after_sale_end_date) && !price.is_sold_out && (
+                <div className={'hi-product-availability'} data-reason={getAvailabilityReason(product, price)}>
+                    {['upcoming', 'ended'].includes(getAvailabilityReason(product, price)) && (
                         <IconClock size={14} stroke={2}/>
                     )}
                     <ProductPriceAvailability product={product} price={price} event={event}
@@ -139,10 +143,11 @@ export const TieredPricing = ({
         }
         const feesAndTax = getFeesAndTaxTotal(price);
         const isPriceAvailable = product.is_available && price.is_available;
+        const beforeDiscountPrice = getBeforeDiscountDisplayPrice(price, priceDisplayMode);
 
         return (
             <div className={'hi-product-header-pricing'}
-                 data-unavailable={!isPriceAvailable ? getAvailabilityReason(price) : undefined}>
+                 data-unavailable={!isPriceAvailable ? getAvailabilityReason(product, price) : undefined}>
                 <div className={'hi-price-tier-row'}>
                     <div className={'hi-price-tier'}>
                         <div className={'hi-price-tier-price'}>
@@ -155,10 +160,10 @@ export const TieredPricing = ({
                                 taxAndServiceFeeDisplayType={priceDisplayMode}
                                 feeDisplay={'none'}
                             />
-                            {price.is_discounted && (
+                            {beforeDiscountPrice !== null && (
                                 <div className={'hi-price-strike'}>
                                     <Currency
-                                        price={price.price_before_discount}
+                                        price={beforeDiscountPrice}
                                         currency={event?.currency}
                                         className={'hi-price-tier-price-amount'}
                                     />
@@ -188,10 +193,11 @@ export const TieredPricing = ({
             {product?.prices?.map((price, index) => {
                 const feesAndTax = getFeesAndTaxTotal(price);
                 const isPriceAvailable = product.is_available && price.is_available;
+                const beforeDiscountPrice = getBeforeDiscountDisplayPrice(price, priceDisplayMode);
 
                 return (
                     <div key={index} className={'hi-price-tier-row'}
-                         data-unavailable={!isPriceAvailable ? getAvailabilityReason(price) : undefined}>
+                         data-unavailable={!isPriceAvailable ? getAvailabilityReason(product, price) : undefined}>
                         <div className={'hi-price-tier-main'}>
                             <div className={'hi-price-tier'}>
                                 {price.label && (
@@ -243,10 +249,10 @@ export const TieredPricing = ({
                             />
                         )}
 
-                        {price.is_discounted && (
+                        {beforeDiscountPrice !== null && (
                             <div className={'hi-price-strike'}>
                                 <Currency
-                                    price={price.price_before_discount}
+                                    price={beforeDiscountPrice}
                                     currency={event?.currency}
                                     className={'hi-price-tier-price-amount'}
                                 />

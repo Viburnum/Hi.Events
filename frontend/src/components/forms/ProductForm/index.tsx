@@ -37,10 +37,13 @@ import {
 import {Callout} from "../../common/Callout";
 import {useDisclosure} from "@mantine/hooks";
 import {NavLink, useParams} from "react-router";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {getCurrencySymbol} from "../../../utilites/currency.ts";
 import {useGetEvent} from "../../../queries/useGetEvent.ts";
 import {useGetTaxesAndFees} from "../../../queries/useGetTaxesAndFees.ts";
+import {useAccess} from "../../../hooks/useAccess.ts";
+import {useGetEventSeatMap} from "../../../ee/seating/queries/useGetEventSeatMap.ts";
+import {seatedProductIds} from "../../../ee/seating/components/SeatPicker/ticketOptions.ts";
 import classes from './ProductForm.module.scss';
 import {Fieldset} from "../../common/Fieldset";
 import {Editor} from "../../common/Editor";
@@ -48,7 +51,7 @@ import {InputGroup} from "../../common/InputGroup";
 import classNames from "classnames";
 import {InputLabelWithHelp} from "../../common/InputLabelWithHelp";
 import {CreateTaxOrFeeModal} from "../../modals/CreateTaxOrFeeModal";
-import {hasQuantityValue, ProductPriceTierForm, SeriesQuantityWarning} from "./ProductPriceTierForm.tsx";
+import {defaultQuantityAppliesTo, ProductPriceTierForm, QuantityField} from "./ProductPriceTierForm.tsx";
 import {LedgerRow, LedgerRowId} from "./LedgerRow.tsx";
 import {ProductSelector} from "../../common/ProductSelector";
 import {
@@ -64,6 +67,7 @@ import {
     taxesSummary,
     waitlistSummary,
 } from "./ledgerSummaries.ts";
+import {DateTimeField} from "../../common/DateTimeField";
 
 interface ProductFormProps {
     form: UseFormReturnType<Product>,
@@ -104,9 +108,12 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
     const isDonationProduct = form.values.type === 'DONATION';
     const {data: event} = useGetEvent(eventId);
     const {data: taxesAndFees} = useGetTaxesAndFees();
+    const {isRestricted} = useAccess();
     const isRecurring = event?.type === EventType.RECURRING;
-    const isRecurringTicket = isRecurring && form.values.product_type === 'TICKET';
     const typeLocked = Number(product?.quantity_sold) > 0;
+    const seatMap = useGetEventSeatMap(eventId, !!event?.has_seat_map && !!product?.id).data;
+    const isSeated = !!product?.id && seatedProductIds(seatMap?.band_products ?? []).has(Number(product.id));
+    const previousProductType = useRef(form.values.product_type);
 
     const handleTaxOrFeeCreated = (taxOrFee: TaxAndFee) => {
         const currentIds = form.values.tax_and_fee_ids || [];
@@ -127,6 +134,20 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
             form.setFieldValue('price', 0.00);
         }
     }, [form.values.type, form.values.price]);
+
+    useEffect(() => {
+        const previous = previousProductType.current;
+        const next = form.values.product_type;
+        previousProductType.current = next;
+        if (previous === next || !form.isDirty('product_type')) {
+            return;
+        }
+        form.values.prices?.forEach((price, index) => {
+            if ((price.quantity_applies_to ?? defaultQuantityAppliesTo(previous)) === defaultQuantityAppliesTo(previous)) {
+                form.setFieldValue(`prices.${index}.quantity_applies_to`, defaultQuantityAppliesTo(next));
+            }
+        });
+    }, [form.values.product_type]);
 
     useEffect(() => {
         if (event?.product_categories && event.product_categories.length === 1) {
@@ -312,39 +333,14 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                                              )}
                                          />}
                                          placeholder="19.99"/>
-                            <NumberInput min={0}
-                                         placeholder={t`Unlimited`}
-                                         {...form.getInputProps('prices.0.initial_quantity_available')}
-                                         label={<InputLabelWithHelp
-                                             label={isRecurringTicket ? t`Total Quantity Across All Dates` : t`Quantity Available`}
-                                             helpText={isRecurringTicket ? (
-                                                 <Trans>
-                                                     <p>
-                                                         This is the total quantity available across every date in your
-                                                         schedule combined — not a per-date limit. To limit attendance for
-                                                         each date, set a capacity on the <NavLink
-                                                         to={`/manage/event/${eventId}/occurrences`}>Occurrence Schedule
-                                                         page</NavLink>.
-                                                     </p>
-                                                 </Trans>
-                                             ) : (
-                                                 <Trans>
-                                                     <p>
-                                                         The number of products available for this product
-                                                     </p>
-                                                     <p>
-                                                         This value can be overridden if there are <a target={'__blank'}
-                                                                                                      href={'capacity-assignments'}>Capacity
-                                                         Limits</a> associated with this product.
-                                                     </p>
-                                                 </Trans>
-                                             )}
-                                         />}
+                            <QuantityField
+                                form={form}
+                                index={0}
+                                isRecurring={isRecurring}
+                                isSeated={isSeated}
+                                testId="product-quantity-applies-to"
                             />
                         </InputGroup>
-                        {!product && isRecurringTicket && hasQuantityValue(form.values.prices?.[0]?.initial_quantity_available) && (
-                            <SeriesQuantityWarning eventId={eventId}/>
-                        )}
                     </>
                 )}
 
@@ -360,15 +356,15 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                         <Fieldset legend={t`Price Tiers`} mt={20} mb={20}>
                             {isRecurring && (
                                 <Callout variant="info" style={{marginBottom: 10}}>
-                                    <Trans>These prices apply across all dates in your schedule, and tier quantities limit
-                                        total sales across all dates combined. Sale dates on tiers apply globally. You can
-                                        override prices for individual dates on the <NavLink
+                                    <Trans>These prices apply across all dates in your schedule, and each tier's quantity
+                                        can be per date or a total across all dates. Sale dates on tiers apply globally.
+                                        You can override prices and per-date quantities for individual dates on the <NavLink
                                             to={`/manage/event/${eventId}/occurrences`}>Occurrence Schedule
                                             page</NavLink>.</Trans>
                                 </Callout>
                             )}
                             <div className={classes.priceTiers}>
-                                <ProductPriceTierForm product={product} form={form} event={event}/>
+                                <ProductPriceTierForm product={product} form={form} event={event} isSeated={isSeated}/>
                                 <Button
                                     className={classes.addTierButton}
                                     size={'xs'}
@@ -380,13 +376,21 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                                             price: 0,
                                             label: undefined,
                                             sale_end_date: undefined,
-                                            sale_start_date: undefined
+                                            sale_start_date: undefined,
+                                            quantity_applies_to: defaultQuantityAppliesTo(form.values.product_type),
                                         })
                                     }
                                 >
                                     {t`Add tier`}
                                 </Button>
                             </div>
+                            <Switch
+                                mt={15}
+                                {...form.getInputProps('sequential_tier_release_enabled', {type: 'checkbox'})}
+                                label={t`Release tiers in order`}
+                                description={t`Each tier goes on sale only after the tiers above it sell out or end. Every tier except the last needs a quantity.`}
+                                data-testid="product-sequential-tier-release-switch"
+                            />
                         </Fieldset>
                     </>
                 )}
@@ -421,16 +425,17 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                 >
                     {isRecurring && (
                         <Callout variant="info" style={{marginBottom: 10}}>
-                            <Trans>Sale period dates apply across all dates in your schedule. To control pricing and
-                                availability for individual dates, use the overrides on the <NavLink
+                            <Trans>Sale period dates apply across all dates in your schedule. To adjust prices,
+                                per-date quantities or availability for individual dates, use the overrides on the <NavLink
                                     to={`/manage/event/${eventId}/occurrences`}>Occurrence Schedule page</NavLink>.</Trans>
                         </Callout>
                     )}
                     <InputGroup>
-                        <TextInput type={'datetime-local'} {...form.getInputProps('sale_start_date')}
+                        <DateTimeField {...form.getInputProps('sale_start_date')}
                                    label={t`Sale Start Date`}/>
-                        <TextInput type={'datetime-local'} {...form.getInputProps('sale_end_date')}
-                                   label={t`Sale End Date`}/>
+                        <DateTimeField {...form.getInputProps('sale_end_date')}
+                                   label={t`Sale End Date`}
+                                   defaultTime="23:59"/>
                     </InputGroup>
                     <Switch {...form.getInputProps('hide_before_sale_start_date', {type: 'checkbox'})}
                             label={t`Hide product before sale start date`}
@@ -458,22 +463,24 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                     </div>
                 </LedgerRow>
 
-                <LedgerRow
-                    id="waitlist"
-                    icon={<IconUsers size={16}/>}
-                    label={t`Waitlist`}
-                    summary={waitlistSummary(form.values)}
-                    opened={openRows.has('waitlist')}
-                    onToggle={toggleRow}
-                >
-                    <Switch
-                        description={isRecurring
-                            ? t`Allow customers to join a waitlist when this product is sold out. Customers join the waitlist for a specific date.`
-                            : t`Allow customers to join a waitlist when this product is sold out`}
-                        {...form.getInputProps(`waitlist_enabled`, {type: 'checkbox'})}
-                        label={t`Enable Waitlist`}
-                    />
-                </LedgerRow>
+                {!isSeated && (
+                    <LedgerRow
+                        id="waitlist"
+                        icon={<IconUsers size={16}/>}
+                        label={t`Waitlist`}
+                        summary={waitlistSummary(form.values)}
+                        opened={openRows.has('waitlist')}
+                        onToggle={toggleRow}
+                    >
+                        <Switch
+                            description={isRecurring
+                                ? t`Allow customers to join a waitlist when this product is sold out. Customers join the waitlist for a specific date.`
+                                : t`Allow customers to join a waitlist when this product is sold out`}
+                            {...form.getInputProps(`waitlist_enabled`, {type: 'checkbox'})}
+                            label={t`Enable Waitlist`}
+                        />
+                    </LedgerRow>
+                )}
 
                 <LedgerRow
                     id="taxes"
@@ -495,15 +502,17 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
                             items: taxAndFeeOptions(TaxAndFeeType.Fee),
                         }]}
                     />
-                    <Button
-                        variant="subtle"
-                        size="compact-sm"
-                        leftSection={<IconPlus size={14}/>}
-                        onClick={openTaxFeeModal}
-                        className={classes.addTaxFeeButton}
-                    >
-                        {t`Create Tax or Fee`}
-                    </Button>
+                    {!isRestricted && (
+                        <Button
+                            variant="subtle"
+                            size="compact-sm"
+                            leftSection={<IconPlus size={14}/>}
+                            onClick={openTaxFeeModal}
+                            className={classes.addTaxFeeButton}
+                        >
+                            {t`Create Tax or Fee`}
+                        </Button>
+                    )}
 
                     {(form.values.type === ProductPriceType.Free && !!form.values.tax_and_fee_ids?.length) && (
                         <Callout variant="info" style={{marginTop: 15}}>

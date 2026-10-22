@@ -5,6 +5,7 @@
 @php /** @var \HiEvents\DomainObjects\EventSettingDomainObject $eventSettings */ @endphp
 @php /** @var \HiEvents\DomainObjects\EventOccurrenceDomainObject|null $occurrence */ @endphp
 @php /** @var string $orderUrl */ @endphp
+@php /** @var \HiEvents\Services\Domain\Lineup\DTO\EmailLineupHighlightsDTO|null $lineup */ @endphp
 
 @php /** @see \HiEvents\Mail\Order\OrderSummary */ @endphp
 
@@ -52,6 +53,8 @@
 
 </p>
 
+@include('emails.partials.lineup-highlights', ['lineup' => $lineup])
+
 @if($eventSettings->getPostCheckoutMessage() && $order->isOrderCompleted())
 <p>
 
@@ -65,6 +68,9 @@
 ## {{ __('Order Summary') }}
 - **{{ __('Order Number:') }}** {{ $order->getPublicId() }}
 - **{{ __('Total Amount:') }}** {{ Currency::format($order->getTotalGross(), $event->getCurrency()) }}
+@if($order->getSeatLabels())
+- **{{ __('Seats:') }}** {{ implode(', ', $order->getSeatLabels()) }}
+@endif
 
 <x-mail::button :url="$orderUrl">
     {{ __('View Order Summary & Tickets') }}

@@ -1,10 +1,12 @@
 import {t} from "@lingui/macro";
+import {useAccess} from "../../../hooks/useAccess.ts";
 import {Anchor, Button, Group, Menu, Popover, Text, Tooltip} from '@mantine/core';
 import {Event, IdParam, Invoice, Order} from "../../../types.ts";
 import {
     IconAlertCircle,
     IconCalendarEvent,
     IconCash,
+    IconCashRegister,
     IconCheck,
     IconClock,
     IconClockPause,
@@ -33,6 +35,8 @@ import {TanStackTable, TanStackTableColumn} from "../TanStackTable";
 import {ColumnVisibilityToggle} from "../ColumnVisibilityToggle";
 import {CellContext} from "@tanstack/react-table";
 import {formatCurrency} from "../../../utilites/currency.ts";
+import {getBoxOfficeTenderLabel} from "../../../ee/box-office/utilites/boxOfficeTender.ts";
+import {WriteAccess} from "../WriteAccess";
 
 interface OrdersTableProps {
     event: Event,
@@ -61,7 +65,10 @@ export const OrdersTable = ({orders, event, compact}: OrdersTableProps) => {
         modal.open();
     }
 
-    const handleCopyEmail = (email: string) => {
+    const handleCopyEmail = (email: string | null) => {
+        if (!email) {
+            return;
+        }
         clipboard.copy(email);
         showSuccess(t`Email address copied to clipboard`);
         setEmailPopoverId(null);
@@ -101,6 +108,7 @@ export const OrdersTable = ({orders, event, compact}: OrdersTableProps) => {
         );
     }
 
+    const canViewFinancials = useAccess().can('VIEW_FINANCIALS');
     const columns = useMemo<TanStackTableColumn<Order>[]>(
         () => [
             {
@@ -125,7 +133,10 @@ export const OrdersTable = ({orders, event, compact}: OrdersTableProps) => {
                                     </Text>
                                 )}
                             </div>
-                            <Popover
+                            {!order.email && (
+                                <Text className={classes.customerEmail} c="dimmed">{t`No email provided`}</Text>
+                            )}
+                            {order.email && <Popover
                                 opened={emailPopoverId === order.id}
                                 onChange={(opened) => {
                                     if (!opened) setEmailPopoverId(null);
@@ -146,14 +157,16 @@ export const OrdersTable = ({orders, event, compact}: OrdersTableProps) => {
                                 </Popover.Target>
                                 <Popover.Dropdown>
                                     <Group gap="xs" style={{flexDirection: 'column', width: '100%'}}>
-                                        <Button
-                                            fullWidth
-                                            variant="light"
-                                            leftSection={<IconSend size={16}/>}
-                                            onClick={() => handleMessageFromEmail(order)}
-                                        >
-                                            {t`Message`}
-                                        </Button>
+                                        <WriteAccess>
+                                            <Button
+                                                fullWidth
+                                                variant="light"
+                                                leftSection={<IconSend size={16}/>}
+                                                onClick={() => handleMessageFromEmail(order)}
+                                            >
+                                                {t`Message`}
+                                            </Button>
+                                        </WriteAccess>
                                         <Button
                                             fullWidth
                                             variant="light"
@@ -165,7 +178,7 @@ export const OrdersTable = ({orders, event, compact}: OrdersTableProps) => {
                                         </Button>
                                     </Group>
                                 </Popover.Dropdown>
-                            </Popover>
+                            </Popover>}
                         </div>
                     );
                 },
@@ -180,6 +193,7 @@ export const OrdersTable = ({orders, event, compact}: OrdersTableProps) => {
                 cell: (info: CellContext<Order, unknown>) => {
                     const order = info.row.original;
                     const occurrence = order.order_items?.[0]?.event_occurrence;
+                    const operatorName = order.box_office_operator_name;
                     return (
                         <div className={classes.orderDetails}>
                             <Anchor
@@ -196,6 +210,13 @@ export const OrdersTable = ({orders, event, compact}: OrdersTableProps) => {
                                     {' '}
                                     {formatDateWithLocale(occurrence.start_date, 'timeOnly', event.timezone)}
                                     {occurrence.label && ` · ${occurrence.label}`}
+                                </span>
+                            )}
+                            {order.box_office_id && (
+                                <span className={classes.occurrenceChip}>
+                                    <IconCashRegister size={12}/>
+                                    {t`Box office`}
+                                    {operatorName && ` · ${t`Sold by ${operatorName}`}`}
                                 </span>
                             )}
                             <div className={classes.orderMeta}>
@@ -287,9 +308,15 @@ export const OrdersTable = ({orders, event, compact}: OrdersTableProps) => {
                 enableHiding: true,
                 cell: (info: CellContext<Order, unknown>) => {
                     const order = info.row.original;
+                    const tenderLabel = getBoxOfficeTenderLabel(order.box_office_tender);
                     return (
                         <div className={classes.paymentStatus}>
-                            {order.payment_provider === 'STRIPE' ? (
+                            {tenderLabel ? (
+                                <>
+                                    {order.box_office_tender === 'CARD' ? <IconCreditCard size={16}/> : <IconCash size={16}/>}
+                                    <Text>{tenderLabel}</Text>
+                                </>
+                            ) : order.payment_provider === 'STRIPE' ? (
                                 <>
                                     <IconCreditCard size={16}/>
                                     <Text>{t`Stripe`}</Text>
@@ -367,8 +394,8 @@ export const OrdersTable = ({orders, event, compact}: OrdersTableProps) => {
                     sticky: 'right',
                 },
             },
-        ],
-        [event.id, emailPopoverId]
+        ].filter(column => canViewFinancials || column.id !== 'amount') as TanStackTableColumn<Order>[],
+        [event.id, emailPopoverId, canViewFinancials]
     );
 
     if (orders.length === 0) {

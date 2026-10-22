@@ -5,7 +5,7 @@ import {modals} from "@mantine/modals";
 import {useParams} from "react-router";
 import {useMemo, useState} from "react";
 import {IconClock, IconMapPin, IconRuler, IconTag, IconUsers} from "@tabler/icons-react";
-import {Modal} from "../../../../common/Modal";
+import {Modal, ModalFooter} from "../../../../common/Modal";
 import {Callout} from "../../../../common/Callout";
 import {InputGroup} from "../../../../common/InputGroup";
 import {Editor} from "../../../../common/Editor";
@@ -20,6 +20,7 @@ import {useFormErrorResponseHandler} from "../../../../../hooks/useFormErrorResp
 import {SendMessageModal} from "../../../../modals/SendMessageModal";
 import {buildBulkRescheduleTemplate} from "../rescheduleMessageTemplate";
 import classes from './OccurrenceBulkEditModal.module.scss';
+import {CapacityHelpLink} from "../../../../common/CapacityHelp";
 
 type BulkAction = 'shift_times' | 'change_duration' | 'update_capacity' | 'update_label' | 'update_location';
 type BulkLocationMode = 'in_person' | 'online' | 'clear';
@@ -441,6 +442,7 @@ export const OccurrenceBulkEditModal = ({onClose, occurrences}: OccurrenceBulkEd
                                 label={t`Set to unlimited (remove limit)`}
                                 {...form.getInputProps('clear_capacity', {type: 'checkbox'})}
                             />
+                            <div className={classes.helpRow}><CapacityHelpLink/></div>
                         </>
                     )}
 
@@ -501,15 +503,16 @@ export const OccurrenceBulkEditModal = ({onClose, occurrences}: OccurrenceBulkEd
                         </Stack>
                     )}
 
-                    <Button
-                        type="submit"
-                        fullWidth
-                        mt="lg"
-                        data-testid="occurrence-bulk-edit-submit-button"
-                        loading={bulkUpdateMutation.isPending || createLocationMutation.isPending}
-                    >
-                        {t`Apply Changes`}
-                    </Button>
+                    <ModalFooter>
+                        <Button variant="default" onClick={onClose}>{t`Cancel`}</Button>
+                        <Button
+                            type="submit"
+                            data-testid="occurrence-bulk-edit-submit-button"
+                            loading={bulkUpdateMutation.isPending || createLocationMutation.isPending}
+                        >
+                            {t`Apply Changes`}
+                        </Button>
+                    </ModalFooter>
                 </form>
             )}
         </Modal>

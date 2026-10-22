@@ -27,11 +27,19 @@ class EventDomainObject extends Generated\EventDomainObjectAbstract implements I
 
     private ?Collection $checkInLists = null;
 
+    private ?Collection $boxOffices = null;
+
     private ?Collection $webhooks = null;
 
     private ?Collection $capacityAssignments = null;
 
     private ?Collection $affiliates = null;
+
+    private ?Collection $eventLineupEntries = null;
+
+    private ?Collection $eventSpaces = null;
+
+    private ?Collection $eventScheduleItems = null;
 
     private ?Collection $eventOccurrences = null;
 
@@ -47,11 +55,17 @@ class EventDomainObject extends Generated\EventDomainObjectAbstract implements I
 
     private bool $upcomingOccurrencesSoldOut = false;
 
+    private bool $hasSeatMap = false;
+
+    private ?bool $productsSoldOut = null;
+
     private ?string $nextOccurrenceStartDate = null;
 
     private ?string $lastOccurrenceStartDate = null;
 
     private ?string $occurrencesMonth = null;
+
+    private ?string $lifecycleStatus = null;
 
     public static function getAllowedFilterFields(): array
     {
@@ -61,6 +75,7 @@ class EventDomainObject extends Generated\EventDomainObjectAbstract implements I
             self::UPDATED_AT,
             self::STATUS,
             self::ORGANIZER_ID,
+            self::CATEGORY,
         ];
     }
 
@@ -213,6 +228,30 @@ class EventDomainObject extends Generated\EventDomainObjectAbstract implements I
         return $this->upcomingOccurrencesSoldOut;
     }
 
+    public function setHasSeatMap(bool $hasSeatMap): self
+    {
+        $this->hasSeatMap = $hasSeatMap;
+
+        return $this;
+    }
+
+    public function getHasSeatMap(): bool
+    {
+        return $this->hasSeatMap;
+    }
+
+    public function setProductsSoldOut(?bool $productsSoldOut): self
+    {
+        $this->productsSoldOut = $productsSoldOut;
+
+        return $this;
+    }
+
+    public function getProductsSoldOut(): ?bool
+    {
+        return $this->productsSoldOut;
+    }
+
     public function getStartDate(): ?string
     {
         if ($this->eventOccurrences === null || $this->eventOccurrences->isEmpty()) {
@@ -308,8 +347,19 @@ class EventDomainObject extends Generated\EventDomainObjectAbstract implements I
         );
     }
 
+    public function setLifecycleStatus(string $lifecycleStatus): self
+    {
+        $this->lifecycleStatus = $lifecycleStatus;
+
+        return $this;
+    }
+
     public function getLifecycleStatus(): string
     {
+        if ($this->lifecycleStatus !== null) {
+            return $this->lifecycleStatus;
+        }
+
         if ($this->isEventOngoing()) {
             return EventLifecycleStatus::ONGOING->name;
         }
@@ -352,6 +402,18 @@ class EventDomainObject extends Generated\EventDomainObjectAbstract implements I
     public function setCheckInLists(?Collection $checkInLists): self
     {
         $this->checkInLists = $checkInLists;
+
+        return $this;
+    }
+
+    public function getBoxOffices(): ?Collection
+    {
+        return $this->boxOffices;
+    }
+
+    public function setBoxOffices(?Collection $boxOffices): self
+    {
+        $this->boxOffices = $boxOffices;
 
         return $this;
     }
@@ -424,6 +486,42 @@ class EventDomainObject extends Generated\EventDomainObjectAbstract implements I
     public function setEventLocation(?EventLocationDomainObject $eventLocation): self
     {
         $this->eventLocation = $eventLocation;
+
+        return $this;
+    }
+
+    public function getEventLineupEntries(): ?Collection
+    {
+        return $this->eventLineupEntries;
+    }
+
+    public function setEventLineupEntries(?Collection $eventLineupEntries): self
+    {
+        $this->eventLineupEntries = $eventLineupEntries;
+
+        return $this;
+    }
+
+    public function getEventSpaces(): ?Collection
+    {
+        return $this->eventSpaces;
+    }
+
+    public function setEventSpaces(?Collection $eventSpaces): self
+    {
+        $this->eventSpaces = $eventSpaces;
+
+        return $this;
+    }
+
+    public function getEventScheduleItems(): ?Collection
+    {
+        return $this->eventScheduleItems;
+    }
+
+    public function setEventScheduleItems(?Collection $eventScheduleItems): self
+    {
+        $this->eventScheduleItems = $eventScheduleItems;
 
         return $this;
     }
