@@ -6,7 +6,9 @@ use HiEvents\DomainObjects\AttendeeDomainObject;
 use HiEvents\DomainObjects\EventDomainObject;
 use HiEvents\DomainObjects\OrderDomainObject;
 use HiEvents\DomainObjects\OrderItemDomainObject;
+use HiEvents\DomainObjects\ProductDomainObject;
 use HiEvents\Http\Actions\BaseAction;
+use HiEvents\Repository\Eloquent\Value\Relationship;
 use HiEvents\Repository\Interfaces\OrderRepositoryInterface;
 use HiEvents\Resources\Order\OrderResource;
 use Illuminate\Http\JsonResponse;
@@ -25,7 +27,16 @@ class GetFulfillmentOrdersAction extends BaseAction
 
         $orders = $this->orderRepository
             ->loadRelation(OrderItemDomainObject::class)
-            ->loadRelation(AttendeeDomainObject::class)
+            ->loadRelation(new Relationship(
+                domainObject: AttendeeDomainObject::class,
+                nested: [
+                    new Relationship(
+                        domainObject: ProductDomainObject::class,
+                        name: 'product',
+                    ),
+                ],
+                name: 'attendees',
+            ))
             ->findFulfillmentOrdersByEventId($eventId, $this->getPaginationQueryParams($request));
 
         return $this->filterableResourceResponse(

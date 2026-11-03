@@ -422,7 +422,7 @@ msgstr "Cần hành động: Cần thông tin VAT"
 #: src/components/common/WaitlistTable/index.tsx:55
 #: src/components/common/WaitlistTable/index.tsx:210
 #: src/components/routes/admin/FailedJobs/index.tsx:167
-#: src/components/routes/event/fulfillment.tsx:185
+#: src/components/routes/event/fulfillment.tsx:186
 msgid "Actions"
 msgstr "Hành động"
 
@@ -1062,7 +1062,7 @@ msgstr "Hỏi một lần cho mỗi đơn hàng"
 msgid "Ask once per product"
 msgstr "Hỏi một lần cho mỗi sản phẩm"
 
-#: src/components/routes/event/fulfillment.tsx:169
+#: src/components/routes/event/fulfillment.tsx:170
 msgid "assigned"
 msgstr ""
 
@@ -3927,7 +3927,7 @@ msgstr "Lọc Người Tham Dự"
 msgid "Filter by Event"
 msgstr "Lọc theo sự kiện"
 
-#: src/components/routes/event/fulfillment.tsx:216
+#: src/components/routes/event/fulfillment.tsx:217
 #: src/components/routes/event/orders.tsx:123
 msgid "Filter Orders"
 msgstr "Lọc đơn hàng"
@@ -4092,7 +4092,7 @@ msgid "Fulfilled"
 msgstr ""
 
 #: src/components/layouts/Event/index.tsx:114
-#: src/components/routes/event/fulfillment.tsx:208
+#: src/components/routes/event/fulfillment.tsx:209
 msgid "Fulfillment"
 msgstr ""
 
@@ -4101,7 +4101,7 @@ msgid "Fulfillment - Order #{0}"
 msgstr ""
 
 #: src/components/routes/event/fulfillment.tsx:43
-#: src/components/routes/event/fulfillment.tsx:176
+#: src/components/routes/event/fulfillment.tsx:177
 msgid "Fulfillment Status"
 msgstr ""
 
@@ -5007,7 +5007,7 @@ msgstr "Làm cho sự kiện của bạn hoạt động"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:461
 #: src/components/common/PromoCodeTable/index.tsx:167
 #: src/components/layouts/OrganizerLayout/index.tsx:86
-#: src/components/routes/event/fulfillment.tsx:195
+#: src/components/routes/event/fulfillment.tsx:196
 msgid "Manage"
 msgstr "Quản lý"
 
@@ -5019,7 +5019,7 @@ msgstr "Quản lý người tham dự"
 msgid "Manage event"
 msgstr "Quản lý sự kiện"
 
-#: src/components/routes/event/fulfillment.tsx:207
+#: src/components/routes/event/fulfillment.tsx:208
 msgid "Manage hard ticket fulfillment, assign barcodes, and print shipping labels."
 msgstr ""
 
@@ -5354,7 +5354,6 @@ msgid "No attendee questions yet"
 msgstr "Chưa có câu hỏi cho người tham dự"
 
 #: src/components/common/AttendeeList/index.tsx:23
-#: src/components/modals/FulfillmentOrderModal/index.tsx:394
 msgid "No attendees found for this order."
 msgstr "Không có người tham dự tìm thấy cho đơn hàng này."
 
@@ -5438,9 +5437,13 @@ msgstr "Không có công việc thất bại"
 msgid "No filters available"
 msgstr "Không có bộ lọc có sẵn"
 
-#: src/components/routes/event/fulfillment.tsx:234
+#: src/components/routes/event/fulfillment.tsx:235
 msgid "No fulfillment orders to show"
 msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:394
+msgid "No hard tickets found for this order."
+msgstr "Không tìm thấy vé cứng nào cho đơn hàng này."
 
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:86
 msgid "No impact on your current or past transactions"
@@ -6033,7 +6036,7 @@ msgstr "Đơn hàng đã hoàn thành"
 msgid "Orders Exported"
 msgstr "Đơn hàng đã được xuất"
 
-#: src/components/routes/event/fulfillment.tsx:237
+#: src/components/routes/event/fulfillment.tsx:238
 msgid "Orders requiring hard ticket fulfillment will appear here."
 msgstr ""
 
@@ -7483,7 +7486,7 @@ msgstr "Tìm kiếm theo tên hoặc email..."
 msgid "Search by name, email, or account..."
 msgstr "Tìm kiếm theo tên, email hoặc tài khoản..."
 
-#: src/components/routes/event/fulfillment.tsx:221
+#: src/components/routes/event/fulfillment.tsx:222
 #: src/components/routes/event/orders.tsx:128
 msgid "Search by name, email, or order #..."
 msgstr "Tìm kiếm theo tên, email, hoặc mã đơn hàng #"

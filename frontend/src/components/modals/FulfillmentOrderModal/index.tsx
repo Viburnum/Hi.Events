@@ -17,9 +17,10 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
     const {eventId} = useParams();
     const setBarcodeMutation = useSetAttendeeBarcode();
     const markFulfilledMutation = useUpdateOrderFulfillmentStatus();
+    const attendees = (order.attendees || []).filter((a) => a.product?.is_hard_ticket);
     const [barcodeValues, setBarcodeValues] = useState<Record<string, string>>(() => {
         const initial: Record<string, string> = {};
-        order.attendees?.forEach((attendee) => {
+        attendees.forEach((attendee) => {
             if (attendee.id) {
                 initial[String(attendee.id)] = '';
             }
@@ -30,7 +31,7 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
     // Track fulfillment status locally so the UI updates after saving barcodes
     const [fulfilledAttendeeIds, setFulfilledAttendeeIds] = useState<Set<number>>(() => {
         const ids = new Set<number>();
-        order.attendees?.forEach((a) => {
+        attendees.forEach((a) => {
             if (a.fulfillment_status === 'FULFILLED' && a.id) {
                 ids.add(a.id);
             }
@@ -42,7 +43,6 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
         setFulfilledAttendeeIds((prev) => new Set(prev).add(attendeeId));
     }, []);
 
-    const attendees = order.attendees || [];
     const allAttendeesHaveBarcodes = attendees.length > 0 && attendees.every(
         (a) => a.id !== undefined && fulfilledAttendeeIds.has(a.id)
     );
@@ -66,8 +66,8 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
                     showSuccess(t`Barcode saved successfully`);
                     markAttendeeAsFulfilled(Number(attendeeId));
                 },
-                onError: () => {
-                    showError(t`Failed to save barcode. Please try again.`);
+                onError: (error: any) => {
+                    showError(error?.response?.data?.message || t`Failed to save barcode. Please try again.`);
                 },
             }
         );
@@ -81,8 +81,8 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
                     showSuccess(t`Order marked as fulfilled`);
                     onClose();
                 },
-                onError: () => {
-                    showError(t`Failed to mark order as fulfilled. Please try again.`);
+                onError: (error: any) => {
+                    showError(error?.response?.data?.message || t`Failed to mark order as fulfilled. Please try again.`);
                 },
             }
         );
@@ -391,7 +391,7 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
                 <Box>
                     <Text fw={600} size="sm" mb="xs">{t`Hard Ticket Attendees`}</Text>
                     {attendees.length === 0 ? (
-                        <Text size="sm" c="dimmed">{t`No attendees found for this order.`}</Text>
+                        <Text size="sm" c="dimmed">{t`No hard tickets found for this order.`}</Text>
                     ) : (
                         <Table striped highlightOnHover>
                             <Table.Thead>

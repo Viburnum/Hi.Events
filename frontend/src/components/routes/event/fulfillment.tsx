@@ -162,8 +162,9 @@ export const Fulfillment: React.FC = () => {
                 enableHiding: true,
                 cell: (info: CellContext<Order, unknown>) => {
                     const order = info.row.original;
-                    const total = order.attendees?.length || 0;
-                    const fulfilled = order.attendees?.filter(a => a.fulfillment_status === 'FULFILLED').length || 0;
+                    const hardTicketAttendees = order.attendees?.filter(a => a.product?.is_hard_ticket) || [];
+                    const total = hardTicketAttendees.length;
+                    const fulfilled = hardTicketAttendees.filter(a => a.fulfillment_status === 'FULFILLED').length;
                     return (
                         <Text size="sm">
                             {fulfilled}/{total} {t`assigned`}

@@ -422,7 +422,7 @@ msgstr "Vyžaduje sa akcia: Potrebné informácie o DPH"
 #: src/components/common/WaitlistTable/index.tsx:55
 #: src/components/common/WaitlistTable/index.tsx:210
 #: src/components/routes/admin/FailedJobs/index.tsx:167
-#: src/components/routes/event/fulfillment.tsx:185
+#: src/components/routes/event/fulfillment.tsx:186
 msgid "Actions"
 msgstr "Akcie"
 
@@ -1062,7 +1062,7 @@ msgstr "Opýtať sa raz na objednávku"
 msgid "Ask once per product"
 msgstr "Opýtať sa raz na produkt"
 
-#: src/components/routes/event/fulfillment.tsx:169
+#: src/components/routes/event/fulfillment.tsx:170
 msgid "assigned"
 msgstr ""
 
@@ -3927,7 +3927,7 @@ msgstr "Filtrovať účastníkov"
 msgid "Filter by Event"
 msgstr "Filtrovať podľa udalosti"
 
-#: src/components/routes/event/fulfillment.tsx:216
+#: src/components/routes/event/fulfillment.tsx:217
 #: src/components/routes/event/orders.tsx:123
 msgid "Filter Orders"
 msgstr "Filtrovať objednávky"
@@ -4092,7 +4092,7 @@ msgid "Fulfilled"
 msgstr ""
 
 #: src/components/layouts/Event/index.tsx:114
-#: src/components/routes/event/fulfillment.tsx:208
+#: src/components/routes/event/fulfillment.tsx:209
 msgid "Fulfillment"
 msgstr ""
 
@@ -4101,7 +4101,7 @@ msgid "Fulfillment - Order #{0}"
 msgstr ""
 
 #: src/components/routes/event/fulfillment.tsx:43
-#: src/components/routes/event/fulfillment.tsx:176
+#: src/components/routes/event/fulfillment.tsx:177
 msgid "Fulfillment Status"
 msgstr ""
 
@@ -5007,7 +5007,7 @@ msgstr "Zverejniť svoju udalosť"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:461
 #: src/components/common/PromoCodeTable/index.tsx:167
 #: src/components/layouts/OrganizerLayout/index.tsx:86
-#: src/components/routes/event/fulfillment.tsx:195
+#: src/components/routes/event/fulfillment.tsx:196
 msgid "Manage"
 msgstr "Spravovať"
 
@@ -5019,7 +5019,7 @@ msgstr "Spravovať účastníka"
 msgid "Manage event"
 msgstr "Spravovať udalosť"
 
-#: src/components/routes/event/fulfillment.tsx:207
+#: src/components/routes/event/fulfillment.tsx:208
 msgid "Manage hard ticket fulfillment, assign barcodes, and print shipping labels."
 msgstr ""
 
@@ -5354,7 +5354,6 @@ msgid "No attendee questions yet"
 msgstr "Zatiaľ žiadne otázky pre účastníkov"
 
 #: src/components/common/AttendeeList/index.tsx:23
-#: src/components/modals/FulfillmentOrderModal/index.tsx:394
 msgid "No attendees found for this order."
 msgstr "Pre túto objednávku neboli nájdení žiadni účastníci."
 
@@ -5438,9 +5437,13 @@ msgstr "Žiadne neúspešné úlohy"
 msgid "No filters available"
 msgstr "Žiadne dostupné filtre"
 
-#: src/components/routes/event/fulfillment.tsx:234
+#: src/components/routes/event/fulfillment.tsx:235
 msgid "No fulfillment orders to show"
 msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:394
+msgid "No hard tickets found for this order."
+msgstr "Pre túto objednávku sa nenašli žiadne fyzické vstupenky."
 
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:86
 msgid "No impact on your current or past transactions"
@@ -6033,7 +6036,7 @@ msgstr "Dokončené objednávky"
 msgid "Orders Exported"
 msgstr "Exportované objednávky"
 
-#: src/components/routes/event/fulfillment.tsx:237
+#: src/components/routes/event/fulfillment.tsx:238
 msgid "Orders requiring hard ticket fulfillment will appear here."
 msgstr ""
 
@@ -7483,7 +7486,7 @@ msgstr "Vyhľadávať podľa mena alebo e-mailu..."
 msgid "Search by name, email, or account..."
 msgstr "Vyhľadávať podľa mena, e-mailu alebo účtu..."
 
-#: src/components/routes/event/fulfillment.tsx:221
+#: src/components/routes/event/fulfillment.tsx:222
 #: src/components/routes/event/orders.tsx:128
 msgid "Search by name, email, or order #..."
 msgstr "Vyhľadávať podľa mena, e-mailu alebo č. objednávky..."

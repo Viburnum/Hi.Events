@@ -423,7 +423,7 @@ msgstr "Actie vereist: BTW-informatie nodig"
 #: src/components/common/WaitlistTable/index.tsx:55
 #: src/components/common/WaitlistTable/index.tsx:210
 #: src/components/routes/admin/FailedJobs/index.tsx:167
-#: src/components/routes/event/fulfillment.tsx:185
+#: src/components/routes/event/fulfillment.tsx:186
 msgid "Actions"
 msgstr "Acties"
 
@@ -1063,7 +1063,7 @@ msgstr "Vraag één keer per bestelling"
 msgid "Ask once per product"
 msgstr "Vraag één keer per product"
 
-#: src/components/routes/event/fulfillment.tsx:169
+#: src/components/routes/event/fulfillment.tsx:170
 msgid "assigned"
 msgstr ""
 
@@ -3928,7 +3928,7 @@ msgstr "Filter Deelnemers"
 msgid "Filter by Event"
 msgstr "Filteren op evenement"
 
-#: src/components/routes/event/fulfillment.tsx:216
+#: src/components/routes/event/fulfillment.tsx:217
 #: src/components/routes/event/orders.tsx:123
 msgid "Filter Orders"
 msgstr "Bestellingen filteren"
@@ -4093,7 +4093,7 @@ msgid "Fulfilled"
 msgstr ""
 
 #: src/components/layouts/Event/index.tsx:114
-#: src/components/routes/event/fulfillment.tsx:208
+#: src/components/routes/event/fulfillment.tsx:209
 msgid "Fulfillment"
 msgstr ""
 
@@ -4102,7 +4102,7 @@ msgid "Fulfillment - Order #{0}"
 msgstr ""
 
 #: src/components/routes/event/fulfillment.tsx:43
-#: src/components/routes/event/fulfillment.tsx:176
+#: src/components/routes/event/fulfillment.tsx:177
 msgid "Fulfillment Status"
 msgstr ""
 
@@ -5008,7 +5008,7 @@ msgstr "Maak je evenement live"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:461
 #: src/components/common/PromoCodeTable/index.tsx:167
 #: src/components/layouts/OrganizerLayout/index.tsx:86
-#: src/components/routes/event/fulfillment.tsx:195
+#: src/components/routes/event/fulfillment.tsx:196
 msgid "Manage"
 msgstr "Beheer"
 
@@ -5020,7 +5020,7 @@ msgstr "Deelnemer beheren"
 msgid "Manage event"
 msgstr "Evenement beheren"
 
-#: src/components/routes/event/fulfillment.tsx:207
+#: src/components/routes/event/fulfillment.tsx:208
 msgid "Manage hard ticket fulfillment, assign barcodes, and print shipping labels."
 msgstr ""
 
@@ -5355,7 +5355,6 @@ msgid "No attendee questions yet"
 msgstr "Nog geen deelnemersvragen"
 
 #: src/components/common/AttendeeList/index.tsx:23
-#: src/components/modals/FulfillmentOrderModal/index.tsx:394
 msgid "No attendees found for this order."
 msgstr "Geen aanwezigen gevonden voor deze bestelling."
 
@@ -5439,9 +5438,13 @@ msgstr "Geen mislukte taken"
 msgid "No filters available"
 msgstr "Geen filters beschikbaar"
 
-#: src/components/routes/event/fulfillment.tsx:234
+#: src/components/routes/event/fulfillment.tsx:235
 msgid "No fulfillment orders to show"
 msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:394
+msgid "No hard tickets found for this order."
+msgstr "Geen fysieke tickets gevonden voor deze bestelling."
 
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:86
 msgid "No impact on your current or past transactions"
@@ -6034,7 +6037,7 @@ msgstr "Voltooide bestellingen"
 msgid "Orders Exported"
 msgstr "Geëxporteerde bestellingen"
 
-#: src/components/routes/event/fulfillment.tsx:237
+#: src/components/routes/event/fulfillment.tsx:238
 msgid "Orders requiring hard ticket fulfillment will appear here."
 msgstr ""
 
@@ -7484,7 +7487,7 @@ msgstr "Zoeken op naam of e-mail..."
 msgid "Search by name, email, or account..."
 msgstr "Zoeken op naam, e-mail of account..."
 
-#: src/components/routes/event/fulfillment.tsx:221
+#: src/components/routes/event/fulfillment.tsx:222
 #: src/components/routes/event/orders.tsx:128
 msgid "Search by name, email, or order #..."
 msgstr "Zoeken op naam, e-mail of bestelnummer..."
