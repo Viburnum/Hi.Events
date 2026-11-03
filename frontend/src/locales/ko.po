@@ -1198,7 +1198,7 @@ msgstr "조치 필요: 부가가치세 정보 필요"
 #: src/components/common/WaitlistTable/index.tsx:57
 #: src/components/common/WaitlistTable/index.tsx:237
 #: src/components/routes/admin/FailedJobs/index.tsx:167
-#: src/components/routes/event/fulfillment.tsx:185
+#: src/components/routes/event/fulfillment.tsx:186
 #: src/components/routes/event/Lineup/ProfileDrawer.tsx:187
 msgid "Actions"
 msgstr "작업"
@@ -2668,7 +2668,7 @@ msgstr "다른 플랜 할당"
 msgid "Assign plan"
 msgstr "플랜 할당"
 
-#: src/components/routes/event/fulfillment.tsx:169
+#: src/components/routes/event/fulfillment.tsx:170
 msgid "assigned"
 msgstr ""
 
@@ -8523,7 +8523,7 @@ msgstr "역할로 필터"
 msgid "Filter by sign-in method"
 msgstr "로그인 방식으로 필터링"
 
-#: src/components/routes/event/fulfillment.tsx:216
+#: src/components/routes/event/fulfillment.tsx:217
 #: src/components/routes/event/orders.tsx:236
 msgid "Filter Orders"
 msgstr "주문 필터"
@@ -8867,7 +8867,7 @@ msgid "Fulfilled"
 msgstr ""
 
 #: src/components/layouts/Event/index.tsx:146
-#: src/components/routes/event/fulfillment.tsx:208
+#: src/components/routes/event/fulfillment.tsx:209
 msgid "Fulfillment"
 msgstr ""
 
@@ -8876,7 +8876,7 @@ msgid "Fulfillment - Order #{0}"
 msgstr ""
 
 #: src/components/routes/event/fulfillment.tsx:43
-#: src/components/routes/event/fulfillment.tsx:176
+#: src/components/routes/event/fulfillment.tsx:177
 msgid "Fulfillment Status"
 msgstr ""
 
@@ -10766,7 +10766,7 @@ msgstr "이 질문을 필수로 설정"
 #: src/components/common/PromoCodeTable/index.tsx:177
 #: src/components/layouts/OrganizerLayout/index.tsx:117
 #: src/components/routes/admin/Accounts/AccountDetail/index.tsx:304
-#: src/components/routes/event/fulfillment.tsx:195
+#: src/components/routes/event/fulfillment.tsx:196
 #: src/components/routes/event/OccurrencesTab/OccurrenceMenu.tsx:89
 #: src/ee/box-office/components/common/BoxOfficeTable/index.tsx:249
 msgid "Manage"
@@ -10792,7 +10792,7 @@ msgstr "기본값 관리"
 msgid "Manage event"
 msgstr "이벤트 관리"
 
-#: src/components/routes/event/fulfillment.tsx:207
+#: src/components/routes/event/fulfillment.tsx:208
 msgid "Manage hard ticket fulfillment, assign barcodes, and print shipping labels."
 msgstr ""
 
@@ -11577,7 +11577,6 @@ msgid "No attendee questions yet"
 msgstr "아직 참가자 질문이 없습니다"
 
 #: src/components/common/AttendeeList/index.tsx:23
-#: src/components/modals/FulfillmentOrderModal/index.tsx:394
 msgid "No attendees found for this order."
 msgstr "이 주문에 대한 참가자를 찾을 수 없습니다."
 
@@ -11802,9 +11801,13 @@ msgstr "재무 정보 없음"
 msgid "No flagged events awaiting review"
 msgstr "검토 대기 중인 신고된 이벤트가 없습니다"
 
-#: src/components/routes/event/fulfillment.tsx:233
+#: src/components/routes/event/fulfillment.tsx:234
 msgid "No fulfillment orders to show"
 msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:394
+msgid "No hard tickets found for this order."
+msgstr "이 주문에 대한 실물 티켓을 찾을 수 없습니다."
 
 #: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:189
 msgid "No instructions have been added yet."
@@ -13162,7 +13165,7 @@ msgstr "주문 (24시간)"
 msgid "Orders Exported"
 msgstr "주문 내보내기 완료"
 
-#: src/components/routes/event/fulfillment.tsx:236
+#: src/components/routes/event/fulfillment.tsx:237
 msgid "Orders requiring hard ticket fulfillment will appear here."
 msgstr ""
 
@@ -14628,10 +14631,6 @@ msgstr "질문"
 #: src/components/modals/ManageOrderModal/index.tsx:328
 msgid "Questions & Answers"
 msgstr "질문 및 답변"
-
-#: src/components/layouts/EventHomepage/OrganizerSection.tsx:39
-#~ msgid "Questions about this event? Get in touch."
-#~ msgstr "이 이벤트에 대해 궁금한 점이 있나요? 문의해 주세요."
 
 #: src/utilites/homepageSections.ts:58
 msgid "Questions and answers people can expand."
@@ -16105,7 +16104,7 @@ msgid "Search by name, email, or account..."
 msgstr "이름, 이메일 또는 계정으로 검색..."
 
 #: src/components/modals/ProductPurchasesModal/index.tsx:259
-#: src/components/routes/event/fulfillment.tsx:221
+#: src/components/routes/event/fulfillment.tsx:222
 #: src/components/routes/event/orders.tsx:202
 msgid "Search by name, email, or order #..."
 msgstr "이름, 이메일 또는 주문번호로 검색..."

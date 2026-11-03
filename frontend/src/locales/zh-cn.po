@@ -1198,7 +1198,7 @@ msgstr "需要操作:需要提供增值税信息"
 #: src/components/common/WaitlistTable/index.tsx:57
 #: src/components/common/WaitlistTable/index.tsx:237
 #: src/components/routes/admin/FailedJobs/index.tsx:167
-#: src/components/routes/event/fulfillment.tsx:185
+#: src/components/routes/event/fulfillment.tsx:186
 #: src/components/routes/event/Lineup/ProfileDrawer.tsx:187
 msgid "Actions"
 msgstr "操作"
@@ -2668,7 +2668,7 @@ msgstr "分配其他方案"
 msgid "Assign plan"
 msgstr "分配方案"
 
-#: src/components/routes/event/fulfillment.tsx:169
+#: src/components/routes/event/fulfillment.tsx:170
 msgid "assigned"
 msgstr ""
 
@@ -8523,7 +8523,7 @@ msgstr "按角色筛选"
 msgid "Filter by sign-in method"
 msgstr "按登录方式筛选"
 
-#: src/components/routes/event/fulfillment.tsx:216
+#: src/components/routes/event/fulfillment.tsx:217
 #: src/components/routes/event/orders.tsx:236
 msgid "Filter Orders"
 msgstr "筛选订单"
@@ -8867,7 +8867,7 @@ msgid "Fulfilled"
 msgstr ""
 
 #: src/components/layouts/Event/index.tsx:146
-#: src/components/routes/event/fulfillment.tsx:208
+#: src/components/routes/event/fulfillment.tsx:209
 msgid "Fulfillment"
 msgstr ""
 
@@ -8876,7 +8876,7 @@ msgid "Fulfillment - Order #{0}"
 msgstr ""
 
 #: src/components/routes/event/fulfillment.tsx:43
-#: src/components/routes/event/fulfillment.tsx:176
+#: src/components/routes/event/fulfillment.tsx:177
 msgid "Fulfillment Status"
 msgstr ""
 
@@ -10766,7 +10766,7 @@ msgstr "将此问题作为必答题"
 #: src/components/common/PromoCodeTable/index.tsx:177
 #: src/components/layouts/OrganizerLayout/index.tsx:117
 #: src/components/routes/admin/Accounts/AccountDetail/index.tsx:304
-#: src/components/routes/event/fulfillment.tsx:195
+#: src/components/routes/event/fulfillment.tsx:196
 #: src/components/routes/event/OccurrencesTab/OccurrenceMenu.tsx:89
 #: src/ee/box-office/components/common/BoxOfficeTable/index.tsx:249
 msgid "Manage"
@@ -10792,7 +10792,7 @@ msgstr "管理默认值"
 msgid "Manage event"
 msgstr "管理活动"
 
-#: src/components/routes/event/fulfillment.tsx:207
+#: src/components/routes/event/fulfillment.tsx:208
 msgid "Manage hard ticket fulfillment, assign barcodes, and print shipping labels."
 msgstr ""
 
@@ -11577,7 +11577,6 @@ msgid "No attendee questions yet"
 msgstr "暂无参与者问题"
 
 #: src/components/common/AttendeeList/index.tsx:23
-#: src/components/modals/FulfillmentOrderModal/index.tsx:394
 msgid "No attendees found for this order."
 msgstr "未找到此订单的参会者。"
 
@@ -11802,9 +11801,13 @@ msgstr "无财务权限"
 msgid "No flagged events awaiting review"
 msgstr "没有等待审核的被标记活动"
 
-#: src/components/routes/event/fulfillment.tsx:233
+#: src/components/routes/event/fulfillment.tsx:234
 msgid "No fulfillment orders to show"
 msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:394
+msgid "No hard tickets found for this order."
+msgstr "未找到此订单的实体票。"
 
 #: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:189
 msgid "No instructions have been added yet."
@@ -13162,7 +13165,7 @@ msgstr "订单（24 小时）"
 msgid "Orders Exported"
 msgstr "订单已导出"
 
-#: src/components/routes/event/fulfillment.tsx:236
+#: src/components/routes/event/fulfillment.tsx:237
 msgid "Orders requiring hard ticket fulfillment will appear here."
 msgstr ""
 
@@ -14628,10 +14631,6 @@ msgstr "问题"
 #: src/components/modals/ManageOrderModal/index.tsx:328
 msgid "Questions & Answers"
 msgstr "问与答"
-
-#: src/components/layouts/EventHomepage/OrganizerSection.tsx:39
-#~ msgid "Questions about this event? Get in touch."
-#~ msgstr "对此活动有疑问？欢迎联系。"
 
 #: src/utilites/homepageSections.ts:58
 msgid "Questions and answers people can expand."
@@ -16105,7 +16104,7 @@ msgid "Search by name, email, or account..."
 msgstr "按姓名、电子邮件或账户搜索..."
 
 #: src/components/modals/ProductPurchasesModal/index.tsx:259
-#: src/components/routes/event/fulfillment.tsx:221
+#: src/components/routes/event/fulfillment.tsx:222
 #: src/components/routes/event/orders.tsx:202
 msgid "Search by name, email, or order #..."
 msgstr "按姓名、电子邮件或订单号搜索..."

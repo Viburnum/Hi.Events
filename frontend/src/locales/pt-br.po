@@ -1198,7 +1198,7 @@ msgstr "Ação Necessária: Informações de IVA Necessárias"
 #: src/components/common/WaitlistTable/index.tsx:57
 #: src/components/common/WaitlistTable/index.tsx:237
 #: src/components/routes/admin/FailedJobs/index.tsx:167
-#: src/components/routes/event/fulfillment.tsx:185
+#: src/components/routes/event/fulfillment.tsx:186
 #: src/components/routes/event/Lineup/ProfileDrawer.tsx:187
 msgid "Actions"
 msgstr "Ações"
@@ -2668,7 +2668,7 @@ msgstr "Atribuir outro plano"
 msgid "Assign plan"
 msgstr "Atribuir plano"
 
-#: src/components/routes/event/fulfillment.tsx:169
+#: src/components/routes/event/fulfillment.tsx:170
 msgid "assigned"
 msgstr ""
 
@@ -8523,7 +8523,7 @@ msgstr "Filtrar por função"
 msgid "Filter by sign-in method"
 msgstr "Filtrar por método de login"
 
-#: src/components/routes/event/fulfillment.tsx:216
+#: src/components/routes/event/fulfillment.tsx:217
 #: src/components/routes/event/orders.tsx:236
 msgid "Filter Orders"
 msgstr "Filtrar pedidos"
@@ -8867,7 +8867,7 @@ msgid "Fulfilled"
 msgstr ""
 
 #: src/components/layouts/Event/index.tsx:146
-#: src/components/routes/event/fulfillment.tsx:208
+#: src/components/routes/event/fulfillment.tsx:209
 msgid "Fulfillment"
 msgstr ""
 
@@ -8876,7 +8876,7 @@ msgid "Fulfillment - Order #{0}"
 msgstr ""
 
 #: src/components/routes/event/fulfillment.tsx:43
-#: src/components/routes/event/fulfillment.tsx:176
+#: src/components/routes/event/fulfillment.tsx:177
 msgid "Fulfillment Status"
 msgstr ""
 
@@ -10766,7 +10766,7 @@ msgstr "Tornar essa pergunta obrigatória"
 #: src/components/common/PromoCodeTable/index.tsx:177
 #: src/components/layouts/OrganizerLayout/index.tsx:117
 #: src/components/routes/admin/Accounts/AccountDetail/index.tsx:304
-#: src/components/routes/event/fulfillment.tsx:195
+#: src/components/routes/event/fulfillment.tsx:196
 #: src/components/routes/event/OccurrencesTab/OccurrenceMenu.tsx:89
 #: src/ee/box-office/components/common/BoxOfficeTable/index.tsx:249
 msgid "Manage"
@@ -10792,7 +10792,7 @@ msgstr "Gerenciar padrões"
 msgid "Manage event"
 msgstr "Gerenciar evento"
 
-#: src/components/routes/event/fulfillment.tsx:207
+#: src/components/routes/event/fulfillment.tsx:208
 msgid "Manage hard ticket fulfillment, assign barcodes, and print shipping labels."
 msgstr ""
 
@@ -11577,7 +11577,6 @@ msgid "No attendee questions yet"
 msgstr "Ainda não há perguntas para participantes"
 
 #: src/components/common/AttendeeList/index.tsx:23
-#: src/components/modals/FulfillmentOrderModal/index.tsx:394
 msgid "No attendees found for this order."
 msgstr "Nenhum participante encontrado para este pedido."
 
@@ -11802,9 +11801,13 @@ msgstr "Sem dados financeiros"
 msgid "No flagged events awaiting review"
 msgstr "Nenhum evento sinalizado aguardando revisão"
 
-#: src/components/routes/event/fulfillment.tsx:233
+#: src/components/routes/event/fulfillment.tsx:234
 msgid "No fulfillment orders to show"
 msgstr ""
+
+#: src/components/modals/FulfillmentOrderModal/index.tsx:394
+msgid "No hard tickets found for this order."
+msgstr "Nenhum ingresso físico encontrado para este pedido."
 
 #: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:189
 msgid "No instructions have been added yet."
@@ -13162,7 +13165,7 @@ msgstr "Pedidos (24 h)"
 msgid "Orders Exported"
 msgstr "Pedidos exportados"
 
-#: src/components/routes/event/fulfillment.tsx:236
+#: src/components/routes/event/fulfillment.tsx:237
 msgid "Orders requiring hard ticket fulfillment will appear here."
 msgstr ""
 
@@ -14628,10 +14631,6 @@ msgstr "Perguntas"
 #: src/components/modals/ManageOrderModal/index.tsx:328
 msgid "Questions & Answers"
 msgstr "Perguntas e Respostas"
-
-#: src/components/layouts/EventHomepage/OrganizerSection.tsx:39
-#~ msgid "Questions about this event? Get in touch."
-#~ msgstr "Dúvidas sobre este evento? Entre em contato."
 
 #: src/utilites/homepageSections.ts:58
 msgid "Questions and answers people can expand."
@@ -16105,7 +16104,7 @@ msgid "Search by name, email, or account..."
 msgstr "Pesquisar por nome, e-mail ou conta..."
 
 #: src/components/modals/ProductPurchasesModal/index.tsx:259
-#: src/components/routes/event/fulfillment.tsx:221
+#: src/components/routes/event/fulfillment.tsx:222
 #: src/components/routes/event/orders.tsx:202
 msgid "Search by name, email, or order #..."
 msgstr "Pesquise por nome, e-mail ou número do pedido..."
