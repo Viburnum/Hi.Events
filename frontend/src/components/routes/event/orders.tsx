@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useParams} from "react-router";
 import {Button} from "@mantine/core";
-import {IconDownload} from "@tabler/icons-react";
+import {IconDownload, IconPlus} from "@tabler/icons-react";
 import {t} from "@lingui/macro";
 import {useGetEvent} from "../../../queries/useGetEvent";
 import {useGetEventOrders} from "../../../queries/useGetEventOrders";
@@ -18,6 +18,8 @@ import {orderClient} from "../../../api/order.client";
 import {downloadBinary} from "../../../utilites/download";
 import {FilterModal, FilterOption} from "../../common/FilterModal";
 import {withLoadingNotification} from "../../../utilites/withLoadingNotification.tsx";
+import {useDisclosure} from "@mantine/hooks";
+import {CreateManualOrderModal} from "../../modals/CreateManualOrderModal";
 
 const orderStatuses = [
     {label: t`Completed`, value: 'COMPLETED'},
@@ -38,6 +40,7 @@ export const Orders: React.FC = () => {
     const orders = ordersQuery?.data?.data;
     const pagination = ordersQuery?.data?.meta;
     const [downloadPending, setDownloadPending] = useState(false);
+    const [createModalOpen, {open: openCreateModal, close: closeCreateModal}] = useDisclosure(false);
 
     const filterOptions: FilterOption[] = [
         {
@@ -133,6 +136,14 @@ export const Orders: React.FC = () => {
                 )}
             >
                 <Button
+                    onClick={openCreateModal}
+                    leftSection={<IconPlus size={14}/>}
+                    color="green"
+                    size="sm"
+                >
+                    {t`Create Order`}
+                </Button>
+                <Button
                     onClick={() => handleExport(eventId)}
                     rightSection={<IconDownload size={14}/>}
                     color="green"
@@ -156,6 +167,8 @@ export const Orders: React.FC = () => {
                     total={Number(pagination?.last_page)}
                 />
             )}
+
+            {createModalOpen && <CreateManualOrderModal onClose={closeCreateModal} isOpen={createModalOpen}/>}
         </PageBody>
     );
 };

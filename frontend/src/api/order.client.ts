@@ -1,5 +1,6 @@
 import {publicApi} from "./public-client.ts";
 import {
+    Address,
     GenericDataResponse,
     GenericPaginatedResponse,
     IdParam,
@@ -48,6 +49,32 @@ export interface ProductFormPayload {
     promo_code: string | null,
     affiliate_code?: string | null,
     session_identifier?: string,
+}
+
+export interface ManualOrderTaxAndFee {
+    tax_or_fee_id: IdParam,
+    amount: number,
+    name?: string,
+}
+
+export interface ManualOrderAttendee {
+    product_id?: IdParam,
+    product_price_id?: IdParam,
+    first_name: string,
+    last_name: string,
+    email: string,
+    amount_paid: number,
+    taxes_and_fees: ManualOrderTaxAndFee[],
+}
+
+export interface CreateManualOrderPayload {
+    first_name: string,
+    last_name: string,
+    email: string,
+    locale: string,
+    send_confirmation_email: boolean,
+    address: Address | null,
+    attendees: ManualOrderAttendee[],
 }
 
 export interface RefundOrderPayload {
@@ -107,6 +134,10 @@ export const orderClient = {
         return new Blob([response.data]);
     },
 
+    createManual: async (eventId: IdParam, payload: CreateManualOrderPayload) => {
+        const response = await api.post<GenericDataResponse<Order>>(`events/${eventId}/orders/manual`, payload);
+        return response.data;
+    },
     editOrder: async (eventId: IdParam, orderId: IdParam, payload: EditOrderPayload) => {
         const response = await api.put<GenericDataResponse<Order>>(`events/${eventId}/orders/${orderId}`, payload);
         return response.data;
