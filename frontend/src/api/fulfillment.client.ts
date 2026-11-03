@@ -1,5 +1,5 @@
 import {api} from "./client.ts";
-import {GenericDataResponse, GenericPaginatedResponse, IdParam, Order, QueryFilters} from "../types.ts";
+import {Attendee, GenericDataResponse, GenericPaginatedResponse, IdParam, Order, QueryFilters} from "../types.ts";
 import {queryParamsHelper} from "../utilites/queryParamsHelper.ts";
 
 export const fulfillmentClient = {
@@ -11,7 +11,7 @@ export const fulfillmentClient = {
     },
 
     setAttendeeBarcode: async (eventId: IdParam, attendeeId: IdParam, barcode: string) => {
-        const response = await api.put<GenericDataResponse<Order>>(
+        const response = await api.put<GenericDataResponse<Attendee>>(
             `events/${eventId}/fulfillment/attendees/${attendeeId}/barcode`,
             {barcode},
         );

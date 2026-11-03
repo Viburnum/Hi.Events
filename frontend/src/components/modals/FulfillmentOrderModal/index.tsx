@@ -39,8 +39,11 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
         return ids;
     });
 
-    const markAttendeeAsFulfilled = useCallback((attendeeId: number) => {
+    const [savedBarcodes, setSavedBarcodes] = useState<Record<number, string>>({});
+
+    const markAttendeeAsFulfilled = useCallback((attendeeId: number, barcode: string) => {
         setFulfilledAttendeeIds((prev) => new Set(prev).add(attendeeId));
+        setSavedBarcodes((prev) => ({...prev, [attendeeId]: barcode}));
     }, []);
 
     const allAttendeesHaveBarcodes = attendees.length > 0 && attendees.every(
@@ -62,9 +65,9 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
         setBarcodeMutation.mutate(
             {eventId, attendeeId, barcode: barcode.trim()},
             {
-                onSuccess: () => {
+                onSuccess: (response) => {
                     showSuccess(t`Barcode saved successfully`);
-                    markAttendeeAsFulfilled(Number(attendeeId));
+                    markAttendeeAsFulfilled(Number(attendeeId), response?.data?.public_id || barcode.trim());
                 },
                 onError: (error: any) => {
                     showError(error?.response?.data?.message || t`Failed to save barcode. Please try again.`);
@@ -168,7 +171,7 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
             <tr>
                 <td>${escapeHtml(`${attendee.first_name} ${attendee.last_name}`)}</td>
                 <td>${escapeHtml(attendee.product?.title || '-')}</td>
-                <td>${escapeHtml(attendee.public_id || '-')}</td>
+                <td>${escapeHtml((attendee.id !== undefined && savedBarcodes[attendee.id]) || attendee.public_id || '-')}</td>
             </tr>
         `).join('');
 
@@ -196,23 +199,22 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
                     }
                     .fold-mark {
                         position: absolute;
-                        background: #000;
-                    }
-                    .fold-mark.horizontal {
-                        left: 0;
-                        top: 148.5mm;
+                        left: 5mm;
                         width: 6mm;
-                        height: 0.3mm;
+                        height: 0;
+                        border-top: 0.3mm solid #000;
                     }
-                    .fold-mark.vertical {
-                        top: 0;
-                        left: 105mm;
-                        width: 0.3mm;
-                        height: 6mm;
+                    .fold-mark.top { top: 105mm; }
+                    .fold-mark.bottom { top: 210mm; }
+                    .fold-mark.punch {
+                        top: 148.5mm;
+                        width: 4mm;
                     }
-                    .fold-mark.vertical.bottom {
-                        top: auto;
-                        bottom: 0;
+                    @media print {
+                        .fold-mark {
+                            -webkit-print-color-adjust: exact;
+                            print-color-adjust: exact;
+                        }
                     }
                     .sender {
                         position: absolute;
@@ -271,9 +273,9 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
             </head>
             <body>
                 <div class="sheet">
-                    <div class="fold-mark horizontal"></div>
-                    <div class="fold-mark vertical"></div>
-                    <div class="fold-mark vertical bottom"></div>
+                    <div class="fold-mark top"></div>
+                    <div class="fold-mark punch"></div>
+                    <div class="fold-mark bottom"></div>
 
                     <div class="sender">${t`Delivery Slip`} · ${escapeHtml(order.public_id)}</div>
                     <div class="recipient">
@@ -295,7 +297,7 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
                                 ${itemRows || `<tr><td colspan="3">${t`No items`}</td></tr>`}
                             </tbody>
                         </table>
-                        <div class="footer">${t`Please fold along the marks to fit a DIN C6 window envelope.`}</div>
+                        <div class="footer">${t`Please fold along the marks to fit a DIN long (DL) window envelope.`}</div>
                     </div>
                 </div>
                 <script>window.print();</script>
