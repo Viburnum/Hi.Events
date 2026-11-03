@@ -1,0 +1,28 @@
+.sectionHeading {
+  margin: var(--mantine-spacing-lg) 0 var(--mantine-spacing-xs);
+  font-size: 1rem;
+}
+
+.addressFields {
+  margin-top: var(--mantine-spacing-sm);
+}
+
+.attendeeCard {
+  border: 1px solid var(--mantine-color-gray-3);
+  border-radius: var(--mantine-radius-md);
+  padding: var(--mantine-spacing-md);
+  margin-bottom: var(--mantine-spacing-md);
+}
+
+.attendeeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--mantine-spacing-xs);
+}
+
+.attendeeActions {
+  display: flex;
+  align-items: center;
+  gap: var(--mantine-spacing-xs);
+}

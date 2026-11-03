@@ -154,6 +154,7 @@ msgid "{0} of {1} remaining"
 msgstr "{0}/{1} kaldı"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:287
+#: src/components/modals/CreateManualOrderModal/index.tsx:241
 msgid "{0} of {1} seats are taken."
 msgstr "{1} yerin {0} tanesi dolu."
 
@@ -1372,6 +1373,10 @@ msgstr "Aşağıya en az bir soru ekleyin."
 msgid "Add at least one time"
 msgstr "En az bir saat ekleyin"
 
+#: src/components/modals/CreateManualOrderModal/index.tsx:358
+msgid "Add attendee"
+msgstr "Katılımcı ekle"
+
 #: src/ee/seating/components/SeatMapDesigner/BandsPanel.tsx:50
 msgid "Add band"
 msgstr "Kategori ekle"
@@ -1497,6 +1502,10 @@ msgstr "Okuyucu ekle"
 msgid "Add section"
 msgstr "Bölüm ekle"
 
+#: src/components/modals/CreateManualOrderModal/index.tsx:255
+msgid "Add shipping address"
+msgstr "Teslimat adresi ekle"
+
 #: src/components/routes/event/Lineup/ScheduleBuilder/ScheduleItemModal.tsx:223
 msgid "Add slot"
 msgstr "Oturum ekle"
@@ -1534,6 +1543,10 @@ msgstr "Aşağıdaki yönlendirme URI'sini ekleyin ve openid, email ve profile k
 #: src/ee/sso/components/SingleSignOn/providers.tsx:44
 msgid "Add the sign-in redirect URI below, and assign the people or groups who should have access."
 msgstr "Aşağıdaki giriş yönlendirme URI'sini ekleyin ve erişim verilecek kişileri veya grupları atayın."
+
+#: src/components/modals/CreateManualOrderModal/index.tsx:245
+msgid "Add these attendees anyway (override capacity)"
+msgstr "Bu katılımcıları yine de ekle (kapasiteyi aş)"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:291
 msgid "Add this attendee anyway (override capacity)"
@@ -1669,6 +1682,7 @@ msgid "Address line 1"
 msgstr "Adres satırı 1"
 
 #: src/components/common/LocationPicker/index.tsx:237
+#: src/components/modals/CreateManualOrderModal/index.tsx:263
 #: src/components/modals/LocationEditModal/index.tsx:144
 #: src/components/routes/product-widget/CollectInformation/index.tsx:565
 #: src/components/routes/product-widget/CollectInformation/index.tsx:566
@@ -1680,6 +1694,7 @@ msgid "Address line 2"
 msgstr "Adres satırı 2"
 
 #: src/components/common/LocationPicker/index.tsx:242
+#: src/components/modals/CreateManualOrderModal/index.tsx:264
 #: src/components/modals/LocationEditModal/index.tsx:145
 #: src/components/routes/product-widget/CollectInformation/index.tsx:570
 #: src/components/routes/product-widget/CollectInformation/index.tsx:571
@@ -1869,7 +1884,7 @@ msgstr "Tüm tarihler"
 #: src/components/common/CheckInListTable/index.tsx:116
 #: src/components/modals/ProductPurchasesModal/index.tsx:276
 #: src/components/routes/event/attendees.tsx:236
-#: src/components/routes/event/orders.tsx:226
+#: src/components/routes/event/orders.tsx:230
 #: src/components/routes/event/SoldOutWaitlist/index.tsx:104
 msgid "All Dates"
 msgstr "Tüm tarihler"
@@ -2107,6 +2122,7 @@ msgid "Amount Paid"
 msgstr "Ödenen Tutar"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:304
+#: src/components/modals/CreateManualOrderModal/index.tsx:330
 msgid "Amount paid ({0})"
 msgstr "Ödenen miktar ({0})"
 
@@ -2727,6 +2743,10 @@ msgstr "katılımcı"
 msgid "Attendee"
 msgstr "Katılımcı"
 
+#: src/components/modals/CreateManualOrderModal/index.tsx:283
+msgid "Attendee {0}"
+msgstr "Katılımcı {0}"
+
 #: src/ee/box-office/components/layouts/BoxOffice/AttendeeQuestionsStage.tsx:73
 msgid "Attendee {current} of {total}"
 msgstr "Katılımcı {current} / {total}"
@@ -2812,6 +2832,7 @@ msgstr "katılımcı"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:530
 #: src/components/common/StatBoxes/index.tsx:75
 #: src/components/layouts/Event/index.tsx:152
+#: src/components/modals/CreateManualOrderModal/index.tsx:277
 #: src/components/modals/ManageOccurrenceModal/index.tsx:179
 #: src/components/modals/ManageOrderModal/index.tsx:317
 #: src/components/routes/admin/Dashboard/index.tsx:367
@@ -2929,7 +2950,7 @@ msgstr "Bekliyor"
 msgid "Awaiting offline payment"
 msgstr "Çevrimdışı ödeme bekleniyor"
 
-#: src/components/routes/event/orders.tsx:33
+#: src/components/routes/event/orders.tsx:36
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:64
 msgid "Awaiting Offline Payment"
 msgstr "Çevrimdışı Ödeme Bekleniyor"
@@ -3239,7 +3260,7 @@ msgid "Box office"
 msgstr "Gişe"
 
 #: src/components/layouts/Event/index.tsx:154
-#: src/components/routes/event/orders.tsx:86
+#: src/components/routes/event/orders.tsx:90
 #: src/ee/box-office/components/common/BoxOfficeTable/index.tsx:74
 #: src/ee/box-office/components/routes/event/BoxOffices/index.tsx:50
 msgid "Box Office"
@@ -3366,6 +3387,10 @@ msgstr "Düğme URL'si"
 #: src/components/common/WidgetEditor/AppearancePanel.tsx:80
 msgid "Buttons"
 msgstr "Düğmeler"
+
+#: src/components/modals/CreateManualOrderModal/index.tsx:207
+msgid "Buyer"
+msgstr "Alıcı"
 
 #: src/ee/box-office/components/layouts/BoxOffice/BuyerSheet.tsx:65
 msgid "Buyer details"
@@ -3503,6 +3528,7 @@ msgstr "Kimlik doğrulama uygulamanızı veya kurtarma kodlarınızı kullanamı
 #: src/components/modals/CreateCapacityAssignmentModal/index.tsx:75
 #: src/components/modals/CreateCheckInListModal/index.tsx:106
 #: src/components/modals/CreateEventModal/index.tsx:478
+#: src/components/modals/CreateManualOrderModal/index.tsx:368
 #: src/components/modals/CreateOrganizerModal/index.tsx:66
 #: src/components/modals/CreateOrganizerWebhookModal/index.tsx:89
 #: src/components/modals/CreateProductCategoryModal/index.tsx:56
@@ -3639,7 +3665,7 @@ msgstr "İptal etmek, bu siparişle ilişkili tüm katılımcıları iptal edece
 #: src/components/routes/admin/Messages/index.tsx:126
 #: src/components/routes/event/attendees.tsx:31
 #: src/components/routes/event/OccurrencesTab/OccurrenceMenu.tsx:219
-#: src/components/routes/event/orders.tsx:32
+#: src/components/routes/event/orders.tsx:35
 #: src/components/routes/event/Reports/OccurrenceSummaryReport/index.tsx:21
 #: src/components/routes/event/SoldOutWaitlist/index.tsx:120
 #: src/components/routes/organizer/OrganizerDashboard/index.tsx:433
@@ -4289,6 +4315,7 @@ msgstr "Balkon katı"
 
 #: src/components/common/CheckoutQuestion/index.tsx:162
 #: src/components/common/LocationPicker/index.tsx:249
+#: src/components/modals/CreateManualOrderModal/index.tsx:268
 #: src/components/modals/LocationEditModal/index.tsx:148
 #: src/components/routes/product-widget/CollectInformation/index.tsx:579
 #: src/components/routes/product-widget/CollectInformation/index.tsx:580
@@ -4592,7 +4619,7 @@ msgstr "Biletlerinizi güvence altına almak için ödemenizi tamamlayın."
 #: src/components/common/OrderStatusBadge/index.tsx:8
 #: src/components/modals/SendMessageModal/index.tsx:435
 #: src/components/routes/admin/DeletionRequests/index.tsx:86
-#: src/components/routes/event/orders.tsx:31
+#: src/components/routes/event/orders.tsx:34
 #: src/components/routes/my-tickets/index.tsx:35
 msgid "Completed"
 msgstr "Tamamlandı"
@@ -5303,6 +5330,7 @@ msgstr "Doğrulama e-postası gönderilemedi. Lütfen tekrar deneyin."
 
 #: src/components/common/CheckoutQuestion/index.tsx:174
 #: src/components/common/LocationPicker/index.tsx:268
+#: src/components/modals/CreateManualOrderModal/index.tsx:272
 #: src/components/modals/LocationEditModal/index.tsx:157
 #: src/components/routes/product-widget/CollectInformation/index.tsx:599
 msgid "Country"
@@ -5523,6 +5551,17 @@ msgstr "Yeni oluştur"
 #: src/components/routes/auth/ResetPassword/index.tsx:57
 msgid "Create new password"
 msgstr "Yeni şifre oluştur"
+
+#: src/components/modals/CreateManualOrderModal/index.tsx:184
+#: src/components/modals/CreateManualOrderModal/index.tsx:195
+#: src/components/modals/CreateManualOrderModal/index.tsx:205
+#: src/components/routes/event/orders.tsx:254
+msgid "Create Order"
+msgstr "Sipariş oluştur"
+
+#: src/components/modals/CreateManualOrderModal/index.tsx:370
+msgid "Create order with {0} attendee(s)"
+msgstr "{0} katılımcılı sipariş oluştur"
 
 #: src/components/modals/CreateOrganizerModal/index.tsx:22
 #: src/components/modals/CreateOrganizerModal/index.tsx:68
@@ -7082,6 +7121,8 @@ msgid "Email & Templates"
 msgstr "E-posta ve Şablonlar"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:228
+#: src/components/modals/CreateManualOrderModal/index.tsx:212
+#: src/components/modals/CreateManualOrderModal/index.tsx:319
 #: src/components/modals/ManageAttendeeModal/index.tsx:232
 #: src/components/modals/ManageOrderModal/index.tsx:274
 msgid "Email address"
@@ -7903,6 +7944,10 @@ msgstr "Excel (.xlsx) veya CSV. Hiçbir şey kaydedilmeden önce neyin değişec
 msgid "Exception"
 msgstr "İstisna"
 
+#: src/components/modals/CreateManualOrderModal/index.tsx:331
+msgid "Excluding taxes and fees."
+msgstr "Vergi ve ücretler hariç."
+
 #: src/components/routes/admin/DeletionRequests/index.tsx:232
 msgid "Execute deletion"
 msgstr "Silmeyi yürüt"
@@ -7972,7 +8017,7 @@ msgstr "Son Kullanım Tarihi"
 #: src/components/routes/event/Affiliates/index.tsx:97
 #: src/components/routes/event/attendees.tsx:263
 #: src/components/routes/event/Lineup/index.tsx:140
-#: src/components/routes/event/orders.tsx:250
+#: src/components/routes/event/orders.tsx:263
 msgid "Export"
 msgstr "Dışa Aktar"
 
@@ -8012,7 +8057,7 @@ msgstr "Katılımcılar Dışa Aktarılıyor"
 msgid "Exporting complete. Downloading file..."
 msgstr "Dışa aktarma tamamlandı. Dosya indiriliyor..."
 
-#: src/components/routes/event/orders.tsx:165
+#: src/components/routes/event/orders.tsx:169
 msgid "Exporting Orders"
 msgstr "Siparişler Dışa Aktarılıyor"
 
@@ -8191,7 +8236,7 @@ msgstr "Bağlı kuruluşlar dışa aktarılamadı"
 msgid "Failed to export attendees"
 msgstr "Katılımcılar dışa aktarılamadı"
 
-#: src/components/routes/event/orders.tsx:174
+#: src/components/routes/event/orders.tsx:178
 msgid "Failed to export orders"
 msgstr "Siparişler dışa aktarılamadı"
 
@@ -8524,7 +8569,7 @@ msgid "Filter by sign-in method"
 msgstr "Giriş yöntemine göre filtrele"
 
 #: src/components/routes/event/fulfillment.tsx:217
-#: src/components/routes/event/orders.tsx:236
+#: src/components/routes/event/orders.tsx:240
 msgid "Filter Orders"
 msgstr "Siparişleri Filtrele"
 
@@ -8598,6 +8643,8 @@ msgid "First Invoice Number"
 msgstr "İlk Fatura Numarası"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:214
+#: src/components/modals/CreateManualOrderModal/index.tsx:209
+#: src/components/modals/CreateManualOrderModal/index.tsx:313
 #: src/components/modals/ManageAttendeeModal/index.tsx:226
 #: src/components/modals/ManageOrderModal/index.tsx:261
 #: src/components/routes/product-widget/CollectInformation/index.tsx:477
@@ -9057,6 +9104,7 @@ msgid "Go to Online Store, then Themes, then Customize, and open the page."
 msgstr "\"Online Store\"a, ardından \"Themes\"e, ardından \"Customize\"a gidin ve sayfayı açın."
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:201
+#: src/components/modals/CreateManualOrderModal/index.tsx:187
 msgid "Go to Schedule"
 msgstr "Programa git"
 
@@ -10150,6 +10198,7 @@ msgstr "Yatay"
 
 #: src/components/common/WidgetEditor/BehaviourPanel.tsx:41
 #: src/components/modals/CreateAttendeeModal/index.tsx:240
+#: src/components/modals/CreateManualOrderModal/index.tsx:220
 #: src/components/modals/ManageAttendeeModal/index.tsx:180
 #: src/components/routes/settings/Profile/index.tsx:227
 msgid "Language"
@@ -10222,6 +10271,8 @@ msgid "Last active"
 msgstr "Son etkinlik"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:221
+#: src/components/modals/CreateManualOrderModal/index.tsx:210
+#: src/components/modals/CreateManualOrderModal/index.tsx:314
 #: src/components/modals/ManageAttendeeModal/index.tsx:228
 #: src/components/modals/ManageOrderModal/index.tsx:267
 #: src/components/routes/settings/Profile/index.tsx:206
@@ -10329,6 +10380,10 @@ msgstr "Fiyat kategorilerindeki tüm koltukları satmak için boş bırakın"
 #: src/ee/seating/components/SeatMapDesigner/Inspector.tsx:286
 msgid "Leave empty to use the automatic label"
 msgstr "Otomatik etiketi kullanmak için boş bırakın"
+
+#: src/components/modals/CreateManualOrderModal/index.tsx:320
+msgid "Leave empty to use the buyer's email"
+msgstr "Alıcının e-postasını kullanmak için boş bırakın"
 
 #: src/components/forms/CheckInListForm/index.tsx:107
 msgid "Leave on to cover every ticket on the event. Turn off to pick specific tickets."
@@ -10834,6 +10889,7 @@ msgid "Manage single sign-on"
 msgstr "Tek oturum açmayı yönet"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:176
+#: src/components/modals/CreateManualOrderModal/index.tsx:198
 msgid "Manage tickets"
 msgstr "Biletleri yönet"
 
@@ -12399,6 +12455,7 @@ msgstr "Numaralar"
 #: src/components/common/OrderDetails/index.tsx:57
 #: src/components/forms/CheckInListForm/index.tsx:131
 #: src/components/modals/CreateAttendeeModal/index.tsx:258
+#: src/components/modals/CreateManualOrderModal/index.tsx:227
 #: src/components/modals/ManageOrderModal/index.tsx:147
 #: src/components/modals/SendMessageModal/index.tsx:363
 #: src/ee/box-office/components/forms/BoxOfficeForm/index.tsx:122
@@ -13007,6 +13064,10 @@ msgstr "Sipariş onayı başarıyla yeniden gönderildi"
 msgid "Order Created"
 msgstr "Sipariş Oluşturuldu"
 
+#: src/components/modals/CreateManualOrderModal/index.tsx:171
+msgid "Order created successfully"
+msgstr "Sipariş başarıyla oluşturuldu"
+
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:287
 msgid "Order Date"
 msgstr "Sipariş Tarihi"
@@ -13090,7 +13151,7 @@ msgstr "Sipariş Referansı"
 msgid "Order Refunded"
 msgstr "Sipariş İade Edildi"
 
-#: src/components/routes/event/orders.tsx:74
+#: src/components/routes/event/orders.tsx:78
 msgid "Order Status"
 msgstr "Sipariş Durumu"
 
@@ -13128,7 +13189,7 @@ msgid "Order was cancelled"
 msgstr "Sipariş iptal edildi"
 
 #: src/components/routes/event/OccurrencesTab/index.tsx:451
-#: src/components/routes/event/orders.tsx:241
+#: src/components/routes/event/orders.tsx:245
 msgid "orders"
 msgstr "sipariş"
 
@@ -13144,7 +13205,7 @@ msgstr "sipariş"
 #: src/components/routes/admin/Dashboard/index.tsx:331
 #: src/components/routes/admin/Orders/index.tsx:44
 #: src/components/routes/event/OccurrencesTab/OccurrenceMenu.tsx:62
-#: src/components/routes/event/orders.tsx:198
+#: src/components/routes/event/orders.tsx:202
 #: src/components/routes/event/Reports/OccurrenceSummaryReport/index.tsx:78
 #: src/components/routes/organizer/OrganizerDashboard/index.tsx:121
 #: src/components/routes/organizer/OrganizerDashboard/index.tsx:147
@@ -13161,7 +13222,7 @@ msgstr "Siparişler"
 msgid "Orders (24h)"
 msgstr "Siparişler (24 sa)"
 
-#: src/components/routes/event/orders.tsx:169
+#: src/components/routes/event/orders.tsx:173
 msgid "Orders Exported"
 msgstr "Siparişler Dışa Aktarıldı"
 
@@ -13386,6 +13447,7 @@ msgid "Pages: {pageCount}"
 msgstr "Sayfa: {pageCount}"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:319
+#: src/components/modals/CreateManualOrderModal/index.tsx:341
 msgid "paid"
 msgstr "ödendi"
 
@@ -13432,7 +13494,7 @@ msgid "Partially refunded"
 msgstr "Kısmen iade edildi"
 
 #: src/components/common/OrderStatusBadge/index.tsx:16
-#: src/components/routes/event/orders.tsx:38
+#: src/components/routes/event/orders.tsx:41
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:75
 msgid "Partially Refunded"
 msgstr "Kısmen İade Edildi"
@@ -14068,7 +14130,7 @@ msgstr "Lütfen en az bir ürün seçin"
 
 #: src/components/routes/event/Affiliates/index.tsx:56
 #: src/components/routes/event/attendees.tsx:170
-#: src/components/routes/event/orders.tsx:175
+#: src/components/routes/event/orders.tsx:179
 msgid "Please try again."
 msgstr "Lütfen tekrar deneyin."
 
@@ -14089,7 +14151,7 @@ msgstr "Katılımcılarınızı dışa aktarma için hazırlarken lütfen bekley
 msgid "Please wait while we prepare your invoice..."
 msgstr "Faturanızı hazırlarken lütfen bekleyin..."
 
-#: src/components/routes/event/orders.tsx:166
+#: src/components/routes/event/orders.tsx:170
 msgid "Please wait while we prepare your orders for export..."
 msgstr "Siparişlerinizi dışa aktarma için hazırlarken lütfen bekleyin..."
 
@@ -14315,7 +14377,7 @@ msgstr "Sipariş işleniyor"
 #: src/components/modals/FulfillmentOrderModal/index.tsx:402
 #: src/components/modals/ManageAttendeeModal/index.tsx:237
 #: src/components/modals/OfferWaitlistModal/index.tsx:167
-#: src/components/routes/event/orders.tsx:68
+#: src/components/routes/event/orders.tsx:72
 msgid "Product"
 msgstr "Ürün"
 
@@ -14922,7 +14984,7 @@ msgstr "İade Bekliyor"
 msgid "Refund recorded successfully."
 msgstr "İade başarıyla kaydedildi."
 
-#: src/components/routes/event/orders.tsx:80
+#: src/components/routes/event/orders.tsx:84
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:293
 msgid "Refund Status"
 msgstr "İade Durumu"
@@ -14936,7 +14998,7 @@ msgstr "İade etme, iadeyle iptal etme ve siparişleri ödendi olarak işaretlem
 #: src/components/common/StatBoxes/index.tsx:89
 #: src/components/modals/ProductPurchasesModal/index.tsx:61
 #: src/components/modals/ProductPurchasesModal/index.tsx:248
-#: src/components/routes/event/orders.tsx:37
+#: src/components/routes/event/orders.tsx:40
 #: src/components/routes/organizer/OrganizerDashboard/index.tsx:436
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:74
 #: src/ee/box-office/components/modals/BoxOfficeStatsModal/index.tsx:37
@@ -15042,6 +15104,10 @@ msgstr "Erişimi kaldır"
 #: src/components/routes/settings/Security/index.tsx:189
 msgid "Remove all"
 msgstr "Tümünü kaldır"
+
+#: src/components/modals/CreateManualOrderModal/index.tsx:292
+msgid "Remove attendee"
+msgstr "Katılımcıyı kaldır"
 
 #: src/ee/box-office/components/routes/organizer/Payments/TerminalReaders/index.tsx:102
 msgid "Remove card reader"
@@ -16105,7 +16171,7 @@ msgstr "Ad, e-posta veya hesaba göre ara..."
 
 #: src/components/modals/ProductPurchasesModal/index.tsx:259
 #: src/components/routes/event/fulfillment.tsx:222
-#: src/components/routes/event/orders.tsx:202
+#: src/components/routes/event/orders.tsx:206
 msgid "Search by name, email, or order #..."
 msgstr "Ad, e-posta veya sipariş #'a göre ara..."
 
@@ -16476,6 +16542,7 @@ msgstr "Etkinlik türlerini seçin"
 
 #: src/components/common/OccurrenceSelect/index.tsx:109
 #: src/components/modals/CreateAttendeeModal/index.tsx:259
+#: src/components/modals/CreateManualOrderModal/index.tsx:228
 msgid "Select occurrence"
 msgstr "Bir tarih seç"
 
@@ -16507,6 +16574,7 @@ msgid "Select the messaging tier for this account. This controls message limits 
 msgstr "Bu hesap için mesajlaşma seviyesini seçin. Bu, mesaj limitlerini ve bağlantı izinlerini kontrol eder."
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:246
+#: src/components/modals/CreateManualOrderModal/index.tsx:305
 msgid "Select Ticket"
 msgstr "Bilet Seç"
 
@@ -16667,6 +16735,7 @@ msgid "Send now"
 msgstr "Şimdi gönder"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:331
+#: src/components/modals/CreateManualOrderModal/index.tsx:363
 msgid "Send order confirmation and ticket email"
 msgstr "Sipariş onayı ve bilet e-postası gönder"
 
@@ -17473,7 +17542,7 @@ msgstr "Geçici geri dönmeler"
 msgid "Sold"
 msgstr "Satıldı"
 
-#: src/components/routes/event/orders.tsx:91
+#: src/components/routes/event/orders.tsx:95
 msgid "Sold by"
 msgstr "Satan"
 
@@ -17916,6 +17985,7 @@ msgstr "Yarın başlıyor"
 
 #: src/components/common/CheckoutQuestion/index.tsx:165
 #: src/components/common/LocationPicker/index.tsx:254
+#: src/components/modals/CreateManualOrderModal/index.tsx:271
 #: src/components/modals/LocationEditModal/index.tsx:149
 #: src/components/routes/product-widget/CollectInformation/index.tsx:585
 #: src/components/routes/product-widget/CollectInformation/index.tsx:586
@@ -18734,6 +18804,10 @@ msgstr "Anahtar, {accountName} içinde sizin yapabildiğiniz her şeyi yapabilir
 msgid "The language the attendee will receive emails in."
 msgstr "Katılımcının e-postaları alacağı dil."
 
+#: src/components/modals/CreateManualOrderModal/index.tsx:221
+msgid "The language the buyer and attendees will receive emails in."
+msgstr "Alıcının ve katılımcıların e-postaları alacağı dil."
+
 #: src/ee/licensing/components/routes/admin/Licence/index.tsx:141
 msgid "The licence key was rejected"
 msgstr "Lisans anahtarı reddedildi"
@@ -18764,6 +18838,7 @@ msgid "The organizer you're looking for could not be found. The page may have be
 msgstr "Aradığınız organizatör bulunamadı. Sayfa taşınmış, silinmiş veya URL yanlış olabilir."
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:292
+#: src/components/modals/CreateManualOrderModal/index.tsx:246
 msgid "The override is recorded in the order audit log."
 msgstr "Bu karar sipariş denetim kaydına işlenir."
 
@@ -19135,6 +19210,7 @@ msgid "This date is in the past. It will be created but won't be visible to atte
 msgstr "Bu tarih geçmişte. Oluşturulacak ancak katılımcılara yaklaşan tarihler arasında görünmeyecek."
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:288
+#: src/components/modals/CreateManualOrderModal/index.tsx:242
 msgid "This date is marked sold out."
 msgstr "Bu tarih tükendi olarak işaretli."
 
@@ -19315,8 +19391,13 @@ msgid "This name is visible to end users"
 msgstr "Bu isim son kullanıcılara görünür"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:282
+#: src/components/modals/CreateManualOrderModal/index.tsx:237
 msgid "This occurrence is at capacity"
 msgstr "Bu tarih kapasitesini doldurdu"
+
+#: src/components/modals/CreateManualOrderModal/index.tsx:256
+msgid "This order contains hard tickets that need to be shipped."
+msgstr "Bu sipariş gönderilmesi gereken fiziksel biletler içeriyor."
 
 #: src/components/forms/StripeCheckoutForm/index.tsx:131
 msgid "This order has already been paid."
@@ -19511,6 +19592,7 @@ msgstr "bilet"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:580
 #: src/components/forms/ProductForm/index.tsx:231
 #: src/components/modals/CreateAttendeeModal/index.tsx:247
+#: src/components/modals/CreateManualOrderModal/index.tsx:304
 #: src/components/modals/ManageAttendeeModal/index.tsx:147
 #: src/components/modals/ManageAttendeeModal/index.tsx:277
 msgid "Ticket"
@@ -20657,6 +20739,10 @@ msgstr "Bilet sattığınız her marka veya mekân için ayrı bir organizatör 
 msgid "Use areas for separate parts of the venue, such as stalls and balcony. Best available seats are chosen nearest the stage."
 msgstr "Salon ve balkon gibi mekanın ayrı bölümleri için alanları kullanın. En uygun koltuklar sahneye en yakın olanlardan seçilir."
 
+#: src/components/modals/CreateManualOrderModal/index.tsx:286
+msgid "Use buyer details"
+msgstr "Alıcı bilgilerini kullan"
+
 #: src/components/routes/event/OccurrencesTab/OccurrenceEditModal/index.tsx:552
 msgid "Use event default"
 msgstr "Etkinliğin varsayılanını kullan"
@@ -21076,7 +21162,7 @@ msgstr "Siparişi Görüntüle"
 msgid "View Order Details"
 msgstr "Sipariş Detaylarını Görüntüle"
 
-#: src/components/routes/event/orders.tsx:197
+#: src/components/routes/event/orders.tsx:201
 msgid "View order details, issue refunds, and resend confirmations."
 msgstr "Sipariş detaylarını görüntüleyin, iade yapın ve onayları yeniden gönderin."
 
@@ -22057,6 +22143,10 @@ msgstr "Şartlar ve koşulları kabul etmelisiniz"
 msgid "You must create a ticket before you can manually add an attendee."
 msgstr "Elle katılımcı ekleyebilmek için önce bir bilet oluşturmalısınız."
 
+#: src/components/modals/CreateManualOrderModal/index.tsx:196
+msgid "You must create a ticket before you can manually create an order."
+msgstr "Manuel olarak sipariş oluşturabilmek için önce bir bilet oluşturmalısınız."
+
 #: src/components/forms/ProductForm/ProductPriceTierForm.tsx:159
 msgid "You must have at least one price tier"
 msgstr "En az bir fiyat seviyeniz olmalı"
@@ -22070,6 +22160,7 @@ msgid "You need a confirmed email address to create API keys. Check your inbox, 
 msgstr "API anahtarı oluşturmak için onaylanmış bir e-posta adresine ihtiyacınız var. Gelen kutunuzu kontrol edin veya onay e-postasını <0>profilinizden</0> yeniden gönderin."
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:191
+#: src/components/modals/CreateManualOrderModal/index.tsx:185
 msgid "You need to create at least one occurrence before you can add attendees to this recurring event."
 msgstr "Bu yinelenen etkinliğe katılımcı ekleyebilmek için en az bir tarih oluşturmanız gerekir."
 
@@ -22374,7 +22465,7 @@ msgstr "Siparişiniz iptal edildi."
 msgid "Your order is awaiting payment"
 msgstr "Siparişiniz ödeme bekliyor"
 
-#: src/components/routes/event/orders.tsx:170
+#: src/components/routes/event/orders.tsx:174
 msgid "Your orders have been exported successfully."
 msgstr "Siparişleriniz başarıyla dışa aktarıldı."
 
@@ -22522,6 +22613,7 @@ msgstr "web-siteniz.com"
 msgid "YouTube"
 msgstr "YouTube"
 
+#: src/components/modals/CreateManualOrderModal/index.tsx:267
 #: src/components/routes/product-widget/CollectInformation/index.tsx:593
 msgid "ZIP / Postal Code"
 msgstr "Posta Kodu"

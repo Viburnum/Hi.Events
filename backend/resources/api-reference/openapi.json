@@ -14470,6 +14470,97 @@
         }
       }
     },
+    "/events/{eventId}/orders/manual": {
+      "post": {
+        "operationId": "orders.createManualOrderAction",
+        "summary": "Create Manual Order",
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateManualOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "`OrderResource`",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/OrderResource"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "401": {
+            "$ref": "#/components/responses/AuthenticationException"
+          },
+          "403": {
+            "description": "The authenticated user is not allowed to perform this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The requested resource was not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/events/{eventId}/orders/{orderId}/invoice": {
       "get": {
         "operationId": "orders.downloadOrderInvoiceAction",
@@ -28737,6 +28828,186 @@
           "profile_id"
         ],
         "title": "CreateLineupEntryRequest"
+      },
+      "CreateManualOrderRequest": {
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "last_name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 40
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "locale": {
+            "type": "string",
+            "enum": [
+              "en",
+              "de",
+              "fi",
+              "fr",
+              "it",
+              "nl",
+              "hu",
+              "es",
+              "pt",
+              "pt-br",
+              "zh-cn",
+              "se",
+              "zh-hk",
+              "vi",
+              "tr",
+              "pl",
+              "sk",
+              "el",
+              "ko",
+              "ja"
+            ]
+          },
+          "send_confirmation_email": {
+            "type": "boolean"
+          },
+          "event_occurrence_id": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "override_capacity": {
+            "type": "boolean"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "address_line_1": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              },
+              "address_line_2": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 255
+              },
+              "city": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 85
+              },
+              "state_or_region": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 85
+              },
+              "zip_or_postal_code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 20
+              },
+              "country": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 2
+              }
+            }
+          },
+          "attendees": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "product_id": {
+                  "type": "integer"
+                },
+                "product_price_id": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "first_name": {
+                  "type": "string",
+                  "maxLength": 40
+                },
+                "last_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 40
+                },
+                "email": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "email"
+                },
+                "amount_paid": {
+                  "type": "number",
+                  "maximum": 999999999999
+                },
+                "taxes_and_fees": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "tax_or_fee_id": {
+                        "type": "integer"
+                      },
+                      "amount": {
+                        "type": "number",
+                        "maximum": 999999999999
+                      }
+                    },
+                    "required": [
+                      "tax_or_fee_id",
+                      "amount"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "product_id",
+                "first_name",
+                "amount_paid"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "first_name",
+          "email",
+          "locale",
+          "send_confirmation_email",
+          "attendees"
+        ],
+        "title": "CreateManualOrderRequest"
       },
       "CreateOrderRequest": {
         "type": "object",

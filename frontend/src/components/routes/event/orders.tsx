@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useAccess} from "../../../hooks/useAccess.ts";
 import {useParams} from "react-router";
 import {Button, Group} from "@mantine/core";
-import {IconDownload} from "@tabler/icons-react";
+import {IconDownload, IconPlus} from "@tabler/icons-react";
 import {t} from "@lingui/macro";
 import {useGetEvent} from "../../../queries/useGetEvent";
 import {useGetEventOrders} from "../../../queries/useGetEventOrders";
@@ -26,6 +26,9 @@ import {useGetBoxOffices} from "../../../ee/box-office/queries/useGetBoxOffices"
 import {useLicensedFeature} from "../../../ee/licensing/hooks/useLicensedFeature.ts";
 import {FeatureFlag} from "../../../constants/featureFlags.ts";
 import {getProductsFromEvent} from "../../../utilites/helpers.ts";
+import {useDisclosure} from "@mantine/hooks";
+import {CreateManualOrderModal} from "../../modals/CreateManualOrderModal";
+import {CreateButton} from "../../common/CreateButton";
 
 const getOrderStatuses = () => [
     {label: t`Completed`, value: 'COMPLETED'},
@@ -52,6 +55,7 @@ export const Orders: React.FC = () => {
     const orders = ordersQuery?.data?.data;
     const pagination = ordersQuery?.data?.meta;
     const [downloadPending, setDownloadPending] = useState(false);
+    const [createModalOpen, {open: openCreateModal, close: closeCreateModal}] = useDisclosure(false);
 
     const occurrences = occurrencesData?.data || [];
     const occurrenceFilter = searchParams.filterFields?.event_occurrence_id;
@@ -240,6 +244,15 @@ export const Orders: React.FC = () => {
                 resultCount={pagination?.total}
                 resultLabel={t`orders`}
             >
+                <CreateButton
+                    color={'green'}
+                    size={'sm'}
+                    data-testid="order-create-button"
+                    onClick={openCreateModal}
+                    rightSection={<IconPlus/>}
+                >
+                    {t`Create Order`}
+                </CreateButton>
                 {canViewFinancials && <Button
                     onClick={() => handleExport(eventId)}
                     rightSection={<IconDownload size={14}/>}
@@ -264,6 +277,8 @@ export const Orders: React.FC = () => {
                     total={Number(pagination?.last_page)}
                 />
             )}
+
+            {createModalOpen && <CreateManualOrderModal onClose={closeCreateModal} isOpen={createModalOpen}/>}
         </PageBody>
     );
 };
