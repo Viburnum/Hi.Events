@@ -2041,7 +2041,7 @@ msgstr "Salli kirjautuminen palvelulla {providerName}"
 msgid "Almost there! We're just waiting for your payment to be processed. This should only take a few seconds."
 msgstr "Melkein valmis! Odotamme vain maksusi käsittelyä. Tämän pitäisi kestää vain muutaman sekunnin."
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:465
+#: src/components/modals/FulfillmentOrderModal/index.tsx:518
 msgid "Already Fulfilled"
 msgstr ""
 
@@ -2688,7 +2688,7 @@ msgstr "Määritä suunnitelma"
 msgid "assigned"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:421
+#: src/components/modals/FulfillmentOrderModal/index.tsx:474
 msgid "Assigned"
 msgstr ""
 
@@ -2736,8 +2736,8 @@ msgstr "osallistuja"
 
 #: src/components/common/AttendeeTicket/index.tsx:135
 #: src/components/common/QuestionsTable/index.tsx:473
-#: src/components/modals/FulfillmentOrderModal/index.tsx:291
-#: src/components/modals/FulfillmentOrderModal/index.tsx:401
+#: src/components/modals/FulfillmentOrderModal/index.tsx:344
+#: src/components/modals/FulfillmentOrderModal/index.tsx:454
 #: src/components/routes/product-widget/CollectInformation/index.tsx:668
 #: src/ee/seating/components/routes/event/SeatingPrint/index.tsx:365
 msgid "Attendee"
@@ -3122,12 +3122,12 @@ msgstr "Juhlasali"
 msgid "Bar"
 msgstr "Baari"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:293
-#: src/components/modals/FulfillmentOrderModal/index.tsx:403
+#: src/components/modals/FulfillmentOrderModal/index.tsx:346
+#: src/components/modals/FulfillmentOrderModal/index.tsx:456
 msgid "Barcode"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:69
+#: src/components/modals/FulfillmentOrderModal/index.tsx:74
 msgid "Barcode saved successfully"
 msgstr ""
 
@@ -4580,7 +4580,7 @@ msgstr "Saattajan paikka (pyörätuolipaikan kanssa)"
 msgid "Companion seats can only be booked together with a wheelchair space. Add a wheelchair space or remove the companion seat."
 msgstr "Saattajan paikan voi varata vain yhdessä pyörätuolipaikan kanssa. Lisää pyörätuolipaikka tai poista saattajan paikka."
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:341
+#: src/components/modals/FulfillmentOrderModal/index.tsx:394
 msgid "Company"
 msgstr ""
 
@@ -5768,7 +5768,7 @@ msgstr "Mukautettu malli"
 msgid "Customer"
 msgstr "Asiakas"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:328
+#: src/components/modals/FulfillmentOrderModal/index.tsx:381
 msgid "Customer Information"
 msgstr ""
 
@@ -5895,6 +5895,7 @@ msgstr "Hallintapaneeli"
 #: src/components/common/WidgetEditor/ContentFields.tsx:77
 #: src/components/common/WidgetEditor/CustomiseGroups.tsx:117
 #: src/components/forms/QuestionForm/index.tsx:136
+#: src/components/modals/FulfillmentOrderModal/index.tsx:331
 #: src/components/routes/event/fulfillment.tsx:139
 #: src/components/routes/event/Lineup/ScheduleBuilder/ScheduleItemModal.tsx:175
 #: src/components/routes/event/Reports/OccurrenceSummaryReport/index.tsx:39
@@ -6320,9 +6321,9 @@ msgstr "toimitettu"
 msgid "Delivered"
 msgstr "Toimitettu"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:182
-#: src/components/modals/FulfillmentOrderModal/index.tsx:280
-#: src/components/modals/FulfillmentOrderModal/index.tsx:286
+#: src/components/modals/FulfillmentOrderModal/index.tsx:205
+#: src/components/modals/FulfillmentOrderModal/index.tsx:325
+#: src/components/modals/FulfillmentOrderModal/index.tsx:340
 msgid "Delivery Slip"
 msgstr ""
 
@@ -7088,7 +7089,7 @@ msgstr "Kelpoiset sisäänkirjautumislistat"
 #: src/components/common/OrderDetails/index.tsx:34
 #: src/components/common/QuestionsTable/index.tsx:264
 #: src/components/forms/AffiliateForm/index.tsx:89
-#: src/components/modals/FulfillmentOrderModal/index.tsx:336
+#: src/components/modals/FulfillmentOrderModal/index.tsx:389
 #: src/components/modals/InviteUserModal/index.tsx:61
 #: src/components/modals/JoinWaitlistModal/index.tsx:189
 #: src/components/modals/ManageAttendeeModal/index.tsx:174
@@ -7420,7 +7421,7 @@ msgstr "Anna kumppanin nimi"
 msgid "Enter an amount excluding taxes and fees."
 msgstr "Anna määrä ilman veroja ja maksuja."
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:427
+#: src/components/modals/FulfillmentOrderModal/index.tsx:480
 msgid "Enter barcode"
 msgstr ""
 
@@ -8266,7 +8267,7 @@ msgstr "Vastaanottajien lataus epäonnistui"
 msgid "Failed to load Webhook"
 msgstr "Webhookin lataus epäonnistui"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:88
+#: src/components/modals/FulfillmentOrderModal/index.tsx:93
 msgid "Failed to mark order as fulfilled. Please try again."
 msgstr ""
 
@@ -8324,7 +8325,7 @@ msgstr "Tehtävän uudelleenyritys epäonnistui"
 msgid "Failed to retry jobs"
 msgstr "Tehtävien uudelleenyritykset epäonnistuivat"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:73
+#: src/components/modals/FulfillmentOrderModal/index.tsx:78
 msgid "Failed to save barcode. Please try again."
 msgstr ""
 
@@ -8907,7 +8908,7 @@ msgstr "Etuosan permanto"
 msgid "Front right"
 msgstr "Edessä oikealla"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:314
+#: src/components/modals/FulfillmentOrderModal/index.tsx:367
 #: src/components/routes/event/fulfillment.tsx:27
 #: src/components/routes/event/fulfillment.tsx:85
 msgid "Fulfilled"
@@ -8918,7 +8919,7 @@ msgstr ""
 msgid "Fulfillment"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:323
+#: src/components/modals/FulfillmentOrderModal/index.tsx:376
 msgid "Fulfillment - Order #{0}"
 msgstr ""
 
@@ -9226,7 +9227,7 @@ msgstr "Poista pysyvästi"
 msgid "Hard Ticket"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:394
+#: src/components/modals/FulfillmentOrderModal/index.tsx:447
 msgid "Hard Ticket Attendees"
 msgstr ""
 
@@ -10927,7 +10928,7 @@ msgstr "Karttanäkymä"
 msgid "March"
 msgstr "maaliskuu"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:465
+#: src/components/modals/FulfillmentOrderModal/index.tsx:518
 msgid "Mark as Fulfilled"
 msgstr ""
 
@@ -11357,7 +11358,7 @@ msgstr "Lippuni"
 #: src/components/forms/ProductForm/index.tsx:207
 #: src/components/forms/TaxAndFeeForm/index.tsx:62
 #: src/components/modals/DuplicateEventModal/index.tsx:114
-#: src/components/modals/FulfillmentOrderModal/index.tsx:332
+#: src/components/modals/FulfillmentOrderModal/index.tsx:385
 #: src/components/routes/admin/Configurations/index.tsx:224
 #: src/components/routes/event/Lineup/ProfileDrawer.tsx:279
 #: src/components/routes/event/Lineup/ScheduleBuilder/SpaceModal.tsx:71
@@ -11861,7 +11862,7 @@ msgstr "Ei tarkistusta odottavia merkittyjä tapahtumia"
 msgid "No fulfillment orders to show"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:396
+#: src/components/modals/FulfillmentOrderModal/index.tsx:449
 msgid "No hard tickets found for this order."
 msgstr "Tälle tilaukselle ei löytynyt fyysisiä lippuja."
 
@@ -11873,7 +11874,7 @@ msgstr "Ohjeita ei ole vielä lisätty."
 msgid "No invoice"
 msgstr "Ei laskua"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:297
+#: src/components/modals/FulfillmentOrderModal/index.tsx:350
 msgid "No items"
 msgstr ""
 
@@ -13009,12 +13010,12 @@ msgstr "tilaus"
 #: src/components/common/QuestionsTable/index.tsx:305
 #: src/components/common/QuestionsTable/index.tsx:459
 #: src/components/layouts/CheckIn/AttendeeDetailSheet.tsx:261
-#: src/components/modals/FulfillmentOrderModal/index.tsx:135
-#: src/components/modals/FulfillmentOrderModal/index.tsx:287
+#: src/components/modals/FulfillmentOrderModal/index.tsx:140
+#: src/components/modals/FulfillmentOrderModal/index.tsx:332
 #: src/components/modals/ManageAttendeeModal/index.tsx:159
 #: src/components/routes/my-tickets/index.tsx:70
 msgid "Order"
-msgstr "Tila"
+msgstr "Tilaus"
 
 #: src/ee/box-office/components/layouts/BoxOffice/TenderStage.tsx:190
 msgid "Order {0}"
@@ -13103,7 +13104,7 @@ msgstr "Tilaus-ID"
 msgid "Order limits"
 msgstr "Tilausrajat"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:84
+#: src/components/modals/FulfillmentOrderModal/index.tsx:89
 msgid "Order marked as fulfilled"
 msgstr ""
 
@@ -13718,7 +13719,7 @@ msgstr ""
 msgid "PayPal payments are not enabled for this event."
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:316
+#: src/components/modals/FulfillmentOrderModal/index.tsx:369
 #: src/components/routes/admin/DeletionRequests/index.tsx:85
 #: src/components/routes/event/fulfillment.tsx:26
 #: src/components/routes/event/fulfillment.tsx:91
@@ -14066,7 +14067,7 @@ msgstr "Luo ensin lippu"
 msgid "Please don't leave a single empty seat: {0}"
 msgstr "Älä jätä yksittäistä tyhjää paikkaa: {0}"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:61
+#: src/components/modals/FulfillmentOrderModal/index.tsx:66
 msgid "Please enter a barcode value"
 msgstr ""
 
@@ -14091,7 +14092,7 @@ msgstr "Anna viisinumeroinen koodi"
 msgid "Please enter your VAT number"
 msgstr "Anna ALV-tunnuksesi"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:300
+#: src/components/modals/FulfillmentOrderModal/index.tsx:353
 msgid "Please fold along the marks to fit a DIN long (DL) window envelope."
 msgstr "Taita merkkien kohdalta, jotta se mahtuu DL-ikkunakirjekuoreen."
 
@@ -14314,7 +14315,7 @@ msgstr "Tulosta"
 msgid "Print All Tickets"
 msgstr "Tulosta kaikki liput"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:373
+#: src/components/modals/FulfillmentOrderModal/index.tsx:426
 msgid "Print Delivery Slip"
 msgstr ""
 
@@ -14330,7 +14331,7 @@ msgstr "Tulostuksen esikatselu"
 msgid "Print preview uses your last saved design"
 msgstr "Tulostuksen esikatselu käyttää viimeksi tallennettua ulkoasua"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:365
+#: src/components/modals/FulfillmentOrderModal/index.tsx:418
 msgid "Print Shipping Label"
 msgstr ""
 
@@ -14373,8 +14374,8 @@ msgstr "Tilauksen käsittely"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:580
 #: src/components/common/WaitlistTable/index.tsx:176
 #: src/components/forms/ProductForm/index.tsx:238
-#: src/components/modals/FulfillmentOrderModal/index.tsx:292
-#: src/components/modals/FulfillmentOrderModal/index.tsx:402
+#: src/components/modals/FulfillmentOrderModal/index.tsx:345
+#: src/components/modals/FulfillmentOrderModal/index.tsx:455
 #: src/components/modals/ManageAttendeeModal/index.tsx:237
 #: src/components/modals/OfferWaitlistModal/index.tsx:167
 #: src/components/routes/event/orders.tsx:72
@@ -15835,7 +15836,7 @@ msgstr "Lauantai"
 
 #: src/components/common/PlatformFeesSettings/index.tsx:252
 #: src/components/common/QuestionAndAnswerList/index.tsx:119
-#: src/components/modals/FulfillmentOrderModal/index.tsx:439
+#: src/components/modals/FulfillmentOrderModal/index.tsx:492
 #: src/components/routes/admin/LifecycleEmails/LifecycleEmailEditor.tsx:215
 #: src/components/routes/event/Lineup/ScheduleBuilder/SpaceModal.tsx:98
 #: src/components/routes/event/OccurrencesTab/OccurrenceBulkEditModal/index.tsx:273
@@ -17063,16 +17064,16 @@ msgstr "Siirrä aikoja"
 msgid "Shifted times for {count} date(s)"
 msgstr "Aikoja siirretty {count} päivälle"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:126
+#: src/components/modals/FulfillmentOrderModal/index.tsx:131
 msgid "Ship To"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:357
+#: src/components/modals/FulfillmentOrderModal/index.tsx:410
 #: src/components/routes/product-widget/CollectInformation/index.tsx:559
 msgid "Shipping Address"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:103
+#: src/components/modals/FulfillmentOrderModal/index.tsx:108
 msgid "Shipping Label"
 msgstr ""
 
@@ -18018,8 +18019,8 @@ msgstr "Tilastot"
 #: src/components/forms/AffiliateForm/index.tsx:98
 #: src/components/forms/CapaciyAssigmentForm/index.tsx:56
 #: src/components/forms/WebhookForm/index.tsx:164
-#: src/components/modals/FulfillmentOrderModal/index.tsx:346
-#: src/components/modals/FulfillmentOrderModal/index.tsx:404
+#: src/components/modals/FulfillmentOrderModal/index.tsx:399
+#: src/components/modals/FulfillmentOrderModal/index.tsx:457
 #: src/components/modals/ManageAttendeeModal/index.tsx:151
 #: src/components/modals/ManageOrderModal/index.tsx:125
 #: src/components/routes/admin/Announcements/index.tsx:159
