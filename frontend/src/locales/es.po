@@ -761,7 +761,7 @@ msgstr "¡Casi terminamos! Complete la conexión de su cuenta de Stripe para com
 msgid "Almost there! We're just waiting for your payment to be processed. This should only take a few seconds."
 msgstr "¡Casi listo! Solo estamos esperando que se procese tu pago. Esto debería tomar solo unos segundos."
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:465
+#: src/components/modals/FulfillmentOrderModal/index.tsx:518
 msgid "Already Fulfilled"
 msgstr ""
 
@@ -1077,7 +1077,7 @@ msgstr "Preguntar una vez por producto"
 msgid "assigned"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:421
+#: src/components/modals/FulfillmentOrderModal/index.tsx:474
 msgid "Assigned"
 msgstr ""
 
@@ -1104,8 +1104,8 @@ msgstr "Asistencia y tasas de registro en todos los eventos"
 
 #: src/components/common/AttendeeTicket/index.tsx:149
 #: src/components/common/QuestionsTable/index.tsx:461
-#: src/components/modals/FulfillmentOrderModal/index.tsx:291
-#: src/components/modals/FulfillmentOrderModal/index.tsx:401
+#: src/components/modals/FulfillmentOrderModal/index.tsx:344
+#: src/components/modals/FulfillmentOrderModal/index.tsx:454
 #: src/components/routes/product-widget/CollectInformation/index.tsx:659
 msgid "Attendee"
 msgstr "Asistente"
@@ -1330,12 +1330,12 @@ msgstr "Color de fondo"
 msgid "Background Type"
 msgstr "Tipo de fondo"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:293
-#: src/components/modals/FulfillmentOrderModal/index.tsx:403
+#: src/components/modals/FulfillmentOrderModal/index.tsx:346
+#: src/components/modals/FulfillmentOrderModal/index.tsx:456
 msgid "Barcode"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:69
+#: src/components/modals/FulfillmentOrderModal/index.tsx:74
 msgid "Barcode saved successfully"
 msgstr ""
 
@@ -1870,7 +1870,7 @@ msgstr "Palabras clave separadas por comas que describen el evento. Estos serán
 msgid "Communication Preferences"
 msgstr "Preferencias de comunicación"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:341
+#: src/components/modals/FulfillmentOrderModal/index.tsx:394
 msgid "Company"
 msgstr ""
 
@@ -2542,7 +2542,7 @@ msgstr "Plantilla personalizada"
 msgid "Customer"
 msgstr "Cliente"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:328
+#: src/components/modals/FulfillmentOrderModal/index.tsx:381
 msgid "Customer Information"
 msgstr ""
 
@@ -2653,6 +2653,7 @@ msgstr "Propiedad de datos"
 #: src/components/common/AdminOrdersTable/index.tsx:94
 #: src/components/common/OrderDetails/index.tsx:39
 #: src/components/forms/QuestionForm/index.tsx:136
+#: src/components/modals/FulfillmentOrderModal/index.tsx:331
 #: src/components/routes/event/fulfillment.tsx:139
 #: src/components/routes/organizer/Reports/EventsPerformanceReport/index.tsx:56
 #: src/components/routes/organizer/Reports/RevenueSummaryReport/index.tsx:24
@@ -2756,9 +2757,9 @@ msgstr "¿Eliminar esta pregunta? Esto no se puede deshacer."
 msgid "Delete webhook"
 msgstr "Eliminar webhook"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:182
-#: src/components/modals/FulfillmentOrderModal/index.tsx:280
-#: src/components/modals/FulfillmentOrderModal/index.tsx:286
+#: src/components/modals/FulfillmentOrderModal/index.tsx:205
+#: src/components/modals/FulfillmentOrderModal/index.tsx:325
+#: src/components/modals/FulfillmentOrderModal/index.tsx:340
 msgid "Delivery Slip"
 msgstr "Albarán de entrega"
 
@@ -3106,7 +3107,7 @@ msgstr "Listas de Check-In Elegibles"
 #: src/components/common/QuestionsTable/index.tsx:253
 #: src/components/forms/AffiliateForm/index.tsx:89
 #: src/components/modals/EditUserModal/index.tsx:80
-#: src/components/modals/FulfillmentOrderModal/index.tsx:336
+#: src/components/modals/FulfillmentOrderModal/index.tsx:389
 #: src/components/modals/InviteUserModal/index.tsx:61
 #: src/components/modals/JoinWaitlistModal/index.tsx:171
 #: src/components/routes/admin/Accounts/AccountDetail/index.tsx:128
@@ -3303,7 +3304,7 @@ msgstr "Ingresa el nombre del afiliado"
 msgid "Enter an amount excluding taxes and fees."
 msgstr "Ingrese un monto sin incluir impuestos ni tarifas."
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:427
+#: src/components/modals/FulfillmentOrderModal/index.tsx:480
 msgid "Enter barcode"
 msgstr ""
 
@@ -3774,7 +3775,7 @@ msgstr "No se pudieron cargar los destinatarios"
 msgid "Failed to load Webhook"
 msgstr "Error al cargar el Webhook"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:88
+#: src/components/modals/FulfillmentOrderModal/index.tsx:93
 msgid "Failed to mark order as fulfilled. Please try again."
 msgstr ""
 
@@ -3818,7 +3819,7 @@ msgstr "Error al reintentar el trabajo"
 msgid "Failed to retry jobs"
 msgstr "Error al reintentar los trabajos"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:73
+#: src/components/modals/FulfillmentOrderModal/index.tsx:78
 msgid "Failed to save barcode. Please try again."
 msgstr ""
 
@@ -4125,7 +4126,7 @@ msgstr "Producto gratuito, no se requiere información de pago"
 msgid "French"
 msgstr "Francés"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:314
+#: src/components/modals/FulfillmentOrderModal/index.tsx:367
 #: src/components/routes/event/fulfillment.tsx:27
 #: src/components/routes/event/fulfillment.tsx:85
 msgid "Fulfilled"
@@ -4136,7 +4137,7 @@ msgstr ""
 msgid "Fulfillment"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:323
+#: src/components/modals/FulfillmentOrderModal/index.tsx:376
 msgid "Fulfillment - Order #{0}"
 msgstr ""
 
@@ -4268,7 +4269,7 @@ msgstr "Huéspedes"
 msgid "Hard Ticket"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:394
+#: src/components/modals/FulfillmentOrderModal/index.tsx:447
 msgid "Hard Ticket Attendees"
 msgstr ""
 
@@ -5124,7 +5125,7 @@ msgstr "Agregar manualmente un asistente"
 msgid "Manually Add Attendee"
 msgstr "Agregar asistente manualmente"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:465
+#: src/components/modals/FulfillmentOrderModal/index.tsx:518
 msgid "Mark as Fulfilled"
 msgstr ""
 
@@ -5318,7 +5319,7 @@ msgstr "Nam placerat elementum..."
 #: src/components/forms/ProductForm/index.tsx:275
 #: src/components/forms/TaxAndFeeForm/index.tsx:61
 #: src/components/modals/DuplicateEventModal/index.tsx:109
-#: src/components/modals/FulfillmentOrderModal/index.tsx:332
+#: src/components/modals/FulfillmentOrderModal/index.tsx:385
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:63
 #: src/components/routes/admin/Configurations/index.tsx:219
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:75
@@ -5489,7 +5490,7 @@ msgstr "No hay filtros disponibles"
 msgid "No fulfillment orders to show"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:396
+#: src/components/modals/FulfillmentOrderModal/index.tsx:449
 msgid "No hard tickets found for this order."
 msgstr "No se encontraron entradas físicas para este pedido."
 
@@ -5501,7 +5502,7 @@ msgstr "Sin impacto en sus transacciones actuales o pasadas"
 msgid "No invoice"
 msgstr "Sin factura"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:297
+#: src/components/modals/FulfillmentOrderModal/index.tsx:350
 msgid "No items"
 msgstr "Sin artículos"
 
@@ -5910,11 +5911,11 @@ msgstr "o"
 
 #: src/components/common/QuestionsTable/index.tsx:294
 #: src/components/common/QuestionsTable/index.tsx:447
-#: src/components/modals/FulfillmentOrderModal/index.tsx:135
-#: src/components/modals/FulfillmentOrderModal/index.tsx:287
+#: src/components/modals/FulfillmentOrderModal/index.tsx:140
+#: src/components/modals/FulfillmentOrderModal/index.tsx:332
 #: src/components/routes/my-tickets/index.tsx:53
 msgid "Order"
-msgstr "Orden"
+msgstr "Pedido"
 
 #: src/components/common/AttendeeTable/index.tsx:240
 msgid "Order & Ticket"
@@ -5988,7 +5989,7 @@ msgstr "Límites de Pedido"
 msgid "Order limits set"
 msgstr "Límites de pedido establecidos"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:84
+#: src/components/modals/FulfillmentOrderModal/index.tsx:89
 msgid "Order marked as fulfilled"
 msgstr ""
 
@@ -6443,7 +6444,7 @@ msgstr "El pago con PayPal falló. Inténtalo de nuevo o contacta con el organiz
 msgid "PayPal payments are not enabled for this event."
 msgstr "Los pagos con PayPal no están habilitados para este evento."
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:316
+#: src/components/modals/FulfillmentOrderModal/index.tsx:369
 #: src/components/routes/event/fulfillment.tsx:26
 #: src/components/routes/event/fulfillment.tsx:91
 msgid "Pending"
@@ -6590,7 +6591,7 @@ msgstr "Por favor, cree un producto"
 msgid "Please create a ticket"
 msgstr "Por favor, crea un ticket"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:61
+#: src/components/modals/FulfillmentOrderModal/index.tsx:66
 msgid "Please enter a barcode value"
 msgstr ""
 
@@ -6615,7 +6616,7 @@ msgstr "Por favor, ingresa el código de 5 dígitos"
 msgid "Please enter your VAT number"
 msgstr "Por favor ingrese su número de IVA"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:300
+#: src/components/modals/FulfillmentOrderModal/index.tsx:353
 msgid "Please fold along the marks to fit a DIN long (DL) window envelope."
 msgstr "Doble por las marcas para que quepa en un sobre con ventana DIN largo (DL)."
 
@@ -6760,7 +6761,7 @@ msgstr "Color de texto primario"
 msgid "Print All Tickets"
 msgstr "Imprimir todas las entradas"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:373
+#: src/components/modals/FulfillmentOrderModal/index.tsx:426
 msgid "Print Delivery Slip"
 msgstr "Imprimir albarán de entrega"
 
@@ -6768,7 +6769,7 @@ msgstr "Imprimir albarán de entrega"
 msgid "Print Preview"
 msgstr "Vista Previa de Impresión"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:365
+#: src/components/modals/FulfillmentOrderModal/index.tsx:418
 msgid "Print Shipping Label"
 msgstr ""
 
@@ -6803,8 +6804,8 @@ msgstr "Procesando pedido"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:285
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:482
 #: src/components/common/WaitlistTable/index.tsx:170
-#: src/components/modals/FulfillmentOrderModal/index.tsx:292
-#: src/components/modals/FulfillmentOrderModal/index.tsx:402
+#: src/components/modals/FulfillmentOrderModal/index.tsx:345
+#: src/components/modals/FulfillmentOrderModal/index.tsx:455
 #: src/components/modals/ManageAttendeeModal/index.tsx:119
 #: src/components/modals/OfferWaitlistModal/index.tsx:161
 msgid "Product"
@@ -7431,7 +7432,7 @@ msgstr "San Francisco"
 
 #: src/components/common/PlatformFeesSettings/index.tsx:249
 #: src/components/common/QuestionAndAnswerList/index.tsx:142
-#: src/components/modals/FulfillmentOrderModal/index.tsx:439
+#: src/components/modals/FulfillmentOrderModal/index.tsx:492
 #: src/components/routes/event/Settings/Sections/EmailSettings/GeneralEmailSettings.tsx:81
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:129
 #: src/components/routes/event/Settings/Sections/HomepageAndCheckoutSettings/index.tsx:141
@@ -7932,16 +7933,16 @@ msgstr "Compartir página del organizador"
 msgid "Shared Capacity Management"
 msgstr "Gestión de capacidad compartida"
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:126
+#: src/components/modals/FulfillmentOrderModal/index.tsx:131
 msgid "Ship To"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:357
+#: src/components/modals/FulfillmentOrderModal/index.tsx:410
 #: src/components/routes/product-widget/CollectInformation/index.tsx:545
 msgid "Shipping Address"
 msgstr ""
 
-#: src/components/modals/FulfillmentOrderModal/index.tsx:103
+#: src/components/modals/FulfillmentOrderModal/index.tsx:108
 msgid "Shipping Label"
 msgstr ""
 
@@ -8165,8 +8166,8 @@ msgstr "Las estadísticas se basan en la fecha de creación de la cuenta"
 #: src/components/forms/CapaciyAssigmentForm/index.tsx:56
 #: src/components/forms/WebhookForm/index.tsx:157
 #: src/components/modals/EditUserModal/index.tsx:103
-#: src/components/modals/FulfillmentOrderModal/index.tsx:346
-#: src/components/modals/FulfillmentOrderModal/index.tsx:404
+#: src/components/modals/FulfillmentOrderModal/index.tsx:399
+#: src/components/modals/FulfillmentOrderModal/index.tsx:457
 #: src/components/routes/account/ManageAccount/sections/Users/index.tsx:157
 #: src/components/routes/admin/Dashboard/index.tsx:405
 #: src/components/routes/admin/Messages/index.tsx:120

@@ -1,6 +1,9 @@
 import {Attendee, GenericModalProps, IdParam, Order} from "../../../types.ts";
 import {useParams} from "react-router";
 import {t} from "@lingui/macro";
+import {i18n} from "@lingui/core";
+import {useGetEvent} from "../../../queries/useGetEvent.ts";
+import {useGetEventSettings} from "../../../queries/useGetEventSettings.ts";
 import {Badge, Box, Button, Divider, Group, Stack, Table, Text, TextInput} from "@mantine/core";
 import {IconBarcode, IconCheck, IconFileText, IconPrinter, IconTruckDelivery} from "@tabler/icons-react";
 import {SideDrawer} from "../../common/SideDrawer";
@@ -15,6 +18,8 @@ interface FulfillmentOrderModalProps {
 
 export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & FulfillmentOrderModalProps) => {
     const {eventId} = useParams();
+    const {data: event} = useGetEvent(eventId);
+    const {data: eventSettings} = useGetEventSettings(eventId);
     const setBarcodeMutation = useSetAttendeeBarcode();
     const markFulfilledMutation = useUpdateOrderFulfillmentStatus();
     const attendees = (order.attendees || []).filter((a) => a.product?.is_hard_ticket);
@@ -167,6 +172,24 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
             escapeHtml([address?.state_or_region, address?.country].filter(Boolean).join(', ')),
         ].filter((line) => line.trim().length > 0);
 
+        const organizer = event?.organizer;
+        const senderName = eventSettings?.organization_name || organizer?.name || '';
+        const senderAddressLines = (eventSettings?.organization_address || '')
+            .split(/\r?\n/)
+            .map((line) => line.trim())
+            .filter((line) => line.length > 0);
+        const senderContactLines = [
+            organizer?.email,
+            organizer?.phone,
+            organizer?.website,
+        ].filter((line): line is string => !!line && line.trim().length > 0);
+        const returnAddress = [senderName, ...senderAddressLines].filter(Boolean).join(' · ');
+        const printDate = new Date().toLocaleDateString(i18n.locale || undefined, {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+        });
+
         const itemRows = attendees.map((attendee) => `
             <tr>
                 <td>${escapeHtml(`${attendee.first_name} ${attendee.last_name}`)}</td>
@@ -220,10 +243,37 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
                         position: absolute;
                         left: 25mm;
                         top: 40mm;
-                        font-size: 8pt;
+                        width: 85mm;
+                        font-size: 7pt;
                         color: #666;
                         border-bottom: 0.2mm solid #999;
                         padding-bottom: 1mm;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    .info {
+                        position: absolute;
+                        left: 125mm;
+                        right: 20mm;
+                        top: 20mm;
+                        font-size: 9pt;
+                        line-height: 1.4;
+                    }
+                    .info .organizer-name {
+                        font-weight: bold;
+                        font-size: 10pt;
+                    }
+                    .info .block {
+                        margin-bottom: 3mm;
+                    }
+                    .info .details div {
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 3mm;
+                    }
+                    .info .label {
+                        color: #666;
                     }
                     .recipient {
                         position: absolute;
@@ -242,12 +292,7 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
                     }
                     .body h1 {
                         font-size: 18pt;
-                        margin: 0 0 4mm 0;
-                    }
-                    .meta {
-                        font-size: 10pt;
-                        color: #444;
-                        margin-bottom: 8mm;
+                        margin: 0 0 8mm 0;
                     }
                     table {
                         width: 100%;
@@ -277,14 +322,22 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
                     <div class="fold-mark punch"></div>
                     <div class="fold-mark bottom"></div>
 
-                    <div class="sender">${t`Delivery Slip`} · ${escapeHtml(order.public_id)}</div>
+                    <div class="sender">${escapeHtml(returnAddress) || `${t`Delivery Slip`} · ${escapeHtml(order.public_id)}`}</div>
+                    <div class="info">
+                        ${senderName ? `<div class="block organizer-name">${escapeHtml(senderName)}</div>` : ''}
+                        ${senderAddressLines.length ? `<div class="block">${senderAddressLines.map((line) => `<div>${escapeHtml(line)}</div>`).join('')}</div>` : ''}
+                        ${senderContactLines.length ? `<div class="block">${senderContactLines.map((line) => `<div>${escapeHtml(line)}</div>`).join('')}</div>` : ''}
+                        <div class="block details">
+                            <div><span class="label">${t`Date`}</span><span>${escapeHtml(printDate)}</span></div>
+                            <div><span class="label">${t`Order`}</span><span>${escapeHtml(order.public_id)}</span></div>
+                        </div>
+                    </div>
                     <div class="recipient">
                         ${recipientLines.map((line) => `<div>${line}</div>`).join('')}
                     </div>
 
                     <div class="body">
                         <h1>${t`Delivery Slip`}</h1>
-                        <div class="meta">${t`Order`}: ${escapeHtml(order.public_id)}</div>
                         <table>
                             <thead>
                                 <tr>
