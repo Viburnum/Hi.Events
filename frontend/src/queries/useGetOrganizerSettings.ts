@@ -11,6 +11,7 @@ export const useGetOrganizerSettings = (organizerId: IdParam) => {
         queryFn: async () => {
             const res = await organizerSettingsClient.all(organizerId);
             return res.data;
-        }
+        },
+        enabled: !!organizerId,
     });
 };
