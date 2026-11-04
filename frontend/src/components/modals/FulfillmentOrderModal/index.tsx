@@ -1,9 +1,11 @@
-import {Attendee, GenericModalProps, IdParam, Order} from "../../../types.ts";
+import {Attendee, GenericModalProps, IdParam, Order, VenueAddress} from "../../../types.ts";
 import {useParams} from "react-router";
 import {t} from "@lingui/macro";
 import {i18n} from "@lingui/core";
 import {useGetEvent} from "../../../queries/useGetEvent.ts";
 import {useGetEventSettings} from "../../../queries/useGetEventSettings.ts";
+import {useGetOrganizerSettings} from "../../../queries/useGetOrganizerSettings.ts";
+import countries from "../../../../data/countries.json";
 import {Badge, Box, Button, Divider, Group, Stack, Table, Text, TextInput} from "@mantine/core";
 import {IconBarcode, IconCheck, IconFileText, IconPrinter, IconTruckDelivery} from "@tabler/icons-react";
 import {SideDrawer, SideDrawerHeading} from "../../common/SideDrawer";
@@ -11,6 +13,25 @@ import {useSetAttendeeBarcode} from "../../../mutations/useSetAttendeeBarcode.ts
 import {useUpdateOrderFulfillmentStatus} from "../../../mutations/useUpdateOrderFulfillmentStatus.ts";
 import {showError, showSuccess} from "../../../utilites/notifications.tsx";
 import {useCallback, useState} from "react";
+
+const formatAddressLines = (address?: VenueAddress | null): string[] => {
+    if (!address) {
+        return [];
+    }
+
+    const countryName = countries.find((country) => country.value === address.country)?.label || address.country;
+
+    return [
+        address.venue_name,
+        address.address_line_1,
+        address.address_line_2,
+        [address.zip_or_postal_code, address.city].filter(Boolean).join(' '),
+        address.state_or_region,
+        countryName,
+    ]
+        .map((line) => (line || '').trim())
+        .filter((line) => line.length > 0);
+};
 
 interface FulfillmentOrderModalProps {
     order: Order;
@@ -20,6 +41,8 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
     const {eventId} = useParams();
     const {data: event} = useGetEvent(eventId);
     const {data: eventSettings} = useGetEventSettings(eventId);
+    const {data: organizerSettings} = useGetOrganizerSettings(event?.organizer_id as IdParam);
+    const organizerAddress = organizerSettings?.location_details;
     const setBarcodeMutation = useSetAttendeeBarcode();
     const markFulfilledMutation = useUpdateOrderFulfillmentStatus();
     const attendees = (order.attendees || []).filter((a) => a.product?.is_hard_ticket);
@@ -174,10 +197,13 @@ export const FulfillmentOrderModal = ({onClose, order}: GenericModalProps & Fulf
 
         const organizer = event?.organizer;
         const senderName = eventSettings?.organization_name || organizer?.name || '';
-        const senderAddressLines = (eventSettings?.organization_address || '')
+        const invoiceAddressLines = (eventSettings?.organization_address || '')
             .split(/\r?\n/)
             .map((line) => line.trim())
             .filter((line) => line.length > 0);
+        const senderAddressLines = invoiceAddressLines.length > 0
+            ? invoiceAddressLines
+            : formatAddressLines(organizerAddress);
         const senderContactLines = [
             organizer?.email,
             organizer?.phone,
